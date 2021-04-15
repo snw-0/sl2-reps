@@ -7,3 +7,5 @@
 		1.1.2. For RepR, separate into 3 cases: p odd, p = 2, and the exceptional ones (18 of them?)
 
 2. Put comments for an important function; input and output data structure.
+
+3. Convert to use records
