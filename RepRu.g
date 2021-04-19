@@ -10,7 +10,7 @@
 #-------------------------------------------------------------
 
 RepRUnary := function(p, ld, r, silent)
-    local l, M, B_f, B_g, x, y, c, s, S_p, T_p, deg_p, S_m, T_m, deg_m;
+    local l, M, B_f, B_g, x, y, k, c, s, S_p, T_p, deg_p, S_m, T_m, deg_m, xi, U, V, i;
 
     l := p^ld;
 
@@ -41,9 +41,10 @@ RepRUnary := function(p, ld, r, silent)
 
         # g_{y, k, +-}
         B_g := [];
-        for x in [0 .. (p^(ld-2)) - 1] do
-            for y in [1 .. (p-1) / 2] do
-                Add(B_g, [x, y]);
+        for k in [1 .. (p-1) / 2] do
+            Add(B_g, [0, k]);
+            for y in [1 .. ((p^(ld-2)) - 1)/2] do
+                Append(B_g, [[y, k], [p^(ld-2)-y, k]]);
             od;
         od;
 
@@ -137,15 +138,34 @@ RepRUnary := function(p, ld, r, silent)
         od;
     fi;
 
-    # XXXXX handle general case later; for now handle small cases
-    if p = 3 and ld = 2 then
-        S_m := S_m ^ DiagonalMat([1,1,1,E(4)]);
-        T_m := T_m ^ DiagonalMat([1,1,1,E(4)]);
+    if ld = 1 then
+        return [[S_p, T_p, deg_p], [S_m, T_m, deg_m]];
+    else
+        U:=IdentityMat(Length(B_f)+Length(B_g));
+        V:=IdentityMat(Length(B_f)+Length(B_g));
+        i:=1;
+        while i <= Length(B_g) do
+            if B_g[i][1]>0 then
+                xi := E(2*p)^(B_g[i][2])/Sqrt(2);
+                U[Length(B_f)+i][Length(B_f)+i] := xi;
+                U[Length(B_f)+i][Length(B_f)+i+1] := E(4)*xi;
+                U[Length(B_f)+i+1][Length(B_f)+i] := xi;
+                U[Length(B_f)+i+1][Length(B_f)+i+1] := -E(4)*xi;
+
+                xi := E(2*p)^(B_g[i][2])/Sqrt(2);
+                V[Length(B_f)+i][Length(B_f)+i] := E(4)*xi;
+                V[Length(B_f)+i][Length(B_f)+i+1] := xi;
+                V[Length(B_f)+i+1][Length(B_f)+i] := E(4)*xi;
+                V[Length(B_f)+i+1][Length(B_f)+i+1] := -xi;
+
+                i := i+2;
+            else
+                V[Length(B_f)+i][Length(B_f)+i]:=E(4);
+
+                i := i+1;
+            fi;
+        od;
+        return [[S_p^U, T_p^U, deg_p], [S_m^V, T_m^V, deg_m]];
     fi;
-
-    return [[S_p, T_p, deg_p], [S_m, T_m, deg_m]];
 end;
 
-RUCheck := function(r)
-    return [r[1][1]^4 = r[1][1]^0, (r[1][1]*r[1][2])^3 = r[1][1]^4, r[2][1]^4 = r[2][1]^0, (r[2][1]*r[2][2])^3 = r[2][1]^4];
-end;

@@ -1,13 +1,7 @@
-# Read("./RepN.g");
-# Read("./RepD.g");
-# Read("./RepRs_regular.g");
-# Read("./RepRu.g");
-# Read("./Conj_Class.g");
-
 Read("./RepN.g");
-Read("./RepD_symmetric.g");
-Read("./RepRs_regular_symmetric.g");
-Read("./RepRu_symmetric.g");
+Read("./RepD.g");
+Read("./RepRs_regular.g");
+Read("./RepRu.g");
 Read("./Conj_Class.g");
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

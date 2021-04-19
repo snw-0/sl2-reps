@@ -79,13 +79,26 @@ MD := function(p, ld)
     return [Agrp, omicron, Char, Bp];
 end;
 
+SqrtOfRootOfUnity := function(b)
+    local desc;
+
+    if b = 1 then
+        return 1;
+    else
+        # this returns [q,p] such that b = E(q)^p
+        desc := DescriptionOfRootOfUnity(b);
+
+        return E(desc[1]*2)^desc[2];
+    fi;
+end;
+
 #-------------------------------------------------------------
 # Representation of type D. Input: p, ld and the label of the character.
 # Index is of the form [i,j], but note that j is only relevant for p = 2, ld > 2.
 #-------------------------------------------------------------
 
 RepD := function(p, ld, chi_index, silent)
-    local i, j, l, M, Agrp, omicron, Chi, Bp, sxy, S, T, deg, w, U;
+    local i, j, l, M, Agrp, omicron, Chi, Bp, sxy, S, T, deg, w, U, a, b, k;
 
     if p <= 3 and ld = 1 then
         if not silent then
@@ -112,7 +125,7 @@ RepD := function(p, ld, chi_index, silent)
 
         S := List(Bp, x -> List(Bp, y ->
                 (1/l) * Sum(Agrp, a ->
-                Chi(a) * E(l)^(a[3] * x[2] * y[1] + a[4] * x[1] * y[2]))));
+                Chi(a) * E(l)^(a[3] * x[1] * y[2] + a[4] * x[2] * y[1]))));
         T := DiagonalMat(List(Bp, x -> E(l)^(x[1] * x[2])));
 
         if p = 2 and (ld = 2 or ld = 3) then
@@ -181,6 +194,30 @@ RepD := function(p, ld, chi_index, silent)
                 Print("The dimension of the representation is ", deg, ".\n");
                 Print("\n");
             fi;
+
+            # Construct change of basis to make S symmetric.
+            U := IdentityMat(Length(Bp));
+            k := 1;
+            repeat
+                b := Bp[k];
+                a := First(Agrp, x -> x[3] = b[1]);
+                if a = fail then
+                    # b[1] is not invertible, which means we have two basis elements,
+                    # [b[1],1] and [1,b[1]]; they should be paired up.
+                    U{[k,k+1]}{[k,k+1]} := (1 / Sqrt(2)) * [
+                        [1, E(4)],
+                        [1, -E(4)],
+                    ];
+                    k := k + 2;
+                else
+                    # b[1] is invertible, so we scale by Sqrt(Chi(a)).
+                    U[k][k] := 1 / SqrtOfRootOfUnity(Chi(a));
+                    k := k + 1;
+                fi;
+            until k > Length(Bp);
+
+            S := S ^ U;
+            T := T ^ U;
 
             return [S, T, deg];
         fi;

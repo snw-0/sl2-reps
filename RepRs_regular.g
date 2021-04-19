@@ -279,6 +279,19 @@ MR := function(p, ld, si, r, t)
     return [Agrp, omicron, Char, tM, Nm, Prod, Ord, c];
 end;
 
+SqrtOfRootOfUnity := function(b)
+    local desc;
+
+    if b = 1 then
+        return 1;
+    else
+        # this returns [q,p] such that b = E(q)^p
+        desc := DescriptionOfRootOfUnity(b);
+
+        return E(desc[1]*2)^desc[2];
+    fi;
+end;
+
 #-------------------------------------------------------------
 # Representation of type R_{lambda}^{sigma}. Input: p, ld, sigma, r, t, and [i,j] the label of the character.
 #-------------------------------------------------------------
@@ -286,7 +299,7 @@ end;
 RepR := function(p, ld, si, r, t, chi_index, silent)
     local l, M_output, Agrp, omicron, Chi, tM, Nm, Prod, Ord, c,
             Tr, AOrbit, Epsilon,
-            tM1, theta, b, Bp, BaseChangeMat, w, U, U_index, B_Q, sxy, S, T, deg,
+            tM1, theta, b, B1, Bp, BaseChangeMat, w, U, U_index, B_Q, sxy, S, T, deg,
             N, B, O, VInd, tO, a, k;
 
     l := p^ld;
@@ -322,11 +335,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         eta := [1, 0];
                     else
                         eta := First(tM, x -> Nm(x) mod l = a);
-                        # for x in tM do
-                        #     if Nm(x) mod l = a then
-                        #         eta := x; break;
-                        #     fi;
-                        # od;
                         if eta = fail then
                             Error("No eta found with norm ", a);
                         fi;
@@ -342,27 +350,65 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     else
                         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
                     fi;
+                    # U := IdentityMat(3*2^(ld-3));
                 elif si = 1 then
                     if t mod 4 = 1 then
                         Bp := Concatenation(theta(1), theta(3));
                     else
                         Bp := Concatenation(theta(1), theta(7));
                     fi;
+                    # U := IdentityMat(3*2^(ld-3));
                 elif si = 2 then
                     Bp := Concatenation(theta(1), theta(5));
+                    U := IdentityMat(3*2^(ld-3));
                 else
                     Bp := theta(1);
+                    # U := IdentityMat(3*2^(ld-4));
                 fi;
+                # U_index := Length(Bp) + 1;
+
                 # now find representatives for the remaining A orbits
                 tM1 := ShallowCopy(tM);
+                B1 := [];
                 for b in Bp do
                     SubtractSet(tM1, AOrbit(b));
                 od;
                 while Length(tM1) > 0 do
                     b := tM1[1];
-                    Add(Bp,b);
-                    SubtractSet(tM1, AOrbit(b));
+                    # Does kappa(b) lie in the same A-orbit as b?
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si-1)]);
+                    if a = fail then
+                        # No, it doesn't. We should therefore pair them up at the end.
+                        Add(B1,b);
+                        SubtractSet(tM1, AOrbit(b));
+                        Add(B1,[b[1], -b[2] mod p^(ld-si-1)]);
+                        SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si-1)]));
+                        # U{[U_index, U_index+1]}{[U_index, U_index+1]} := (1 / Sqrt(2)) * [
+                        #     [1, E(4)],
+                        #     [1, -E(4)]
+                        # ];
+                        # U_index := U_index + 2;
+                    else
+                        # Yes, it does. We will need to scale by 1 / Sqrt(Chi(a)) later.
+                        Add(Bp,b);
+                        SubtractSet(tM1, AOrbit(b));
+                        # U[U_index][U_index] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
+                        # U_index := U_index + 1;
+                    fi;
                 od;
+
+                Bp := Concatenation(Bp, B1);
+
+                # for b in Bp do
+                #     k := [b[1], -b[2] mod p^(ld-si-1)];
+                #     Print("b: ", b, ", kb: ", k, "\n");
+                #     for a in Agrp do
+                #         if Prod(a[2],b) = k then
+                #             Print("\t", a[2], ", ", Chi(a[1]), "\n");
+                #         fi;
+                #     od;
+                # od;
+                # Display(U);
             elif ld >= 5 and si = ld - 2 then
                 # Depends on the character; see NW p. 511.
                 Bp := [];
@@ -469,26 +515,61 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 return fail;
             fi;
         else
+            # base change matrix to make S symmetric
+            # U := IdentityMat(Length(tM) / Length(Agrp));
             # theta_1 = theta intersect M^times
             Bp := List(Filtered(PrimeResidues(l),
                     a -> a >= 1 and a <= (l-1)/2),
                     a -> [a,0]);
+            # U_index := Length(Bp) + 1;
 
             # now find representatives for the remaining A orbits
             tM1 := ShallowCopy(tM);
+            B1 := [];
             for b in Bp do
                 SubtractSet(tM1, AOrbit(b));
             od;
             while Length(tM1) > 0 do
                 b := tM1[1];
-                Add(Bp,b);
-                SubtractSet(tM1, AOrbit(b));
+                # Does kappa(b) lie in the same A-orbit as b?
+                a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si)]);
+                if a = fail then
+                    # No, it doesn't. We should therefore pair them up.
+                    Add(B1,b);
+                    SubtractSet(tM1, AOrbit(b));
+                    Add(B1,[b[1], -b[2] mod p^(ld-si)]);
+                    SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si)]));
+                    # U{[U_index, U_index+1]}{[U_index, U_index+1]} := (1 / Sqrt(2)) * [
+                    #     [1, E(4)],
+                    #     [1, -E(4)]
+                    # ];
+                    # U_index := U_index + 2;
+                else
+                    # Yes, it does. So we need to scale by Chi(a).
+                    Add(Bp,b);
+                    SubtractSet(tM1, AOrbit(b));
+                    # U[U_index][U_index] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
+                    # U_index := U_index + 1;
+                fi;
             od;
+
+            Bp := Concatenation(Bp, B1);
+
+            # for b in Bp do
+            #     k := [b[1], -b[2] mod p^(ld-si)];
+            #     Print("b: ", b, ", kb: ", k, "\n");
+            #     for a in Agrp do
+            #         if Prod(a[2],b) = k then
+            #             Print("\t", a[2], ", ", Chi(a[1]), "\n");
+            #         fi;
+            #     od;
+            # od;
+            # Display(U);
         fi;
 
         sxy := function(x, y)
             return c * Sum(Agrp, a ->
-                    Chi(a[1]) * E(l)^(r * Tr(Prod(a[2], Prod(x, [y[1], -y[2]])))));
+                    Chi(a[1]) * E(l)^(r * Tr(Prod(a[2], Prod(y, [x[1], -x[2]])))));
         end;
 
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
@@ -553,6 +634,8 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             fi;
         elif p=2 and ld=4 and si=0 and r=1 and t in [3,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 3,7.
+            # Note: these differ from those in RepR_regular.g because here we have
+            # reordered the basis slightly.
             w := 1 / Sqrt(2);
             if t = 3 then
                 if chi_index = [1,0] then
@@ -566,9 +649,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
                         [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w, 0],
+                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                     ];
                 else
                     U := [
@@ -581,9 +664,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w, 0],
+                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                     ];
                 fi;
             else
@@ -598,9 +681,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w, 0],
+                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                     ];
                 else
                     U := [
@@ -613,9 +696,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w, 0],
+                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w, 0],
                     ];
                 fi;
             fi;
@@ -634,6 +717,8 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             ];
         elif p=2 and ld=5 and si=2 and r in [1,3] and t in [1,3,5,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 1,3,5,7.
+            # Note: these differ from those in RepR_regular.g because here we have
+            # reordered the basis slightly.
             w := 1 / Sqrt(2);
             if t = 1 then
                 if chi_index = [1,0] then
@@ -647,9 +732,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
                         [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                     ];
                 else
                     U := [
@@ -662,9 +747,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                     ];
                 fi;
             elif t = 3 then
@@ -679,9 +764,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                     ];
                 else
                     U := [
@@ -694,9 +779,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                     ];
                 fi;
             elif t = 5 then
@@ -711,9 +796,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                     ];
                 else
                     U := [
@@ -726,9 +811,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                     ];
                 fi;
             else
@@ -743,9 +828,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                         [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
                     ];
                 else
                     U := [
@@ -758,9 +843,9 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0, w],
                         [ 0, 0, 0, 0, 0, w, 0, 0, 0, 0, 0,-w],
-                        [ 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
                     ];
                 fi;
             fi;
@@ -779,27 +864,55 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             ];
         else
             # XXXXX handle general case later; for now handle small cases
-            if p=2 and ld=3 and si=0 and r in [1,3] and t in [1,5] then
-                if t = 1 then
-                    U := DiagonalMat([1,1,1/E(8)]);
+            # if p=2 and ld=3 and si=0 and r in [1,3] and t in [1,5] then
+            #     if t = 1 then
+            #         U := DiagonalMat([1,1,1/E(8)]);
+            #     else
+            #         U := DiagonalMat([1,E(4), 1/E(8)^3]);
+            #     fi;
+            #     S := S^U;
+            #     T := T^U;
+            # elif p=3 and ld=2 and si=1 and r in [1,2] and t in [1,2] and chi_index=[1,1] then
+            #     U := DiagonalMat([1,1,1,E(4)]);
+            #     S := S^U;
+            #     T := T^U;
+            # elif p=2 and ld=4 and si=0 and r in [1,3] and t in [1,5] then
+            #     if t=1 then
+            #         U := DiagonalMat([1,1,E(4),E(4),1/E(8),1/E(8)]);
+            #     else
+            #         U := DiagonalMat([1,1,1,1,1/E(8),1/E(8)]);
+            #     fi;
+            #     S := S^U;
+            #     T := T^U;
+            # fi;
+
+            # Apply a change of basis to make S symmetric.
+            U := IdentityMat(Length(Bp));
+            k := 1;
+            repeat
+                b := Bp[k];
+                # Is kappa(b) in the same A-orbit as b?
+                if p = 2 then
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si-1)]);
                 else
-                    U := DiagonalMat([1,E(4), 1/E(8)^3]);
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si)]);
                 fi;
-                S := S^U;
-                T := T^U;
-            elif p=3 and ld=2 and si=1 and r in [1,2] and t in [1,2] and chi_index=[1,1] then
-                U := DiagonalMat([1,1,1,E(4)]);
-                S := S^U;
-                T := T^U;
-            elif p=2 and ld=4 and si=0 and r in [1,3] and t in [1,5] then
-                if t=1 then
-                    U := DiagonalMat([1,1,E(4),E(4),1/E(8),1/E(8)]);
+                if a = fail then
+                    # No, it isn't. This and the next basis element should be paired.
+                    U{[k, k+1]}{[k, k+1]} := (1 / Sqrt(2)) * [
+                        [1, E(4)],
+                        [1, -E(4)]
+                    ];
+                    k := k + 2;
                 else
-                    U := DiagonalMat([1,1,1,1,1/E(8),1/E(8)]);
+                    # Yes, it is.  We should scale by 1 / Sqrt(Chi(a)).
+                    U[k][k] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
+                    k := k + 1;
                 fi;
-                S := S^U;
-                T := T^U;
-            fi;
+            until k > Length(Bp);
+
+            S := S^U;
+            T := T^U;
 
             return [S, T, deg];
         fi;
