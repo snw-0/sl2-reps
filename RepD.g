@@ -183,8 +183,8 @@ RepD := function(p, ld, chi_index, silent)
             fi;
 
             return [
-                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}, deg],
-                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}, deg]
+                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
+                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
         else
             deg := Length(Bp);
@@ -219,7 +219,7 @@ RepD := function(p, ld, chi_index, silent)
             S := S ^ U;
             T := T ^ U;
 
-            return [S, T, deg];
+            return [[S, T]];
         fi;
     else
         if not silent then

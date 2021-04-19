@@ -350,22 +350,18 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     else
                         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
                     fi;
-                    # U := IdentityMat(3*2^(ld-3));
                 elif si = 1 then
                     if t mod 4 = 1 then
                         Bp := Concatenation(theta(1), theta(3));
                     else
                         Bp := Concatenation(theta(1), theta(7));
                     fi;
-                    # U := IdentityMat(3*2^(ld-3));
                 elif si = 2 then
                     Bp := Concatenation(theta(1), theta(5));
                     U := IdentityMat(3*2^(ld-3));
                 else
                     Bp := theta(1);
-                    # U := IdentityMat(3*2^(ld-4));
                 fi;
-                # U_index := Length(Bp) + 1;
 
                 # now find representatives for the remaining A orbits
                 tM1 := ShallowCopy(tM);
@@ -383,32 +379,14 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                         SubtractSet(tM1, AOrbit(b));
                         Add(B1,[b[1], -b[2] mod p^(ld-si-1)]);
                         SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si-1)]));
-                        # U{[U_index, U_index+1]}{[U_index, U_index+1]} := (1 / Sqrt(2)) * [
-                        #     [1, E(4)],
-                        #     [1, -E(4)]
-                        # ];
-                        # U_index := U_index + 2;
                     else
                         # Yes, it does. We will need to scale by 1 / Sqrt(Chi(a)) later.
                         Add(Bp,b);
                         SubtractSet(tM1, AOrbit(b));
-                        # U[U_index][U_index] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
-                        # U_index := U_index + 1;
                     fi;
                 od;
 
                 Bp := Concatenation(Bp, B1);
-
-                # for b in Bp do
-                #     k := [b[1], -b[2] mod p^(ld-si-1)];
-                #     Print("b: ", b, ", kb: ", k, "\n");
-                #     for a in Agrp do
-                #         if Prod(a[2],b) = k then
-                #             Print("\t", a[2], ", ", Chi(a[1]), "\n");
-                #         fi;
-                #     od;
-                # od;
-                # Display(U);
             elif ld >= 5 and si = ld - 2 then
                 # Depends on the character; see NW p. 511.
                 Bp := [];
@@ -458,29 +436,30 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 end;
 
                 S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
-                for b in [1..deg] do
+                for b in [1 .. deg] do
                     S[deg][b] := S[deg][b] / Sqrt(2);
                     S[b][deg] := S[b][deg] / Sqrt(2);
                 od;
                 T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x))));
                 deg := Length(Bp);
-                return [S, T, deg];
+                return [[S, T]];
             elif ld = 4 and si = 2 then
-                N := Cartesian([0..7],[0..1]);
-                B:=[];
-                O:=[];
+                N := Cartesian([0 .. 7], [0 .. 1]);
+                B := [];
+                O := [];
                 while Length(N) > 0 do
-                    Add(B,N[1]);
-                    tO:=Set(Agrp, a -> Prod(a[3], N[1]));
+                    Add(B, N[1]);
+                    tO := Set(Agrp, a -> Prod(a[3], N[1]));
                     Add(O, tO);
                     SubtractSet(N, tO);
                 od;
 
                 VInd := [];
-                for k in [1..Length(B)] do
+                for k in [1 .. Length(B)] do
                     for a in Agrp do
                         if a <> [0, 0, [1, 0]] and Chi(a) <> 1 and Prod(a[3], B[k]) = B[k] then
-                            Add(VInd, k); break;
+                            Add(VInd, k);
+                            break;
                         fi;
                     od;
                 od;
@@ -496,13 +475,17 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 end;
 
                 sxy := function(x, y)
-                    return c * Sum(Agrp, a -> Sum(Agrp, b -> Chi(a)*ComplexConjugate(Chi(b))*E(l)^(B_Q(Prod(a[3], x), Prod(b[3], y)))));
+                    return c * Sum(Agrp, a ->
+                            Sum(Agrp, b ->
+                            Chi(a) * ComplexConjugate(Chi(b)) * E(l)^(B_Q(Prod(a[3], x), Prod(b[3], y)))));
                 end;
 
-                S := List([1..deg], x -> List([1..deg], y -> Sqrt(Length(O[x])*Length(O[y]))*sxy(B[x], B[y])/(Length(Agrp))^2));
+                S := List([1..deg], x ->
+                        List([1..deg], y ->
+                        Sqrt(Length(O[x]) * Length(O[y])) * sxy(B[x], B[y]) / (Length(Agrp))^2));
 
                 T := DiagonalMat(List(B, x -> E(l)^(r*Nm(x))));
-                return [S, T, deg];
+                return [[S, T]];
             elif ld = 3 and si = 1 then
                 if not silent then
                     Print("This type is the same as TypeN, use TypeN code.\n");
@@ -515,13 +498,10 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 return fail;
             fi;
         else
-            # base change matrix to make S symmetric
-            # U := IdentityMat(Length(tM) / Length(Agrp));
             # theta_1 = theta intersect M^times
             Bp := List(Filtered(PrimeResidues(l),
                     a -> a >= 1 and a <= (l-1)/2),
                     a -> [a,0]);
-            # U_index := Length(Bp) + 1;
 
             # now find representatives for the remaining A orbits
             tM1 := ShallowCopy(tM);
@@ -539,32 +519,14 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     SubtractSet(tM1, AOrbit(b));
                     Add(B1,[b[1], -b[2] mod p^(ld-si)]);
                     SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si)]));
-                    # U{[U_index, U_index+1]}{[U_index, U_index+1]} := (1 / Sqrt(2)) * [
-                    #     [1, E(4)],
-                    #     [1, -E(4)]
-                    # ];
-                    # U_index := U_index + 2;
                 else
                     # Yes, it does. So we need to scale by Chi(a).
                     Add(Bp,b);
                     SubtractSet(tM1, AOrbit(b));
-                    # U[U_index][U_index] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
-                    # U_index := U_index + 1;
                 fi;
             od;
 
             Bp := Concatenation(Bp, B1);
-
-            # for b in Bp do
-            #     k := [b[1], -b[2] mod p^(ld-si)];
-            #     Print("b: ", b, ", kb: ", k, "\n");
-            #     for a in Agrp do
-            #         if Prod(a[2],b) = k then
-            #             Print("\t", a[2], ", ", Chi(a[1]), "\n");
-            #         fi;
-            #     od;
-            # od;
-            # Display(U);
         fi;
 
         sxy := function(x, y)
@@ -575,8 +537,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
         T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x))));
         deg := Length(Bp);
-
-        # Print(Bp);
 
         # Handle +- cases, where chi is primitive but squares to 1.
         if p=2 and ld=3 and si=0 and r=1 and t in [3,7] and chi_index=[0,1] then
@@ -611,8 +571,8 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             fi;
 
             return [
-                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}, deg],
-                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}, deg]
+                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
+                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
         elif p=2 and ld=4 and si=0 and r in [1,3] and ((t=1 and chi_index in [[1,0],[1,2]]) or (t=5 and chi_index in [[0,1],[2,1]])) then
             deg := 3;
@@ -623,19 +583,17 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             # Here the subreps. are conveniently generated by sub-bases
             if (t = 1 and chi_index = [1,0]) or (t = 5 and chi_index = [0,1]) then
                 return [
-                    [S{[1,2,5]}{[1,2,5]}, T{[1,2,5]}{[1,2,5]}, deg],
-                    [S{[3,4,6]}{[3,4,6]}, T{[3,4,6]}{[3,4,6]}, deg]
+                    [S{[1,2,5]}{[1,2,5]}, T{[1,2,5]}{[1,2,5]}],
+                    [S{[3,4,6]}{[3,4,6]}, T{[3,4,6]}{[3,4,6]}]
                 ];
             else
                 return [
-                    [S{[1,2,6]}{[1,2,6]}, T{[1,2,6]}{[1,2,6]}, deg],
-                    [S{[3,4,5]}{[3,4,5]}, T{[3,4,5]}{[3,4,5]}, deg]
+                    [S{[1,2,6]}{[1,2,6]}, T{[1,2,6]}{[1,2,6]}],
+                    [S{[3,4,5]}{[3,4,5]}, T{[3,4,5]}{[3,4,5]}]
                 ];
             fi;
         elif p=2 and ld=4 and si=0 and r=1 and t in [3,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 3,7.
-            # Note: these differ from those in RepR_regular.g because here we have
-            # reordered the basis slightly.
             w := 1 / Sqrt(2);
             if t = 3 then
                 if chi_index = [1,0] then
@@ -712,8 +670,8 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             fi;
 
             return [
-                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}, deg],
-                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}, deg]
+                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
+                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
         elif p=2 and ld=5 and si=2 and r in [1,3] and t in [1,3,5,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 1,3,5,7.
@@ -859,33 +817,10 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             fi;
 
             return [
-                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}, deg],
-                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}, deg]
+                [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
+                [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
         else
-            # XXXXX handle general case later; for now handle small cases
-            # if p=2 and ld=3 and si=0 and r in [1,3] and t in [1,5] then
-            #     if t = 1 then
-            #         U := DiagonalMat([1,1,1/E(8)]);
-            #     else
-            #         U := DiagonalMat([1,E(4), 1/E(8)^3]);
-            #     fi;
-            #     S := S^U;
-            #     T := T^U;
-            # elif p=3 and ld=2 and si=1 and r in [1,2] and t in [1,2] and chi_index=[1,1] then
-            #     U := DiagonalMat([1,1,1,E(4)]);
-            #     S := S^U;
-            #     T := T^U;
-            # elif p=2 and ld=4 and si=0 and r in [1,3] and t in [1,5] then
-            #     if t=1 then
-            #         U := DiagonalMat([1,1,E(4),E(4),1/E(8),1/E(8)]);
-            #     else
-            #         U := DiagonalMat([1,1,1,1,1/E(8),1/E(8)]);
-            #     fi;
-            #     S := S^U;
-            #     T := T^U;
-            # fi;
-
             # Apply a change of basis to make S symmetric.
             U := IdentityMat(Length(Bp));
             k := 1;
@@ -911,288 +846,65 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 fi;
             until k > Length(Bp);
 
-            S := S^U;
-            T := T^U;
+            S := S ^ U;
+            T := T ^ U;
 
-            return [S, T, deg];
+            return [[S, T]];
         fi;
     else
         if not silent then
             Print("chi is NOT primitive.\n");
         fi;
 
-        BaseChangeMat := function(len, i, sign)
-            local U, b;
-            U := NullMat(len, len);
-            for b in [1..i-1] do
-                U[b][b] := 1;
-            od;
-            b := 0;
-            while i + 2*b < len do
-                U[i + 2*b][i + b] := 1 / Sqrt(2);
-                U[i + 1 + 2*b][i + b] := sign / Sqrt(2);
-
-                U[i + 2*b][i + (len - i + 1)/2 + b] := 1 / Sqrt(2);
-                U[i + 1 + 2*b][i + (len - i + 1)/2 + b] := -1 * sign / Sqrt(2);
-
-                b := b + 1;
-            od;
-            return U;
-        end;
-
-        # Handle cases of non-primitive characters chi such that V(chi) still has some
-        # irred. subrep. of the same level as the main rep.
-        if p = 2 and ld >= 5 and si = ld - 2 then
-            # See NW S. 6.3.
+        if p = 2 and ((ld >= 5 and si = ld - 2)
+                or (ld = 5 and si = 2 and r in [1,3] and t = 1)
+                or (ld >= 6 and si = ld - 3)) then
+            # Handle cases of non-primitive characters chi such that V(chi) still has some
+            # irred. subrep. of the same level as the main rep.
             if not silent then
                 Print("There is a single irreducible subrepresentation of the same level as V.\n");
             fi;
 
-            # Depends on the character; see NW p. 511. Note that |A| = 4.
-            Bp := [];
-
-            # Construct a basis that spans the subrep. we need.
-            if chi_index[2] mod 2 = 0 then
-                # chi_1
-                deg := 0;
-
-                # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
-                b := 1;
-                while b <= 2^(ld-2) - 1 do
-                    Add(Bp, [[b, 0], 4]);
-                    deg := deg + 1;
-                    b := b + 2;
+            # Function to construct a particular type of base change matrix used several times below
+            BaseChangeMat := function(len, i, sign)
+                local U, b;
+                U := NullMat(len, len);
+                for b in [1..i-1] do
+                    U[b][b] := 1;
                 od;
+                b := 0;
+                while i + 2*b < len do
+                    U[i + 2*b][i + b] := 1 / Sqrt(2);
+                    U[i + 1 + 2*b][i + b] := sign / Sqrt(2);
 
-                # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
-                # we therefore add both summands to Bp and use a base-change matrix later.
-                U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                # These have A-orbits of length 1.
-                Add(Bp, [[0, 0], 1]);
-                Add(Bp, [[2^(ld-2), 0], 1]);
-                deg := deg + 1;
-                # The remainder have A-orbits of length 2.
-                b := 4;
-                while b <= 2^(ld-3) - 4 do
-                    Add(Bp, [[b, 0], 2]);
-                    Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
-                    deg := deg + 1;
-                    b := b + 4;
+                    U[i + 2*b][i + (len - i + 1)/2 + b] := 1 / Sqrt(2);
+                    U[i + 1 + 2*b][i + (len - i + 1)/2 + b] := -1 * sign / Sqrt(2);
+
+                    b := b + 1;
                 od;
-                b := 2;
-                while b <= 2^(ld-3) - 2 do
-                    Add(Bp, [[b, 1], 2]);
-                    Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
-                    deg := deg + 1;
-                    b := b + 4;
-                od;
+                return U;
+            end;
 
-                # Now construct the base-change matrix.
-                U := BaseChangeMat(Length(Bp), U_index, -1);
-            else
-                # chi_{alpha}
-                deg := 0;
-
-                # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
-                b := 1;
-                while b <= 2^(ld-2) - 1 do
-                    Add(Bp, [[b, 0], 4]);
-                    deg := deg + 1;
-                    b := b + 2;
-                od;
-
-                # This element corresponds to an A-orbit of length 2.
-                Add(Bp, [[2^(ld-3), 0], 2]);
-                deg := deg + 1;
-
-                # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
-                # we therefore add both summands to Bp and use a base-change matrix later.
-                # All these basis elements have A-orbits of length 2.
-                U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                b := 2;
-                while b <= 2^(ld-3) - 2 do
-                    Add(Bp, [[b, 1], 2]);
-                    Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
-                    deg := deg + 1;
-                    b := b + 4;
-                od;
-                if ld > 5 then
-                    b := 4;
-                    while b <= 2^(ld-3) - 4 do
-                        Add(Bp, [[b, 0], 2]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
-                        deg := deg + 1;
-                        b := b + 4;
-                    od;
+            # We need to construct a basis for a larger representation, and then cut down
+            # to the (unique) irreducible subrep. by applying a base-change matrix.
+            if ld >= 5 and si = ld - 2 then
+                # See NW S. 6.3.
+                if not silent then
+                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
                 fi;
 
-                # Now construct the base-change matrix.
-                U := BaseChangeMat(Length(Bp), U_index, 1);
-            fi;
+                # Depends on the character; see NW p. 511. Note that |A| = 4.
+                Bp := [];
 
-            # Here we must use the double sum: for the standard formula used earlier,
-            # we assume that both basis elements correspond to A-orbits with length |A|,
-            # which is guaranteed for primitive characters. For the current case, however,
-            # that assumption does not hold.
-            B_Q := function(a,b)
-                # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
-                return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
-            end;
-            sxy := function(x, y)
-                # Note 16 = |A|^2.
-                return (Sqrt(x[2] * y[2]) / 16) * c * Sum(Agrp, a -> Sum(Agrp, b ->
-                        Chi(a[1]) * ComplexConjugate(Chi(b[1]))
-                        * (E(l)^B_Q(Prod(a[2], x[1]), Prod(b[2], y[1])))));
-            end;
-
-            S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
-            S := Inverse(U) * S * U; # Change basis...
-            S := S{[1..deg]}{[1..deg]}; # and take the irreducible subrep.
-            T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x[1]))));
-            T := Inverse(U) * T * U;
-            T := T{[1..deg]}{[1..deg]};
-            return [S, T, deg];
-        elif p = 2 and ld = 5 and si = 2 and r in [1,3] and t = 1 then
-            if not silent then
-                Print("There is a single irreducible subrepresentation of the same level as V.\n");
-            fi;
-
-            # Depends on the character. See NW. p. 524 for basis.
-            Bp := [];
-
-            # A = <alpha> x <-1> with ord(alpha) = 2.
-            # Here we are handling the non-primitive characters, namely [0,0] and [0,1].
-
-            deg := 12;
-
-            # These basis elements are of the usual form, with A-orbit size |A| = 4.
-            for b in [1,3,5,7] do
-                Add(Bp, [[b,0], 4]);
-            od;
-            for b in [1,3,5,7] do
-                Add(Bp, [[b,1], 4]);
-            od;
-
-            if chi_index = [0,0] then
-                # chi_1 = nu.
-
-                # The remaining basis elements are of the form f_{xi} - f_{8 - xi}.
-                # These have A-orbit length 2.
-                Add(Bp, [[2,0], 2]);
-                Add(Bp, [[6,0], 2]);
-
-                Add(Bp, [[2,2], 2]);
-                Add(Bp, [[6,2], 2]);
-
-                # These have A-orbit length 1 (i.e. are fixed by A).
-                Add(Bp, [[0,0], 1]);
-                Add(Bp, [[8,0], 1]);
-
-                Add(Bp, [[0,2], 1]);
-                Add(Bp, [[8,2], 1]);
-
-                # Construct a base-change matrix to extract the appropriate subrep. (dim 12)
-                # from the dim. 16 space spanned by the above basis.
-                w := 1 / Sqrt(2);
-                U := [
-                    [ 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w]
-                ];
-            else
-                # chi_alpha, indexed by [0,1].
-
-                # All of these basis elements have A-orbit length 2.
-                # These two are still of the form f_{xi}.
-                Add(Bp, [[4,0], 2]);
-
-                Add(Bp, [[4,2], 2]);
-
-                # The remainder are of the form f_{xi} + f_{8 - xi}.
-                Add(Bp, [[2,0], 2]);
-                Add(Bp, [[6,0], 2]);
-
-                Add(Bp, [[2,2], 2]);
-                Add(Bp, [[6,2], 2]);
-
-                # Construct a base-change matrix to extract the appropriate subrep. (dim 12)
-                # from the dim. 14 space spanned by the above basis.
-                w := 1 / Sqrt(2);
-                U := [
-                    [ 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  w,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0, -w,  0],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  w],
-                    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0, -w]
-                ];
-            fi;
-
-            # Here we must use the double sum: for the standard formula used earlier,
-            # we assume that both basis elements correspond to A-orbits with length |A|,
-            # which is guaranteed for primitive characters. For the current case, however,
-            # that assumption does not hold.
-            B_Q := function(a,b)
-                # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
-                return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
-            end;
-            sxy := function(x, y)
-                # Note 16 = |A|^2.
-                return (Sqrt(x[2] * y[2]) / 16) * c * Sum(Agrp, a -> Sum(Agrp, b ->
-                        Chi(a[1]) * ComplexConjugate(Chi(b[1]))
-                        * (E(l)^B_Q(Prod(a[2], x[1]), Prod(b[2], y[1])))));
-            end;
-
-            S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
-            S := Inverse(U) * S * U; # Change basis...
-            S := S{[1..deg]}{[1..deg]}; # and take the irreducible subrep.
-            T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x[1]))));
-            T := Inverse(U) * T * U;
-            T := T{[1..deg]}{[1..deg]};
-            return [S, T, deg];
-        elif p = 2 and ld >= 6 and si = ld - 3 then
-            # See NW S. 6.4.
-            if not silent then
-                Print("There is a single irreducible subrepresentation of the same level as V.\n");
-            fi;
-
-            # Depends on the character; see NW p. 512. Note that |A| = 8.
-            Bp := [];
-
-            # Construct a basis that spans the subrep. we need.
-            # Ord(alpha) = 4, and chars are primitive if Chi(alpha) = E(4) or E(4)^3.
-            # So the cases we are currently handling have Chi(alpha) = +-1.
-            if chi_index[1] mod 4 = 0 then
-                # chi(alpha) = 1
+                # Construct a basis that spans the subrep. we need.
                 if chi_index[2] mod 2 = 0 then
-                    # chi_1 = nu.
+                    # chi_1
                     deg := 0;
 
-                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
                     b := 1;
                     while b <= 2^(ld-2) - 1 do
-                        Add(Bp, [[b, 0], 8]);
+                        Add(Bp, [[b, 0], 4]);
                         deg := deg + 1;
                         b := b + 2;
                     od;
@@ -1200,33 +912,24 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
                     # we therefore add both summands to Bp and use a base-change matrix later.
                     U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                    # These have A-orbits of length 4.
-                    b := 2;
-                    while b <= 2^(ld-3) - 2 do
-                        Add(Bp, [[b, 0], 4]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
-                        deg := deg + 1;
-                        b := b + 4;
-                    od;
-                    # These have A-orbits of length 2.
-                    b := 4;
-                    while b <= 2^(ld-3) - 4 do
-                        Add(Bp, [[b, 2], 2]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
-                        deg := deg + 1;
-                        b := b + 8;
-                    od;
-                    # This pair has A-orbits of length 1.
+                    # These have A-orbits of length 1.
                     Add(Bp, [[0, 0], 1]);
                     Add(Bp, [[2^(ld-2), 0], 1]);
                     deg := deg + 1;
-                    # These have A-orbits of length 2.
-                    b := 8;
-                    while b <= 2^(ld-3) - 8 do
+                    # The remainder have A-orbits of length 2.
+                    b := 4;
+                    while b <= 2^(ld-3) - 4 do
                         Add(Bp, [[b, 0], 2]);
                         Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
                         deg := deg + 1;
-                        b := b + 8;
+                        b := b + 4;
+                    od;
+                    b := 2;
+                    while b <= 2^(ld-3) - 2 do
+                        Add(Bp, [[b, 1], 2]);
+                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
+                        deg := deg + 1;
+                        b := b + 4;
                     od;
 
                     # Now construct the base-change matrix.
@@ -1235,171 +938,372 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     # chi_{alpha}
                     deg := 0;
 
-                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
                     b := 1;
                     while b <= 2^(ld-2) - 1 do
-                        Add(Bp, [[b, 0], 8]);
+                        Add(Bp, [[b, 0], 4]);
                         deg := deg + 1;
                         b := b + 2;
                     od;
 
-                    # SEE REMARK BELOW. This has A-orbit size 2.
+                    # This element corresponds to an A-orbit of length 2.
                     Add(Bp, [[2^(ld-3), 0], 2]);
                     deg := deg + 1;
 
                     # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
                     # we therefore add both summands to Bp and use a base-change matrix later.
+                    # All these basis elements have A-orbits of length 2.
                     U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                    # These have A-orbits of length 4.
                     b := 2;
                     while b <= 2^(ld-3) - 2 do
-                        Add(Bp, [[b, 0], 4]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                        Add(Bp, [[b, 1], 2]);
+                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
                         deg := deg + 1;
                         b := b + 4;
                     od;
-                    # These have A-orbits of length 2.
-                    b := 4;
-                    while b <= 2^(ld-3) - 4 do
-                        Add(Bp, [[b, 2], 2]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
-                        deg := deg + 1;
-                        b := b + 8;
-                    od;
-                    # These have A-orbits of length 2.
-                    # REMARK: NW include b = 2^(ld-3) in this sequence, but then we get
-                    # 2f_{2^(ld-3)} (instead of sum of two distinct fs).
-                    # Moving it up as a single basis element for now.
-                    b := 8;
-                    while b <= 2^(ld-3) - 8 do
-                        Add(Bp, [[b, 0], 2]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
-                        deg := deg + 1;
-                        b := b + 8;
-                    od;
+                    if ld > 5 then
+                        b := 4;
+                        while b <= 2^(ld-3) - 4 do
+                            Add(Bp, [[b, 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
+                            deg := deg + 1;
+                            b := b + 4;
+                        od;
+                    fi;
 
                     # Now construct the base-change matrix.
                     U := BaseChangeMat(Length(Bp), U_index, 1);
                 fi;
-            else
-                # chi(alpha) = -1
-                if chi_index[2] mod 2 = 0 then
-                    # chi_{-1}
-                    deg := 0;
+            elif ld = 5 and si = 2 and r in [1,3] and t = 1 then
+                if not silent then
+                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
+                fi;
 
-                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
-                    b := 1;
-                    while b <= 2^(ld-2) - 1 do
-                        Add(Bp, [[b, 0], 8]);
-                        deg := deg + 1;
-                        b := b + 2;
-                    od;
+                # Depends on the character. See NW. p. 524 for basis.
+                Bp := [];
 
-                    # These elements have A-orbits of length 4.
-                    b := 4;
-                    while b <= 2^(ld-3) - 4 do
-                        Add(Bp, [[b, 0], 4]);
-                        deg := deg + 1;
-                        b := b + 8;
-                    od;
+                # A = <alpha> x <-1> with ord(alpha) = 2.
+                # Here we are handling the non-primitive characters, namely [0,0] and [0,1].
 
-                    # This element has A-orbit of length 2.
-                    Add(Bp, [[0, 2], 2]);
-                    deg := deg + 1;
+                deg := 12;
 
-                    # These elements have A-orbits of length 4.
-                    b := 8;
-                    while b <= 2^(ld-3) - 8 do
-                        Add(Bp, [[b, 2], 4]);
-                        deg := deg + 1;
-                        b := b + 8;
-                    od;
+                # These basis elements are of the usual form, with A-orbit size |A| = 4.
+                for b in [1,3,5,7] do
+                    Add(Bp, [[b,0], 4]);
+                od;
+                for b in [1,3,5,7] do
+                    Add(Bp, [[b,1], 4]);
+                od;
 
-                    # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
-                    # we therefore add both summands to Bp and use a base-change matrix later.
-                    U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                    # These have A-orbits of length 4.
-                    b := 2;
-                    while b <= 2^(ld-3) - 2 do
-                        Add(Bp, [[b, 0], 4]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
-                        deg := deg + 1;
-                        b := b + 4;
-                    od;
+                if chi_index = [0,0] then
+                    # chi_1 = nu.
 
-                    # Now construct the base-change matrix.
-                    U := BaseChangeMat(Length(Bp), U_index, -1);
+                    # The remaining basis elements are of the form f_{xi} - f_{8 - xi}.
+                    # These have A-orbit length 2.
+                    Add(Bp, [[2,0], 2]);
+                    Add(Bp, [[6,0], 2]);
+
+                    Add(Bp, [[2,2], 2]);
+                    Add(Bp, [[6,2], 2]);
+
+                    # These have A-orbit length 1 (i.e. are fixed by A).
+                    Add(Bp, [[0,0], 1]);
+                    Add(Bp, [[8,0], 1]);
+
+                    Add(Bp, [[0,2], 1]);
+                    Add(Bp, [[8,2], 1]);
+
+                    # Construct a base-change matrix to extract the appropriate subrep. (dim 12)
+                    # from the dim. 16 space spanned by the above basis.
+                    w := 1 / Sqrt(2);
+                    U := [
+                        [ 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  0,  0,  w],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -w,  0,  0,  0,  w]
+                    ];
                 else
-                    # chi_{-alpha}
-                    deg := 0;
+                    # chi_alpha, indexed by [0,1].
 
-                    # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
-                    b := 1;
-                    while b <= 2^(ld-2) - 1 do
-                        Add(Bp, [[b, 0], 8]);
+                    # All of these basis elements have A-orbit length 2.
+                    # These two are still of the form f_{xi}.
+                    Add(Bp, [[4,0], 2]);
+
+                    Add(Bp, [[4,2], 2]);
+
+                    # The remainder are of the form f_{xi} + f_{8 - xi}.
+                    Add(Bp, [[2,0], 2]);
+                    Add(Bp, [[6,0], 2]);
+
+                    Add(Bp, [[2,2], 2]);
+                    Add(Bp, [[6,2], 2]);
+
+                    # Construct a base-change matrix to extract the appropriate subrep. (dim 12)
+                    # from the dim. 14 space spanned by the above basis.
+                    w := 1 / Sqrt(2);
+                    U := [
+                        [ 1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  w,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0, -w,  0],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0,  w],
+                        [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  w,  0, -w]
+                    ];
+                fi;
+            elif ld >= 6 and si = ld - 3 then
+                # See NW S. 6.4.
+                if not silent then
+                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
+                fi;
+
+                # Depends on the character; see NW p. 512. Note that |A| = 8.
+                Bp := [];
+
+                # Construct a basis that spans the subrep. we need.
+                # Ord(alpha) = 4, and chars are primitive if Chi(alpha) = E(4) or E(4)^3.
+                # So the cases we are currently handling have Chi(alpha) = +-1.
+                if chi_index[1] mod 4 = 0 then
+                    # chi(alpha) = 1
+                    if chi_index[2] mod 2 = 0 then
+                        # chi_1 = nu.
+                        deg := 0;
+
+                        # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                        b := 1;
+                        while b <= 2^(ld-2) - 1 do
+                            Add(Bp, [[b, 0], 8]);
+                            deg := deg + 1;
+                            b := b + 2;
+                        od;
+
+                        # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
+                        # we therefore add both summands to Bp and use a base-change matrix later.
+                        U_index := Length(Bp) + 1; # Index where these compound elements begin.
+                        # These have A-orbits of length 4.
+                        b := 2;
+                        while b <= 2^(ld-3) - 2 do
+                            Add(Bp, [[b, 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                            deg := deg + 1;
+                            b := b + 4;
+                        od;
+                        # These have A-orbits of length 2.
+                        b := 4;
+                        while b <= 2^(ld-3) - 4 do
+                            Add(Bp, [[b, 2], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+                        # This pair has A-orbits of length 1.
+                        Add(Bp, [[0, 0], 1]);
+                        Add(Bp, [[2^(ld-2), 0], 1]);
                         deg := deg + 1;
-                        b := b + 2;
-                    od;
+                        # These have A-orbits of length 2.
+                        b := 8;
+                        while b <= 2^(ld-3) - 8 do
+                            Add(Bp, [[b, 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
 
-                    # These elements have A-orbits of length 4.
-                    b := 4;
-                    while b <= 2^(ld-3) - 4 do
-                        Add(Bp, [[b, 0], 4]);
+                        # Now construct the base-change matrix.
+                        U := BaseChangeMat(Length(Bp), U_index, -1);
+                    else
+                        # chi_{alpha}
+                        deg := 0;
+
+                        # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                        b := 1;
+                        while b <= 2^(ld-2) - 1 do
+                            Add(Bp, [[b, 0], 8]);
+                            deg := deg + 1;
+                            b := b + 2;
+                        od;
+
+                        # SEE REMARK BELOW. This has A-orbit size 2.
+                        Add(Bp, [[2^(ld-3), 0], 2]);
                         deg := deg + 1;
-                        b := b + 8;
-                    od;
 
-                    # These elements have A-orbits of length 4.
-                    b := 8;
-                    while b <= 2^(ld-3) - 8 do
-                        Add(Bp, [[b, 2], 4]);
+                        # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
+                        # we therefore add both summands to Bp and use a base-change matrix later.
+                        U_index := Length(Bp) + 1; # Index where these compound elements begin.
+                        # These have A-orbits of length 4.
+                        b := 2;
+                        while b <= 2^(ld-3) - 2 do
+                            Add(Bp, [[b, 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                            deg := deg + 1;
+                            b := b + 4;
+                        od;
+                        # These have A-orbits of length 2.
+                        b := 4;
+                        while b <= 2^(ld-3) - 4 do
+                            Add(Bp, [[b, 2], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+                        # These have A-orbits of length 2.
+                        # REMARK: NW include b = 2^(ld-3) in this sequence, but then we get
+                        # 2f_{2^(ld-3)} (instead of sum of two distinct fs).
+                        # Moving it up as a single basis element for now.
+                        b := 8;
+                        while b <= 2^(ld-3) - 8 do
+                            Add(Bp, [[b, 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+
+                        # Now construct the base-change matrix.
+                        U := BaseChangeMat(Length(Bp), U_index, 1);
+                    fi;
+                else
+                    # chi(alpha) = -1
+                    if chi_index[2] mod 2 = 0 then
+                        # chi_{-1}
+                        deg := 0;
+
+                        # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                        b := 1;
+                        while b <= 2^(ld-2) - 1 do
+                            Add(Bp, [[b, 0], 8]);
+                            deg := deg + 1;
+                            b := b + 2;
+                        od;
+
+                        # These elements have A-orbits of length 4.
+                        b := 4;
+                        while b <= 2^(ld-3) - 4 do
+                            Add(Bp, [[b, 0], 4]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+
+                        # This element has A-orbit of length 2.
+                        Add(Bp, [[0, 2], 2]);
                         deg := deg + 1;
-                        b := b + 8;
-                    od;
 
-                    # This element has A-orbit of length 2.
-                    Add(Bp, [[2^(ld-3), 2], 2]);
-                    deg := deg + 1;
+                        # These elements have A-orbits of length 4.
+                        b := 8;
+                        while b <= 2^(ld-3) - 8 do
+                            Add(Bp, [[b, 2], 4]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
 
-                    # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
-                    # we therefore add both summands to Bp and use a base-change matrix later.
-                    U_index := Length(Bp) + 1; # Index where these compound elements begin.
-                    # The remainder have A-orbits of length 4.
-                    b := 2;
-                    while b <= 2^(ld-3) - 2 do
-                        Add(Bp, [[b, 0], 4]);
-                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                        # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
+                        # we therefore add both summands to Bp and use a base-change matrix later.
+                        U_index := Length(Bp) + 1; # Index where these compound elements begin.
+                        # These have A-orbits of length 4.
+                        b := 2;
+                        while b <= 2^(ld-3) - 2 do
+                            Add(Bp, [[b, 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                            deg := deg + 1;
+                            b := b + 4;
+                        od;
+
+                        # Now construct the base-change matrix.
+                        U := BaseChangeMat(Length(Bp), U_index, -1);
+                    else
+                        # chi_{-alpha}
+                        deg := 0;
+
+                        # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
+                        b := 1;
+                        while b <= 2^(ld-2) - 1 do
+                            Add(Bp, [[b, 0], 8]);
+                            deg := deg + 1;
+                            b := b + 2;
+                        od;
+
+                        # These elements have A-orbits of length 4.
+                        b := 4;
+                        while b <= 2^(ld-3) - 4 do
+                            Add(Bp, [[b, 0], 4]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+
+                        # These elements have A-orbits of length 4.
+                        b := 8;
+                        while b <= 2^(ld-3) - 8 do
+                            Add(Bp, [[b, 2], 4]);
+                            deg := deg + 1;
+                            b := b + 8;
+                        od;
+
+                        # This element has A-orbit of length 2.
+                        Add(Bp, [[2^(ld-3), 2], 2]);
                         deg := deg + 1;
-                        b := b + 4;
-                    od;
 
-                    # Now construct the base-change matrix.
-                    U := BaseChangeMat(Length(Bp), U_index, 1);
+                        # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
+                        # we therefore add both summands to Bp and use a base-change matrix later.
+                        U_index := Length(Bp) + 1; # Index where these compound elements begin.
+                        # The remainder have A-orbits of length 4.
+                        b := 2;
+                        while b <= 2^(ld-3) - 2 do
+                            Add(Bp, [[b, 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
+                            deg := deg + 1;
+                            b := b + 4;
+                        od;
+
+                        # Now construct the base-change matrix.
+                        U := BaseChangeMat(Length(Bp), U_index, 1);
+                    fi;
                 fi;
             fi;
 
-            # Here we must use the double sum: for the standard formula used earlier,
-            # we assume that both basis elements correspond to A-orbits with length |A|,
-            # which is guaranteed for primitive characters. For the current case, however,
-            # that assumption does not hold.
+            # Here we must use the double sum to find S_{x,y}: for the standard formula
+            # used earlier, we assumed that both basis elements correspond to A-orbits
+            # with length |A|; that is guaranteed for prim. characters, but not here.
             B_Q := function(a,b)
                 # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
                 return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
             end;
             sxy := function(x, y)
-                # Note 64 = |A|^2.
-                return (Sqrt(x[2] * y[2]) / 64) * c * Sum(Agrp, a -> Sum(Agrp, b ->
+                return (Sqrt(x[2] * y[2]) / (Length(Agrp)^2)) * c * Sum(Agrp, a -> Sum(Agrp, b ->
                         Chi(a[1]) * ComplexConjugate(Chi(b[1]))
                         * (E(l)^B_Q(Prod(a[2], x[1]), Prod(b[2], y[1])))));
             end;
 
             S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
-            S := Inverse(U) * S * U; # Change basis...
-            S := S{[1..deg]}{[1..deg]}; # and take the irreducible subrep.
             T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x[1]))));
-            T := Inverse(U) * T * U;
-            T := T{[1..deg]}{[1..deg]};
-            return [S, T, deg];
+
+            # Now we change basis and take the irreducible subrep.
+            S := S ^ U;
+            T := T ^ U;
+
+            return [[S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}]];
+        else
+            if not silent then
+                Print("V_chi is reducible and has no subreps of full level.\n");
+                return fail;
+            fi;
         fi;
     fi;
 end;

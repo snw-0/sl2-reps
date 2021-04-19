@@ -164,7 +164,7 @@ end;
 
 RepN := function(p, ld, chi_index, silent)
     local l, M, Agrp, Chi, Bp, beta_list, Nm, Prod, Tr, sxy, S, T, deg,
-            N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, S1, S2, T1, T2, U;
+            N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
 
     l := p^ld;
     M := MN(p, ld);
@@ -197,7 +197,7 @@ RepN := function(p, ld, chi_index, silent)
         sxy := function(x, y)
             local z;
             z := Prod(x, [y[1] + y[2], -y[2]]);
-            return (-1)^ld/l * Sum(Agrp, a -> Chi(a)*E(l)^(Tr(Prod(a[3], z))));
+            return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a) * E(l)^(Tr(Prod(a[3], z))));
         end;
 
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
@@ -205,9 +205,9 @@ RepN := function(p, ld, chi_index, silent)
 
         # Here we perform a change of basis to make S symmetric.
         U := [];
-        for j in [1..Length(beta_list)] do
-            for k in [1..(Length(Bp) / Length(beta_list))] do
-                Add(U, SqrtOfRootOfUnity(1/Chi(beta_list[j])));
+        for j in [1 .. Length(beta_list)] do
+            for k in [1 .. (Length(Bp) / Length(beta_list))] do
+                Add(U, SqrtOfRootOfUnity(1 / Chi(beta_list[j])));
             od;
         od;
         U := DiagonalMat(U);
@@ -225,12 +225,12 @@ RepN := function(p, ld, chi_index, silent)
         sxy := function(x, y)
             local z;
             if x = [0,0] and y = [0,0] then
-                return -1/p;
+                return -1 / p;
             elif x = [0,0] or y = [0,0] then
-                return -Sqrt(p+1)/p;
+                return -Sqrt(p+1) / p;
             else
                 z := Prod(x, [y[1] + y[2], -y[2]]);
-                return (-1)^ld/l * Sum(Agrp, a -> Chi(a)*E(l)^(Tr(Prod(a[3], z))));
+                return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a)*E(l)^(Tr(Prod(a[3], z))));
             fi;
         end;
 
@@ -242,12 +242,12 @@ RepN := function(p, ld, chi_index, silent)
             Print("Chi is not primitive or Ord(Chi) <= 2. It is also not the Steinberg representation. The first decomposition method gives the following representation corresponding to Chi that is REDUCIBLE.\n");
         fi;
 
-        N:=Tuples([0..l-1], 2);;
-        B:=[];
-        O:=[];
+        N := Tuples([0..l-1], 2);;
+        B := [];
+        O := [];
         while Length(N) > 0 do
             Add(B,N[1]);
-            tO:=Set(Agrp, a -> Prod(a[3], N[1]));
+            tO := Set(Agrp, a -> Prod(a[3], N[1]));
             Add(O, tO);
             SubtractSet(N, tO);
         od;
@@ -266,10 +266,14 @@ RepN := function(p, ld, chi_index, silent)
 
         deg := Length(B);
         sxy := function(x, y)
-            return (-1)^ld/l * Sum(Agrp, a -> Sum(Agrp, b -> Chi(a)*ComplexConjugate(Chi(b))*E(l)^(BQ(Prod(a[3], x), Prod(b[3], y)))));
+            return ((-1)^ld / l) * Sum(Agrp, a ->
+                    Sum(Agrp, b ->
+                    Chi(a) * ComplexConjugate(Chi(b)) * E(l)^(BQ(Prod(a[3], x), Prod(b[3], y)))));
         end;
 
-        S := List([1..deg], x -> List([1..deg], y -> Sqrt(Length(O[x])*Length(O[y]))*sxy(B[x], B[y])/(Length(Agrp))^2));
+        S := List([1..deg], x ->
+                List([1..deg], y ->
+                Sqrt(Length(O[x]) * Length(O[y])) * sxy(B[x], B[y]) / (Length(Agrp))^2));
 
         T := DiagonalMat(List(B, x -> E(l)^(Nm(x))));
     fi;
@@ -279,12 +283,10 @@ RepN := function(p, ld, chi_index, silent)
             Print("Special case [2, 3, 1, 0]. The character is primitive of order 2 and the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].\n");
         fi;
 
-        S1 := S{[1,2]}{[1,2]};
-        T1 := T{[1,2]}{[1,2]};
-        S2 := S{[3,4]}{[3,4]};
-        T2 := T{[3,4]}{[3,4]};
-        deg := 2;
-        return [[S1, T1, deg], [S2, T2, deg]];
+        return [
+            [S{[1,2]}{[1,2]}, T{[1,2]}{[1,2]}],
+            [S{[3,4]}{[3,4]}, T{[3,4]}{[3,4]}]
+        ];
     elif [p, ld, chi_index[1] mod 2, chi_index[2] mod 6] = [2, 3, 1, 3] then
         if not silent then
             Print("Special case [2, 3, 1, 3]. The character is primitive of order 2 and the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].\n");
@@ -294,21 +296,16 @@ RepN := function(p, ld, chi_index, silent)
             [1, 0, 0, 0],
             [0, 0, 1, 0],
             [0, 0, 0, 1],
-            [0, 1, 0, 0]
+            [0, 1, 0, 0],
         ];
-        S := U^(-1)*S*U;
-        T := U^(-1)*T*U;
-        S1 := S{[1,2]}{[1,2]};
-        T1 := T{[1,2]}{[1,2]};
-        S2 := S{[3,4]}{[3,4]};
-        T2 := T{[3,4]}{[3,4]};
-        deg := 2;
-        return [[S1, T1, deg], [S2, T2, deg]];
+        S := S ^ U;
+        T := T ^ U;
+
+        return [
+            [S{[1,2]}{[1,2]}, T{[1,2]}{[1,2]}],
+            [S{[3,4]}{[3,4]}, T{[3,4]}{[3,4]}]
+        ];
     else
-        return [S, T, deg];
+        return [[S, T]];
     fi;
 end;
-
-
-
-

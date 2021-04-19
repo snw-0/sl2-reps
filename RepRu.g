@@ -139,20 +139,24 @@ RepRUnary := function(p, ld, r, silent)
     fi;
 
     if ld = 1 then
-        return [[S_p, T_p, deg_p], [S_m, T_m, deg_m]];
+        return [
+            [S_p, T_p],
+            [S_m, T_m]
+        ];
     else
-        U:=IdentityMat(Length(B_f)+Length(B_g));
-        V:=IdentityMat(Length(B_f)+Length(B_g));
-        i:=1;
+        # We must apply a change of bassi to make the S matrix symmetric.
+        U := IdentityMat(Length(B_f) + Length(B_g));
+        V := IdentityMat(Length(B_f) + Length(B_g));
+        i := 1;
         while i <= Length(B_g) do
             if B_g[i][1]>0 then
-                xi := E(2*p)^(B_g[i][2])/Sqrt(2);
+                xi := E(2*p) ^ (B_g[i][2]) / Sqrt(2);
                 U[Length(B_f)+i][Length(B_f)+i] := xi;
                 U[Length(B_f)+i][Length(B_f)+i+1] := E(4)*xi;
                 U[Length(B_f)+i+1][Length(B_f)+i] := xi;
                 U[Length(B_f)+i+1][Length(B_f)+i+1] := -E(4)*xi;
 
-                xi := E(2*p)^(B_g[i][2])/Sqrt(2);
+                xi := E(2*p) ^ (B_g[i][2]) / Sqrt(2);
                 V[Length(B_f)+i][Length(B_f)+i] := E(4)*xi;
                 V[Length(B_f)+i][Length(B_f)+i+1] := xi;
                 V[Length(B_f)+i+1][Length(B_f)+i] := E(4)*xi;
@@ -160,12 +164,15 @@ RepRUnary := function(p, ld, r, silent)
 
                 i := i+2;
             else
-                V[Length(B_f)+i][Length(B_f)+i]:=E(4);
+                V[Length(B_f)+i][Length(B_f)+i] := E(4);
 
                 i := i+1;
             fi;
         od;
-        return [[S_p^U, T_p^U, deg_p], [S_m^V, T_m^V, deg_m]];
+        return [
+            [S_p ^ U, T_p ^ U],
+            [S_m ^ V, T_m ^ V]
+        ];
     fi;
 end;
 

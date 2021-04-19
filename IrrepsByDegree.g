@@ -148,7 +148,7 @@ end;
 RecordIrrep := function(irrep_list, name, rho, l)
     Print(name, " [level ", l, "]");
     # rho = [S, T, degree, level, name]
-    Add(irrep_list, [rho[1], rho[2], rho[3], l, name]);
+    Add(irrep_list, [rho[1], rho[2], Length(rho[1]), l, name]);
     Print("\n");
 end;
 
@@ -216,7 +216,7 @@ PrimePowerIrrepsOfDegree := function(deg)
     if 1 = deg then
         # The trivial irrep Xi_0 = C_1; level 1.
         name := "Xi_0";
-        RecordIrrep(irrep_list, name, [[[1]], [[1]], 1], 1);
+        RecordIrrep(irrep_list, name, [[[1]], [[1]]], 1);
     fi;
 
     # p odd, ld = 1.
@@ -230,7 +230,7 @@ PrimePowerIrrepsOfDegree := function(deg)
             # A = <alpha>, ord(alpha) = p-1.
             # Relevant character indices: [(1..(p-3)/2), 0].
             for i in [1 .. (p-3)/2] do
-                rho := RepD(p, 1, [i, 0], true);
+                rho := RepD(p, 1, [i, 0], true)[1];
                 name := Concatenation("D_1([", String(i), ",0])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -241,7 +241,7 @@ PrimePowerIrrepsOfDegree := function(deg)
             # A = <zeta>, ord(zeta) = p+1.
             # Relevant character indices: [0, (1..(p-1)/2)].
             for j in [1 .. (p-1)/2] do
-                rho := RepN(p, 1, [0, j], true);
+                rho := RepN(p, 1, [0, j], true)[1];
                 name := Concatenation("N_1([0,", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -250,33 +250,33 @@ PrimePowerIrrepsOfDegree := function(deg)
         if (p+1)/2 = deg then
             # R_1(1)+ and R_1(u)+, for u a non-residue.
             # RepRUnary gives a list containing two reps, + and - .
-            rho := RepRUnary(p, 1, 1, true);
+            rho := RepRUnary(p, 1, 1, true)[1];
             name := "R_1(1)+";
-            RecordIrrep(irrep_list, name, rho[1], l);
+            RecordIrrep(irrep_list, name, rho, l);
 
             u := SomeQuadNonRes(p);
-            rho := RepRUnary(p, 1, u, true);
+            rho := RepRUnary(p, 1, u, true)[1];
             name := Concatenation("R_1(", String(u), ")+");
-            RecordIrrep(irrep_list, name, rho[1], l);
+            RecordIrrep(irrep_list, name, rho, l);
         fi;
 
         if (p-1)/2 = deg then
             # R_1(1)- and R_1(u)-, for u a non-residue.
             # RepRUnary gives a list containing two reps, + and - .
             # For p=3, R_1(1)- = Xi_4 and R_1(2)- = Xi_8, the two linear reps. of level 3.
-            rho := RepRUnary(p, 1, 1, true);
+            rho := RepRUnary(p, 1, 1, true)[2];
             name := "R_1(1)-";
-            RecordIrrep(irrep_list, name, rho[2], l);
+            RecordIrrep(irrep_list, name, rho, l);
 
             u := SomeQuadNonRes(p);
-            rho := RepRUnary(p, 1, u, true);
+            rho := RepRUnary(p, 1, u, true)[2];
             name := Concatenation("R_1(", String(u), ")-");
-            RecordIrrep(irrep_list, name, rho[2], l);
+            RecordIrrep(irrep_list, name, rho, l);
         fi;
 
         if p = deg then
             # N_1(nu), the Steinberg representation.
-            rho := RepN(p, 1, [0, 0], true);
+            rho := RepN(p, 1, [0, 0], true)[1];
             name := "N_1(nu)";
             RecordIrrep(irrep_list, name, rho, l);
         fi;
@@ -297,7 +297,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 # when the index of chi is coprime to p.
                 for i in [1 .. (l - l/p)/2 - 1] do
                     if Gcd(i, p) = 1 then
-                        rho := RepD(p, ld, [i, 0], true);
+                        rho := RepD(p, ld, [i, 0], true)[1];
                         name := Concatenation("D_", String(ld), "([", String(i), ",0])");
                         RecordIrrep(irrep_list, name, rho, l);
                     fi;
@@ -314,17 +314,17 @@ PrimePowerIrrepsOfDegree := function(deg)
                     if i > p^(ld-1) / 2 then
                         break;
                     fi;
-                    rho := RepN(p, ld, [i, 0], true);
+                    rho := RepN(p, ld, [i, 0], true)[1];
                     name := Concatenation("N_", String(ld), "([", String(i), ",0])");
                     RecordIrrep(irrep_list, name, rho, l);
 
-                    rho := RepN(p, ld, [i, (p+1)/2], true);
+                    rho := RepN(p, ld, [i, (p+1)/2], true)[1];
                     name := Concatenation("N_", String(ld), "([", String(i), ",", String((p+1)/2), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
                 for i in PrimeResidues(p^(ld-1)) do
                     for j in [1 .. (p-1)/2] do
-                        rho := RepN(p, ld, [i, j], true);
+                        rho := RepN(p, ld, [i, j], true)[1];
                         name := Concatenation("N_", String(ld), "([", String(i), ",", String(j), "])");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
@@ -348,14 +348,14 @@ PrimePowerIrrepsOfDegree := function(deg)
                                         break;
                                     fi;
                                     for j in [0,3] do
-                                        rho := RepR(p, ld, si, r, t, [i,j], true);
+                                        rho := RepR(p, ld, si, r, t, [i,j], true)[1];
                                         name := Concatenation("R_", String(ld), "^", String(si), "(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                                         RecordIrrep(irrep_list, name, rho, l);
                                     od;
                                 od;
                                 for i in PrimeResidues(3^(ld-2)) do
                                     for j in [1,2] do
-                                        rho := RepR(p, ld, si, r, t, [i,j], true);
+                                        rho := RepR(p, ld, si, r, t, [i,j], true)[1];
                                         name := Concatenation("R_", String(ld), "^", String(si), "(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                                         RecordIrrep(irrep_list, name, rho, l);
                                     od;
@@ -368,7 +368,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                                         break;
                                     fi;
                                     for j in [0,1] do
-                                        rho := RepR(p, ld, si, r, t, [i,j], true);
+                                        rho := RepR(p, ld, si, r, t, [i,j], true)[1];
                                         name := Concatenation("R_", String(ld), "^", String(si), "(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                                         RecordIrrep(irrep_list, name, rho, l);
                                     od;
@@ -401,15 +401,14 @@ PrimePowerIrrepsOfDegree := function(deg)
         # Xi_6 = C_2, with s = t = -1.
         rho := [
             [[-1]],
-            [[-1]],
-            1
+            [[-1]]
         ];
         name := "Xi_6";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
     if 2 = deg then
         # N_1(nu), the Steinberg representation.
-        rho := RepN(2, 1, [0, 0], true);
+        rho := RepN(2, 1, [0, 0], true)[1];
         name := "N_1(nu)";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -434,12 +433,11 @@ PrimePowerIrrepsOfDegree := function(deg)
                 [ 1, -1,  w],
                 [ w,  w,  0]
             ],
-            DiagonalMat([E(4), -E(4), 1]),
-            3
+            DiagonalMat([E(4), -E(4), 1])
         ];
         name := "R_2^0(1,3)_1";
         RecordIrrep(irrep_list, name, rho, l);
-        rho := [-1*rho[1], -1*rho[2], 3];
+        rho := [-1*rho[1], -1*rho[2]];
         name := "Xi_6 tensor R_2^0(1,3)_1";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -448,7 +446,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # A = <zeta> with ord(zeta) = 6.
         # For this specific case, chi is primitive iff chi(-1) = -1, which leaves only
         # a single relevant character, indexed by [0,1].
-        rho := RepN(2, 2, [0, 1], true);
+        rho := RepN(2, 2, [0, 1], true)[1];
         name := "N_2([0,1])";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -456,8 +454,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # Xi_3 = C_4, with s = -1, t = i.
         rho := [
             [[-E(4)]],
-            [[E(4)]],
-            1
+            [[E(4)]]
         ];
         name := "Xi_3";
         RecordIrrep(irrep_list, name, rho, l);
@@ -465,8 +462,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # Xi_9 = C_3, with s = i, t = -i.
         rho := [
             [[E(4)]],
-            [[-E(4)]],
-            1
+            [[-E(4)]]
         ];
         name := "Xi_9";
         RecordIrrep(irrep_list, name, rho, l);
@@ -502,15 +498,12 @@ PrimePowerIrrepsOfDegree := function(deg)
                 [ 1,  1,  1, -1,  0,  0],
                 [ 1,  1, -1,  1,  0,  0],
             ],
-
-            DiagonalMat([1, -1, E(8), E(8)^5, E(8)^3, E(8)^7]),
-
-            6
+            DiagonalMat([1, -1, E(8), E(8)^5, E(8)^3, E(8)^7])
         ];
         name := "R_3^0(1,3,nu)_1";
         RecordIrrep(irrep_list, name, rho, l);
 
-        rho := [E(4) * rho[1], -E(4) * rho[2], 6];
+        rho := [E(4) * rho[1], -E(4) * rho[2]];
         name := "Xi_9 tensor R_3^0(1,3,nu)_1";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -519,11 +512,11 @@ PrimePowerIrrepsOfDegree := function(deg)
         # A = <alpha> x <zeta> where ord(alpha) = 2 and ord(zeta) = 6.
         # chi is primitive if injective on <alpha>.
         # This gives two relevant characters, [1,1] and [1,2].
-        rho := RepN(2, 3, [1, 1], true);
+        rho := RepN(2, 3, [1, 1], true)[1];
         name := "N_3([1,1])";
         RecordIrrep(irrep_list, name, rho, l);
 
-        rho := RepN(2, 3, [1, 2], true);
+        rho := RepN(2, 3, [1, 2], true)[1];
         name := "N_3([1,2])";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -550,7 +543,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # The given character is indexed by [0,1].
         for r in [1,3] do
             for t in [1,5] do
-                rho := RepR(2, 3, 0, r, t, [0,1], true);
+                rho := RepR(2, 3, 0, r, t, [0,1], true)[1];
                 name := Concatenation("R_3^0(", String(r), ",", String(t), ",[0,1])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -576,11 +569,11 @@ PrimePowerIrrepsOfDegree := function(deg)
         # A = <-1> x <5>, and a character is primitive if injective on <5>.
         # Note that 5 has order 4.
         # This gives two relevant characters, [0,1] and [1,1].
-        rho := RepD(2, 4, [0, 1], true);
+        rho := RepD(2, 4, [0, 1], true)[1];
         name := "D_4([0,1])";
         RecordIrrep(irrep_list, name, rho, l);
 
-        rho := RepD(2, 4, [1, 1], true);
+        rho := RepD(2, 4, [1, 1], true)[1];
         name := "D_4([1,1])";
         RecordIrrep(irrep_list, name, rho, l);
     fi;
@@ -590,7 +583,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # chi is primitive if injective on <alpha>.
         # This gives six relevant characters: [1,0],[1,3],[1,1],[1,2],[3,1],[3,2].
         for x in [[1,0],[1,3],[1,1],[1,2],[3,1],[3,2]] do
-            rho := RepN(2, 4, x, true);
+            rho := RepN(2, 4, x, true)[1];
             name := Concatenation("N_4([", String(x[1]), ",", String(x[2]), "])");
             RecordIrrep(irrep_list, name, rho, l);
         od;
@@ -603,12 +596,12 @@ PrimePowerIrrepsOfDegree := function(deg)
         # For t = 5, A = <alpha> x <-1>, with ord(alpha) = 4; in this case a character
         # is primitive iff injective on <-alpha^2> (see NW p. 496), which means [1,0].
         for r in [1,3] do
-            rho := RepR(2, 4, 0, r, 1, [1, 1], true);
+            rho := RepR(2, 4, 0, r, 1, [1, 1], true)[1];
             name := Concatenation("R_4^0(", String(r), ",1,[1,1])");
             RecordIrrep(irrep_list, name, rho, l);
         od;
         for r in [1,3] do
-            rho := RepR(2, 4, 0, r, 5, [1, 0], true);
+            rho := RepR(2, 4, 0, r, 5, [1, 0], true)[1];
             name := Concatenation("R_4^0(", String(r), ",5,[1,0])");
             RecordIrrep(irrep_list, name, rho, l);
         od;
@@ -637,15 +630,15 @@ PrimePowerIrrepsOfDegree := function(deg)
         # C_2 tensor R_4^2(3,1,[0,1]) is iso to R_4^2(3,3,nu)_1.
         # NW lists them under the latter name, so this is what we do here; see below.
         for r in [1,3] do
-            rho := RepR(2,4,2,r,1,[0,1],true);
+            rho := RepR(2,4,2,r,1,[0,1],true)[1];
             name := Concatenation("R_4^2(", String(r), ",1,[0,1])");
             RecordIrrep(irrep_list, name, rho, l);
 
-            rho := RepR(2,4,2,r,3,[0,1],true);
+            rho := RepR(2,4,2,r,3,[0,1],true)[1];
             name := Concatenation("R_4^2(", String(r), ",3,[0,1])");
             RecordIrrep(irrep_list, name, rho, l);
 
-            rho := [-1 * rho[1], -1 * rho[2], 6];
+            rho := [-1 * rho[1], -1 * rho[2]];
             name := Concatenation("Xi_6 tensor R_4^2(", String(r), ",3,[0,1])");
             RecordIrrep(irrep_list, name, rho, l);
         od;
@@ -663,7 +656,6 @@ PrimePowerIrrepsOfDegree := function(deg)
                 [ w,  w,  w,  w,  0,  0],
                 [ w,  w, -w, -w,  0,  0],
             ],
-
             DiagonalMat([
                 E(16),
                 E(16)^9,
@@ -671,9 +663,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 E(16)^5,
                 1,
                 E(16)^12
-            ]),
-
-            6
+            ])
         ];
         name := "R_4^2(1,3,nu)_1";
         RecordIrrep(irrep_list, name, rho, l);
@@ -687,7 +677,6 @@ PrimePowerIrrepsOfDegree := function(deg)
                 [ w,  w,  w,  w,  0,  0],
                 [ w,  w, -w, -w,  0,  0],
             ],
-
             DiagonalMat([
                 E(16)^3,
                 E(16)^11,
@@ -695,9 +684,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 E(16)^15,
                 1,
                 E(16)^4
-            ]),
-
-            6
+            ])
         ];
         name := "R_4^2(3,3,nu)_1";
         RecordIrrep(irrep_list, name, rho, l);
@@ -741,7 +728,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # For the N part, chars. are [1,0] and [1,3] (see the ld=3 section earlier).
         #
         # First construct R_4^0(1,7,psi)+. Char is [1,1]. RepR gives a list with + and then -.
-        x := RepR(2, 4, 0, 1, 7, [1,1], true);
+        x := RepR(2, 4, 0, 1, 7, [1, 1], true);
         for j in [0,3] do
             # Construct N_3(chi)+. RepR again returns a list.
             rho := RepN(2, 3, [1, j], true);
@@ -764,7 +751,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # This gives four relevant characters, [0,1], [1,1], [0,3], [1,3].
         for i in [0,1] do
             for j in [1,3] do
-                rho := RepD(2, 5, [i, j], true);
+                rho := RepD(2, 5, [i, j], true)[1];
                 name := Concatenation("D_5([", String(i), ",", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -776,14 +763,14 @@ PrimePowerIrrepsOfDegree := function(deg)
         # chi is primitive if injective on <alpha>.
         for i in [1,3] do
             for j in [0,3] do
-                rho := RepN(2, 5, [i,j], true);
+                rho := RepN(2, 5, [i,j], true)[1];
                 name := Concatenation("N_5([", String(i), ",", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
         od;
         for i in [1,3,5,7] do
             for j in [1,2] do
-                rho := RepN(2, 5, [i,j], true);
+                rho := RepN(2, 5, [i,j], true)[1];
                 name := Concatenation("N_5([", String(i), ",", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -796,12 +783,12 @@ PrimePowerIrrepsOfDegree := function(deg)
         # In both cases, a character is primitive iff injective on alpha.
         for r in [1,3] do
             for j in [0,2] do
-                rho := RepR(2, 5, 0, r, 1, [1,j], true);
+                rho := RepR(2, 5, 0, r, 1, [1,j], true)[1];
                 name := Concatenation("R_5^0(", String(r), ",1,[1,", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
             for i in [1,3] do
-                rho := RepR(2, 5, 0, r, 1, [i,1], true);
+                rho := RepR(2, 5, 0, r, 1, [i,1], true)[1];
                 name := Concatenation("R_5^0(", String(r), ",1,[", String(i), ",1])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -809,7 +796,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         for r in [1,3] do
             for i in [1,3] do
                 for j in [0,1] do
-                    rho := RepR(2, 5, 0, r, 5, [i,j], true);
+                    rho := RepR(2, 5, 0, r, 5, [i,j], true)[1];
                     name := Concatenation("R_5^0(", String(r), ",5,[", String(i), ",", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -824,7 +811,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         for r in [1,5] do
             for t in [1,5] do
                 for j in [0,1] do
-                    rho := RepR(2, 5, 1, r, t, [1,j], true);
+                    rho := RepR(2, 5, 1, r, t, [1,j], true)[1];
                     name := Concatenation("R_5^1(", String(r), ",", String(t), ",[1,", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -833,7 +820,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         for r in [1,3] do
             for t in [3,7] do
                 for j in [0,1] do
-                    rho := RepR(2, 5, 1, r, t, [1,j], true);
+                    rho := RepR(2, 5, 1, r, t, [1,j], true)[1];
                     name := Concatenation("R_5^1(", String(r), ",", String(t), ",[1,", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -845,7 +832,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # A = <alpha> x <-1>, so non-primitive characters are indexed by [0,0] and [0,1].
         for r in [1,3] do
             for j in [0,1] do
-                rho := RepR(2, 5, 2, r, 1, [0,j], true);
+                rho := RepR(2, 5, 2, r, 1, [0,j], true)[1];
                 name := Concatenation("R_5^2(", String(r), ",1,[0,", String(j), "])_1");
                 RecordIrrep(irrep_list, name, rho, l);
 
@@ -862,7 +849,7 @@ PrimePowerIrrepsOfDegree := function(deg)
         # Relevant chars. are therefore [1,0] and [1,1].
         for t in [3,7] do
             for j in [0,1] do
-                rho := RepR(2, 5, 0, 1, t, [1,j], true);
+                rho := RepR(2, 5, 0, 1, t, [1,j], true)[1];
                 name := Concatenation("R_5^0(1,", String(t), ",[1,", String(j), "])");
                 RecordIrrep(irrep_list, name, rho, l);
             od;
@@ -897,7 +884,7 @@ PrimePowerIrrepsOfDegree := function(deg)
             # Note that 5 has order 2^(ld-2).
             for i in [0,1] do
                 for j in PrimeResidues(2^(ld-2) / 2) do
-                    rho := RepD(2, ld, [i, j], true);
+                    rho := RepD(2, ld, [i, j], true)[1];
                     name := Concatenation("D_", String(ld), "([", String(i), ",", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -909,14 +896,14 @@ PrimePowerIrrepsOfDegree := function(deg)
             # chi is primitive if injective on <alpha>.
             for i in PrimeResidues(2^(ld-2) / 2) do
                 for j in [0,3] do
-                    rho := RepN(2, ld, [i,j], true);
+                    rho := RepN(2, ld, [i,j], true)[1];
                     name := Concatenation("N_", String(ld), "([", String(i), ",", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
             od;
             for i in PrimeResidues(2^(ld-2)) do
                 for j in [1,2] do
-                    rho := RepN(2, ld, [i,j], true);
+                    rho := RepN(2, ld, [i,j], true)[1];
                     name := Concatenation("N_", String(ld), "([", String(i), ",", String(j), "])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -929,7 +916,7 @@ PrimePowerIrrepsOfDegree := function(deg)
             for t in [3,7] do
                 for i in PrimeResidues(2^(ld-3) / 2) do
                     for j in [0,1] do
-                        rho := RepR(2, ld, 0, 1, t, [i,j], true);
+                        rho := RepR(2, ld, 0, 1, t, [i,j], true)[1];
                         name := Concatenation("R_", String(ld), "^0(1,", String(t), ",[", String(i), ",", String(j), "])");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
@@ -946,13 +933,13 @@ PrimePowerIrrepsOfDegree := function(deg)
             for r in [1,3] do
                 for i in PrimeResidues(2^(ld-3) / 2) do
                     for j in [0,2] do
-                        rho := RepR(2, ld, 0, r, 1, [i,j], true);
+                        rho := RepR(2, ld, 0, r, 1, [i,j], true)[1];
                         name := Concatenation("R_", String(ld), "^0(", String(r), ",1,[", String(i), ",", String(j), "])");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
                 od;
                 for i in PrimeResidues(2^(ld-3)) do
-                    rho := RepR(2, ld, 0, r, 1, [i,1], true);
+                    rho := RepR(2, ld, 0, r, 1, [i,1], true)[1];
                     name := Concatenation("R_", String(ld), "^0(", String(r), ",1,[", String(i), ",1])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -960,7 +947,7 @@ PrimePowerIrrepsOfDegree := function(deg)
             for r in [1,3] do
                 for i in PrimeResidues(2^(ld-2) / 2) do
                     for j in [0,1] do
-                        rho := RepR(2, ld, 0, r, 5, [i,j], true);
+                        rho := RepR(2, ld, 0, r, 5, [i,j], true)[1];
                         name := Concatenation("R_", String(ld), "^0(", String(r), ",5,[", String(i), ",", String(j), "])");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
@@ -970,7 +957,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 for t in [1,5] do
                     for i in PrimeResidues(2^(ld-3) / 2) do
                         for j in [0,1] do
-                            rho := RepR(2, ld, 1, r, t, [i,j], true);
+                            rho := RepR(2, ld, 1, r, t, [i,j], true)[1];
                             name := Concatenation("R_", String(ld), "^1(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                             RecordIrrep(irrep_list, name, rho, l);
                         od;
@@ -981,7 +968,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 for t in [3,7] do
                     for i in PrimeResidues(2^(ld-3) / 2) do
                         for j in [0,1] do
-                            rho := RepR(2, ld, 1, r, t, [i,j], true);
+                            rho := RepR(2, ld, 1, r, t, [i,j], true)[1];
                             name := Concatenation("R_", String(ld), "^1(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                             RecordIrrep(irrep_list, name, rho, l);
                         od;
@@ -992,7 +979,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                 for t in [1,3,5,7] do
                     for i in PrimeResidues(2^(ld-4) / 2) do
                         for j in [0,1] do
-                            rho := RepR(2, ld, 2, r, t, [i,j], true);
+                            rho := RepR(2, ld, 2, r, t, [i,j], true)[1];
                             name := Concatenation("R_", String(ld), "^2(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                             RecordIrrep(irrep_list, name, rho, l);
                         od;
@@ -1009,7 +996,7 @@ PrimePowerIrrepsOfDegree := function(deg)
                     for t in [1,3,5,7] do
                         for i in PrimeResidues(2^(ld-si-1) / 2) do
                             for j in [0,1] do
-                                rho := RepR(2, ld, si, r, t, [i,j], true);
+                                rho := RepR(2, ld, si, r, t, [i,j], true)[1];
                                 name := Concatenation("R_", String(ld), "^", String(si), "(", String(r), ",", String(t), ",[", String(i), ",", String(j), "])");
                                 RecordIrrep(irrep_list, name, rho, l);
                             od;
@@ -1024,11 +1011,11 @@ PrimePowerIrrepsOfDegree := function(deg)
             # of primitive; see NW p. 496). Two such exist, indexed by [1,0] and [1,1].
             for r in [1,3,5,7] do
                 for t in [1,3] do
-                    rho := RepR(2, ld, ld-2, r, t, [1,0], true);
+                    rho := RepR(2, ld, ld-2, r, t, [1,0], true)[1];
                     name := Concatenation("R_", String(ld), "^", String(ld-2), "(", String(r), ",", String(t), ",[1,0])");
                     RecordIrrep(irrep_list, name, rho, l);
 
-                    rho := RepR(2, ld, ld-2, r, t, [1,1], true);
+                    rho := RepR(2, ld, ld-2, r, t, [1,1], true)[1];
                     name := Concatenation("R_", String(ld), "^", String(ld-2), "(", String(r), ",", String(t), ",[1,1])");
                     RecordIrrep(irrep_list, name, rho, l);
                 od;
@@ -1038,12 +1025,11 @@ PrimePowerIrrepsOfDegree := function(deg)
                 # R_6^4(r,t,nu)_1 and C_2 tensor R_6^4(r,t,nu)_1, for r in {1,3,5,7}, t in {1,3}.
                 for r in [1,3,5,7] do
                     for t in [1,3] do
-                        rho := RepR(2,6,4,r,t,[0,0],true);
+                        rho := RepR(2,6,4,r,t,[0,0],true)[1];
                         name := Concatenation("R_6^4(", String(r), ",", String(t), ",nu)_1");
                         RecordIrrep(irrep_list, name, rho, l);
 
-                        rho[1] := -1 * rho[1];
-                        rho[2] := -1 * rho[2];
+                        rho := [-1 * rho[1], -1 * rho[2]];
                         name := Concatenation("Xi_6 tensor R_6^4(", String(r), ",", String(t), ",nu)_1");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
@@ -1053,11 +1039,11 @@ PrimePowerIrrepsOfDegree := function(deg)
                 # r in {1,3,5,7}, t in {1,3}.
                 for r in [1,3,5,7] do
                     for t in [1,3] do
-                        rho := RepR(2,ld,ld-3,r,t,[0,0],true);
+                        rho := RepR(2,ld,ld-3,r,t,[0,0],true)[1];
                         name := Concatenation("R_", String(ld), "^", String(ld-3), "(", String(r), ",", String(t), ",nu)_1");
                         RecordIrrep(irrep_list, name, rho, l);
 
-                        rho := RepR(2,ld,ld-3,r,t,[2,0],true);
+                        rho := RepR(2,ld,ld-3,r,t,[2,0],true)[1];
                         name := Concatenation("R_", String(ld), "^", String(ld-3), "(", String(r), ",", String(t), ",[2,0])_1");
                         RecordIrrep(irrep_list, name, rho, l);
                     od;
@@ -1095,27 +1081,29 @@ IrrepsOfDegree := function(deg)
 
     # collect prime-power-level irreps of deg dividing the given degree
     Print("Constructing irreps of prime-power level.\n");
+
     # The linear reps are denoted Xi_n, n in Z/12Z, with T = [zeta_12^n] and S = [i^n].
     # We handle these separately just for brevity in the output.
-    prime_power_reps[1] := [
-        [[[1]], [[1]], 1, 1, "Xi_0"], # Xi_0 = C_1
+    prime_power_reps[1] := [];
 
-        [[[-1]], [[-1]], 1, 2, "Xi_6"], # Xi_6 = C_2
+    RecordIrrep(prime_power_reps[1], "Xi_0", [[[1]], [[1]]], 1); # Xi_0 = C_1
 
-        [[[1]], [[E(3)]], 1, 3, "Xi_4"], # Xi_4 = R_1(1)- with p=3
-        [[[1]], [[E(3)^2]], 1, 3, "Xi_8"], # Xi_8 = R_1(2)- with p=3
+    RecordIrrep(prime_power_reps[1], "Xi_6", [[[-1]], [[-1]]], 2); # Xi_6 = C_2
 
-        [[[-E(4)]], [[E(4)]], 1, 4, "Xi_3"], # Xi_3 = C_4
-        [[[E(4)]], [[-E(4)]], 1, 4, "Xi_9"], # Xi_9 = C_3
+    RecordIrrep(prime_power_reps[1], "Xi_4", [[[1]], [[E(3)]]], 3); # Xi_4 = R_1(1)- with p=3
+    RecordIrrep(prime_power_reps[1], "Xi_8", [[[1]], [[E(3)^2]]], 3); # Xi_8 = R_1(2)- with p=3
 
-        [[[-1]], [[-1]], 1, 6, "Xi_2"], # = Xi_6 * Xi_8
-        [[[-1]], [[-1]], 1, 6, "Xi_10"], # = Xi_6 * Xi_4
+    RecordIrrep(prime_power_reps[1], "Xi_3", [[[-E(4)]], [[E(4)]]], 4); # Xi_3 = C_4
+    RecordIrrep(prime_power_reps[1], "Xi_9", [[[E(4)]], [[-E(4)]]], 4); # Xi_9 = C_3
 
-        [[[E(4)]], [[E(12)]], 1, 12, "Xi_1"], # = Xi_9 * Xi_4
-        [[[E(4)]], [[E(12)^5]], 1, 12, "Xi_5"], # = Xi_9 * Xi_8
-        [[[-E(4)]], [[E(12)^7]], 1, 12, "Xi_7"], # = Xi_3 * Xi_4
-        [[[-E(4)]], [[E(12)^11]], 1, 12, "Xi_11"] # = Xi_3 * Xi_8
-    ];
+    RecordIrrep(prime_power_reps[1], "Xi_2", [[[-1]], [[-E(3)^2]]], 6); # = Xi_6 * Xi_8
+    RecordIrrep(prime_power_reps[1], "Xi_10", [[[-1]], [[-E(3)]]], 6); # = Xi_6 * Xi_4
+
+    RecordIrrep(prime_power_reps[1], "Xi_1", [[[E(4)]], [[E(12)]]], 12); # = Xi_9 * Xi_4
+    RecordIrrep(prime_power_reps[1], "Xi_5", [[[E(4)]], [[E(12)^5]]], 12); # = Xi_9 * Xi_8
+    RecordIrrep(prime_power_reps[1], "Xi_7", [[[-E(4)]], [[E(12)^7]]], 12); # = Xi_3 * Xi_4
+    RecordIrrep(prime_power_reps[1], "Xi_11", [[[-E(4)]], [[E(12)^11]]], 12); # = Xi_3 * Xi_8
+
     for i in DivisorsInt(deg) do
         if i = 1 then
             continue;
