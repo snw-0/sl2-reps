@@ -22,11 +22,17 @@ SymmetryCheck := function(m)
 end;
 
 WhichNonSym := function(list)
-    local rep;
+    local rho, ok;
 
-    for rep in list do
-        if rep[1] <> TransposedMat(rep[1]) or not IsDiagonalMat(r[2]) then
-            Print(rep[5], "\n");
+    ok := true;
+
+    for rho in list do
+        if rho[1] <> TransposedMat(rho[1]) or not IsDiagonalMat(rho[2]) then
+            Print(rho[5], "\n");
+            ok := false;
         fi;
     od;
+    if ok then
+        Print("All symmetric.\n");
+    fi;
 end;
