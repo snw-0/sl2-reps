@@ -145,7 +145,14 @@ MN := function(p, ld)
     fi;
 
     # Return.
-    return [Agrp, Char, Bp, Nm, Prod, alpha, zeta, Ord(alpha), Ord(zeta), beta_list];
+    return rec(
+        Agrp := Agrp,
+        Char := Char,
+        Bp := Bp,
+        beta_list := beta_list,
+        Nm := Nm,
+        Prod := Prod
+    );
 end;
 
 SqrtOfRootOfUnity := function(b)
@@ -166,13 +173,19 @@ end;
 #-------------------------------------------------------------
 
 RepN := function(p, ld, chi_index, silent)
-    local l, M, Agrp, Chi, Bp, beta_list, Nm, Prod, Tr, sxy, S, T, deg,
+    local l, M_rec, Agrp, Chi, Bp, beta_list, Nm, Prod, Tr, sxy, S, T, deg,
             N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
 
     l := p^ld;
-    M := MN(p, ld);
-    Agrp := M[1]; Chi := M[2](chi_index[1], chi_index[2]); Bp := M[3]; beta_list := M[10];
-    Nm := M[4]; Prod := M[5];
+
+    M_rec := MN(p, ld);
+
+    Agrp := M_rec.Agrp;
+    Chi := M_rec.Char(chi_index[1], chi_index[2]);
+    Bp := M_rec.Bp;
+    beta_list := M_rec.beta_list;
+    Nm := M_rec.Nm;
+    Prod := M_rec.Prod;
 
     Tr := function(x)
         return (2*x[1] + x[2]) mod l;

@@ -276,7 +276,16 @@ MR := function(p, ld, si, r, t)
     fi;
 
     # Return.
-    return [Agrp, omicron, Char, tM, Nm, Prod, Ord, c];
+    return rec(
+        Agrp := Agrp,
+        omicron := omicron,
+        Char := Char,
+        tM := tM,
+        Nm := Nm,
+        Prod := Prod,
+        Ord := Ord,
+        c := c
+    );
 end;
 
 SqrtOfRootOfUnity := function(b)
@@ -297,17 +306,23 @@ end;
 #-------------------------------------------------------------
 
 RepR := function(p, ld, si, r, t, chi_index, silent)
-    local l, M_output, Agrp, omicron, Chi, tM, Nm, Prod, Ord, c,
+    local l, M_rec, Agrp, omicron, Chi, tM, Nm, Prod, Ord, c,
             Tr, AOrbit, Epsilon,
             tM1, theta, b, B1, Bp, BaseChangeMat, w, U, U_index, B_Q, sxy, S, T, deg,
             N, B, O, VInd, tO, a, k;
 
     l := p^ld;
-    M_output := MR(p, ld, si, r, t);
-    Agrp := M_output[1]; omicron := M_output[2];
-    Chi := M_output[3](chi_index[1], chi_index[2]);
-    tM := M_output[4]; Nm := M_output[5]; Prod := M_output[6];
-    Ord := M_output[7]; c := M_output[8];
+
+    M_rec := MR(p, ld, si, r, t);
+
+    Agrp := M_rec.Agrp;
+    omicron := M_rec.omicron;
+    Chi := M_rec.Char(chi_index[1], chi_index[2]);
+    tM := M_rec.tM;
+    Nm := M_rec.Nm;
+    Prod := M_rec.Prod;
+    Ord := M_rec.Ord;
+    c := M_rec.c;
 
     Tr := function(x)
         return (2 * x[1]) mod l;
