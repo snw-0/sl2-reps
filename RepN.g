@@ -6,7 +6,7 @@
 #-------------------------------------------------------------
 
 MN := function(p, ld)
-    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Aind, Agrp, Char, i, j, u, theta, Bp, beta, beta_list;
+    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp, beta, beta_list;
 
     l := p^ld;
 
@@ -75,8 +75,11 @@ MN := function(p, ld)
     fi;
 
     # Use powers of alpha and zeta to index elements in A.
-    Aind := Cartesian([0..Ord(alpha)-1], [0..Ord(zeta)-1]);
-    Agrp := List(Aind, x -> [x[1], x[2], Prod(Pow(alpha,x[1]), Pow(zeta, x[2]))]);
+    Agrp := List(Cartesian([0..Ord(alpha)-1], [0..Ord(zeta)-1]), x ->
+            [
+                [x[1], x[2]],
+                Prod(Pow(alpha,x[1]), Pow(zeta, x[2]))
+            ]);
 
     # Use (i, j) to index chars. Each chi(i, j) is a function Agrp -> C^*.
     Char := function(i, j)
@@ -116,7 +119,7 @@ MN := function(p, ld)
 
         n := 1 / Nm(x) mod l;
         b := Prod(Prod(x,x), [n,0]); # x / x-bar
-        b := First(Agrp, y -> y[3] = b);
+        b := First(Agrp, y -> y[2] = b);
 
         return b;
     end;
@@ -124,20 +127,20 @@ MN := function(p, ld)
     # The basis for primitive chars.
     if p = 2 and ld = 1 then
         Bp := [[1, 0]];
-        beta_list := [[0,0, [1,0]]];
+        beta_list := [[[0,0], [1,0]]];
     elif p = 2 and ld = 2 then
         Bp := [[1, 0], theta(3)[1]];
-        beta_list := [[0,0, [1,0]]];
+        beta_list := [[[0,0], [1,0]]];
         Add(beta_list, beta(Bp[2]));
     elif p = 2 and ld > 2 then
         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
-        beta_list := [[0,0, [1,0]]];
+        beta_list := [[[0,0], [1,0]]];
         Add(beta_list, beta(Bp[1 + Length(Bp)/4]));
         Add(beta_list, beta(Bp[1 + 2*Length(Bp)/4]));
         Add(beta_list, beta(Bp[1 + 3*Length(Bp)/4]));
     else
         Bp := Concatenation(theta(1), theta(u));
-        beta_list := [[0,0, [1,0]]];
+        beta_list := [[[0,0], [1,0]]];
         Add(beta_list, beta(Bp[1 + Length(Bp)/2]));
     fi;
 
@@ -181,7 +184,7 @@ RepN := function(p, ld, chi_index, silent)
 
     Prim1 := (((p = 2) and (ld > 2)) or ((p > 2) and (ld > 1))) and (Gcd(chi_index[1], p) = 1);
 
-    Prim2 := (p = 2) and (ld = 2) and (Chi([ 0, 3, [ 3, 0 ] ]) = -1);
+    Prim2 := (p = 2) and (ld = 2) and (Chi([ [ 0, 3 ], [ 3, 0 ] ]) = -1);
 
 	Prim3 := (p>2) and (ld = 1) and ((chi_index[2] mod (p+1)/2) <> 0);
 
@@ -189,7 +192,7 @@ RepN := function(p, ld, chi_index, silent)
         if not silent then
             Print("Chi is primitive.\n");
 
-            if (Length(AsSet(List(Agrp, x -> Chi(x)^2))) > 1) then
+            if Length(AsSet(List(Agrp, x -> Chi(x[1])^2))) > 1 then
                 Print("Chi^2 != 1.\n");
             fi;
         fi;
@@ -197,7 +200,7 @@ RepN := function(p, ld, chi_index, silent)
         sxy := function(x, y)
             local z;
             z := Prod(x, [y[1] + y[2], -y[2]]);
-            return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a) * E(l)^(Tr(Prod(a[3], z))));
+            return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a[1]) * E(l)^(Tr(Prod(a[2], z))));
         end;
 
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
@@ -207,7 +210,7 @@ RepN := function(p, ld, chi_index, silent)
         U := [];
         for j in [1 .. Length(beta_list)] do
             for k in [1 .. (Length(Bp) / Length(beta_list))] do
-                Add(U, SqrtOfRootOfUnity(1 / Chi(beta_list[j])));
+                Add(U, SqrtOfRootOfUnity(1 / Chi(beta_list[j][1])));
             od;
         od;
         U := DiagonalMat(U);
@@ -215,7 +218,7 @@ RepN := function(p, ld, chi_index, silent)
         T := T ^ U;
 
         deg := Length(Bp);
-    elif (ld = 1 and Length(AsSet(List(Agrp, x -> Chi(x)))) = 1) then
+    elif (ld = 1 and Length(AsSet(List(Agrp, x -> Chi(x[1])))) = 1) then
         if not silent then
             Print("ld = 1, and Chi is the trivial character. This representation is also called the Steinberg representation.\n");
         fi;
@@ -230,7 +233,7 @@ RepN := function(p, ld, chi_index, silent)
                 return -Sqrt(p+1) / p;
             else
                 z := Prod(x, [y[1] + y[2], -y[2]]);
-                return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a)*E(l)^(Tr(Prod(a[3], z))));
+                return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a[1])*E(l)^(Tr(Prod(a[2], z))));
             fi;
         end;
 
@@ -247,7 +250,7 @@ RepN := function(p, ld, chi_index, silent)
         O := [];
         while Length(N) > 0 do
             Add(B,N[1]);
-            tO := Set(Agrp, a -> Prod(a[3], N[1]));
+            tO := Set(Agrp, a -> Prod(a[2], N[1]));
             Add(O, tO);
             SubtractSet(N, tO);
         od;
@@ -255,7 +258,7 @@ RepN := function(p, ld, chi_index, silent)
         VInd := [];
         for k in [1..Length(B)] do
             for a in Agrp do
-                if a <> [0, 0, [1, 0]] and Chi(a) <> 1 and Prod(a[3], B[k]) = B[k] then
+                if a[1] <> [0, 0] and Chi(a[1]) <> 1 and Prod(a[2], B[k]) = B[k] then
                     Add(VInd, k); break;
                 fi;
             od;
@@ -268,7 +271,7 @@ RepN := function(p, ld, chi_index, silent)
         sxy := function(x, y)
             return ((-1)^ld / l) * Sum(Agrp, a ->
                     Sum(Agrp, b ->
-                    Chi(a) * ComplexConjugate(Chi(b)) * E(l)^(BQ(Prod(a[3], x), Prod(b[3], y)))));
+                    Chi(a[1]) * ComplexConjugate(Chi(b[1])) * E(l)^(BQ(Prod(a[2], x), Prod(b[2], y)))));
         end;
 
         S := List([1..deg], x ->

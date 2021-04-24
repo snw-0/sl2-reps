@@ -8,7 +8,7 @@
 #-------------------------------------------------------------
 
 MD := function(p, ld)
-    local l, M, alpha, ord, omicron, Aind, Agrp, Bp, B1, Char, a;
+    local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, a;
 
     l := p^ld;
 
@@ -20,12 +20,16 @@ MD := function(p, ld)
         alpha := GeneratorsPrimeResidues(l).generators[1];
         ord := OrderMod(alpha, l);
         Agrp := List([0 .. ord - 1], x ->
-                [x, , (alpha^x) mod l, (alpha^(ord-x)) mod l]);
+                [
+                    [x], # Power of alpha.
+                    (alpha^x) mod l, # a.
+                    (alpha^(ord-x)) mod l # a^(-1), used for the S matrix.
+                ]);
         if ld = 1 then
             omicron := Agrp[1];
         else
             for a in Agrp do
-                if a[3] = 1 + p then
+                if a[2] = 1 + p then
                     omicron := a;
                     break;
                 fi;
@@ -42,12 +46,14 @@ MD := function(p, ld)
     else
         # A = <-1> * <5>.
         ord := OrderMod(5, l);
-        Aind := Cartesian([0 .. 1], [0 .. ord - 1]);
-        Agrp := List(Aind, x ->
-                [x[1], x[2], (((-1)^x[1]) * (5^x[2])) mod l,
-                (((-1)^x[1]) * (5^(ord-x[2]))) mod l]);
+        Agrp := List(Cartesian([0 .. 1], [0 .. ord - 1]), x ->
+                [
+                    [x[1], x[2]], # Powers of -1 and 5.
+                    (((-1)^x[1]) * (5^x[2])) mod l, # a.
+                    (((-1)^x[1]) * (5^(ord-x[2]))) mod l # a^(-1), used for the S matrix.
+                ]);
         for a in Agrp do
-            if a[3] = 5 then
+            if a[2] = 5 then
                 omicron := a;
                 break;
             fi;
@@ -117,15 +123,14 @@ RepD := function(p, ld, chi_index, silent)
     Bp := M[4];
 
     # Check for primitivity.  Primitive if chi is injective on <omicron>.
-    if OrderMod(omicron[3], l) =
-            Length(AsSet(List([0..Length(Agrp)-1], x -> (Chi(omicron))^x))) then
+    if OrderMod(omicron[2], l) = Order(Chi(omicron[1])) then
         if not silent then
             Print("chi is primitive.\n");
         fi;
 
         S := List(Bp, x -> List(Bp, y ->
                 (1/l) * Sum(Agrp, a ->
-                Chi(a) * E(l)^(a[3] * x[1] * y[2] + a[4] * x[2] * y[1]))));
+                Chi(a[1]) * E(l)^(a[2] * x[1] * y[2] + a[3] * x[2] * y[1]))));
         T := DiagonalMat(List(Bp, x -> E(l)^(x[1] * x[2])));
 
         if p = 2 and (ld = 2 or ld = 3) then
@@ -200,7 +205,7 @@ RepD := function(p, ld, chi_index, silent)
             k := 1;
             repeat
                 b := Bp[k];
-                a := First(Agrp, x -> x[3] = b[1]);
+                a := First(Agrp, x -> x[2] = b[1]);
                 if a = fail then
                     # b[1] is not invertible, which means we have two basis elements,
                     # [b[1],1] and [1,b[1]]; they should be paired up.
@@ -211,7 +216,7 @@ RepD := function(p, ld, chi_index, silent)
                     k := k + 2;
                 else
                     # b[1] is invertible, so we scale by Sqrt(Chi(a)).
-                    U[k][k] := 1 / SqrtOfRootOfUnity(Chi(a));
+                    U[k][k] := 1 / SqrtOfRootOfUnity(Chi(a[1]));
                     k := k + 1;
                 fi;
             until k > Length(Bp);
