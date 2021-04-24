@@ -451,6 +451,10 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 # The (single) basis element in theta_4 or theta_5 corresponds
                 # to an A-orbit of size 2 (instead of |A| = 4), so we must normalize it
                 # below by dividing the corresponding entries of the S matrix by sqrt(2).
+                # Note that this isn't done the same way as other base changes - here the
+                # problem is that our basis is not orthonormal, so we're correcting for that.
+                # We could also use a double sum as with the non-primitive cases, but this
+                # is simpler.
                 if chi_index[2] mod 2 = 0 then
                     # chi_{-1}
                     # theta_4
@@ -475,7 +479,7 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     S[b][deg] := S[b][deg] / Sqrt(2);
                 od;
                 T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x))));
-                deg := Length(Bp);
+
                 return [[S, T]];
             elif ld = 4 and si = 2 then
                 N := Cartesian([0 .. 7], [0 .. 1]);
