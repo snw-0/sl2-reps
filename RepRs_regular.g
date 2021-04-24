@@ -713,8 +713,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             ];
         elif p=2 and ld=5 and si=2 and r in [1,3] and t in [1,3,5,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 1,3,5,7.
-            # Note: these differ from those in RepR_regular.g because here we have
-            # reordered the basis slightly.
             w := 1 / Sqrt(2);
             if t = 1 then
                 if chi_index = [1,0] then
