@@ -8,7 +8,7 @@
 #-------------------------------------------------------------
 
 MD := function(p, ld)
-    local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, a;
+    local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, IsPrim, a;
 
     l := p^ld;
 
@@ -67,6 +67,11 @@ MD := function(p, ld)
         end;
     fi;
 
+    # A character is primitive iff injective on omicron.
+    IsPrim := function(chi)
+        return OrderMod(omicron[2], l) = Order(chi(omicron[1]));
+    end;
+
     # Find basis.
     # Note: for p^ld = 4 or 8, the resulting rep. is reducible,
     # so we must perform a change of basis later.  This basis covers
@@ -84,9 +89,9 @@ MD := function(p, ld)
 
     return rec(
         Agrp := Agrp,
-        omicron := omicron,
         Char := Char,
-        Bp := Bp
+        IsPrim := IsPrim,
+        Bp := Bp,
     );
 end;
 
@@ -109,7 +114,7 @@ end;
 #-------------------------------------------------------------
 
 RepD := function(p, ld, chi_index, silent)
-    local i, j, l, M_rec, Agrp, omicron, Chi, Bp, sxy, S, T, deg, w, U, a, b, k;
+    local i, j, l, M_rec, Agrp, Chi, IsPrim, Bp, sxy, S, T, deg, w, U, a, b, k;
 
     if p <= 3 and ld = 1 then
         if not silent then
@@ -123,14 +128,12 @@ RepD := function(p, ld, chi_index, silent)
     M_rec := MD(p, ld);
 
     Agrp := M_rec.Agrp;
-    omicron := M_rec.omicron;
-
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
-
+    IsPrim := M_rec.IsPrim;
     Bp := M_rec.Bp;
 
     # Check for primitivity.  Primitive if chi is injective on <omicron>.
-    if OrderMod(omicron[2], l) = Order(Chi(omicron[1])) then
+    if IsPrim(Chi) then
         if not silent then
             Print("chi is primitive.\n");
         fi;

@@ -5,8 +5,9 @@
 MR := function(p, ld, si, r, t)
     local l, ls, m1, m2, M, tM, pM,
             Prod, Pow, Ord, Nm,
-            t_rep, r_rep, A, A01, Aind, Agrp, Char, alpha, zeta, zeta_coords, omicron,
-            AOrbit, c,
+            t_rep, r_rep,
+            A, A01, Aind, Agrp, alpha, zeta, zeta_coords, AOrbit,
+            Char, omicron, IsPrim, c,
             a, b;
 
     l := p^ld;
@@ -275,11 +276,16 @@ MR := function(p, ld, si, r, t)
         fi;
     fi;
 
+    # A character is primitive iff injective on omicron.
+    IsPrim := function(chi)
+        return Ord(omicron[2]) = Order(chi(omicron[1]));
+    end;
+
     # Return.
     return rec(
         Agrp := Agrp,
-        omicron := omicron,
         Char := Char,
+        IsPrim := IsPrim,
         tM := tM,
         Nm := Nm,
         Prod := Prod,
@@ -306,7 +312,7 @@ end;
 #-------------------------------------------------------------
 
 RepR := function(p, ld, si, r, t, chi_index, silent)
-    local l, M_rec, Agrp, omicron, Chi, tM, Nm, Prod, Ord, c,
+    local l, M_rec, Agrp, Chi, IsPrim, tM, Nm, Prod, Ord, c,
             Tr, AOrbit, Epsilon,
             tM1, theta, b, B1, Bp, BaseChangeMat, w, U, U_index, B_Q, sxy, S, T, deg,
             N, B, O, VInd, tO, a, k;
@@ -316,8 +322,8 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
     M_rec := MR(p, ld, si, r, t);
 
     Agrp := M_rec.Agrp;
-    omicron := M_rec.omicron;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
+    IsPrim := M_rec.IsPrim;
     tM := M_rec.tM;
     Nm := M_rec.Nm;
     Prod := M_rec.Prod;
@@ -334,7 +340,7 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
 
     # A character is primitive if it is injective on <omicron>;
     # usually omicron = alpha, but not for all cases.
-    if Ord(omicron[2]) = Order(Chi(omicron[1])) then
+    if IsPrim(Chi) then
         if not silent then
             Print("chi is primitive.\n");
         fi;
