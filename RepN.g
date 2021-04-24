@@ -175,7 +175,7 @@ RepN := function(p, ld, chi_index, silent)
 
     Prim1 := (((p = 2) and (ld > 2)) or ((p > 2) and (ld > 1))) and (Gcd(chi_index[1], p) = 1);
 
-    Prim2 := (p = 2) and (ld = 2) and (Chi([ [ 0, 3 ], [ 3, 0 ] ]) = -1);
+    Prim2 := (p = 2) and (ld = 2) and (Chi([ 0, 3 ]) = -1);
 
 	Prim3 := (p>2) and (ld = 1) and ((chi_index[2] mod (p+1)/2) <> 0);
 
