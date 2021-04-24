@@ -87,7 +87,20 @@ MR := function(p, ld, si, r, t)
                         return Chi;
                 end;
 
-                return [Agrp, omicron, Char, tM, Nm, Prod, Ord, c];
+                # XXXXX refactor away this separate return point
+                IsPrim := function(chi)
+                    return Ord(omicron[2]) = Order(chi(omicron[1]));
+                end;
+                return rec(
+                    Agrp := Agrp,
+                    Char := Char,
+                    IsPrim := IsPrim,
+                    tM := tM,
+                    Nm := Nm,
+                    Prod := Prod,
+                    Ord := Ord,
+                    c := c
+                );
             else
                 # A = <alpha> x <-1> with ord(alpha) = 2.
                 #
