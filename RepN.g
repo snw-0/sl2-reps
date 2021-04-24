@@ -6,7 +6,7 @@
 #-------------------------------------------------------------
 
 MN := function(p, ld)
-    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp, beta, beta_list;
+    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp;
 
     l := p^ld;
 
@@ -113,35 +113,15 @@ MN := function(p, ld)
         return List(t1, x -> Prod([x, 0], eta));
     end;
 
-    # beta is the element of Agrp equal to x / x-bar. This is used to make the s-matrix symmetric below.
-    beta := function(x)
-        local b, n;
-
-        n := 1 / Nm(x) mod l;
-        b := Prod(Prod(x,x), [n,0]); # x / x-bar
-        b := First(Agrp, y -> y[2] = b);
-
-        return b;
-    end;
-
     # The basis for primitive chars.
     if p = 2 and ld = 1 then
         Bp := [[1, 0]];
-        beta_list := [[[0,0], [1,0]]];
     elif p = 2 and ld = 2 then
         Bp := [[1, 0], theta(3)[1]];
-        beta_list := [[[0,0], [1,0]]];
-        Add(beta_list, beta(Bp[2]));
     elif p = 2 and ld > 2 then
         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
-        beta_list := [[[0,0], [1,0]]];
-        Add(beta_list, beta(Bp[1 + Length(Bp)/4]));
-        Add(beta_list, beta(Bp[1 + 2*Length(Bp)/4]));
-        Add(beta_list, beta(Bp[1 + 3*Length(Bp)/4]));
     else
         Bp := Concatenation(theta(1), theta(u));
-        beta_list := [[[0,0], [1,0]]];
-        Add(beta_list, beta(Bp[1 + Length(Bp)/2]));
     fi;
 
     # Return.
@@ -149,7 +129,6 @@ MN := function(p, ld)
         Agrp := Agrp,
         Char := Char,
         Bp := Bp,
-        beta_list := beta_list,
         Nm := Nm,
         Prod := Prod
     );
@@ -173,7 +152,7 @@ end;
 #-------------------------------------------------------------
 
 RepN := function(p, ld, chi_index, silent)
-    local l, M_rec, Agrp, Chi, Bp, beta_list, Nm, Prod, Tr, sxy, S, T, deg,
+    local l, M_rec, Agrp, Chi, Bp, beta, Nm, Prod, Tr, sxy, S, T, deg,
             N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
 
     l := p^ld;
@@ -183,7 +162,6 @@ RepN := function(p, ld, chi_index, silent)
     Agrp := M_rec.Agrp;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
     Bp := M_rec.Bp;
-    beta_list := M_rec.beta_list;
     Nm := M_rec.Nm;
     Prod := M_rec.Prod;
 
@@ -219,16 +197,53 @@ RepN := function(p, ld, chi_index, silent)
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
         T := DiagonalMat(List(Bp, x -> E(l)^(Nm(x))));
 
-        # Here we perform a change of basis to make S symmetric.
-        U := [];
-        for j in [1 .. Length(beta_list)] do
-            for k in [1 .. (Length(Bp) / Length(beta_list))] do
-                Add(U, SqrtOfRootOfUnity(1 / Chi(beta_list[j][1])));
-            od;
-        od;
-        U := DiagonalMat(U);
-        S := S ^ U;
-        T := T ^ U;
+        if not (p = 2 and ld = 1) then
+            # We need to perform a change of basis to make S symmetric.
+
+            # beta is the element of Agrp equal to x / x-bar. This is used to make the s-matrix symmetric below.
+            beta := function(x)
+                local b, n;
+
+                n := 1 / Nm(x) mod l;
+                b := Prod(Prod(x,x), [n,0]); # x / x-bar
+                b := First(Agrp, y -> y[2] = b);
+
+                return b;
+            end;
+
+            U := [];
+
+            if p = 2 and ld > 2 then
+                # Bp consists of theta_1, theta_3, theta_5, theta_7.
+                for j in [1 .. Length(Bp) / 4] do
+                    Add(U, 1);
+                od;
+                for j in [1 .. Length(Bp) / 2] do
+                    Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/4])[1])));
+                od;
+                for j in [1 .. Length(Bp) / 2] do
+                    Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 2 * Length(Bp)/4])[1])));
+                od;
+                for j in [1 .. Length(Bp) / 2] do
+                    Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 3 * Length(Bp)/4])[1])));
+                od;
+            else
+                # For p = 2, ld = 2, Bp consists of theta_1 and theta_3.
+                # Otherwise, Bp consists of theta_1 and theta_u, where u is a quad. non-residue.
+                # The result is the same, so we just handle both cases together.
+
+                for j in [1 .. Length(Bp) / 2] do
+                    Add(U, 1);
+                od;
+                for j in [1 .. Length(Bp) / 2] do
+                    Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/2])[1])));
+                od;
+            fi;
+
+            U := DiagonalMat(U);
+            S := S ^ U;
+            T := T ^ U;
+        fi;
 
         deg := Length(Bp);
     elif (ld = 1 and Length(AsSet(List(Agrp, x -> Chi(x[1])))) = 1) then
