@@ -927,9 +927,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
             # to the (unique) irreducible subrep. by applying a base-change matrix.
             if ld >= 5 and si = ld - 2 then
                 # See NW S. 6.3.
-                if not silent then
-                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
-                fi;
 
                 # Depends on the character; see NW p. 511. Note that |A| = 4.
                 Bp := [];
@@ -1013,10 +1010,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                     U := BaseChangeMat(Length(Bp), U_index, 1);
                 fi;
             elif ld = 5 and si = 2 and r in [1,3] and t = 1 then
-                if not silent then
-                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
-                fi;
-
                 # Depends on the character. See NW. p. 524 for basis.
                 Bp := [];
 
@@ -1110,9 +1103,6 @@ RepR := function(p, ld, si, r, t, chi_index, silent)
                 fi;
             elif ld >= 6 and si = ld - 3 then
                 # See NW S. 6.4.
-                if not silent then
-                    Print("There is a single irreducible subrepresentation of the same level as V.\n");
-                fi;
 
                 # Depends on the character; see NW p. 512. Note that |A| = 8.
                 Bp := [];
