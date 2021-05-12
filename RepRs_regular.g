@@ -1,5 +1,5 @@
 #-------------------------------------------------------------
-# MR gives the module and character information of type R_{lambda}^{sigma} for most cases.
+# MR gives the module and character information of type R_{lambda}^{sigma} for most cases. Modularize it.
 #-------------------------------------------------------------
 
 MR := function(p, ld, si, r, t)
