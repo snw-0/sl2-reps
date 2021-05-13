@@ -202,7 +202,7 @@ AgrpEven := function(p, ld, si, r, t)
         elif ld = 4 then
             alpha := [1,0];
             zeta := [7,0];
-            Agrp := [[0,0], [1, 0]], [0,1], [7,0]]];
+            Agrp := [[[0,0], [1, 0]], [[0,1], [7,0]]];
             omicron := [[1,0], alpha];
 
             Char := function(i, j)
