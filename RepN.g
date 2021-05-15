@@ -96,7 +96,7 @@ MN := function(p, ld)
         u := First([0..p-1], x -> Jacobi(x, p) = -1);
     fi;
 
-    # Find the sets theta. Only works for p = odd or p = 2 and ld > 2.
+    # Find the sets theta. Only works for p = odd or p = 2 and ld >= 2.
     theta := function(a)
         local i, eta, t1;
         eta := [1, 0];
@@ -218,19 +218,19 @@ RepN := function(p, ld, chi_index, silent)
                 for j in [1 .. Length(Bp) / 4] do
                     Add(U, 1);
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/4])[1])));
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 2 * Length(Bp)/4])[1])));
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 3 * Length(Bp)/4])[1])));
                 od;
             else
                 # For p = 2, ld = 2, Bp consists of theta_1 and theta_3.
                 # Otherwise, Bp consists of theta_1 and theta_u, where u is a quad. non-residue.
-                # The result is the same, so we just handle both cases together.
+                # The process we need here is the same, so we just handle both cases together.
 
                 for j in [1 .. Length(Bp) / 2] do
                     Add(U, 1);
