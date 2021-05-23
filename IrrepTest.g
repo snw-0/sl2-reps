@@ -152,7 +152,7 @@ PositionTest := function(irreps, rho, pos_list)
     if pos = fail then
         Print("FAILED!\n");
     else
-        Print("pos ", pos, ", deg ", rho[3], "\n");
+        Print("pos ", pos, ", deg ", Length(rho[1]), "\n");
         Add(pos_list, pos);
     fi;
 end;
@@ -180,7 +180,7 @@ IrrepTestOdd := function(p, ld)
             for i in [1 .. (p-3)/2] do
                 rho := RepD(p, 1, [i, 0], true);
                 Print("D_1([", i, ",0]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         fi;
 
@@ -190,7 +190,7 @@ IrrepTestOdd := function(p, ld)
         for j in [1 .. (p-1)/2] do
             rho := RepN(p, 1, [0, j], true);
             Print("N_1([0,", j, "]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
         od;
 
         # R_1(1)+- and R_1(u)+-, for u a non-residue.
@@ -211,7 +211,7 @@ IrrepTestOdd := function(p, ld)
         # N_1(nu), the Steinberg representation.
         rho := RepN(p, 1, [0, 0], true);
         Print("N_1(nu) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
     else
         # ld >= 2.
 
@@ -223,7 +223,7 @@ IrrepTestOdd := function(p, ld)
             if Gcd(i, p) = 1 then
                 rho := RepD(p, ld, [i, 0], true);
                 Print("D_", ld, "([", i, ",0]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             fi;
         od;
 
@@ -238,17 +238,17 @@ IrrepTestOdd := function(p, ld)
             fi;
             rho := RepN(p, ld, [i, 0], true);
             Print("N_", ld, "([", i, ",0]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
 
             rho := RepN(p, ld, [i, (p+1)/2], true);
             Print("N_", ld, "([", i, ",", (p+1)/2, "]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
         od;
         for i in PrimeResidues(p^(ld-1)) do
             for j in [1 .. (p-1)/2] do
                 rho := RepN(p, ld, [i, j], true);
                 Print("N_", ld, "([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -270,14 +270,14 @@ IrrepTestOdd := function(p, ld)
                             for j in [0,3] do
                                 rho := RepR(p, ld, si, r, t, [i,j], true);
                                 Print("R_", ld, "^", si, "(", r, ",", t, ",[", i, ",", j, "]) : ");
-                                PositionTest(irreps, rho, pos_list);
+                                PositionTest(irreps, rho[1], pos_list);
                             od;
                         od;
                         for i in PrimeResidues(3^(ld-2)) do
                             for j in [1,2] do
                                 rho := RepR(p, ld, si, r, t, [i,j], true);
                                 Print("R_", ld, "^", si, "(", r, ",", t, ",[", i, ",", j, "]) : ");
-                                PositionTest(irreps, rho, pos_list);
+                                PositionTest(irreps, rho[1], pos_list);
                             od;
                         od;
                     else
@@ -290,7 +290,7 @@ IrrepTestOdd := function(p, ld)
                             for j in [0,1] do
                                 rho := RepR(p, ld, si, r, t, [i,j], true);
                                 Print("R_", ld, "^", si, "(", r, ",", t, ",[", i, ",", j, "]) : ");
-                                PositionTest(irreps, rho, pos_list);
+                                PositionTest(irreps, rho[1], pos_list);
                             od;
                         od;
                     fi;
@@ -336,8 +336,7 @@ IrrepTestEven := function(ld)
         # C_2, with s = t = -1.
         rho := [
             [[-1]],
-            [[-1]],
-            1
+            [[-1]]
         ];
         Print("C_2 : ");
         PositionTest(irreps, rho, pos_list);
@@ -345,7 +344,7 @@ IrrepTestEven := function(ld)
         # N_1(nu), the Steinberg representation.
         rho := RepN(2, 1, [0, 0], true);
         Print("N_1(nu) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
     elif ld = 2 then
         # D_2(chi)+-, for chi != 1. Note that there is only one non-trivial character,
         # indexed by [1,0]. RepD returns a list of the two subreps, + and - .
@@ -364,12 +363,11 @@ IrrepTestEven := function(ld)
                 [ 1, -1,  w],
                 [ w,  w,  0]
             ],
-            DiagonalMat([E(4), -E(4), 1]),
-            3
+            DiagonalMat([E(4), -E(4), 1])
         ];
         Print("R_2^0(1,3)_1 : ");
         PositionTest(irreps, rho, pos_list);
-        rho := [-1*rho[1], -1*rho[2], 3];
+        rho := [-1*rho[1], -1*rho[2]];
         Print("C_2 tensor R_2^0(1,3)_1 : ");
         PositionTest(irreps, rho, pos_list);
 
@@ -379,13 +377,12 @@ IrrepTestEven := function(ld)
         # a single relevant character, indexed by [0,1].
         rho := RepN(2, 2, [0, 1], true);
         Print("N_2([0,1]) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
 
         # C_3, with s = i, t = -i.
         rho := [
             [[E(4)]],
-            [[-E(4)]],
-            1
+            [[-E(4)]]
         ];
         Print("C_3 : ");
         PositionTest(irreps, rho, pos_list);
@@ -393,8 +390,7 @@ IrrepTestEven := function(ld)
         # C_4, with s = -1, t = i.
         rho := [
             [[-E(4)]],
-            [[E(4)]],
-            1
+            [[E(4)]]
         ];
         Print("C_4 : ");
         PositionTest(irreps, rho, pos_list);
@@ -427,14 +423,12 @@ IrrepTestEven := function(ld)
                 [ 1,  1, -1,  1,  0,  0],
             ],
 
-            DiagonalMat([1, -1, E(8), E(8)^5, E(8)^3, E(8)^7]),
-
-            6
+            DiagonalMat([1, -1, E(8), E(8)^5, E(8)^3, E(8)^7])
         ];
         Print("R_3^0(1,3,nu)_1 : ");
         PositionTest(irreps, rho, pos_list);
 
-        rho := [E(4) * rho[1], -E(4) * rho[2], 6];
+        rho := [E(4) * rho[1], -E(4) * rho[2]];
         Print("C_3 tensor R_3^0(1,3,nu)_1 : ");
         PositionTest(irreps, rho, pos_list);
 
@@ -444,11 +438,11 @@ IrrepTestEven := function(ld)
         # This gives two relevant characters, [1,1] and [1,2].
         rho := RepN(2, 3, [1, 1], true);
         Print("N_3([1,1]) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
 
         rho := RepN(2, 3, [1, 2], true);
         Print("N_3([1,2]) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
 
         # N_3(chi)+-, for chi primitive, chi^2 = 1.
         # As above; relevant characters are those which square to 1: [1,0] and [1,3].
@@ -473,7 +467,7 @@ IrrepTestEven := function(ld)
             for t in [1,5] do
                 rho := RepR(2, 3, 0, r, t, [0,1], true);
                 Print("R_3^0(", r, ",", t, ",[0,1]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -495,11 +489,11 @@ IrrepTestEven := function(ld)
         # This gives two relevant characters, [0,1] and [1,1].
         rho := RepD(2, 4, [0, 1], true);
         Print("D_4([0,1]) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
 
         rho := RepD(2, 4, [1, 1], true);
         Print("D_4([1,1]) : ");
-        PositionTest(irreps, rho, pos_list);
+        PositionTest(irreps, rho[1], pos_list);
 
         # N_4(chi), for chi primitive, chi^2 != 1.
         # A = <alpha> x <zeta> where ord(alpha) = 4 and ord(zeta) = 6.
@@ -508,7 +502,7 @@ IrrepTestEven := function(ld)
         for x in [[1,0],[1,3],[1,1],[1,2],[3,1],[3,2]] do
             rho := RepN(2, 4, x, true);
             Print("N_4([", x[1], ",", x[2], "]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
         od;
 
         # R_4^0(r,t,chi), for chi primitive with chi^2 != 1, r in {1,3}, t in {1,5}.
@@ -520,12 +514,12 @@ IrrepTestEven := function(ld)
         for r in [1,3] do
             rho := RepR(2, 4, 0, r, 1, [1, 1], true);
             Print("R_4^0(", r, ",1,[1,1]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
         od;
         for r in [1,3] do
             rho := RepR(2, 4, 0, r, 5, [1, 0], true);
             Print("R_4^0(", r, ",5,[1,0]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
         od;
 
         # R_4^0(r,t,chi)+-, for chi primitive, chi^2 = 1, r in {1,3}, t in {1,5}.
@@ -585,13 +579,13 @@ IrrepTestEven := function(ld)
         for r in [1,3] do
             rho := RepR(2,4,2,r,1,[0,1],true);
             Print("R_4^2(", r, ",1,[0,1]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
 
             rho := RepR(2,4,2,r,3,[0,1],true);
             Print("R_4^2(", r, ",3,[0,1]) : ");
-            PositionTest(irreps, rho, pos_list);
+            PositionTest(irreps, rho[1], pos_list);
 
-            rho := [-1 * rho[1], -1 * rho[2], 6];
+            rho := [-1 * rho[1][1], -1 * rho[1][2]];
             Print("C_2 tensor R_4^2(", r, ",3,[0,1]) : ");
             PositionTest(irreps, rho, pos_list);
         od;
@@ -617,9 +611,7 @@ IrrepTestEven := function(ld)
                 E(16)^5,
                 1,
                 E(16)^12
-            ]),
-
-            6
+            ])
         ];
         Print("R_4^2(1,3,nu)_1 : ");
         PositionTest(irreps, rho, pos_list);
@@ -641,9 +633,7 @@ IrrepTestEven := function(ld)
                 E(16)^15,
                 1,
                 E(16)^4
-            ]),
-
-            6
+            ])
         ];
         Print("R_4^2(3,3,nu)_1 : ");
         PositionTest(irreps, rho, pos_list);
@@ -660,8 +650,7 @@ IrrepTestEven := function(ld)
             rho := RepN(2, 3, [1, j], true);
             rho := [
                 KroneckerProduct(rho[1][1], x[1][1]),
-                KroneckerProduct(rho[1][2], x[1][2]),
-                12
+                KroneckerProduct(rho[1][2], x[1][2])
             ];
             Print("N_3([1,", j, "])+ tensor R_4^0(1,7,[1,1])+ : ");
             PositionTest(irreps, rho, pos_list);
@@ -675,7 +664,7 @@ IrrepTestEven := function(ld)
             for j in [1,3] do
                 rho := RepD(2, 5, [i, j], true);
                 Print("D_5([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -686,14 +675,14 @@ IrrepTestEven := function(ld)
             for j in [0,3] do
                 rho := RepN(2, 5, [i,j], true);
                 Print("N_5([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
         for i in [1,3,5,7] do
             for j in [1,2] do
                 rho := RepN(2, 5, [i,j], true);
                 Print("N_5([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -705,12 +694,12 @@ IrrepTestEven := function(ld)
             for j in [0,2] do
                 rho := RepR(2, ld, 0, r, 1, [1,j], true);
                 Print("R_", ld, "^0(", r, ",1,[1,", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
             for i in [1,3] do
                 rho := RepR(2, ld, 0, r, 1, [i,1], true);
                 Print("R_", ld, "^0(", r, ",1,[", i, ",1]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
         for r in [1,3] do
@@ -718,7 +707,7 @@ IrrepTestEven := function(ld)
                 for j in [0,1] do
                     rho := RepR(2, ld, 0, r, 5, [i,j], true);
                     Print("R_", ld, "^0(", r, ",5,[", i, ",", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         od;
@@ -731,7 +720,7 @@ IrrepTestEven := function(ld)
             for j in [0,1] do
                 rho := RepR(2, ld, 0, 1, t, [1,j], true);
                 Print("R_", ld, "^0(1,", t, ",[1,", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -745,7 +734,7 @@ IrrepTestEven := function(ld)
                 for j in [0,1] do
                     rho := RepR(2, ld, 1, r, t, [1,j], true);
                     Print("R_", ld, "^1(", r, ",", t, ",[1,", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         od;
@@ -754,7 +743,7 @@ IrrepTestEven := function(ld)
                 for j in [0,1] do
                     rho := RepR(2, ld, 1, r, t, [1,j], true);
                     Print("R_", ld, "^1(", r, ",", t, ",[1,", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         od;
@@ -782,9 +771,9 @@ IrrepTestEven := function(ld)
             for j in [0,1] do
                 rho := RepR(2, 5, 2, r, 1, [0,j], true);
                 Print("R_5^2(", r, ",1,[0,", j, "])_1 : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
 
-                rho := [E(4) * rho[1], -E(4) * rho[2], 12];
+                rho := [E(4) * rho[1][1], -E(4) * rho[1][2]];
                 Print("C_3 tensor R_5^2(", r, ",1,[0,", j, "])_1 : ");
                 PositionTest(irreps, rho, pos_list);
             od;
@@ -799,7 +788,7 @@ IrrepTestEven := function(ld)
             for j in PrimeResidues(2^(ld-2) / 2) do
                 rho := RepD(2, ld, [i, j], true);
                 Print("D_", ld, "([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -810,14 +799,14 @@ IrrepTestEven := function(ld)
             for j in [0,3] do
                 rho := RepN(2, ld, [i,j], true);
                 Print("N_", ld, "([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
         for i in PrimeResidues(2^(ld-2)) do
             for j in [1,2] do
                 rho := RepN(2, ld, [i,j], true);
                 Print("N_", ld, "([", i, ",", j, "]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -829,7 +818,7 @@ IrrepTestEven := function(ld)
                 for j in [0,1] do
                     rho := RepR(2, ld, 0, 1, t, [i,j], true);
                     Print("R_", ld, "^0(1,", t, ",[", i, ",", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         od;
@@ -845,13 +834,13 @@ IrrepTestEven := function(ld)
                 for j in [0,2] do
                     rho := RepR(2, ld, 0, r, 1, [i,j], true);
                     Print("R_", ld, "^0(", r, ",1,[", i, ",", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
             for i in PrimeResidues(2^(ld-3)) do
                 rho := RepR(2, ld, 0, r, 1, [i,1], true);
                 Print("R_", ld, "^0(", r, ",1,[", i, ",1]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
         for r in [1,3] do
@@ -859,7 +848,7 @@ IrrepTestEven := function(ld)
                 for j in [0,1] do
                     rho := RepR(2, ld, 0, r, 5, [i,j], true);
                     Print("R_", ld, "^0(", r, ",5,[", i, ",", j, "]) : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         od;
@@ -869,7 +858,7 @@ IrrepTestEven := function(ld)
                     for j in [0,1] do
                         rho := RepR(2, ld, 1, r, t, [i,j], true);
                         Print("R_", ld, "^1(", r, ",", t, ",[", i, ",", j, "]) : ");
-                        PositionTest(irreps, rho, pos_list);
+                        PositionTest(irreps, rho[1], pos_list);
                     od;
                 od;
             od;
@@ -880,7 +869,7 @@ IrrepTestEven := function(ld)
                     for j in [0,1] do
                         rho := RepR(2, ld, 1, r, t, [i,j], true);
                         Print("R_", ld, "^1(", r, ",", t, ",[", i, ",", j, "]) : ");
-                        PositionTest(irreps, rho, pos_list);
+                        PositionTest(irreps, rho[1], pos_list);
                     od;
                 od;
             od;
@@ -891,7 +880,7 @@ IrrepTestEven := function(ld)
                     for j in [0,1] do
                         rho := RepR(2, ld, 2, r, t, [i,j], true);
                         Print("R_", ld, "^2(", r, ",", t, ",[", i, ",", j, "]) : ");
-                        PositionTest(irreps, rho, pos_list);
+                        PositionTest(irreps, rho[1], pos_list);
                     od;
                 od;
             od;
@@ -907,7 +896,7 @@ IrrepTestEven := function(ld)
                         for j in [0,1] do
                             rho := RepR(2, ld, si, r, t, [i,j], true);
                             Print("R_", ld, "^", si, "(", r, ",", t, ",[", i, ",", j, "]) : ");
-                            PositionTest(irreps, rho, pos_list);
+                            PositionTest(irreps, rho[1], pos_list);
                         od;
                     od;
                 od;
@@ -922,11 +911,11 @@ IrrepTestEven := function(ld)
             for t in [1,3] do
                 rho := RepR(2, ld, ld-2, r, t, [1,0], true);
                 Print("R_", ld, "^", ld-2, "(", r, ",", t, ",[1,0]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
 
                 rho := RepR(2, ld, ld-2, r, t, [1,1], true);
                 Print("R_", ld, "^", ld-2, "(", r, ",", t, ",[1,1]) : ");
-                PositionTest(irreps, rho, pos_list);
+                PositionTest(irreps, rho[1], pos_list);
             od;
         od;
 
@@ -936,10 +925,9 @@ IrrepTestEven := function(ld)
                 for t in [1,3] do
                     rho := RepR(2,6,4,r,t,[0,0],true);
                     Print("R_6^4(", r, ",", t, ",nu)_1 : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
 
-                    rho[1] := -1 * rho[1];
-                    rho[2] := -1 * rho[2];
+                    rho := [-1 * rho[1][1], -1 * rho[1][2]];
                     Print("C_2 tensor R_6^4(", r, ",", t, ",nu)_1 : ");
                     PositionTest(irreps, rho, pos_list);
                 od;
@@ -951,11 +939,11 @@ IrrepTestEven := function(ld)
                 for t in [1,3] do
                     rho := RepR(2,ld,ld-3,r,t,[0,0],true);
                     Print("R_", ld, "^", ld-3, "(", r, ",", t, ",nu)_1 : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
 
                     rho := RepR(2,ld,ld-3,r,t,[2,0],true);
                     Print("R_", ld, "^", ld-3, "(", r, ",", t, ",[2,0])_1 : ");
-                    PositionTest(irreps, rho, pos_list);
+                    PositionTest(irreps, rho[1], pos_list);
                 od;
             od;
         fi;
