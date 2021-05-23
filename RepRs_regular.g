@@ -147,8 +147,8 @@ MR := function(p, ld, si, r, t)
             # <alpha>, otherwise.
             t_rep := t mod Minimum(8, 2^(ld-si));
             if si = 0 then
-                r_rep := Minimum(r, r*t_rep mod 4);
-                if r in [1,3] and t = 1 then
+                r_rep := Minimum(r, (r*t_rep) mod 4);
+                if r_rep in [1,3] and t_rep = 1 then
                     if ld = 3 then
                         # Unique case: ord(alpha) = 1.
                         alpha := [1,0];
@@ -167,7 +167,7 @@ MR := function(p, ld, si, r, t)
                         zeta := [0,1];
                         omicron := [[1,0], alpha];
                     fi;
-                elif r in [1,3] and t = 5 then
+                elif r_rep in [1,3] and t_rep = 5 then
                     if ld = 3 then
                         # Unique case: see footnote NW p. 496.
                         alpha := [1,0];
@@ -183,7 +183,7 @@ MR := function(p, ld, si, r, t)
                             omicron := [[1,0], alpha];
                         fi;
                     fi;
-                elif r = 1 and t in [3,7] then
+                elif r_rep = 1 and t_rep in [3,7] then
                     if ld = 3 then
                         alpha := [1,0];
                         zeta := [-1 mod m1, 0];
