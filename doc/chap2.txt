@@ -1,0 +1,9 @@
+  
+  [1X2 [33X[0;0YUsage[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YInfoClass[133X[101X
+  
+  [33X[0;0YThis  package uses an [10XInfoClass[110X, [10XInfoSL2Reps[110X. It may be set to [10X0[110X (silent), [10X1[110X
+  (info), or [10X2[110X (verbose). To change it, use [10XSetInfoLevel(InfoSL2Reps, k)[110X.[133X
+  

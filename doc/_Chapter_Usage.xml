@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Usage">
+<Heading>Usage</Heading>
+
+<P/>
+<Section Label="Chapter_Usage_Section_InfoClass">
+<Heading>InfoClass</Heading>
+
+  This package uses an <Code>InfoClass</Code>, <Code>InfoSL2Reps</Code>. It may be set to <Code>0</Code> (silent), <Code>1</Code> (info), or <Code>2</Code> (verbose).
+  To change it, use <Code>SetInfoLevel(InfoSL2Reps, k)</Code>.
+</Section>
+
+
+</Chapter>
+

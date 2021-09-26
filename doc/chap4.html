@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (SL2Reps) - Chapter 4: Methods for constructing representations</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4_mj.html">[MathJax on]</a></p>
+<p><a id="X7E2339E784CFAA66" name="X7E2339E784CFAA66"></a></p>
+<div class="ChapSects"><a href="chap4.html#X7E2339E784CFAA66">4 <span class="Heading">Methods for constructing representations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X82DA126D7F755B1C">4.1 <span class="Heading">Representations of type D</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78D4833F85945690">4.1-1 SL2Reps_ModuleD</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84376A29780650AD">4.1-2 SL2Reps_RepD</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7CD74CFC84B38042">4.2 <span class="Heading">Representations of type N</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86D9DDAE83E4A141">4.2-1 SL2Reps_ModuleN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A3A34B886A52E2B">4.2-2 SL2Reps_RepN</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7D9759387C499FA0">4.3 <span class="Heading">Representations of type R</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8799C86A83FDD22B">4.3-1 SL2Reps_ModuleR</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B7A217C8634042C">4.3-2 SL2Reps_RepR</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87D9D1497ACD4A1E">4.3-3 SL2Reps_RepRUnary</a></span>
+</div></div>
+</div>
+
+<h3>4 <span class="Heading">Methods for constructing representations</span></h3>
+
+<p><a id="X82DA126D7F755B1C" name="X82DA126D7F755B1C"></a></p>
+
+<h4>4.1 <span class="Heading">Representations of type D</span></h4>
+
+<p>TODO: Description of type <span class="Math">D</span>.</p>
+
+<p><a id="X78D4833F85945690" name="X78D4833F85945690"></a></p>
+
+<h5>4.1-1 SL2Reps_ModuleD</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
+
+<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">D</span>.</p>
+
+<p><a id="X84376A29780650AD" name="X84376A29780650AD"></a></p>
+
+<h5>4.1-2 SL2Reps_RepD</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
+
+<p>Constructs the irreducible representation(s) of type <span class="Math">D</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
+
+<p><a id="X7CD74CFC84B38042" name="X7CD74CFC84B38042"></a></p>
+
+<h4>4.2 <span class="Heading">Representations of type N</span></h4>
+
+<p>TODO: Description of type <span class="Math">N</span>.</p>
+
+<p><a id="X86D9DDAE83E4A141" name="X86D9DDAE83E4A141"></a></p>
+
+<h5>4.2-1 SL2Reps_ModuleN</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
+
+<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">N</span>.</p>
+
+<p><a id="X7A3A34B886A52E2B" name="X7A3A34B886A52E2B"></a></p>
+
+<h5>4.2-2 SL2Reps_RepN</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
+
+<p>Constructs the irreducible representation(s) of type <span class="Math">N</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
+
+<p><a id="X7D9759387C499FA0" name="X7D9759387C499FA0"></a></p>
+
+<h4>4.3 <span class="Heading">Representations of type R</span></h4>
+
+<p>TODO: Description of type <span class="Math">R</span>.</p>
+
+<p><a id="X8799C86A83FDD22B" name="X8799C86A83FDD22B"></a></p>
+
+<h5>4.3-1 SL2Reps_ModuleR</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
+
+<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">R</span>.</p>
+
+<p><a id="X7B7A217C8634042C" name="X7B7A217C8634042C"></a></p>
+
+<h5>4.3-2 SL2Reps_RepR</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
+
+<p>Constructs the irreducible representation(s) of type <span class="Math">R</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
+
+<p><a id="X87D9D1497ACD4A1E" name="X87D9D1497ACD4A1E"></a></p>
+
+<h5>4.3-3 SL2Reps_RepRUnary</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
+
+<p>Constructs the irreducible representation(s) of unary type <span class="Math">R</span> (that is, with <span class="Math">\sigma = \lambda</span>) with level <span class="Math">p^\lambda</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

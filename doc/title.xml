@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<TitlePage>
+  <Title>
+    SL2Reps
+  </Title>
+  <Subtitle>
+    Constructs representations of SL2(Z).
+  </Subtitle>
+  <Version>
+    0.1
+  </Version>
+  <Author>
+    Siu-Hung Ng<Alt Only="LaTeX"><Br/></Alt>
+<Email>rng@math.lsu.edu</Email>
+
+  </Author>
+  <Author>
+    Yilong Wang<Alt Only="LaTeX"><Br/></Alt>
+<Email>wyl@bimsa.cn</Email>
+
+  </Author>
+  <Author>
+    Samuel Wilson<Alt Only="LaTeX"><Br/></Alt>
+<Email>swil311@lsu.edu</Email>
+
+  </Author>
+  <Date>
+    24 September 2021
+  </Date>
+  </TitlePage>

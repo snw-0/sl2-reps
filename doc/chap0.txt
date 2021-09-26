@@ -1,0 +1,57 @@
+  
+  
+                                   [1X SL2Reps [101X
+  
+  
+                    [1X Constructs representations of SL2(Z). [101X
+  
+  
+                                      0.1
+  
+  
+                               24 September 2021
+  
+  
+                                  Siu-Hung Ng
+  
+                                  Yilong Wang
+  
+                                 Samuel Wilson
+  
+  
+  
+  Siu-Hung Ng
+      Email:    [7Xmailto:rng@math.lsu.edu[107X
+  Yilong Wang
+      Email:    [7Xmailto:wyl@bimsa.cn[107X
+  Samuel Wilson
+      Email:    [7Xmailto:swil311@lsu.edu[107X
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (SL2Reps)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+  2 [33X[0;0YUsage[133X
+    2.1 [33X[0;0YInfoClass[133X
+  3 [33X[0;0YMethods for constructing lists of representations[133X
+    3.1 [33X[0;0YIrreducible representations[133X
+      3.1-1 SL2Reps_PrimePowerIrrepsOfDegree
+      3.1-2 SL2Reps_PrimePowerIrrepsOfDegreeAtMost
+      3.1-3 SL2Reps_IrrepsOfDegree
+      3.1-4 SL2Reps_IrrepsOfDegreeAtMost
+  4 [33X[0;0YMethods for constructing representations[133X
+    4.1 [33X[0;0YRepresentations of type D[133X
+      4.1-1 SL2Reps_ModuleD
+      4.1-2 SL2Reps_RepD
+    4.2 [33X[0;0YRepresentations of type N[133X
+      4.2-1 SL2Reps_ModuleN
+      4.2-2 SL2Reps_RepN
+    4.3 [33X[0;0YRepresentations of type R[133X
+      4.3-1 SL2Reps_ModuleR
+      4.3-2 SL2Reps_RepR
+      4.3-3 SL2Reps_RepRUnary
+  
+  
+  [32X

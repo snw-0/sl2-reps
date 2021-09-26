@@ -1,0 +1,6 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YThis  package  constructs  matrix  presentations  of  the representations of
+  [23X\mathrm{SL}_2(\mathbb{Z})[123X.[133X
+  
