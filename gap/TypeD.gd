@@ -9,15 +9,15 @@
 #!
 #! TODO: Description of type $D$.
 
-#! @Arguments p,lambda
+#! @Arguments p,ld
 #! @Returns a record describing $(M,Q)$
 #! @Description
 #!  Constructs information about the underlying quadratic module $(M,Q)$ of type $D$.
 DeclareGlobalFunction( "SL2Reps_ModuleD" );
 
-#! @Arguments p,lambda,chi_index
+#! @Arguments p,ld,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
-#!  Constructs the irreducible representation(s) of type $D$ with level $p^\lambda$
+#!  Constructs the irreducible representation(s) of type $D$ with level $p^\ld$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
 DeclareGlobalFunction( "SL2Reps_RepD" );

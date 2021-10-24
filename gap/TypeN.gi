@@ -1,23 +1,23 @@
 #
 # SL2Reps: Constructs representations of SL2(Z).
 #
-# Representations of type D.
+# Representations of type N.
 #
 # Implementations
 #
 
 InstallGlobalFunction( SL2Reps_ModuleN,
-function(p, lambda)
+function(p, ld)
     local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp;
 
     if not IsPrime(p) then
         Error("p must be prime.");
-    elif not lambda in PositiveIntegers then
-        Error("lambda must be a positive integer.");
-        # TODO: technically lambda = 0 is fine, it just gives us the trivial rep.
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
+        # TODO: technically ld = 0 is fine, it just gives us the trivial rep.
     fi;
 
-    l := p^lambda;
+    l := p^ld;
 
     # Find t.
     if p = 2 then t := 3;
@@ -68,19 +68,19 @@ function(p, lambda)
     A := Filtered(M, a -> Nm(a) = 1);
 
     # Use Ord(zeta) = p+1 or 6 to find zeta.
-    if lambda = 1 or ((p > 2) and (lambda > 1)) then
+    if ld = 1 or ((p > 2) and (ld > 1)) then
         zeta := First(A, x -> Ord(x) = p+1);
     else
         zeta := First(A, x -> Ord(x) = 6);
     fi;
 
-    # Use Ord(alpha) = 2^(lambda - 2) or p^(lambda - 1) to find alpha.
-    if lambda = 1 then
+    # Use Ord(alpha) = 2^(ld - 2) or p^(ld - 1) to find alpha.
+    if ld = 1 then
         alpha := [1,0];
     elif p = 2 then
-        alpha := First(A, x -> (Ord(x) = 2^(lambda-2)) and (x[1] mod 4 = 1) and (x[2] mod 4 = 0));
+        alpha := First(A, x -> (Ord(x) = 2^(ld-2)) and (x[1] mod 4 = 1) and (x[2] mod 4 = 0));
     else
-        alpha := First(A, x -> Ord(x) = p^(lambda-1) and (x[1] mod p = 1) and (x[2] mod p = 0));
+        alpha := First(A, x -> Ord(x) = p^(ld-1) and (x[1] mod p = 1) and (x[2] mod p = 0));
     fi;
 
     # Use powers of alpha and zeta to index elements in A.
@@ -99,13 +99,13 @@ function(p, lambda)
         return Chi;
     end;
 
-    # Find the bases for primitive chars, which depend only on p and lambda.
+    # Find the bases for primitive chars, which depend only on p and ld.
     # For odd p, pick u to be the smallest quad nonres mod p (any quad nonres works).
     if p > 2 then
         u := First([0..p-1], x -> Jacobi(x, p) = -1);
     fi;
 
-    # Find the sets theta. Only works for p = odd or p = 2 and lambda > 2.
+    # Find the sets theta. Only works for p = odd or p = 2 and ld > 2.
     theta := function(a)
         local i, eta, t1;
         eta := [1, 0];
@@ -114,20 +114,20 @@ function(p, lambda)
         fi;
         if p > 2 then
             t1 := Filtered([1..(l-1)/2], n -> Gcd(n, p) = 1);
-        elif p = 2 and lambda > 2 then
-            t1 := Filtered([1..2^(lambda-2)-1], n -> n mod 2 = 1);
-        elif p = 2 and lambda = 2 then
+        elif p = 2 and ld > 2 then
+            t1 := Filtered([1..2^(ld-2)-1], n -> n mod 2 = 1);
+        elif p = 2 and ld = 2 then
             t1 := [1];
         fi;
         return List(t1, x -> Prod([x, 0], eta));
     end;
 
     # The basis for primitive chars.
-    if p = 2 and lambda = 1 then
+    if p = 2 and ld = 1 then
         Bp := [[1, 0]];
-    elif p = 2 and lambda = 2 then
+    elif p = 2 and ld = 2 then
         Bp := [[1, 0], theta(3)[1]];
-    elif p = 2 and lambda > 2 then
+    elif p = 2 and ld > 2 then
         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
     else
         Bp := Concatenation(theta(1), theta(u));
@@ -144,7 +144,7 @@ function(p, lambda)
 end );
 
 InstallGlobalFunction( SL2Reps_RepN,
-function(p, lambda, chi_index)
+function(p, ld, chi_index)
     local l, M_rec, Agrp, Chi, Bp, beta, Nm, Prod, Tr, sxy, S, T, deg,
             N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
 
@@ -153,10 +153,10 @@ function(p, lambda, chi_index)
         # n.b.: it's fine if they're negative or 0
     fi;
 
-    # this will check if p,lambda are valid
-    M_rec := SL2Reps_ModuleN(p, lambda);
+    # this will check if p,ld are valid
+    M_rec := SL2Reps_ModuleN(p, ld);
 
-    l := p^lambda;
+    l := p^ld;
 
     Agrp := M_rec.Agrp;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
@@ -174,11 +174,11 @@ function(p, lambda, chi_index)
 
     # TODO: refactor the primitive / chi^2 = 1 / etc. logic.
 
-    Prim1 := (((p = 2) and (lambda > 2)) or ((p > 2) and (lambda > 1))) and (Gcd(chi_index[1], p) = 1);
+    Prim1 := (((p = 2) and (ld > 2)) or ((p > 2) and (ld > 1))) and (Gcd(chi_index[1], p) = 1);
 
-    Prim2 := (p = 2) and (lambda = 2) and (Chi([ 0, 3 ]) = -1);
+    Prim2 := (p = 2) and (ld = 2) and (Chi([ 0, 3 ]) = -1);
 
-    Prim3 := (p>2) and (lambda = 1) and ((chi_index[2] mod (p+1)/2) <> 0);
+    Prim3 := (p>2) and (ld = 1) and ((chi_index[2] mod (p+1)/2) <> 0);
 
     if Prim1 or Prim2 or Prim3 then
         Info(InfoSL2Reps, 2, "SL2Reps : chi is primitive.");
@@ -192,13 +192,13 @@ function(p, lambda, chi_index)
         sxy := function(x, y)
             local z;
             z := Prod(x, [y[1] + y[2], -y[2]]);
-            return ((-1)^lambda / l) * Sum(Agrp, a -> Chi(a[1]) * E(l)^(Tr(Prod(a[2], z))));
+            return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a[1]) * E(l)^(Tr(Prod(a[2], z))));
         end;
 
         S := List(Bp, x -> List(Bp, y -> sxy(x, y)));
         T := DiagonalMat(List(Bp, x -> E(l)^(Nm(x))));
 
-        if not (p = 2 and lambda = 1) then
+        if not (p = 2 and ld = 1) then
             # We need to perform a change of basis to make S symmetric.
 
             # beta is the element of Agrp equal to x / x-bar. This is used to make the s-matrix symmetric below.
@@ -214,22 +214,22 @@ function(p, lambda, chi_index)
 
             U := [];
 
-            if p = 2 and lambda > 2 then
+            if p = 2 and ld > 2 then
                 # Bp consists of theta_1, theta_3, theta_5, theta_7.
                 for j in [1 .. Length(Bp) / 4] do
                     Add(U, 1);
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/4])[1])));
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 2 * Length(Bp)/4])[1])));
                 od;
-                for j in [1 .. Length(Bp) / 2] do
+                for j in [1 .. Length(Bp) / 4] do
                     Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 3 * Length(Bp)/4])[1])));
                 od;
             else
-                # For p = 2, lambda = 2, Bp consists of theta_1 and theta_3.
+                # For p = 2, ld = 2, Bp consists of theta_1 and theta_3.
                 # Otherwise, Bp consists of theta_1 and theta_u, where u is a quad. non-residue.
                 # The result is the same, so we just handle both cases together.
 
@@ -247,8 +247,8 @@ function(p, lambda, chi_index)
         fi;
 
         deg := Length(Bp);
-    elif (lambda = 1 and Length(AsSet(List(Agrp, x -> Chi(x[1])))) = 1) then
-        Info(InfoSL2Reps, 2, "SL2Reps : lambda = 1, and chi is the trivial character. This representation is also called the Steinberg representation.");
+    elif (ld = 1 and Length(AsSet(List(Agrp, x -> Chi(x[1])))) = 1) then
+        Info(InfoSL2Reps, 2, "SL2Reps : ld = 1, and chi is the trivial character. This representation is also called the Steinberg representation.");
 
         Bp := Concatenation([[0,0]], Bp);
 
@@ -260,7 +260,7 @@ function(p, lambda, chi_index)
                 return -Sqrt(p+1) / p;
             else
                 z := Prod(x, [y[1] + y[2], -y[2]]);
-                return ((-1)^lambda / l) * Sum(Agrp, a -> Chi(a[1])*E(l)^(Tr(Prod(a[2], z))));
+                return ((-1)^ld / l) * Sum(Agrp, a -> Chi(a[1])*E(l)^(Tr(Prod(a[2], z))));
             fi;
         end;
 
@@ -295,7 +295,7 @@ function(p, lambda, chi_index)
 
         deg := Length(B);
         sxy := function(x, y)
-            return ((-1)^lambda / l) * Sum(Agrp, a ->
+            return ((-1)^ld / l) * Sum(Agrp, a ->
                     Sum(Agrp, b ->
                     Chi(a[1]) * ComplexConjugate(Chi(b[1])) * E(l)^(BQ(Prod(a[2], x), Prod(b[2], y)))));
         end;
@@ -307,15 +307,15 @@ function(p, lambda, chi_index)
         T := DiagonalMat(List(B, x -> E(l)^(Nm(x))));
     fi;
 
-    if [p, lambda, chi_index[1] mod 2, chi_index[2] mod 6] = [2, 3, 1, 0] then
-        Info(InfoSL2Reps, 2, "SL2Reps : Special case: p = 2, lambda = 3, chi = [1, 0]. The character is primitive of order 2; the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].");
+    if [p, ld, chi_index[1] mod 2, chi_index[2] mod 6] = [2, 3, 1, 0] then
+        Info(InfoSL2Reps, 2, "SL2Reps : Special case: p = 2, ld = 3, chi = [1, 0]. The character is primitive of order 2; the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].");
 
         return [
             [S{[1,2]}{[1,2]}, T{[1,2]}{[1,2]}],
             [S{[3,4]}{[3,4]}, T{[3,4]}{[3,4]}]
         ];
-    elif [p, lambda, chi_index[1] mod 2, chi_index[2] mod 6] = [2, 3, 1, 3] then
-        Info(InfoSL2Reps, 2, "SL2Reps : Special case p = 2, lambda = 3, chi = [1, 3]. The character is primitive of order 2; the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].");
+    elif [p, ld, chi_index[1] mod 2, chi_index[2] mod 6] = [2, 3, 1, 3] then
+        Info(InfoSL2Reps, 2, "SL2Reps : Special case p = 2, ld = 3, chi = [1, 3]. The character is primitive of order 2; the representation is reducible. It decomposes into two irreducible components. The output is of the form [N_3(chi)_+, N_3(chi)_-].");
 
         U := [
             [1, 0, 0, 0],

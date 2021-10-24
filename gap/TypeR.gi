@@ -7,7 +7,7 @@
 #
 
 InstallGlobalFunction( SL2Reps_ModuleR,
-function(p, lambda, sigma, r, t)
+function(p, ld, si, r, t)
     local l, ls, m1, m2, M, tM, pM,
             Prod, Pow, Ord, Nm,
             t_rep, r_rep,
@@ -17,40 +17,40 @@ function(p, lambda, sigma, r, t)
 
     if not IsPrime(p) then
         Error("p must be prime.");
-    elif not lambda in PositiveIntegers then
-        Error("lambda must be a positive integer.");
-        # TODO: technically lambda = 0 is fine, it just gives us the trivial rep.
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
+        # TODO: technically ld = 0 is fine, it just gives us the trivial rep.
     elif (not r in PositiveIntegers) or (not t in PositiveIntegers) then
         # TODO: what precisely are the conditions on r,t?
         Error("r and t must be positive integers.");
-    elif (not sigma in Integers) or (sigma < 0) then
-        Error("sigma must be a non-negative integer.");
+    elif (not si in Integers) or (si < 0) then
+        Error("si must be a non-negative integer.");
     else
         if p = 2 then
-            if sigma > lambda - 2 then
-                Error("lambda - sigma - 1 must be positive.");
+            if si > ld - 2 then
+                Error("ld - si - 1 must be positive.");
             fi;
-            # TODO: is it not defined when lambda - sigma - 1 = 0, or what?
+            # TODO: is it not defined when ld - si - 1 = 0, or what?
         else
-            if sigma > lambda then
-                Error("lambda - sigma must be non-negative.");
-            elif sigma = lambda then
-                # TODO: if sigma = lambda then we get the unary case. Should we call the
+            if si > ld then
+                Error("ld - si must be non-negative.");
+            elif si = ld then
+                # TODO: if si = ld then we get the unary case. Should we call the
                 # corresponding function, or just state what happens?
-                Error("When lambda - sigma = 0, we get the unary R case.");
+                Error("When ld - si = 0, we get the unary R case.");
             fi;
         fi;
     fi;
 
-    l := p^lambda;
-    ls := p^sigma;
+    l := p^ld;
+    ls := p^si;
 
     if p = 2 then
-        m1 := p^(lambda-1);
-        m2 := p^(lambda-sigma-1);
+        m1 := p^(ld-1);
+        m2 := p^(ld-si-1);
     else
-        m1 := p^(lambda);
-        m2 := p^(lambda-sigma);
+        m1 := p^(ld);
+        m2 := p^(ld-si);
     fi;
 
     # Module.
@@ -100,12 +100,12 @@ function(p, lambda, sigma, r, t)
 
     # Find generators for A and construct Agrp.
     if p = 2 then
-        if sigma = lambda - 2 then
+        if si = ld - 2 then
             # NW S. 2.5 and 6.3.
-            if lambda = 3 then
+            if ld = 3 then
                 # TODO: what to do here?
                 Error("This type is the same as Type N.");
-            elif lambda = 4 then
+            elif ld = 4 then
                 alpha := [1,0];
                 zeta := [7,0];
                 Agrp := [[0,0, [1, 0]], [0,1, [7,0]]];
@@ -141,10 +141,10 @@ function(p, lambda, sigma, r, t)
                 # we instead call a character primitive if it is injective on alpha
                 # (i.e. if chi(alpha) = -1).
 
-                if lambda = 5 then
+                if ld = 5 then
                     alpha := [(1 + 4 * t) mod m1, 1];
                 else
-                    alpha := [(1 - (2^(lambda-3) * t)) mod m1, 1];
+                    alpha := [(1 - (2^(ld-3) * t)) mod m1, 1];
                 fi;
                 zeta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
@@ -170,18 +170,18 @@ function(p, lambda, sigma, r, t)
             # as per table on p. 475, NW part I.
             #
             # Then, we apply table on p. 496, NW part II to find generators of A.
-            # In all cases except lambda=3, sigma=0, t=5 (for which see below)
+            # In all cases except ld=3, si=0, t=5 (for which see below)
             # we have A = <alpha> x <zeta> with zeta = [-1,0] or [0,1].
             #
             # A character is primitive if injective on:
-            # <-1>, when lambda = 3 and sigma = 0,
-            # <-alpha^2>, when lambda = 4, sigma = 0, t = 5,
+            # <-1>, when ld = 3 and si = 0,
+            # <-alpha^2>, when ld = 4, si = 0, t = 5,
             # <alpha>, otherwise.
-            t_rep := t mod Minimum(8, 2^(lambda-sigma));
-            if sigma = 0 then
+            t_rep := t mod Minimum(8, 2^(ld-si));
+            if si = 0 then
                 r_rep := Minimum(r, r*t_rep mod 4);
                 if r in [1,3] and t = 1 then
-                    if lambda = 3 then
+                    if ld = 3 then
                         # Unique case: ord(alpha) = 1.
                         alpha := [1,0];
                         zeta := [0,1];
@@ -189,10 +189,10 @@ function(p, lambda, sigma, r, t)
                     else
                         # Note: NW give alpha = (4, 1 mod 4) here.
                         #
-                        # This is incorrect for lambda = 4,5, where we instead need (1 mod 4, 4);
-                        # for lambda >= 6 it is irrelevant which of the two we use, as they both
+                        # This is incorrect for ld = 4,5, where we instead need (1 mod 4, 4);
+                        # for ld >= 6 it is irrelevant which of the two we use, as they both
                         # have the same order and both generate the primitive element,
-                        # [1, 2^(lambda-2)], in the same way.
+                        # [1, 2^(ld-2)], in the same way.
                         #
                         # We therefore use the latter throughout.
                         alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 4);
@@ -200,7 +200,7 @@ function(p, lambda, sigma, r, t)
                         omicron := [[1,0], alpha];
                     fi;
                 elif r in [1,3] and t = 5 then
-                    if lambda = 3 then
+                    if ld = 3 then
                         # Unique case: see footnote NW p. 496.
                         alpha := [1,0];
                         zeta := [2,1];
@@ -208,7 +208,7 @@ function(p, lambda, sigma, r, t)
                     else
                         alpha := First(A, x -> x[1] = 2 and (x[2] mod 4) = 3);
                         zeta := [-1 mod m1, 0];
-                        if lambda = 4 then
+                        if ld = 4 then
                             omicron := [[2,1],
                                     Prod([-1 mod m1, 0], Pow(alpha, 2))];
                         else
@@ -216,7 +216,7 @@ function(p, lambda, sigma, r, t)
                         fi;
                     fi;
                 elif r = 1 and t in [3,7] then
-                    if lambda = 3 then
+                    if ld = 3 then
                         alpha := [1,0];
                         zeta := [-1 mod m1, 0];
                         omicron := [[0,1], [-1 mod m1, 0]];
@@ -226,7 +226,7 @@ function(p, lambda, sigma, r, t)
                         omicron := [[1,0], alpha];
                     fi;
                 fi;
-            elif sigma = 1 then
+            elif si = 1 then
                 r_rep := Minimum(r, (r + 2*r*t_rep) mod 8);
                 # There are two cases here (namely [[1,5],[1,5]] and [[1,3],[3,7]])
                 # but for this question they differ only in which alpha is selected,
@@ -234,7 +234,7 @@ function(p, lambda, sigma, r, t)
                 alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 2);
                 zeta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
-            elif sigma = 2 then
+            elif si = 2 then
                 r_rep := r mod 4;
                 alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 2);
                 zeta := [-1 mod m1, 0];
@@ -261,31 +261,31 @@ function(p, lambda, sigma, r, t)
             end;
         fi;
     else
-        if p = 3 and lambda >= 3 and sigma = 1 and t = 1 then
+        if p = 3 and ld >= 3 and si = 1 and t = 1 then
             # Special case:
             # A is not cyclic; instead, A = <alpha> x <zeta>
-            # where Ord(alpha) = 3^(lambda-2) and Ord(zeta) = 6.
+            # where Ord(alpha) = 3^(ld-2) and Ord(zeta) = 6.
             #
             # alpha and -zeta are both found in the group A_0 - A_1.
             #
             # pM is fixed pointwise by the subgroup generated by
-            # alpha^(3^(lambda-3)) = [1, 3^(lambda-2)].
+            # alpha^(3^(ld-3)) = [1, 3^(ld-2)].
             # Hence, a character is primitive iff it is injective on <alpha>.
 
-            if lambda = 3 then
-                # Unique case; alpha = alpha^(3^(lambda-3)).
+            if ld = 3 then
+                # Unique case; alpha = alpha^(3^(ld-3)).
                 alpha := [1,3];
                 zeta := [23,7];
             else
                 zeta_coords := List([1,3,5],
-                        x -> (1 + 3 * (1/2) * ((x * 3^(lambda-2)) - 1)) mod m1);
+                        x -> (1 + 3 * (1/2) * ((x * 3^(ld-2)) - 1)) mod m1);
                 A01 := Filtered(A, x -> (x[1] mod (ls*t) = 1) and (x[2] mod p <> 0));
                 alpha := First(A01, x -> not x[1] in zeta_coords);
                 zeta := Prod([-1 mod m1, 0], First(A01, x -> x[1] in zeta_coords));
             fi;
             omicron := [[1,0], alpha];
 
-            Aind := Cartesian([0 .. (3^(lambda-2)) - 1], [0 .. 5]);
+            Aind := Cartesian([0 .. (3^(ld-2)) - 1], [0 .. 5]);
             Agrp := List(Aind, x -> [
                     [x[1], x[2]],
                     Prod(Pow(alpha, x[1]), Pow(zeta, x[2]))
@@ -294,18 +294,18 @@ function(p, lambda, sigma, r, t)
             Char := function(i, j)
                 local Chi;
                 Chi := function(x)
-                    return E(3^(lambda-2))^(x[1]*i) * E(6)^(x[2]*j);
+                    return E(3^(ld-2))^(x[1]*i) * E(6)^(x[2]*j);
                 end;
                 return Chi;
             end;
         else
-            # A is cyclic; A = <alpha> x <-1> where Ord(alpha) = p^(lambda-sigma).
+            # A is cyclic; A = <alpha> x <-1> where Ord(alpha) = p^(ld-si).
             # A character is primitive iff it is injective on <alpha>.
 
-            alpha := First(A, x -> Ord(x) = p^(lambda-sigma));
+            alpha := First(A, x -> Ord(x) = p^(ld-si));
             omicron := [[1,0], alpha];
 
-            Aind := Cartesian([0 .. (p^(lambda-sigma)) - 1], [0 .. 1]);
+            Aind := Cartesian([0 .. (p^(ld-si)) - 1], [0 .. 1]);
             Agrp := List(Aind, x -> [
                     [x[1], x[2]],
                     Prod(Pow(alpha, x[1]), [(-1)^(x[2]) mod m1, 0])
@@ -314,7 +314,7 @@ function(p, lambda, sigma, r, t)
             Char := function(i, j)
                 local Chi;
                 Chi := function(x)
-                    return E(p^(lambda-sigma))^(x[1]*i) * (-1)^(x[2]*j);
+                    return E(p^(ld-si))^(x[1]*i) * (-1)^(x[2]*j);
                 end;
                 return Chi;
             end;
@@ -340,16 +340,16 @@ function(p, lambda, sigma, r, t)
 end );
 
 InstallGlobalFunction( SL2Reps_RepR,
-function(p, lambda, sigma, r, t, chi_index)
+function(p, ld, si, r, t, chi_index)
     local l, M_rec, Agrp, Chi, IsPrim, tM, Nm, Prod, Ord, c,
             Tr, AOrbit, Epsilon,
             tM1, theta, b, B1, Bp, BaseChangeMat, w, U, U_index, B_Q, sxy, S, T, deg,
             N, B, O, VInd, tO, a, k;
 
-    if p > 2 and sigma = lambda then
+    if p > 2 and si = ld then
         # unary case.
-        Info(InfoSL2Reps, 2, "SL2Reps : p > 2 and lambda - sigma = 0; this is the unary case. This can also be invoked directly as SL2Reps_RepRUnary(p, lambda, r).");
-        return SL2Reps_RepRUnary(p, lambda, r);
+        Info(InfoSL2Reps, 2, "SL2Reps : p > 2 and ld - si = 0; this is the unary case. This can also be invoked directly as SL2Reps_RepRUnary(p, ld, r).");
+        return SL2Reps_RepRUnary(p, ld, r);
     fi;
 
     if (not chi_index[1] in Integers) or (not chi_index[2] in Integers) then
@@ -357,10 +357,10 @@ function(p, lambda, sigma, r, t, chi_index)
         # n.b.: it's fine if they're negative or 0
     fi;
 
-    # this will check if p,lambda,sigma,r,t are valid
-    M_rec := SL2Reps_ModuleR(p, lambda, sigma, r, t);
+    # this will check if p,ld,si,r,t are valid
+    M_rec := SL2Reps_ModuleR(p, ld, si, r, t);
 
-    l := p^lambda;
+    l := p^ld;
 
     Agrp := M_rec.Agrp;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
@@ -387,7 +387,7 @@ function(p, lambda, sigma, r, t, chi_index)
         # Find basis for primitive characters; this can depend on the character,
         # so we have to do it here instead of in MR.
         if p = 2 then
-            if lambda >= 3 and sigma <= lambda - 3 then
+            if ld >= 3 and si <= ld - 3 then
                 theta := function(a)
                     # find theta_a, with norm a
                     local eta, x;
@@ -399,26 +399,26 @@ function(p, lambda, sigma, r, t, chi_index)
                             Error("No eta found with norm ", a);
                         fi;
                     fi;
-                    return List(List([0 .. (2^(lambda-3) - 1)], x -> (2*x + 1)),
+                    return List(List([0 .. (2^(ld-3) - 1)], x -> (2*x + 1)),
                             x -> Prod([x, 0], eta));
                 end;
 
                 # see table in NW sec. 5.
-                if sigma = 0 then
+                if si = 0 then
                     if t mod 4 = 1 then
                         Bp := Concatenation(theta(1), theta(5));
                     else
                         Bp := Concatenation(theta(1), theta(3), theta(5), theta(7));
                     fi;
-                elif sigma = 1 then
+                elif si = 1 then
                     if t mod 4 = 1 then
                         Bp := Concatenation(theta(1), theta(3));
                     else
                         Bp := Concatenation(theta(1), theta(7));
                     fi;
-                elif sigma = 2 then
+                elif si = 2 then
                     Bp := Concatenation(theta(1), theta(5));
-                    U := IdentityMat(3*2^(lambda-3));
+                    U := IdentityMat(3*2^(ld-3));
                 else
                     Bp := theta(1);
                 fi;
@@ -432,13 +432,13 @@ function(p, lambda, sigma, r, t, chi_index)
                 while Length(tM1) > 0 do
                     b := tM1[1];
                     # Does kappa(b) lie in the same A-orbit as b?
-                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(lambda-sigma-1)]);
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si-1)]);
                     if a = fail then
                         # No, it doesn't. We should therefore pair them up at the end.
                         Add(B1,b);
                         SubtractSet(tM1, AOrbit(b));
-                        Add(B1,[b[1], -b[2] mod p^(lambda-sigma-1)]);
-                        SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(lambda-sigma-1)]));
+                        Add(B1,[b[1], -b[2] mod p^(ld-si-1)]);
+                        SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si-1)]));
                     else
                         # Yes, it does. We will need to scale by 1 / Sqrt(Chi(a)) later.
                         Add(Bp,b);
@@ -447,28 +447,28 @@ function(p, lambda, sigma, r, t, chi_index)
                 od;
 
                 Bp := Concatenation(Bp, B1);
-            elif lambda >= 5 and sigma = lambda - 2 then
+            elif ld >= 5 and si = ld - 2 then
                 # Depends on the character; see NW p. 511.
                 Bp := [];
 
                 # theta_1
                 b := 1;
-                while b <= 2^(lambda-2) - 1 do
+                while b <= 2^(ld-2) - 1 do
                     Add(Bp, [b, 0]);
                     b := b + 2;
                 od;
 
                 # theta_2
                 b := 2;
-                while b <= 2^(lambda-3) - 2 do
+                while b <= 2^(ld-3) - 2 do
                     Add(Bp, [b, 0]);
                     b := b + 4;
                 od;
 
                 # theta_3
-                if lambda > 5 then
+                if ld > 5 then
                     b := 4;
-                    while b <= 2^(lambda-3) - 4 do
+                    while b <= 2^(ld-3) - 4 do
                         Add(Bp, [b, 1]);
                         b := b + 4;
                     od;
@@ -488,7 +488,7 @@ function(p, lambda, sigma, r, t, chi_index)
                 else
                     # chi_{-alpha}
                     # theta_5
-                    Add(Bp, [2^(lambda-3), 1]);
+                    Add(Bp, [2^(ld-3), 1]);
                 fi;
 
                 # Separate return point in order to normalize as described above.
@@ -507,7 +507,7 @@ function(p, lambda, sigma, r, t, chi_index)
                 T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x))));
 
                 return [[S, T]];
-            elif lambda = 4 and sigma = 2 then
+            elif ld = 4 and si = 2 then
                 N := Cartesian([0 .. 7], [0 .. 1]);
                 B := [];
                 O := [];
@@ -534,8 +534,8 @@ function(p, lambda, sigma, r, t, chi_index)
                 deg := Length(B);
 
                 B_Q := function(a,b)
-                    # B((x,y),(w,z)) = (2r/p^lambda) * (xw + (p^sigma)tyz)
-                    return 2 * r * (a[1] * b[1] + (2^sigma) * t * a[2] * b[2]);
+                    # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
+                    return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
                 end;
 
                 sxy := function(x, y)
@@ -550,7 +550,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
                 T := DiagonalMat(List(B, x -> E(l)^(r*Nm(x))));
                 return [[S, T]];
-            elif lambda = 3 and sigma = 1 then
+            elif ld = 3 and si = 1 then
                 # TODO: what to do here?
                 Error("This type is the same as TypeN, use TypeN code.");
             else
@@ -572,13 +572,13 @@ function(p, lambda, sigma, r, t, chi_index)
             while Length(tM1) > 0 do
                 b := tM1[1];
                 # Does kappa(b) lie in the same A-orbit as b?
-                a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(lambda-sigma)]);
+                a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si)]);
                 if a = fail then
                     # No, it doesn't. We should therefore pair them up.
                     Add(B1,b);
                     SubtractSet(tM1, AOrbit(b));
-                    Add(B1,[b[1], -b[2] mod p^(lambda-sigma)]);
-                    SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(lambda-sigma)]));
+                    Add(B1,[b[1], -b[2] mod p^(ld-si)]);
+                    SubtractSet(tM1, AOrbit([b[1], -b[2] mod p^(ld-si)]));
                 else
                     # Yes, it does. So we need to scale by Chi(a).
                     Add(Bp,b);
@@ -599,7 +599,7 @@ function(p, lambda, sigma, r, t, chi_index)
         deg := Length(Bp);
 
         # Handle +- cases, where chi is primitive but squares to 1.
-        if p=2 and lambda=3 and sigma=0 and r=1 and t in [3,7] and chi_index=[0,1] then
+        if p=2 and ld=3 and si=0 and r=1 and t in [3,7] and chi_index=[0,1] then
             w := 1 / Sqrt(2);
             if t = 3 then
                 U := [
@@ -632,7 +632,7 @@ function(p, lambda, sigma, r, t, chi_index)
                 [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
                 [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
-        elif p=2 and lambda=4 and sigma=0 and r in [1,3] and ((t=1 and chi_index in [[1,0],[1,2]]) or (t=5 and chi_index in [[0,1],[2,1]])) then
+        elif p=2 and ld=4 and si=0 and r in [1,3] and ((t=1 and chi_index in [[1,0],[1,2]]) or (t=5 and chi_index in [[0,1],[2,1]])) then
             deg := 3;
             Info(InfoSL2Reps, 2, "SL2Reps : The character is primitive of order 2; the representation is reducible. It decomposes into two irreducible components. The output is of the form [R_4^0(", r, ",", t, ",chi)_+, R_4^0(", r, ",", t, ",chi)_-].");
 
@@ -648,7 +648,7 @@ function(p, lambda, sigma, r, t, chi_index)
                     [S{[3,4,5]}{[3,4,5]}, T{[3,4,5]}{[3,4,5]}]
                 ];
             fi;
-        elif p=2 and lambda=4 and sigma=0 and r=1 and t in [3,7] and chi_index in [[1,0],[1,1]] then
+        elif p=2 and ld=4 and si=0 and r=1 and t in [3,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 3,7.
             w := 1 / Sqrt(2);
             if t = 3 then
@@ -727,7 +727,7 @@ function(p, lambda, sigma, r, t, chi_index)
                 [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],
                 [S{[deg+1..deg*2]}{[deg+1..deg*2]}, T{[deg+1..deg*2]}{[deg+1..deg*2]}]
             ];
-        elif p=2 and lambda=5 and sigma=2 and r in [1,3] and t in [1,3,5,7] and chi_index in [[1,0],[1,1]] then
+        elif p=2 and ld=5 and si=2 and r in [1,3] and t in [1,3,5,7] and chi_index in [[1,0],[1,1]] then
             # See notes for bases. Note that they are in different orders for t = 1,3,5,7.
             w := 1 / Sqrt(2);
             if t = 1 then
@@ -878,9 +878,9 @@ function(p, lambda, sigma, r, t, chi_index)
                 b := Bp[k];
                 # Is kappa(b) in the same A-orbit as b?
                 if p = 2 then
-                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(lambda-sigma-1)]);
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si-1)]);
                 else
-                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(lambda-sigma)]);
+                    a := First(Agrp, x -> Prod(x[2],b) = [b[1], -b[2] mod p^(ld-si)]);
                 fi;
                 if a = fail then
                     # No, it isn't. This and the next basis element should be paired.
@@ -904,9 +904,9 @@ function(p, lambda, sigma, r, t, chi_index)
     else
         Info(InfoSL2Reps, 2, "SL2Reps : chi is not primitive.");
 
-        if p = 2 and ((lambda >= 5 and sigma = lambda - 2)
-                or (lambda = 5 and sigma = 2 and r in [1,3] and t = 1)
-                or (lambda >= 6 and sigma = lambda - 3)) then
+        if p = 2 and ((ld >= 5 and si = ld - 2)
+                or (ld = 5 and si = 2 and r in [1,3] and t = 1)
+                or (ld >= 6 and si = ld - 3)) then
             # Handle cases of non-primitive characters chi such that V(chi) still has some
             # irred. subrep. of the same level as the main rep.
             Info(InfoSL2Reps, 2, "SL2Reps : There is a single irreducible subrepresentation of the same level as V.");
@@ -933,7 +933,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
             # We need to construct a basis for a larger representation, and then cut down
             # to the (unique) irreducible subrep. by applying a base-change matrix.
-            if lambda >= 5 and sigma = lambda - 2 then
+            if ld >= 5 and si = ld - 2 then
                 # See NW S. 6.3.
 
                 # Depends on the character; see NW p. 511. Note that |A| = 4.
@@ -946,31 +946,31 @@ function(p, lambda, sigma, r, t, chi_index)
 
                     # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
                     b := 1;
-                    while b <= 2^(lambda-2) - 1 do
+                    while b <= 2^(ld-2) - 1 do
                         Add(Bp, [[b, 0], 4]);
                         deg := deg + 1;
                         b := b + 2;
                     od;
 
-                    # Remaining basis elements are of the form f_{xi} - f_{2^(lambda-2) - xi};
+                    # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
                     # we therefore add both summands to Bp and use a base-change matrix later.
                     U_index := Length(Bp) + 1; # Index where these compound elements begin.
                     # These have A-orbits of length 1.
                     Add(Bp, [[0, 0], 1]);
-                    Add(Bp, [[2^(lambda-2), 0], 1]);
+                    Add(Bp, [[2^(ld-2), 0], 1]);
                     deg := deg + 1;
                     # The remainder have A-orbits of length 2.
                     b := 4;
-                    while b <= 2^(lambda-3) - 4 do
+                    while b <= 2^(ld-3) - 4 do
                         Add(Bp, [[b, 0], 2]);
-                        Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 2]);
+                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
                         deg := deg + 1;
                         b := b + 4;
                     od;
                     b := 2;
-                    while b <= 2^(lambda-3) - 2 do
+                    while b <= 2^(ld-3) - 2 do
                         Add(Bp, [[b, 1], 2]);
-                        Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 1], 2]);
+                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
                         deg := deg + 1;
                         b := b + 4;
                     od;
@@ -983,32 +983,32 @@ function(p, lambda, sigma, r, t, chi_index)
 
                     # theta_1. These elements are of the usual form, with A-orbit size |A| = 4.
                     b := 1;
-                    while b <= 2^(lambda-2) - 1 do
+                    while b <= 2^(ld-2) - 1 do
                         Add(Bp, [[b, 0], 4]);
                         deg := deg + 1;
                         b := b + 2;
                     od;
 
                     # This element corresponds to an A-orbit of length 2.
-                    Add(Bp, [[2^(lambda-3), 0], 2]);
+                    Add(Bp, [[2^(ld-3), 0], 2]);
                     deg := deg + 1;
 
-                    # Remaining basis elements are of the form f_{xi} + f_{2^(lambda-2) - xi};
+                    # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
                     # we therefore add both summands to Bp and use a base-change matrix later.
                     # All these basis elements have A-orbits of length 2.
                     U_index := Length(Bp) + 1; # Index where these compound elements begin.
                     b := 2;
-                    while b <= 2^(lambda-3) - 2 do
+                    while b <= 2^(ld-3) - 2 do
                         Add(Bp, [[b, 1], 2]);
-                        Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 1], 2]);
+                        Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 1], 2]);
                         deg := deg + 1;
                         b := b + 4;
                     od;
-                    if lambda > 5 then
+                    if ld > 5 then
                         b := 4;
-                        while b <= 2^(lambda-3) - 4 do
+                        while b <= 2^(ld-3) - 4 do
                             Add(Bp, [[b, 0], 2]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
                             deg := deg + 1;
                             b := b + 4;
                         od;
@@ -1017,7 +1017,7 @@ function(p, lambda, sigma, r, t, chi_index)
                     # Now construct the base-change matrix.
                     U := BaseChangeMat(Length(Bp), U_index, 1);
                 fi;
-            elif lambda = 5 and sigma = 2 and r in [1,3] and t = 1 then
+            elif ld = 5 and si = 2 and r in [1,3] and t = 1 then
                 # Depends on the character. See NW. p. 524 for basis.
                 Bp := [];
 
@@ -1077,7 +1077,7 @@ function(p, lambda, sigma, r, t, chi_index)
                     w := 1 / Sqrt(2);
                     U := BaseChangeMat(14,11,1);
                 fi;
-            elif lambda >= 6 and sigma = lambda - 3 then
+            elif ld >= 6 and si = ld - 3 then
                 # See NW S. 6.4.
 
                 # Depends on the character; see NW p. 512. Note that |A| = 8.
@@ -1094,40 +1094,40 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
                         b := 1;
-                        while b <= 2^(lambda-2) - 1 do
+                        while b <= 2^(ld-2) - 1 do
                             Add(Bp, [[b, 0], 8]);
                             deg := deg + 1;
                             b := b + 2;
                         od;
 
-                        # Remaining basis elements are of the form f_{xi} - f_{2^(lambda-2) - xi};
+                        # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
                         # we therefore add both summands to Bp and use a base-change matrix later.
                         U_index := Length(Bp) + 1; # Index where these compound elements begin.
                         # These have A-orbits of length 4.
                         b := 2;
-                        while b <= 2^(lambda-3) - 2 do
+                        while b <= 2^(ld-3) - 2 do
                             Add(Bp, [[b, 0], 4]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
                             deg := deg + 1;
                             b := b + 4;
                         od;
                         # These have A-orbits of length 2.
                         b := 4;
-                        while b <= 2^(lambda-3) - 4 do
+                        while b <= 2^(ld-3) - 4 do
                             Add(Bp, [[b, 2], 2]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 2], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
                         # This pair has A-orbits of length 1.
                         Add(Bp, [[0, 0], 1]);
-                        Add(Bp, [[2^(lambda-2), 0], 1]);
+                        Add(Bp, [[2^(ld-2), 0], 1]);
                         deg := deg + 1;
                         # These have A-orbits of length 2.
                         b := 8;
-                        while b <= 2^(lambda-3) - 8 do
+                        while b <= 2^(ld-3) - 8 do
                             Add(Bp, [[b, 0], 2]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
@@ -1140,43 +1140,43 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
                         b := 1;
-                        while b <= 2^(lambda-2) - 1 do
+                        while b <= 2^(ld-2) - 1 do
                             Add(Bp, [[b, 0], 8]);
                             deg := deg + 1;
                             b := b + 2;
                         od;
 
                         # SEE REMARK BELOW. This has A-orbit size 2.
-                        Add(Bp, [[2^(lambda-3), 0], 2]);
+                        Add(Bp, [[2^(ld-3), 0], 2]);
                         deg := deg + 1;
 
-                        # Remaining basis elements are of the form f_{xi} + f_{2^(lambda-2) - xi};
+                        # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
                         # we therefore add both summands to Bp and use a base-change matrix later.
                         U_index := Length(Bp) + 1; # Index where these compound elements begin.
                         # These have A-orbits of length 4.
                         b := 2;
-                        while b <= 2^(lambda-3) - 2 do
+                        while b <= 2^(ld-3) - 2 do
                             Add(Bp, [[b, 0], 4]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
                             deg := deg + 1;
                             b := b + 4;
                         od;
                         # These have A-orbits of length 2.
                         b := 4;
-                        while b <= 2^(lambda-3) - 4 do
+                        while b <= 2^(ld-3) - 4 do
                             Add(Bp, [[b, 2], 2]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 2], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 2], 2]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
                         # These have A-orbits of length 2.
-                        # REMARK: NW include b = 2^(lambda-3) in this sequence, but then we get
-                        # 2f_{2^(lambda-3)} (instead of sum of two distinct fs).
+                        # REMARK: NW include b = 2^(ld-3) in this sequence, but then we get
+                        # 2f_{2^(ld-3)} (instead of sum of two distinct fs).
                         # Moving it up as a single basis element for now.
                         b := 8;
-                        while b <= 2^(lambda-3) - 8 do
+                        while b <= 2^(ld-3) - 8 do
                             Add(Bp, [[b, 0], 2]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 2]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 2]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
@@ -1192,7 +1192,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
                         b := 1;
-                        while b <= 2^(lambda-2) - 1 do
+                        while b <= 2^(ld-2) - 1 do
                             Add(Bp, [[b, 0], 8]);
                             deg := deg + 1;
                             b := b + 2;
@@ -1200,7 +1200,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # These elements have A-orbits of length 4.
                         b := 4;
-                        while b <= 2^(lambda-3) - 4 do
+                        while b <= 2^(ld-3) - 4 do
                             Add(Bp, [[b, 0], 4]);
                             deg := deg + 1;
                             b := b + 8;
@@ -1212,20 +1212,20 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # These elements have A-orbits of length 4.
                         b := 8;
-                        while b <= 2^(lambda-3) - 8 do
+                        while b <= 2^(ld-3) - 8 do
                             Add(Bp, [[b, 2], 4]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
 
-                        # Remaining basis elements are of the form f_{xi} - f_{2^(lambda-2) - xi};
+                        # Remaining basis elements are of the form f_{xi} - f_{2^(ld-2) - xi};
                         # we therefore add both summands to Bp and use a base-change matrix later.
                         U_index := Length(Bp) + 1; # Index where these compound elements begin.
                         # These have A-orbits of length 4.
                         b := 2;
-                        while b <= 2^(lambda-3) - 2 do
+                        while b <= 2^(ld-3) - 2 do
                             Add(Bp, [[b, 0], 4]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
                             deg := deg + 1;
                             b := b + 4;
                         od;
@@ -1238,7 +1238,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # theta_1. These elements are of the usual form, with A-orbit size |A| = 8.
                         b := 1;
-                        while b <= 2^(lambda-2) - 1 do
+                        while b <= 2^(ld-2) - 1 do
                             Add(Bp, [[b, 0], 8]);
                             deg := deg + 1;
                             b := b + 2;
@@ -1246,7 +1246,7 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # These elements have A-orbits of length 4.
                         b := 4;
-                        while b <= 2^(lambda-3) - 4 do
+                        while b <= 2^(ld-3) - 4 do
                             Add(Bp, [[b, 0], 4]);
                             deg := deg + 1;
                             b := b + 8;
@@ -1254,24 +1254,24 @@ function(p, lambda, sigma, r, t, chi_index)
 
                         # These elements have A-orbits of length 4.
                         b := 8;
-                        while b <= 2^(lambda-3) - 8 do
+                        while b <= 2^(ld-3) - 8 do
                             Add(Bp, [[b, 2], 4]);
                             deg := deg + 1;
                             b := b + 8;
                         od;
 
                         # This element has A-orbit of length 2.
-                        Add(Bp, [[2^(lambda-3), 2], 2]);
+                        Add(Bp, [[2^(ld-3), 2], 2]);
                         deg := deg + 1;
 
-                        # Remaining basis elements are of the form f_{xi} + f_{2^(lambda-2) - xi};
+                        # Remaining basis elements are of the form f_{xi} + f_{2^(ld-2) - xi};
                         # we therefore add both summands to Bp and use a base-change matrix later.
                         U_index := Length(Bp) + 1; # Index where these compound elements begin.
                         # The remainder have A-orbits of length 4.
                         b := 2;
-                        while b <= 2^(lambda-3) - 2 do
+                        while b <= 2^(ld-3) - 2 do
                             Add(Bp, [[b, 0], 4]);
-                            Add(Bp, [[(2^(lambda-2) - b) mod 2^(lambda-1), 0], 4]);
+                            Add(Bp, [[(2^(ld-2) - b) mod 2^(ld-1), 0], 4]);
                             deg := deg + 1;
                             b := b + 4;
                         od;
@@ -1286,8 +1286,8 @@ function(p, lambda, sigma, r, t, chi_index)
             # used earlier, we assumed that both basis elements correspond to A-orbits
             # with length |A|; that is guaranteed for prim. characters, but not here.
             B_Q := function(a,b)
-                # B((x,y),(w,z)) = (2r/p^lambda) * (xw + (p^sigma)tyz)
-                return 2 * r * (a[1] * b[1] + (2^sigma) * t * a[2] * b[2]);
+                # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
+                return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
             end;
             sxy := function(x, y)
                 return (Sqrt(x[2] * y[2]) / (Length(Agrp)^2)) * c * Sum(Agrp, a -> Sum(Agrp, b ->
@@ -1311,31 +1311,31 @@ function(p, lambda, sigma, r, t, chi_index)
 end );
 
 InstallGlobalFunction( SL2Reps_RepRUnary,
-function(p, lambda, r)
+function(p, ld, r)
     local l, M, B_f, B_g, x, y, k, c, s, S_p, T_p, deg_p, S_m, T_m, deg_m, xi, U, V, i;
 
     if not IsPrime(p) then
         Error("p must be prime.");
-    elif not lambda in PositiveIntegers then
-        Error("lambda must be a positive integer.");
-        # TODO: technically lambda = 0 is fine, it just gives us the trivial rep.
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
+        # TODO: technically ld = 0 is fine, it just gives us the trivial rep.
     elif (not r in PositiveIntegers) then
         # TODO: what precisely are the conditions on r?
         Error("r must be a positive integer.");
     fi;
 
-    if lambda < 3 then
-        Info(InfoSL2Reps, 2, "SL2Reps : In the unary case with lambda <= 2, the representation is reducible. It decomposes into two irreducible components. The output is of the form [R_", lambda, "(r)_+, R_", lambda, "(r)_-].");
+    if ld < 3 then
+        Info(InfoSL2Reps, 2, "SL2Reps : In the unary case with ld <= 2, the representation is reducible. It decomposes into two irreducible components. The output is of the form [R_", ld, "(r)_+, R_", ld, "(r)_-].");
     else
-        Info(InfoSL2Reps, 2, "SL2Reps : In the unary case with lambda > 2, the representation is reducible. The decomposition is R_", lambda, "(r) ~= (R_", lambda, "(r)_+)_1 + (R_", lambda, "(r)_-)_1 + R_", lambda - 2,"(r). The output is of the form [(R_", lambda, "(r)_+)_1, (R_", lambda, "(r)_-)_1].");
+        Info(InfoSL2Reps, 2, "SL2Reps : In the unary case with ld > 2, the representation is reducible. The decomposition is R_", ld, "(r) ~= (R_", ld, "(r)_+)_1 + (R_", ld, "(r)_-)_1 + R_", ld - 2,"(r). The output is of the form [(R_", ld, "(r)_+)_1, (R_", ld, "(r)_-)_1].");
     fi;
 
-    l := p^lambda;
+    l := p^ld;
 
     M := [0 .. l-1];
 
     # There are two types of basis elements; see notes S. 1.6.1.
-    if lambda = 1 then
+    if ld = 1 then
         # f_{x, +-}
         B_f := [];
         for x in [1 .. (l-1) / 2] do
@@ -1361,8 +1361,8 @@ function(p, lambda, r)
         B_g := [];
         for k in [1 .. (p-1) / 2] do
             Add(B_g, [0, k]);
-            for y in [1 .. ((p^(lambda-2)) - 1)/2] do
-                Append(B_g, [[y, k], [p^(lambda-2)-y, k]]);
+            for y in [1 .. ((p^(ld-2)) - 1)/2] do
+                Append(B_g, [[y, k], [p^(ld-2)-y, k]]);
             od;
         od;
 
@@ -1373,7 +1373,7 @@ function(p, lambda, r)
     # Construct T matrix.
     s := List(B_f, x -> E(l)^(r * x^2));
 
-    if lambda = 1 then
+    if ld = 1 then
         T_m := DiagonalMat(s);
         Add(s, 1);
         T_p := DiagonalMat(s);
@@ -1403,7 +1403,7 @@ function(p, lambda, r)
         od;
     od;
 
-    if lambda = 1 then
+    if ld = 1 then
         # Row and column corr. to delta_0 (in R_+).
         for x in [1 .. Length(B_f)] do
             S_p[x][Length(B_f) + 1] := c * Sqrt(2);
@@ -1418,20 +1418,20 @@ function(p, lambda, r)
                 # Note that, in general, s_{f,g} != s_{g,f}.
                 S_p[x][y + Length(B_f)] := (1/Sqrt(p)) * c * Sum([0 .. (p-1)], a ->
                         E(p)^(a * B_g[y][2])
-                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))) + E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))))
+                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))) + E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))))
                         );
                 S_p[y + Length(B_f)][x] := (1/Sqrt(p)) * c * Sum([0 .. (p-1)], a ->
                         E(p)^(-a * B_g[y][2])
-                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))) + E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))))
+                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))) + E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))))
                         );;
 
                 S_m[x][y + Length(B_f)] := (1/Sqrt(p)) * c * Sum([0 .. (p-1)], a ->
                         E(p)^(a * B_g[y][2])
-                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))) - E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))))
+                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))) - E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))))
                         );
                 S_m[y + Length(B_f)][x] := (1/Sqrt(p)) * c * Sum([0 .. (p-1)], a ->
                         E(p)^(-a * B_g[y][2])
-                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))) - E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(lambda-1))))
+                        * (E(l)^(2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))) - E(l)^(-2*r*B_f[x]*(p*B_g[y][1] + a*p^(ld-1))))
                         );
             od;
         od;
@@ -1456,7 +1456,7 @@ function(p, lambda, r)
         od;
     fi;
 
-    if lambda = 1 then
+    if ld = 1 then
         return [
             [S_p, T_p],
             [S_m, T_m]

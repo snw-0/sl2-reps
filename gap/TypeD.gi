@@ -7,24 +7,24 @@
 #
 
 InstallGlobalFunction( SL2Reps_ModuleD,
-function(p, lambda)
+function(p, ld)
     local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, IsPrim, a;
 
     if not IsPrime(p) then
         Error("p must be prime.");
-    elif not lambda in PositiveIntegers then
-        Error("lambda must be a positive integer.");
-        # TODO: technically lambda = 0 is fine, it just gives us the trivial rep.
-    elif p <= 3 and lambda = 1 then
-        Error("Type D is not defined for p <= 3 and lambda = 1.");
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
+        # TODO: technically ld = 0 is fine, it just gives us the trivial rep.
+    elif p <= 3 and ld = 1 then
+        Error("Type D is not defined for p <= 3 and ld = 1.");
     fi;
 
-    l := p^lambda;
+    l := p^ld;
 
     M := Tuples([0 .. (l - 1)], 2);
 
-    # For type D, A = A_lambda^times.
-    if p > 2 or lambda < 3 then
+    # For type D, A = A_ld^times.
+    if p > 2 or ld < 3 then
         # A is cyclic.
         alpha := GeneratorsPrimeResidues(l).generators[1];
         ord := OrderMod(alpha, l);
@@ -34,7 +34,7 @@ function(p, lambda)
                     (alpha^x) mod l, # a.
                     (alpha^(ord-x)) mod l # a^(-1), used for the S matrix.
                 ]);
-        if lambda = 1 then
+        if ld = 1 then
             omicron := Agrp[1];
         else
             for a in Agrp do
@@ -82,7 +82,7 @@ function(p, lambda)
     end;
 
     # Find basis.
-    # Note: for p^lambda = 4 or 8, the resulting rep. is reducible,
+    # Note: for p^ld = 4 or 8, the resulting rep. is reducible,
     # so we must perform a change of basis later.  This basis covers
     # the resulting subspaces.
     Bp := [];
@@ -105,7 +105,7 @@ function(p, lambda)
 end );
 
 InstallGlobalFunction( SL2Reps_RepD,
-function(p, lambda, chi_index)
+function(p, ld, chi_index)
     local i, j, l, M_rec, Agrp, Chi, IsPrim, Bp, sxy, S, T, deg, w, U, a, b, k;
 
     if (not chi_index[1] in Integers) or (not chi_index[2] in Integers) then
@@ -113,10 +113,10 @@ function(p, lambda, chi_index)
         # n.b.: it's fine if they're negative or 0
     fi;
 
-    # this will check if p,lambda are valid
-    M_rec := SL2Reps_ModuleD(p, lambda);
+    # this will check if p,ld are valid
+    M_rec := SL2Reps_ModuleD(p, ld);
 
-    l := p^lambda;
+    l := p^ld;
 
     Agrp := M_rec.Agrp;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
@@ -136,10 +136,10 @@ function(p, lambda, chi_index)
                 Chi(a[1]) * E(l)^(a[2] * x[1] * y[2] + a[3] * x[2] * y[1]))));
         T := DiagonalMat(List(Bp, x -> E(l)^(x[1] * x[2])));
 
-        if p = 2 and (lambda = 2 or lambda = 3) then
+        if p = 2 and (ld = 2 or ld = 3) then
             # Convert to block diagonal.
             w := 1 / Sqrt(2);
-            if lambda = 2 then
+            if ld = 2 then
                 deg := 3;
                 U := [
                     [ 1, 0, 0, 0, 0, 0],
@@ -186,7 +186,7 @@ function(p, lambda, chi_index)
             S := Inverse(U) * S * U;
             T := Inverse(U) * T * U;
 
-            Info(InfoSL2Reps, 2, "SL2Reps : chi has order 2, so the representation is reducible. It decomposes into two irreducible components of degree ", deg, ". The output is of the form [D_", lambda, "(chi)_+, D_", lambda, "(chi)_-].");
+            Info(InfoSL2Reps, 2, "SL2Reps : chi has order 2, so the representation is reducible. It decomposes into two irreducible components of degree ", deg, ". The output is of the form [D_", ld, "(chi)_+, D_", ld, "(chi)_-].");
 
             return [
                 [S{[1..deg]}{[1..deg]}, T{[1..deg]}{[1..deg]}],

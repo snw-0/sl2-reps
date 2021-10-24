@@ -11,6 +11,10 @@ function(degree)
     local irrep_list, p, ld, pmax, ldmax, pset, ldset, name, rho, l,
             i, j, u, w, si, r, t, x;
 
+    if not degree in PositiveIntegers then
+        Error("degree must be a positive integer.");
+    fi;
+
     irrep_list := [];
 
     if 1 = degree then
@@ -859,6 +863,11 @@ end );
 InstallGlobalFunction( SL2Reps_PrimePowerIrrepsOfDegreeAtMost,
 function(max_degree)
     local output, degree, count;
+
+    if not max_degree in PositiveIntegers then
+        Error("max_degree must be a positive integer.");
+    fi;
+
     output := [];
     count := 0;
 
@@ -875,6 +884,10 @@ end );
 InstallGlobalFunction( SL2Reps_IrrepsOfDegree,
 function(degree)
     local linears, prime_power_reps, i, ConstructIrreps, triv, factorizations, output, f;
+
+    if not degree in PositiveIntegers then
+        Error("degree must be a positive integer.");
+    fi;
 
     prime_power_reps := [];
 
@@ -988,6 +1001,11 @@ end );
 InstallGlobalFunction( SL2Reps_IrrepsOfDegreeAtMost,
 function(max_degree)
     local output, degree, count;
+
+    if not max_degree in PositiveIntegers then
+        Error("max_degree must be a positive integer.");
+    fi;
+
     output := [];
     count := 0;
 

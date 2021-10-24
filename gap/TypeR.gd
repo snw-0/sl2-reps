@@ -9,22 +9,22 @@
 #!
 #! TODO: Description of type $R$.
 
-#! @Arguments p,lambda,sigma,r,t
+#! @Arguments p,ld,sigma,r,t
 #! @Returns a record describing $(M,Q)$
 #! @Description
 #!  Constructs information about the underlying quadratic module $(M,Q)$ of type $R$.
 DeclareGlobalFunction( "SL2Reps_ModuleR" );
 
-#! @Arguments p,lambda,sigma,r,t,chi_index
+#! @Arguments p,ld,sigma,r,t,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
-#!  Constructs the irreducible representation(s) of type $R$ with level $p^\lambda$
+#!  Constructs the irreducible representation(s) of type $R$ with level $p^\ld$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
 DeclareGlobalFunction( "SL2Reps_RepR" );
 
-#! @Arguments p,lambda,r
+#! @Arguments p,ld,r
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
-#!  Constructs the irreducible representation(s) of unary type $R$ (that is, with $\sigma = \lambda$)
-#!  with level $p^\lambda$.
+#!  Constructs the irreducible representation(s) of unary type $R$ (that is, with $\sigma = \ld$)
+#!  with level $p^\ld$.
 DeclareGlobalFunction( "SL2Reps_RepRUnary" );
