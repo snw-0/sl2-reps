@@ -37,3 +37,5 @@ DeclareGlobalFunction( "SL2Reps_IrrepsOfDegree" );
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that are at most the given degree.
 DeclareGlobalFunction( "SL2Reps_IrrepsOfDegreeAtMost" );
+
+DeclareGlobalFunction( "_SL2Reps_PrimePowerIrrepsOfLevel" );

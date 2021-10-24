@@ -104,17 +104,17 @@ function(irrep_list, name, rho, l)
 end );
 
 #----------------------------------------
-# Returns conj class representative information of SL(2, Z/p^lambda Z) for p (odd prime) and lambda (>= 1).
+# Returns conj class representative information of SL(2, Z/p^ld Z) for p (odd prime) and ld (>= 1).
 # Each conj class representative is represented by a list of length 2. To rewrite the conj class rep as products of s and t (NW notation) corresponding to a, we can compute
 # Prod(a[1], n -> t^n*s) * s^(2*a[2]).
 # Note that s^2 is central and can be computed easily.
 # Update: 1. Merged cases, deleted size of the conj classes; 2. Simplified the expression of the word presentation of the representatives; 3. Sorted the output so that id and -id are the first two conj classes.
 #---------------------------------------
 InstallGlobalFunction( _SL2Reps_ConjClassesOdd,
-function(p, lambda)
+function(p, ld)
     local l, u, uinv, Ald, aset1, type11, type1u, type12, type13, Type1, type2h, Type2, i;
 
-    l := p^lambda;
+    l := p^ld;
 
     # Find a quad non-residue u and its mult inverse mod l.
     u:=First([1..p], i->Jacobi(i,p)=-1);
@@ -131,25 +131,25 @@ function(p, lambda)
 
     Type1 := Concatenation(type1u, type11);
 
-    # Type 2. For there is a type of conj class for each 1 <= h <= lambda.
+    # Type 2. For there is a type of conj class for each 1 <= h <= ld.
     type2h := function(h)
         local ans, dset, e;
-        if h = lambda then
+        if h = ld then
             return [ [[0, 0], 1], [[0, 0], 0] ];
         else
             ans := [];
             for e in [1, -1] do
-                dset := Filtered([0..p^(lambda-h)-1], x -> x mod p = 0);
+                dset := Filtered([0..p^(ld-h)-1], x -> x mod p = 0);
                 ans := Concatenation(ans, List(dset, d -> [[-e*p^h*d*uinv, -e*p^h*u],  (1+e)/2]));
-                ans := Concatenation(ans, List([0..p^(lambda-h)-1], d -> [[-e*p^h*d, -e*p^h], (1+e)/2]));
+                ans := Concatenation(ans, List([0..p^(ld-h)-1], d -> [[-e*p^h*d, -e*p^h], (1+e)/2]));
             od;
             return ans;
         fi;
     end;
 
-    # Type2 is the collection of all type2h's. Among them, type2h(lambda) contains id and -id.
-    Type2 := type2h(lambda);
-    for i in [1..lambda-1] do
+    # Type2 is the collection of all type2h's. Among them, type2h(ld) contains id and -id.
+    Type2 := type2h(ld);
+    for i in [1..ld-1] do
         Type2 := Concatenation(Type2, type2h(i));
     od;
 
@@ -158,16 +158,16 @@ function(p, lambda)
 end );
 
 #----------------------------------------
-# Returns conj class representative information of SL(2, Z/2^lambda Z) for lambda (>= 1).
+# Returns conj class representative information of SL(2, Z/2^ld Z) for ld (>= 1).
 # Each conj class representative is represented by a list of length 2. To rewrite the conj class rep as products of s and t (NW notation) corresponding to a, we can compute
 # Prod(a[1], n -> t^n*s) * s^(2*a[2]).
 # Sorted the output so that id and -id are the first two conj classes.
 #---------------------------------------
 InstallGlobalFunction( _SL2Reps_ConjClassesEven,
-function(lambda)
+function(ld)
     local l, 3inv, 5inv, 7inv, Type1, Type2, d, h, e1, e1inv, e2, e2inv, a;
 
-    l := 2^lambda;
+    l := 2^ld;
 
     # Find the multiplicative inverse of 3, 5 and 7.
     3inv := 3^-1 mod l;
@@ -179,34 +179,34 @@ function(lambda)
     Type1 := List([0..l-1], a -> [[a], 1]);
 
     for a in List([0..l/2-1], x -> 2*x) do
-        if lambda > 1 then
+        if ld > 1 then
             Add(Type1, [[3inv, 3, 3inv, 3*a], 1]);
         fi;
 
-        if (lambda > 2) and (a mod 4 = 2) then
+        if (ld > 2) and (a mod 4 = 2) then
             Add(Type1, [[5inv, 5, 5inv, 5*a], 1]);
             Add(Type1, [[7inv, 7, 7inv, 7*a], 1]);
         fi;
     od;
 
-    # Type 2 are labelled by 1 <= h <= lambda.
-    # When h = lambda, the corresponding conj classes are elements in the center. id and -id are put in the front.
-    if lambda = 1 then
+    # Type 2 are labelled by 1 <= h <= ld.
+    # When h = ld, the corresponding conj classes are elements in the center. id and -id are put in the front.
+    if ld = 1 then
         Type2 := [ [[0, 0], 1] ];
-    elif lambda = 2 then
+    elif ld = 2 then
         Type2 := [ [[0, 0], 1], [[0, 0], 0] ];
     else
-        Type2 := [ [[0,0], 1], [[0, 0], 0], [[1+2^(lambda-1), 1+2^(lambda-1), 1+2^(lambda-1)], 0], [[-(1+2^(lambda-1)), -(1+2^(lambda-1)), -(1+2^(lambda-1))], 0] ];
+        Type2 := [ [[0,0], 1], [[0, 0], 0], [[1+2^(ld-1), 1+2^(ld-1), 1+2^(ld-1)], 0], [[-(1+2^(ld-1)), -(1+2^(ld-1)), -(1+2^(ld-1))], 0] ];
     fi;
 
     # h = 1.
-    if lambda = 2 then
+    if ld = 2 then
         Type2 := Concatenation(Type2, List([0..1], d -> [[-2*d mod l, -2 mod l], 1]));
-    elif lambda = 3 then
+    elif ld = 3 then
         Type2 := Concatenation(Type2, List([0..3], d -> [[-2*d mod l, -2 mod l], 1]));
         Type2 := Concatenation(Type2, List([0..1], d -> [[-2*d*3inv mod l, -2*3 mod l], 1]));
-    elif lambda > 3 then
-        for d in [0..2^(lambda-1)-1] do
+    elif ld > 3 then
+        for d in [0..2^(ld-1)-1] do
             Add(Type2, [[-2*d mod l, -2 mod l], 1]);
             if (d mod 8 = 0) or (d mod 8 = 1) then
                 Add(Type2, [[-2*d*3inv mod l, -2*3 mod l], 1]);
@@ -220,30 +220,30 @@ function(lambda)
         od;
     fi;
 
-    # lambda >= 3 and h = lambda - 1.
-    if lambda > 2 then
+    # ld >= 3 and h = ld - 1.
+    if ld > 2 then
         for d in [0..1] do
-            Add(Type2, [[-2^(lambda-1)*d mod l, -2^(lambda-1) mod l], 1]);
-            Add(Type2, [[2^(lambda-1)*d mod l, 2^(lambda-1) mod l], 0]);
+            Add(Type2, [[-2^(ld-1)*d mod l, -2^(ld-1) mod l], 1]);
+            Add(Type2, [[2^(ld-1)*d mod l, 2^(ld-1) mod l], 0]);
         od;
     fi;
 
-    # lambda >= 4 and h = lambda - 2.
-    if lambda > 3 then
+    # ld >= 4 and h = ld - 2.
+    if ld > 3 then
         for d in [0..3] do
-            Add(Type2, [[-2^(lambda-2)*d mod l, -2^(lambda-2) mod l], 1]);
-            Add(Type2, [[2^(lambda-2)*d mod l, 2^(lambda-2) mod l], 0]);
+            Add(Type2, [[-2^(ld-2)*d mod l, -2^(ld-2) mod l], 1]);
+            Add(Type2, [[2^(ld-2)*d mod l, 2^(ld-2) mod l], 0]);
             if d = 0 or d = 1 then
-                Add(Type2, [[-2^(lambda-2)*d*3inv mod l, -2^(lambda-2)*3 mod l], 1]);
-                Add(Type2, [[2^(lambda-2)*d*3inv mod l, 2^(lambda-2)*3 mod l], 0]);
+                Add(Type2, [[-2^(ld-2)*d*3inv mod l, -2^(ld-2)*3 mod l], 1]);
+                Add(Type2, [[2^(ld-2)*d*3inv mod l, 2^(ld-2)*3 mod l], 0]);
             fi;
         od;
     fi;
 
-    # lambda >= 5, 2 <= h <= lambda - 3.
-    if lambda > 4 then
-        for h in [2..lambda-3] do
-            for d in [0..2^(lambda-h)-1] do
+    # ld >= 5, 2 <= h <= ld - 3.
+    if ld > 4 then
+        for h in [2..ld-3] do
+            for d in [0..2^(ld-h)-1] do
                 Add(Type2, [[-2^h*d mod l, -2^h mod l], 1]);
                 Add(Type2, [[2^h*d mod l, 2^h mod l], 0]);
                 if (d mod 4 = 0) or (d mod 4 = 1) then
@@ -262,14 +262,14 @@ function(lambda)
         od;
     fi;
 
-    # lambda > 3, 3 <= h <= lambda - 1.
-    if lambda > 3 then
-        for h in [3..lambda-1] do
+    # ld > 3, 3 <= h <= ld - 1.
+    if ld > 3 then
+        for h in [3..ld-1] do
             e1 := 1 + 2^(h-1);
             e1inv := e1^(-1) mod l;
             e2 := -e1 mod l;
             e2inv := -e1inv mod l;
-            for d in [0..2^(lambda-h)-1] do
+            for d in [0..2^(ld-h)-1] do
                 Add(Type2, [[-2^h*d*e1inv mod l, e1inv, e1, e1inv, -2^h*e1inv mod l], 1]);
                 Add(Type2, [[-2^h*d*e2inv mod l, e2inv, e2, e2inv, -2^h*e2inv mod l], 1]);
             od;
@@ -281,133 +281,102 @@ function(lambda)
 end );
 
 #----------------------------------------
-# Returns conj class representative information of SL(2, Z/p^lambda Z) for lambda (>= 1) using ConjClassesOdd or ConjClassesEven.
+# Returns conj class representative information of SL(2, Z/p^ld Z) for ld (>= 1) using ConjClassesOdd or ConjClassesEven.
 #---------------------------------------
 InstallGlobalFunction( _SL2Reps_ConjClasses,
-function (p, lambda)
+function (p, ld)
     if p = 2 then
-        return _SL2Reps_ConjClassesEven(lambda);
+        return _SL2Reps_ConjClassesEven(ld);
     elif p > 2 then
-        return _SL2Reps_ConjClassesOdd(p,lambda);
+        return _SL2Reps_ConjClassesOdd(p,ld);
     fi;
 end );
 
 #----------------------------------------
-# Returns the group SL_2(Z/p^lambda Z) with conjugacy classes set to the format we use.
+# Returns the group SL_2(Z/p^ld Z) with conjugacy classes set to the format we use.
 #---------------------------------------
-# InstallGlobalFunction( _SL2Reps_SL2Conj,
-# function(p, lambda)
-#     local l, CC, o, s, t, G, C1, c, ccl;
+InstallGlobalFunction( _SL2Reps_SL2Conj,
+function(p, ld)
+    local l, CC, o, s, t, G, C1, c, ccl;
 
-#     l := p^lambda;
-#     CC := CClasses(p, lambda);
-#     o := ZmodnZObj(1, l);
-#     s := [[0,1],[-1,0]] * o;
-#     t := [[1,1],[0,1]] * o;
-#     G := Group([s,t]);
-
-#     C1 := [];
-#     if p > 2 then
-#         for c in CC[1] do
-#             if Length(c[1]) = 1 then
-#                 Add(C1, t^(c[1][1]) * s * (-1)^(c[2]));
-#             elif (Length(c[1]) = 4 and c[1][1] <> 1) or Length(c[1]) = 2 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             fi;
-#         od;
-#     else
-#         for c in CC[1] do
-#             if Length(c[1])=4 and c[1][1]<>1 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             elif Length(c[1])=2 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             elif Length(c[1])=3 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             elif Length(c[1])=5 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             elif Length(c[1])=1 then
-#                 Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
-#             fi;
-#         od;
-#     fi;
-
-#     ccl := List(C1, x -> ConjugacyClass(G, x));
-#     if Sum(ccl, x -> Size(x)) <> Size(G) then
-#         Error("Wrong conjugacy classes.");
-#     fi;
-
-#     SetConjugacyClasses( G, ccl );
-
-#     return G;
-# end );
-
-#-----------------------------------------------
-# Irreducibility check
-# Input: p, lambda, S, and T for a rep of SL(2,Z/p^lambdaZ), given by RepN, RepD and RepRs. Returns the inner product of the character of this representation with itself. If needed, we can also list the character values on conjugacy classes.
-#-----------------------------------------------
-InstallGlobalFunction( _SL2Reps_CharNorm,
-function(S, T)
-    local s2, chi, Csize, G, n, p, lambda, CC, TS, Du, c, i, primepower;
-    # Size of SL(2, Z/p^lambdaZ).
-    n := Order(T);
-    primepower := Factors(n);
-    if Length(AsSet(primepower)) > 1 then
-        Error("The level is not a prime power. We cannot proceed!");
+    if not IsPrime(p) then
+        Error("p must be a prime.");
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
     fi;
-    p := primepower[1];
-    lambda := Length(primepower);
-    G := p^(3*lambda) - p^(3*lambda-2);
 
-    CC := _SL2Reps_ConjClassesOdd(p, lambda);
-    s2 := S^2;
-         s2 := s2[1][1];
-         TS:=[S];
-    for i in [1..n-1] do
-        Add(TS, T*TS[i]);
-    od;
-         Du := TS[CC[2]+1]*TS[CC[3]+1]*TS[CC[2]+1];
-
-    chi := []; Csize := [];
-    for c in CC[1] do
-        Add(Csize, c[3]);
-        if Length(c[1])=4 and c[1][1]=1 then
-            Add(chi, Trace(TS[(c[1][4] mod n) + 1] * s2^(c[2])));
-        elif Length(c[1])=4 and c[1][1]<>1 then
-            Add(chi, Trace(Du*TS[(c[1][4] mod n) + 1] * s2^(c[2])));
-        elif Length(c[1])=2 then
-            Add(chi, Trace(Product(c[1], m -> TS[(m mod n) + 1]) * s2^(c[2])));
-                fi;
-    od;
-
-    return ComplexConjugate(chi)*ListN(chi, Csize, \*)/G;
-end );
-
-#-----------------------------------------------
-# TODO
-#-----------------------------------------------
-InstallGlobalFunction( _SL2Reps_RepChi,
-function(S, T)
-    local id, TS, Du, Dh, h, Dhmap, DS, DR, e1, e1inv, e2, e2inv, CC, ccl, s2, n, G, s, t,  C1, o, chi, i, j, jinv, c, pos, primepower, p, lambda, ProdTrace;
-
-    # S,T are normalized S and T matrices
-    n := Order(T);
-    primepower := Factors(n);
-    if Length(AsSet(primepower))>1 then
-        Error("The level is not a prime power. We cannot proceed!");
-    fi;
-    p := primepower[1]; lambda := Length(primepower);
-    CC := _SL2Reps_ConjClasses(p, lambda);
-    o := ZmodnZObj(1,n);
+    l := p^ld;
+    CC := _SL2Reps_ConjClasses(p, ld);
+    o := ZmodnZObj(1, l);
     s := [[0,1],[-1,0]] * o;
     t := [[1,1],[0,1]] * o;
-    id := s^0;
     G := Group([s,t]);
 
+    C1 := [];
+    if p > 2 then
+        for c in CC[1] do
+            if Length(c[1]) = 1 then
+                Add(C1, t^(c[1][1]) * s * (-1)^(c[2]));
+            elif (Length(c[1]) = 4 and c[1][1] <> 1) or Length(c[1]) = 2 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            fi;
+        od;
+    else
+        for c in CC[1] do
+            if Length(c[1])=4 and c[1][1]<>1 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            elif Length(c[1])=2 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            elif Length(c[1])=3 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            elif Length(c[1])=5 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            elif Length(c[1])=1 then
+                Add(C1, Product(c[1], m -> t^m * s) * (-1)^(c[2]));
+            fi;
+        od;
+    fi;
+
+    ccl := List(C1, x -> ConjugacyClass(G, x));
+    if Sum(ccl, x -> Size(x)) <> Size(G) then
+        Error("Conjugacy class size mismatch.");
+    fi;
+
+    SetConjugacyClasses( G, ccl );
+
+    return G;
+end );
+
+#----------------------------------------
+# Converts the modular data (S,T) into a character according to the above conjugacy classes.
+#----------------------------------------
+InstallGlobalFunction( _SL2Reps_ChiST,
+function(S, T)
+    local l, primepower, p, ld, dim, CC, s2, TS, i, ProdTrace,
+            C1, Du, c,
+            Dh, h, e1, e1inv, e2, e2inv, j, jinv, Dhmap;
+
+    dim := DimensionsMat(S);
+    if dim = fail or dim[1] <> dim[2] then
+        Error("S must be a square matrix.");
+    fi;
+    dim := DimensionsMat(T);
+    if dim = fail or dim[1] <> dim[2] then
+        Error("T must be a square matrix.");
+    fi;
+
+    # S,T are normalized S and T matrices
+    l := Order(T);
+    primepower:=Factors(l);
+
+    p := primepower[1]; ld := Length(primepower);
+    CC := _SL2Reps_ConjClasses(p, ld);
+
     s2 := S^2;
-    s2 := s2[1][1];
+    s2 := s2[1][1]; # assuming S^2 = +-1
     TS := [S];
-    for i in [1..n-1] do
-        Add(TS, T*TS[i]);
+    for i in [1 .. l-1] do
+        Add(TS, T * TS[i]);
     od;
 
     ProdTrace := function(A, B)
@@ -415,119 +384,294 @@ function(S, T)
         return Sum([1..Length(A)], x -> Sum([1..Length(A)], y -> A[x][y]*B[y][x]));
     end;
 
-    C1 := [];
+    C1:=[];
     if p > 2 then
-        Du := TS[CC[2]+1]*TS[CC[3]+1]*TS[CC[2]+1];
+        Du := TS[CC[2]+1] * TS[CC[3]+1] * TS[CC[2]+1];
         for c in CC[1] do
-            if Length(c[1])=1  then
-                Add(C1, [t^(c[1][1]) * s * (-1)^(c[2]), Trace(TS[(c[1][1] mod n) + 1] * s2^(c[2]))]);
-            elif Length(c[1])=4 and c[1][1]<>1 then
-                Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(Du,TS[(c[1][4] mod n) + 1]) * s2^(c[2])]);
-            elif Length(c[1])=2 then
-                Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(TS[(c[1][1] mod n)+1], TS[(c[1][2] mod n) + 1]) * s2^(c[2])]);
+            if Length(c[1]) = 1 then
+                Add(C1, Trace(TS[(c[1][1] mod l) +1] * s2^(c[2])));
+            elif Length(c[1]) = 4 and c[1][1]<>1 then
+                Add(C1, ProdTrace(Du,TS[(c[1][4] mod l) +1]) * s2^(c[2]));
+            elif Length(c[1]) = 2 then
+                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * s2^(c[2]));
             fi;
         od;
-    fi;
+    else
+        Dh:=[];
 
-    if p = 2 then
-        Dh := [];
-        for h in [3..lambda] do
-            e1 := 1 + 2^(h-1);
-            e1inv := e1^-1 mod n;
-            Add(Dh, [e1inv,TS[e1inv + 1] * TS[e1 + 1] * TS[e1inv + 1]]);
-                    e2 := (-e1) mod n;
-            e2inv := (-e1inv) mod n;
-            Add(Dh, [e2inv,TS[e2inv + 1] * TS[e2 + 1] * TS[e2inv + 1]]);
+        for h in [3..ld] do
+            e1 := 1+2^(h-1);
+            e1inv := e1^-1 mod l;
+            Add(Dh, [e1inv,TS[e1inv+1] * TS[e1+1] * TS[e1inv+1]]);
+            e2 := (-e1) mod l;
+            e2inv := (-e1inv) mod l;
+            Add(Dh, [e2inv, TS[e2inv+1] * TS[e2+1] * TS[e2inv+1]]);
         od;
+
         for i in [3,5,7] do
-            j := i mod n;
-            jinv := j^-1 mod n;
-            Add(Dh, [jinv,TS[jinv + 1] * TS[j + 1] * TS[jinv + 1]]);
+            j := i mod l;
+            jinv:=j^-1 mod l;
+            Add(Dh, [jinv,TS[jinv+1] * TS[j+1] * TS[jinv+1]]);
         od;
         Dh := AsSet(Dh);
 
-        Dhmap := function(uinv)
+        Dhmap:=function(uinv)
             local x;
             x := First(Dh, y -> y[1] = uinv);
             return x[2];
         end;
 
         for c in CC[1] do
-            if Length(c[1]) = 4 and c[1][1] <> 1 then
-                Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(Dhmap(c[1][1]), TS[(c[1][4] mod n) + 1]) * s2^(c[2])]);
-            elif Length(c[1]) = 2 then
-                Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), ProdTrace(TS[(c[1][1] mod n)+1], TS[(c[1][2] mod n)+1])*s2^(c[2])]);
+            if Length(c[1])=4 and c[1][1]<>1 then
+                Add(C1, ProdTrace(Dhmap(c[1][1]), TS[(c[1][4] mod l) +1]) * s2^(c[2]));
+            elif Length(c[1])=2 then
+                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * s2^(c[2]));
             elif Length(c[1])=3 then
-                Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), Trace(Dhmap(c[1][1] mod n))*s2^(c[2])]);
+                Add(C1, Trace(Dhmap(c[1][1] mod l)) * s2^(c[2]));
             elif Length(c[1])=5 then
-                Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), ProdTrace((TS[(c[1][1] mod n)+1]*Dhmap(c[1][2] mod n)), TS[(c[1][5] mod n)+1])*s2^(c[2])]);
+                Add(C1, ProdTrace((TS[(c[1][1] mod l)+1] * Dhmap(c[1][2] mod l)), TS[(c[1][5] mod l)+1]) * s2^(c[2]));
             elif Length(c[1])=1 then
-                Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), Trace(TS[(c[1][1] mod n)+1])*s2^(c[2])]);
+                Add(C1, Trace(TS[(c[1][1] mod l)+1]) * s2^(c[2]));
             fi;
         od;
     fi;
 
-    chi := List(C1, x -> x[2]);
-    ccl := List(C1, x -> ConjugacyClass( G, x[1] ) );
-    if Sum(ccl, x -> Size(x)) <> Size(G) then
-        Error("Wrong conjugacy classes.");
+    return C1;
+end );
+
+InstallGlobalFunction( _SL2Reps_IrrepPositionTest,
+function(p, ld)
+    local irrep_list, G, irreps, PositionTest, pos_list, rho;
+
+    if not IsPrime(p) then
+        Error("p must be a prime.");
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
     fi;
 
-    SetConjugacyClasses( G, ccl );
+    Info(InfoSL2Reps, 1, "Constructing irreps via Nobs-Wolfart.");
+    irrep_list := _SL2Reps_PrimePowerIrrepsOfLevel(p, ld);
 
-    return Character(G, chi);
+    Info(InfoSL2Reps, 1, "Constructing irreps via conjugacy classes.");
+    G := _SL2Reps_SL2Conj(p, ld);
+    irreps := Irr(G);
+    Info(InfoSL2Reps, 1, Length(irreps), " irreps of level dividing ", p^ld, " found.");
+
+    PositionTest := function(irreps, rho, pos_list)
+        local pos;
+
+        pos := Position(irreps, _SL2Reps_ChiST(rho[1], rho[2]));
+        if pos = fail then
+            Info(InfoSL2Reps, 1, rho[5], " not found!");
+        else
+            Info(InfoSL2Reps, 1, rho[5], ": ", pos);
+            Add(pos_list, pos);
+        fi;
+    end;
+
+    pos_list := [];
+
+    Info(InfoSL2Reps, 1, "Position test:");
+    for rho in irrep_list do
+        PositionTest(irreps, rho, pos_list);
+    od;
+
+    if Length(pos_list) = Length(AsSet(pos_list)) then
+        Info(InfoSL2Reps, 1, Length(pos_list), " full-level irreps found:\n", AsSet(pos_list));
+        return true;
+    else
+        Info(InfoSL2Reps, 1, "WARNING: duplicates found:\n", pos_list);
+        return false;
+    fi;
 end );
+
+#-----------------------------------------------
+# Irreducibility check
+# Input: p, ld, S, and T for a rep of SL(2,Z/p^ldZ), given by RepN, RepD and RepRs. Returns the inner product of the character of this representation with itself. If needed, we can also list the character values on conjugacy classes.
+#-----------------------------------------------
+# InstallGlobalFunction( _SL2Reps_CharNorm,
+# function(S, T)
+#     local s2, chi, Csize, G, n, p, ld, CC, TS, Du, c, i, primepower;
+#     # Size of SL(2, Z/p^ldZ).
+#     n := Order(T);
+#     primepower := Factors(n);
+#     if Length(AsSet(primepower)) > 1 then
+#         Error("The level is not a prime power. We cannot proceed!");
+#     fi;
+#     p := primepower[1];
+#     ld := Length(primepower);
+#     G := p^(3*ld) - p^(3*ld-2);
+
+#     CC := _SL2Reps_ConjClassesOdd(p, ld);
+#     s2 := S^2;
+#          s2 := s2[1][1];
+#          TS:=[S];
+#     for i in [1..n-1] do
+#         Add(TS, T*TS[i]);
+#     od;
+#          Du := TS[CC[2]+1]*TS[CC[3]+1]*TS[CC[2]+1];
+
+#     chi := []; Csize := [];
+#     for c in CC[1] do
+#         Add(Csize, c[3]);
+#         if Length(c[1])=4 and c[1][1]=1 then
+#             Add(chi, Trace(TS[(c[1][4] mod n) + 1] * s2^(c[2])));
+#         elif Length(c[1])=4 and c[1][1]<>1 then
+#             Add(chi, Trace(Du*TS[(c[1][4] mod n) + 1] * s2^(c[2])));
+#         elif Length(c[1])=2 then
+#             Add(chi, Trace(Product(c[1], m -> TS[(m mod n) + 1]) * s2^(c[2])));
+#                 fi;
+#     od;
+
+#     return ComplexConjugate(chi)*ListN(chi, Csize, \*)/G;
+# end );
+
+#-----------------------------------------------
+# TODO
+#-----------------------------------------------
+# InstallGlobalFunction( _SL2Reps_RepChi,
+# function(S, T)
+#     local id, TS, Du, Dh, h, Dhmap, DS, DR, e1, e1inv, e2, e2inv, CC, ccl, s2, n, G, s, t,  C1, o, chi, i, j, jinv, c, pos, primepower, p, ld, ProdTrace;
+
+#     # S,T are normalized S and T matrices
+#     n := Order(T);
+#     primepower := Factors(n);
+#     if Length(AsSet(primepower))>1 then
+#         Error("The level is not a prime power. We cannot proceed!");
+#     fi;
+#     p := primepower[1]; ld := Length(primepower);
+#     CC := _SL2Reps_ConjClasses(p, ld);
+#     o := ZmodnZObj(1,n);
+#     s := [[0,1],[-1,0]] * o;
+#     t := [[1,1],[0,1]] * o;
+#     id := s^0;
+#     G := Group([s,t]);
+
+#     s2 := S^2;
+#     s2 := s2[1][1];
+#     TS := [S];
+#     for i in [1..n-1] do
+#         Add(TS, T*TS[i]);
+#     od;
+
+#     ProdTrace := function(A, B)
+#         # assumes they are both square matrices of same size
+#         return Sum([1..Length(A)], x -> Sum([1..Length(A)], y -> A[x][y]*B[y][x]));
+#     end;
+
+#     C1 := [];
+#     if p > 2 then
+#         Du := TS[CC[2]+1]*TS[CC[3]+1]*TS[CC[2]+1];
+#         for c in CC[1] do
+#             if Length(c[1])=1  then
+#                 Add(C1, [t^(c[1][1]) * s * (-1)^(c[2]), Trace(TS[(c[1][1] mod n) + 1] * s2^(c[2]))]);
+#             elif Length(c[1])=4 and c[1][1]<>1 then
+#                 Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(Du,TS[(c[1][4] mod n) + 1]) * s2^(c[2])]);
+#             elif Length(c[1])=2 then
+#                 Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(TS[(c[1][1] mod n)+1], TS[(c[1][2] mod n) + 1]) * s2^(c[2])]);
+#             fi;
+#         od;
+#     fi;
+
+#     if p = 2 then
+#         Dh := [];
+#         for h in [3..ld] do
+#             e1 := 1 + 2^(h-1);
+#             e1inv := e1^-1 mod n;
+#             Add(Dh, [e1inv,TS[e1inv + 1] * TS[e1 + 1] * TS[e1inv + 1]]);
+#                     e2 := (-e1) mod n;
+#             e2inv := (-e1inv) mod n;
+#             Add(Dh, [e2inv,TS[e2inv + 1] * TS[e2 + 1] * TS[e2inv + 1]]);
+#         od;
+#         for i in [3,5,7] do
+#             j := i mod n;
+#             jinv := j^-1 mod n;
+#             Add(Dh, [jinv,TS[jinv + 1] * TS[j + 1] * TS[jinv + 1]]);
+#         od;
+#         Dh := AsSet(Dh);
+
+#         Dhmap := function(uinv)
+#             local x;
+#             x := First(Dh, y -> y[1] = uinv);
+#             return x[2];
+#         end;
+
+#         for c in CC[1] do
+#             if Length(c[1]) = 4 and c[1][1] <> 1 then
+#                 Add(C1, [Product(c[1], m -> t^m * s) * (-1)^(c[2]), ProdTrace(Dhmap(c[1][1]), TS[(c[1][4] mod n) + 1]) * s2^(c[2])]);
+#             elif Length(c[1]) = 2 then
+#                 Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), ProdTrace(TS[(c[1][1] mod n)+1], TS[(c[1][2] mod n)+1])*s2^(c[2])]);
+#             elif Length(c[1])=3 then
+#                 Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), Trace(Dhmap(c[1][1] mod n))*s2^(c[2])]);
+#             elif Length(c[1])=5 then
+#                 Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), ProdTrace((TS[(c[1][1] mod n)+1]*Dhmap(c[1][2] mod n)), TS[(c[1][5] mod n)+1])*s2^(c[2])]);
+#             elif Length(c[1])=1 then
+#                 Add(C1, [Product(c[1], m -> t^m*s)*(-1)^(c[2]), Trace(TS[(c[1][1] mod n)+1])*s2^(c[2])]);
+#             fi;
+#         od;
+#     fi;
+
+#     chi := List(C1, x -> x[2]);
+#     ccl := List(C1, x -> ConjugacyClass( G, x[1] ) );
+#     if Sum(ccl, x -> Size(x)) <> Size(G) then
+#         Error("Wrong conjugacy classes.");
+#     fi;
+
+#     SetConjugacyClasses( G, ccl );
+
+#     return Character(G, chi);
+# end );
 
 #-----------------------------------------------
 # Let G be SL(2, Z/nZ),  C a list of Conjugacy Classes of G,
 # and CC a list of representatives of Conjugacy classes of G
 # The function return a list pos such that C[i]=CC[pos[i]]^G.
 #-----------------------------------------------
-InstallGlobalFunction( _SL2Reps_ClassMap,
-function(C, CC)
+# InstallGlobalFunction( _SL2Reps_ClassMap,
+# function(C, CC)
 
-    local  rep, c, C1, u, v, traces, tracelist, traceu, vlist, i, pos, PowTrace, urep, perm;
+#     local  rep, c, C1, u, v, traces, tracelist, traceu, vlist, i, pos, PowTrace, urep, perm;
 
 
-    PowTrace:=function(x)
-        local j, temp, power;
-        temp:=[]; power:=x;
-        for j in [1..Order(x)-1] do
-            Add(temp, Trace(power));
-            power:=power*x;
-        od;
-        return temp;
-    end;
+#     PowTrace:=function(x)
+#         local j, temp, power;
+#         temp:=[]; power:=x;
+#         for j in [1..Order(x)-1] do
+#             Add(temp, Trace(power));
+#             power:=power*x;
+#         od;
+#         return temp;
+#     end;
 
-    C1:=List(CC, c->[c, PowTrace(c)]);
-    traces:=Set(C1, c->c[2]);
-    tracelist:=Set(traces, x->[x, Filtered(C1, c->c[2]=x)]);
-    perm:=[];
+#     C1:=List(CC, c->[c, PowTrace(c)]);
+#     traces:=Set(C1, c->c[2]);
+#     tracelist:=Set(traces, x->[x, Filtered(C1, c->c[2]=x)]);
+#     perm:=[];
 
-    for u in C do
-        urep:=Representative(u);
-        traceu:=PowTrace(urep);
-        vlist:=First(tracelist, x->traceu=x[1]);
-        if Length(vlist[2])=1 then
-            Add(perm, Position(CC, vlist[2][1][1]));
-            RemoveSet(tracelist, vlist);
-        elif Length(vlist[2])>1 then
-            v:=First(vlist[2], x->x[1] in u);
-            Add(perm, Position(CC, v[1]));
-            pos:=Position(vlist[2], v);
-            Remove(vlist[2], pos);
-        fi;
-    od;
+#     for u in C do
+#         urep:=Representative(u);
+#         traceu:=PowTrace(urep);
+#         vlist:=First(tracelist, x->traceu=x[1]);
+#         if Length(vlist[2])=1 then
+#             Add(perm, Position(CC, vlist[2][1][1]));
+#             RemoveSet(tracelist, vlist);
+#         elif Length(vlist[2])>1 then
+#             v:=First(vlist[2], x->x[1] in u);
+#             Add(perm, Position(CC, v[1]));
+#             pos:=Position(vlist[2], v);
+#             Remove(vlist[2], pos);
+#         fi;
+#     od;
 
-    return perm;
-end );
+#     return perm;
+# end );
 
 #-----------------------------------------------
 # Find the position of the given representation among the irreducibles of its underlying group.
 #-----------------------------------------------
-InstallGlobalFunction( _SL2Reps_ChiTest,
-function(chi)
-    local G;
-    G := UnderlyingGroup(chi);
-    return Position(Irr(G), chi);
-end );
+# InstallGlobalFunction( _SL2Reps_ChiTest,
+# function(chi)
+#     local G;
+#     G := UnderlyingGroup(chi);
+#     return Position(Irr(G), chi);
+# end );

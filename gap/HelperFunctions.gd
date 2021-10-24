@@ -23,9 +23,11 @@ DeclareGlobalFunction( "_SL2Reps_RecordIrrep" );
 DeclareGlobalFunction( "_SL2Reps_ConjClassesOdd" );
 DeclareGlobalFunction( "_SL2Reps_ConjClassesEven" );
 DeclareGlobalFunction( "_SL2Reps_ConjClasses" );
-# DeclareGlobalFunction( "_SL2Reps_SL2Conj" );
+DeclareGlobalFunction( "_SL2Reps_SL2Conj" );
+DeclareGlobalFunction( "_SL2Reps_ChiST" );
+DeclareGlobalFunction( "_SL2Reps_IrrepPositionTest" );
 
-DeclareGlobalFunction( "_SL2Reps_CharNorm" );
-DeclareGlobalFunction( "_SL2Reps_RepChi" );
-DeclareGlobalFunction( "_SL2Reps_ClassMap" );
-DeclareGlobalFunction( "_SL2Reps_ChiTest" );
+# DeclareGlobalFunction( "_SL2Reps_CharNorm" );
+# DeclareGlobalFunction( "_SL2Reps_RepChi" );
+# DeclareGlobalFunction( "_SL2Reps_ClassMap" );
+# DeclareGlobalFunction( "_SL2Reps_ChiTest" );
