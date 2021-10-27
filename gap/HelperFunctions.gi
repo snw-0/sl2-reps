@@ -100,7 +100,13 @@ InstallGlobalFunction( _SL2Reps_RecordIrrep,
 function(irrep_list, name, rho, l)
     Info(InfoSL2Reps, 1, name, " [level ", l, "]");
     # record rho in the form [S, T, degree, level, name]
-    Add(irrep_list, [rho[1], rho[2], Length(rho[1]), l, name]);
+    Add(irrep_list, rec(
+        S := rho[1],
+        T := rho[2],
+        degree := Length(rho[1]),
+        level := l,
+        name := name
+    ));
 end );
 
 #----------------------------------------
@@ -460,11 +466,11 @@ function(p, ld)
     PositionTest := function(irreps, rho, pos_list)
         local pos;
 
-        pos := Position(irreps, _SL2Reps_ChiST(rho[1], rho[2]));
+        pos := Position(irreps, _SL2Reps_ChiST(rho.S, rho.T));
         if pos = fail then
-            Info(InfoSL2Reps, 1, rho[5], " not found!");
+            Info(InfoSL2Reps, 1, rho.name, " not found!");
         else
-            Info(InfoSL2Reps, 1, rho[5], ": ", pos);
+            Info(InfoSL2Reps, 1, rho.name, ": ", pos);
             Add(pos_list, pos);
         fi;
     end;
