@@ -1797,3 +1797,97 @@ function(p, ld)
     Info(InfoSL2Reps, 1, Length(irrep_list), " irreps of level ", l, " found.");
     return irrep_list;
 end );
+
+InstallGlobalFunction( SL2Reps_ExceptionalPrimePowerIrreps,
+function()
+    local irrep_list, rho, name, w, x, j, r, t;
+
+    irrep_list := [];
+
+    # C_2 tensor R_2^0(1,3)_1.
+    # Matrix given in notes sec. 1.6.2.
+    w := Sqrt(2);
+    rho := [
+        1/2 * [
+            [-1,  1,  w],
+            [ 1, -1,  w],
+            [ w,  w,  0]
+        ],
+        DiagonalMat([E(4), -E(4), 1])
+    ];
+    rho := [-1*rho[1], -1*rho[2]];
+    name := "Xi_6 tensor R_2^0(1,3)_1";
+    _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^2);
+
+    # C_3 tensor R_3^0(1,3,nu)_1.
+    # Matrix given in notes S. 1.6.3.
+    rho := [
+        -1/2 * [
+            [ 0,  0,  1,  1,  1,  1],
+            [ 0,  0, -1, -1,  1,  1],
+            [ 1, -1,  0,  0,  1, -1],
+            [ 1, -1,  0,  0, -1,  1],
+            [ 1,  1,  1, -1,  0,  0],
+            [ 1,  1, -1,  1,  0,  0],
+        ],
+        DiagonalMat([1, -1, E(8), E(8)^5, E(8)^3, E(8)^7])
+    ];
+    rho := [E(4) * rho[1], -E(4) * rho[2]];
+    name := "Xi_9 tensor R_3^0(1,3,nu)_1";
+    _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^3);
+
+    # C_2 tensor R_4^2(r,3,chi), for chi != 1, r in {1,3}.
+    # A = {+-1}, so there is a single non-trivial character, indexed by [0,1].
+    # NOTE: C_2 tensor R_4^2(1,1,[0,1]) is iso to R_4^2(1,3,nu)_1, and
+    # C_2 tensor R_4^2(3,1,[0,1]) is iso to R_4^2(3,3,nu)_1.
+    # Hence they are not exceptional.
+    for r in [1,3] do
+        rho := SL2Reps_RepR(2,4,2,r,3,[0,1])[1];
+        rho := [-1 * rho[1], -1 * rho[2]];
+        name := Concatenation("Xi_6 tensor R_4^2(", String(r), ",3,[0,1])");
+        _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^4);
+    od;
+
+    # N_3(chi)+ tensor R_4^0(1,7,psi)+, for psi(alpha) = -1, psi(-1) = 1,
+    # chi primitive and chi^2 = 1.
+    # Calculated via Kronecker product.
+    # For the N part, chars. are [1,0] and [1,3] (see the ld=3 section earlier).
+    #
+    # First construct R_4^0(1,7,psi)+. Char is [1,1]. SL2Reps_RepR gives a list with + and then -.
+    x := SL2Reps_RepR(2, 4, 0, 1, 7, [1, 1]);
+    for j in [0,3] do
+        # Construct N_3(chi)+. SL2Reps_RepR again returns a list.
+        rho := SL2Reps_RepN(2, 3, [1, j]);
+        rho := [
+            KroneckerProduct(rho[1][1], x[1][1]),
+            KroneckerProduct(rho[1][2], x[1][2]),
+            12
+        ];
+        name := Concatenation("N_3([1,", String(j), "])+ tensor R_4^0(1,7,[1,1])+");
+        _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^4);
+    od;
+
+    # C_3 tensor R_5^2(r,1,chi)_1, for chi NOT primitive and r in {1,3}.
+    # A = <alpha> x <-1>, so non-primitive characters are indexed by [0,0] and [0,1].
+    for r in [1,3] do
+        for j in [0,1] do
+            rho := SL2Reps_RepR(2, 5, 2, r, 1, [0,j])[1];
+            rho := [E(4) * rho[1], -E(4) * rho[2], 12];
+            name := Concatenation("Xi_9 tensor R_5^2(", String(r), ",1,[0,", String(j), "])_1");
+            _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^5);
+        od;
+    od;
+
+    # C_2 tensor R_6^4(r,t,nu)_1, for r in {1,3,5,7}, t in {1,3}.
+    for r in [1,3,5,7] do
+        for t in [1,3] do
+            rho := SL2Reps_RepR(2,6,4,r,t,[0,0])[1];
+            rho := [-1 * rho[1], -1 * rho[2]];
+            name := Concatenation("Xi_6 tensor R_6^4(", String(r), ",", String(t), ",nu)_1");
+            _SL2Reps_RecordIrrep(irrep_list, name, rho, 2^6);
+        od;
+    od;
+
+    Info(InfoSL2Reps, 1, Length(irrep_list), " exceptional irreps found.");
+    return irrep_list;
+end );
