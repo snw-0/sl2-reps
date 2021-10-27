@@ -1019,7 +1019,7 @@ function(max_degree)
     return output;
 end );
 
-InstallGlobalFunction( _SL2Reps_PrimePowerIrrepsOfLevel,
+InstallGlobalFunction( SL2Reps_PrimePowerIrrepsOfLevel,
 function(p, ld)
     local irrep_list, l, si, r, t, u, w, x, i, j, name, rho;
 

@@ -456,7 +456,7 @@ function(p, ld)
     fi;
 
     Info(InfoSL2Reps, 1, "Constructing irreps via Nobs-Wolfart.");
-    irrep_list := _SL2Reps_PrimePowerIrrepsOfLevel(p, ld);
+    irrep_list := SL2Reps_PrimePowerIrrepsOfLevel(p, ld);
 
     Info(InfoSL2Reps, 1, "Constructing irreps via conjugacy classes.");
     G := _SL2Reps_SL2Conj(p, ld);
