@@ -420,8 +420,7 @@ a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z}
 
 
 
- Converts the modular data (S,T), which must have level dividing
-p\texttt{\symbol{94}}ld, into a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, presented in a form matching the conjugacy classes used in \texttt{SL2Reps{\textunderscore}SL2Conj}. }
+ Converts the modular data $(S,T)$, which must have level dividing $p^\lambda$, into a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, presented in a form matching the conjugacy classes used in \texttt{SL2Reps{\textunderscore}SL2Conj}. }
 
  
 
@@ -436,8 +435,7 @@ a boolean
 
 
 
- Constructs and tests all irreps of level dividing p\texttt{\symbol{94}}ld by
-checking their positions in Irr(G). }
+ Constructs and tests all irreps of level dividing $p^\lambda$ by checking their positions in \texttt{Irr(G)}. }
 
  }
 
@@ -602,6 +600,8 @@ a list of lists of the form $[S,T]$
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}

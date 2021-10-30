@@ -22,7 +22,7 @@
  <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>
 </Returns>
  <Description>
-Converts the modular data (S,T), which must have level dividing p^ld,
+Converts the modular data <Math>(S,T)</Math>, which must have level dividing <Math>p^\lambda</Math>,
  into a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>, presented in a
  form matching the conjugacy classes used in <Code>SL2Reps_SL2Conj</Code>.
  </Description>
@@ -34,8 +34,8 @@ Converts the modular data (S,T), which must have level dividing p^ld,
  <Returns>a boolean
 </Returns>
  <Description>
-Constructs and tests all irreps of level dividing p^ld by checking their
- positions in Irr(G).
+Constructs and tests all irreps of level dividing <Math>p^\lambda</Math> by checking their
+ positions in <Code>Irr(G)</Code>.
  </Description>
 </ManSection>
 
