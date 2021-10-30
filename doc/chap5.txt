@@ -1,0 +1,74 @@
+  
+  [1X5 [33X[0;0YIrreducible representations of prime-power level[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YRepresentations of type D[133X[101X
+  
+  [33X[0;0YSee [14X2.2-1[114X.[133X
+  
+  [1X5.1-1 SL2Reps_ModuleD[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_ModuleD[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XD[123X.[133X
+  
+  [1X5.1-2 SL2Reps_RepD[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_RepD[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  
+  [33X[0;0YConstructs  the irreducible representation(s) of type [23XD[123X with level [23Xp^\lambda[123X
+  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
+  
+  
+  [1X5.2 [33X[0;0YRepresentations of type N[133X[101X
+  
+  [33X[0;0YSee [14X2.2-2[114X.[133X
+  
+  [1X5.2-1 SL2Reps_ModuleN[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_ModuleN[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XN[123X.[133X
+  
+  [1X5.2-2 SL2Reps_RepN[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_RepN[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  
+  [33X[0;0YConstructs  the irreducible representation(s) of type [23XN[123X with level [23Xp^\lambda[123X
+  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
+  
+  
+  [1X5.3 [33X[0;0YRepresentations of type R[133X[101X
+  
+  [33X[0;0YSee [14X2.2-3[114X.[133X
+  
+  [1X5.3-1 SL2Reps_ModuleR[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_ModuleR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XR[123X.[133X
+  
+  [1X5.3-2 SL2Reps_RepR[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_RepR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  
+  [33X[0;0YConstructs  the irreducible representation(s) of type [23XR[123X with level [23Xp^\lambda[123X
+  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
+  
+  [1X5.3-3 SL2Reps_RepRUnary[101X
+  
+  [33X[1;0Y[29X[2XSL2Reps_RepRUnary[102X( [3Xp[103X, [3Xld[103X, [3Xr[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  
+  [33X[0;0YConstructs  the irreducible representation(s) of unary type [23XR[123X (that is, with
+  [23X\sigma = \lambda[123X) with level [23Xp^\lambda[123X.[133X
+  

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- This is an automatically generated file. -->
-<Chapter Label="Chapter_Methods_for_constructing_representations">
-<Heading>Methods for constructing representations</Heading>
+<Chapter Label="Chapter_Irreps">
+<Heading>Irreducible representations of prime-power level</Heading>
 
-<Section Label="Chapter_Methods_for_constructing_representations_Section_Representations_of_type_D">
+<Section Label="Chapter_Irreps_Section_Representations_of_type_D">
 <Heading>Representations of type D</Heading>
 
 <P/>
- TODO: Description of type <Math>D</Math>.
+ See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_D"/>.
 <ManSection>
   <Func Arg="p,ld" Name="SL2Reps_ModuleD" />
  <Returns>a record describing <Math>(M,Q)</Math>
@@ -24,7 +24,7 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>D</Math> with level <Math>p^\ld</Math>
+  Constructs the irreducible representation(s) of type <Math>D</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
  </Description>
 </ManSection>
@@ -33,11 +33,11 @@
 </Section>
 
 
-<Section Label="Chapter_Methods_for_constructing_representations_Section_Representations_of_type_N">
+<Section Label="Chapter_Irreps_Section_Representations_of_type_N">
 <Heading>Representations of type N</Heading>
 
 <P/>
- TODO: Description of type <Math>N</Math>.
+ See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_N"/>.
 <ManSection>
   <Func Arg="p,ld" Name="SL2Reps_ModuleN" />
  <Returns>a record describing <Math>(M,Q)</Math>
@@ -53,7 +53,7 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>N</Math> with level <Math>p^\ld</Math>
+  Constructs the irreducible representation(s) of type <Math>N</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
  </Description>
 </ManSection>
@@ -62,11 +62,11 @@
 </Section>
 
 
-<Section Label="Chapter_Methods_for_constructing_representations_Section_Representations_of_type_R">
+<Section Label="Chapter_Irreps_Section_Representations_of_type_R">
 <Heading>Representations of type R</Heading>
 
 <P/>
- TODO: Description of type <Math>R</Math>.
+ See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_R"/>.
 <ManSection>
   <Func Arg="p,ld,sigma,r,t" Name="SL2Reps_ModuleR" />
  <Returns>a record describing <Math>(M,Q)</Math>
@@ -82,7 +82,7 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>R</Math> with level <Math>p^\ld</Math>
+  Constructs the irreducible representation(s) of type <Math>R</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
  </Description>
 </ManSection>
@@ -93,8 +93,8 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of unary type <Math>R</Math> (that is, with <Math>\sigma = \ld</Math>)
-  with level <Math>p^\ld</Math>.
+  Constructs the irreducible representation(s) of unary type <Math>R</Math> (that is, with <Math>\sigma = \lambda</Math>)
+  with level <Math>p^\lambda</Math>.
  </Description>
 </ManSection>
 

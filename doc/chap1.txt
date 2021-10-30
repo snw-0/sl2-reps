@@ -1,6 +1,31 @@
   
   [1X1 [33X[0;0YIntroduction[133X[101X
   
-  [33X[0;0YThis  package  constructs  matrix  presentations  of  the representations of
-  [23X\mathrm{SL}_2(\mathbb{Z})[123X.[133X
+  [33X[0;0YThis  package, [10XSL2Reps[110X, provides methods for constructing and testing matrix
+  presentations of the representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X.[133X
+  
+  [33X[0;0YIrreducible   representations   of   prime-power   level   are   constructed
+  individually  by means of Weyl representations, and from these a list of all
+  representations of a given degree or level may be produced.[133X
+  
+  
+  [1X1.1 [33X[0;0YInstallation[133X[101X
+  
+  [33X[0;0YTo  install  [10XSL2Reps[110X,  first download it from [10XTODO[110X, then place it in the [10Xpkg[110X
+  subdirectory  of  your  GAP  installation (or in the [10Xpkg[110X subdirectory of any
+  other GAP root directory, for example one added with the [10X-l[110X argument).[133X
+  
+  [33X[0;0Y[10XSL2Reps[110X is then loaded with the GAP command[133X
+  
+  [33X[0;0Y[10Xgap> LoadPackage( "SL2Reps" );[110X[133X
+  
+  
+  [1X1.2 [33X[0;0YUsage[133X[101X
+  
+  [33X[0;0YTODO: Link to other sections.[133X
+  
+  [33X[0;0YThis  package uses an [10XInfoClass[110X, [10XInfoSL2Reps[110X. It may be set to [10X0[110X (silent), [10X1[110X
+  (info), or [10X2[110X (verbose). To change it, use[133X
+  
+  [33X[0;0Y[10Xgap> SetInfoLevel(InfoSL2Reps, k);[110X[133X
   

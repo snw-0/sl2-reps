@@ -1025,15 +1025,18 @@ function(p, ld)
 
     if not IsPrime(p) then
         Error("p must be a prime.");
-    elif not ld in PositiveIntegers then
-        Error("ld must be a positive integer.");
+    elif (not ld in Integers) or (ld < 0) then
+        Error("ld must be a non-negative integer.");
     fi;
 
     l := p^ld;
 
     irrep_list := [];
 
-    if p > 2 then
+    if ld = 0 then
+        # The trivial irrep Xi_0 = C_1.
+        _SL2Reps_RecordIrrep(irrep_list, "Xi_0", [[[1]], [[1]]], 1);
+    elif p > 2 then
         if ld = 1 then
             # D_1(chi), for chi primitive, chi^2 != 1.
             # Defined for p >= 3.
@@ -1798,7 +1801,7 @@ function(p, ld)
     return irrep_list;
 end );
 
-InstallGlobalFunction( SL2Reps_ExceptionalPrimePowerIrreps,
+InstallGlobalFunction( SL2Reps_Exceptions,
 function()
     local irrep_list, rho, name, w, x, j, r, t;
 

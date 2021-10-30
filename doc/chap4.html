@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (SL2Reps) - Chapter 4: Methods for constructing representations</title>
+<title>GAP (SL2Reps) - Chapter 4: Methods for testing</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,122 +15,58 @@
 <body class="chap4"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap4_mj.html">[MathJax on]</a></p>
-<p><a id="X7E2339E784CFAA66" name="X7E2339E784CFAA66"></a></p>
-<div class="ChapSects"><a href="chap4.html#X7E2339E784CFAA66">4 <span class="Heading">Methods for constructing representations</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X82DA126D7F755B1C">4.1 <span class="Heading">Representations of type D</span></a>
+<p><a id="X794C1A137F8FA14D" name="X794C1A137F8FA14D"></a></p>
+<div class="ChapSects"><a href="chap4.html#X794C1A137F8FA14D">4 <span class="Heading">Methods for testing</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7DE7E7187BE24368">4.1 <span class="Heading">Testing</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78D4833F85945690">4.1-1 SL2Reps_ModuleD</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84376A29780650AD">4.1-2 SL2Reps_RepD</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7CD74CFC84B38042">4.2 <span class="Heading">Representations of type N</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86D9DDAE83E4A141">4.2-1 SL2Reps_ModuleN</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A3A34B886A52E2B">4.2-2 SL2Reps_RepN</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7D9759387C499FA0">4.3 <span class="Heading">Representations of type R</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8799C86A83FDD22B">4.3-1 SL2Reps_ModuleR</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B7A217C8634042C">4.3-2 SL2Reps_RepR</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87D9D1497ACD4A1E">4.3-3 SL2Reps_RepRUnary</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F816DE77BADF5BC">4.1-1 SL2Reps_SL2Conj</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78E0537D7C06CAEE">4.1-2 SL2Reps_ChiST</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E8C59607A1226E7">4.1-3 SL2Reps_IrrepPositionTest</a></span>
 </div></div>
 </div>
 
-<h3>4 <span class="Heading">Methods for constructing representations</span></h3>
+<h3>4 <span class="Heading">Methods for testing</span></h3>
 
-<p><a id="X82DA126D7F755B1C" name="X82DA126D7F755B1C"></a></p>
+<p><a id="X7DE7E7187BE24368" name="X7DE7E7187BE24368"></a></p>
 
-<h4>4.1 <span class="Heading">Representations of type D</span></h4>
+<h4>4.1 <span class="Heading">Testing</span></h4>
 
-<p>TODO: Description of type <span class="Math">D</span>.</p>
+<p><a id="X7F816DE77BADF5BC" name="X7F816DE77BADF5BC"></a></p>
 
-<p><a id="X78D4833F85945690" name="X78D4833F85945690"></a></p>
+<h5>4.1-1 SL2Reps_SL2Conj</h5>
 
-<h5>4.1-1 SL2Reps_ModuleD</h5>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_SL2Conj</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the group <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> with conjugacy classes set to the format we use.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
+<p><a id="X78E0537D7C06CAEE" name="X78E0537D7C06CAEE"></a></p>
 
-<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">D</span>.</p>
+<h5>4.1-2 SL2Reps_ChiST</h5>
 
-<p><a id="X84376A29780650AD" name="X84376A29780650AD"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ChiST</code>( <var class="Arg">S</var>, <var class="Arg">T</var>, <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list representing a character of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span></p>
 
-<h5>4.1-2 SL2Reps_RepD</h5>
+<p>Converts the modular data (S,T), which must have level dividing p^ld, into a character of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>, presented in a form matching the conjugacy classes used in <code class="code">SL2Reps_SL2Conj</code>.</p>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
+<p><a id="X7E8C59607A1226E7" name="X7E8C59607A1226E7"></a></p>
 
-<p>Constructs the irreducible representation(s) of type <span class="Math">D</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
+<h5>4.1-3 SL2Reps_IrrepPositionTest</h5>
 
-<p><a id="X7CD74CFC84B38042" name="X7CD74CFC84B38042"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_IrrepPositionTest</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
 
-<h4>4.2 <span class="Heading">Representations of type N</span></h4>
-
-<p>TODO: Description of type <span class="Math">N</span>.</p>
-
-<p><a id="X86D9DDAE83E4A141" name="X86D9DDAE83E4A141"></a></p>
-
-<h5>4.2-1 SL2Reps_ModuleN</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
-
-<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">N</span>.</p>
-
-<p><a id="X7A3A34B886A52E2B" name="X7A3A34B886A52E2B"></a></p>
-
-<h5>4.2-2 SL2Reps_RepN</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
-
-<p>Constructs the irreducible representation(s) of type <span class="Math">N</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
-
-<p><a id="X7D9759387C499FA0" name="X7D9759387C499FA0"></a></p>
-
-<h4>4.3 <span class="Heading">Representations of type R</span></h4>
-
-<p>TODO: Description of type <span class="Math">R</span>.</p>
-
-<p><a id="X8799C86A83FDD22B" name="X8799C86A83FDD22B"></a></p>
-
-<h5>4.3-1 SL2Reps_ModuleR</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="Math">(M,Q)</span></p>
-
-<p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">R</span>.</p>
-
-<p><a id="X7B7A217C8634042C" name="X7B7A217C8634042C"></a></p>
-
-<h5>4.3-2 SL2Reps_RepR</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
-
-<p>Constructs the irreducible representation(s) of type <span class="Math">R</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
-
-<p><a id="X87D9D1497ACD4A1E" name="X87D9D1497ACD4A1E"></a></p>
-
-<h5>4.3-3 SL2Reps_RepRUnary</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
-
-<p>Constructs the irreducible representation(s) of unary type <span class="Math">R</span> (that is, with <span class="Math">\sigma = \lambda</span>) with level <span class="Math">p^\lambda</span>.</p>
+<p>Constructs and tests all irreps of level dividing p^ld by checking their positions in Irr(G).</p>
 
 
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

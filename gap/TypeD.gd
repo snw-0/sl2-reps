@@ -3,11 +3,12 @@
 #
 # Representations of type D.
 
-#! @Chapter Methods for constructing representations
+#! @Chapter Irreps
+#! @ChapterTitle Irreducible representations of prime-power level
 
 #! @Section Representations of type D
 #!
-#! TODO: Description of type $D$.
+#! See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_D"/>.
 
 #! @Arguments p,ld
 #! @Returns a record describing $(M,Q)$
@@ -18,6 +19,6 @@ DeclareGlobalFunction( "SL2Reps_ModuleD" );
 #! @Arguments p,ld,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
-#!  Constructs the irreducible representation(s) of type $D$ with level $p^\ld$
+#!  Constructs the irreducible representation(s) of type $D$ with level $p^\lambda$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
 DeclareGlobalFunction( "SL2Reps_RepD" );

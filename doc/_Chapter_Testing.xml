@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Testing">
+<Heading>Methods for testing</Heading>
+
+<Section Label="Chapter_Testing_Section_Testing">
+<Heading>Testing</Heading>
+
+<ManSection>
+  <Func Arg="p,ld" Name="SL2Reps_SL2Conj" />
+ <Returns>the group <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> with conjugacy classes set to the format we use.
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="S,T,p,ld" Name="SL2Reps_ChiST" />
+ <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>
+</Returns>
+ <Description>
+Converts the modular data (S,T), which must have level dividing p^ld,
+ into a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>, presented in a
+ form matching the conjugacy classes used in <Code>SL2Reps_SL2Conj</Code>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p, lambda" Name="SL2Reps_IrrepPositionTest" />
+ <Returns>a boolean
+</Returns>
+ <Description>
+Constructs and tests all irreps of level dividing p^ld by checking their
+ positions in Irr(G).
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

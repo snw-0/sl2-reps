@@ -3,11 +3,11 @@
 #
 # Representations of type N.
 
-#! @Chapter Methods for constructing representations
+#! @Chapter Irreps
 
 #! @Section Representations of type N
 #!
-#! TODO: Description of type $N$.
+#! See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_N"/>.
 
 #! @Arguments p,ld
 #! @Returns a record describing $(M,Q)$
@@ -18,6 +18,6 @@ DeclareGlobalFunction( "SL2Reps_ModuleN" );
 #! @Arguments p,ld,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
-#!  Constructs the irreducible representation(s) of type $N$ with level $p^\ld$
+#!  Constructs the irreducible representation(s) of type $N$ with level $p^\lambda$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
 DeclareGlobalFunction( "SL2Reps_RepN" );

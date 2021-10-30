@@ -1,74 +1,30 @@
   
-  [1X4 [33X[0;0YMethods for constructing representations[133X[101X
+  [1X4 [33X[0;0YMethods for testing[133X[101X
   
   
-  [1X4.1 [33X[0;0YRepresentations of type D[133X[101X
+  [1X4.1 [33X[0;0YTesting[133X[101X
   
-  [33X[0;0YTODO: Description of type [23XD[123X.[133X
+  [1X4.1-1 SL2Reps_SL2Conj[101X
   
-  [1X4.1-1 SL2Reps_ModuleD[101X
+  [33X[1;0Y[29X[2XSL2Reps_SL2Conj[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ythe   group   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X   with
+            conjugacy classes set to the format we use.[133X
   
-  [33X[1;0Y[29X[2XSL2Reps_ModuleD[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
+  [1X4.1-2 SL2Reps_ChiST[101X
   
-  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
-  [23XD[123X.[133X
+  [33X[1;0Y[29X[2XSL2Reps_ChiST[102X( [3XS[103X, [3XT[103X, [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya        list        representing       a       character       of
+            [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X[133X
   
-  [1X4.1-2 SL2Reps_RepD[101X
+  [33X[0;0YConverts the modular data (S,T), which must have level dividing p^ld, into a
+  character  of  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X, presented in a
+  form matching the conjugacy classes used in [10XSL2Reps_SL2Conj[110X.[133X
   
-  [33X[1;0Y[29X[2XSL2Reps_RepD[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  [1X4.1-3 SL2Reps_IrrepPositionTest[101X
   
-  [33X[0;0YConstructs  the irreducible representation(s) of type [23XD[123X with level [23Xp^\lambda[123X
-  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
+  [33X[1;0Y[29X[2XSL2Reps_IrrepPositionTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  
-  [1X4.2 [33X[0;0YRepresentations of type N[133X[101X
-  
-  [33X[0;0YTODO: Description of type [23XN[123X.[133X
-  
-  [1X4.2-1 SL2Reps_ModuleN[101X
-  
-  [33X[1;0Y[29X[2XSL2Reps_ModuleN[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
-  
-  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
-  [23XN[123X.[133X
-  
-  [1X4.2-2 SL2Reps_RepN[101X
-  
-  [33X[1;0Y[29X[2XSL2Reps_RepN[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
-  
-  [33X[0;0YConstructs  the irreducible representation(s) of type [23XN[123X with level [23Xp^\lambda[123X
-  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
-  
-  
-  [1X4.3 [33X[0;0YRepresentations of type R[133X[101X
-  
-  [33X[0;0YTODO: Description of type [23XR[123X.[133X
-  
-  [1X4.3-1 SL2Reps_ModuleR[101X
-  
-  [33X[1;0Y[29X[2XSL2Reps_ModuleR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record describing [23X(M,Q)[123X[133X
-  
-  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
-  [23XR[123X.[133X
-  
-  [1X4.3-2 SL2Reps_RepR[101X
-  
-  [33X[1;0Y[29X[2XSL2Reps_RepR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
-  
-  [33X[0;0YConstructs  the irreducible representation(s) of type [23XR[123X with level [23Xp^\lambda[123X
-  corresponding to the character [23X\chi[123X indexed by [10Xchi_index[110X.[133X
-  
-  [1X4.3-3 SL2Reps_RepRUnary[101X
-  
-  [33X[1;0Y[29X[2XSL2Reps_RepRUnary[102X( [3Xp[103X, [3Xlambda[103X, [3Xr[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
-  
-  [33X[0;0YConstructs  the irreducible representation(s) of unary type [23XR[123X (that is, with
-  [23X\sigma = \lambda[123X) with level [23Xp^\lambda[123X.[133X
+  [33X[0;0YConstructs  and  tests  all  irreps of level dividing p^ld by checking their
+  positions in Irr(G).[133X
   

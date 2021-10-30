@@ -2,6 +2,7 @@
 
 <!-- This is an automatically generated file. -->
 <#Include SYSTEM "_Chapter_Introduction.xml">
-<#Include SYSTEM "_Chapter_Usage.xml">
-<#Include SYSTEM "_Chapter_Methods_for_constructing_lists_of_representations.xml">
-<#Include SYSTEM "_Chapter_Methods_for_constructing_representations.xml">
+<#Include SYSTEM "_Chapter_Description.xml">
+<#Include SYSTEM "_Chapter_Lists.xml">
+<#Include SYSTEM "_Chapter_Testing.xml">
+<#Include SYSTEM "_Chapter_Irreps.xml">

@@ -2,23 +2,40 @@
 \makelabel{sl2reps:Title page}{}{X7D2C85EC87DD46E5}
 \makelabel{sl2reps:Table of Contents}{}{X8537FEB07AF2BEC8}
 \makelabel{sl2reps:Introduction}{1}{X7DFB63A97E67C0A1}
-\makelabel{sl2reps:Usage}{2}{X86A9B6F87E619FFF}
-\makelabel{sl2reps:InfoClass}{2.1}{X7C50C16F84D9B9AC}
-\makelabel{sl2reps:Methods for constructing lists of representations}{3}{X821467D786BDE5F8}
-\makelabel{sl2reps:Irreducible representations}{3.1}{X8145828B844789C2}
-\makelabel{sl2reps:Methods for constructing representations}{4}{X7E2339E784CFAA66}
-\makelabel{sl2reps:Representations of type D}{4.1}{X82DA126D7F755B1C}
-\makelabel{sl2reps:Representations of type N}{4.2}{X7CD74CFC84B38042}
-\makelabel{sl2reps:Representations of type R}{4.3}{X7D9759387C499FA0}
+\makelabel{sl2reps:Installation}{1.1}{X8360C04082558A12}
+\makelabel{sl2reps:Usage}{1.2}{X86A9B6F87E619FFF}
+\makelabel{sl2reps:Description}{2}{X7BBCB13F82ACC213}
+\makelabel{sl2reps:Construction}{2.1}{X7F6278CD87400D49}
+\makelabel{sl2reps:Weyl representation types}{2.2}{X860C8CCC81CC703F}
+\makelabel{sl2reps:Type D}{2.2.1}{X7AEC048F793F1D79}
+\makelabel{sl2reps:Type N}{2.2.2}{X84E15A1E8326AF4F}
+\makelabel{sl2reps:Type R}{2.2.3}{X85A14FDA8467E361}
+\makelabel{sl2reps:Lists of representations}{3}{X8168FF017B2C0BB2}
+\makelabel{sl2reps:Lists by degree}{3.1}{X80406B597E11D7C6}
+\makelabel{sl2reps:Lists by level}{3.2}{X78C583957D3FF6ED}
+\makelabel{sl2reps:Lists of exceptional representations}{3.3}{X80400C6D79D4D0D6}
+\makelabel{sl2reps:Methods for testing}{4}{X794C1A137F8FA14D}
+\makelabel{sl2reps:Testing}{4.1}{X7DE7E7187BE24368}
+\makelabel{sl2reps:Irreducible representations of prime-power level}{5}{X7C4165447B8AB223}
+\makelabel{sl2reps:Representations of type D}{5.1}{X82DA126D7F755B1C}
+\makelabel{sl2reps:Representations of type N}{5.2}{X7CD74CFC84B38042}
+\makelabel{sl2reps:Representations of type R}{5.3}{X7D9759387C499FA0}
+\makelabel{sl2reps:Bibliography}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{sl2reps:References}{Bib}{X7A6F98FD85F02BFE}
 \makelabel{sl2reps:Index}{Ind}{X83A0356F839C696F}
 \makelabel{sl2reps:SL2RepsPrimePowerIrrepsOfDegree}{3.1.1}{X7F86FF007C1D95BC}
 \makelabel{sl2reps:SL2RepsPrimePowerIrrepsOfDegreeAtMost}{3.1.2}{X7EC26C3878FA3090}
 \makelabel{sl2reps:SL2RepsIrrepsOfDegree}{3.1.3}{X7E0CE1527A1F87FF}
 \makelabel{sl2reps:SL2RepsIrrepsOfDegreeAtMost}{3.1.4}{X84DC721D7FB5A944}
-\makelabel{sl2reps:SL2RepsModuleD}{4.1.1}{X78D4833F85945690}
-\makelabel{sl2reps:SL2RepsRepD}{4.1.2}{X84376A29780650AD}
-\makelabel{sl2reps:SL2RepsModuleN}{4.2.1}{X86D9DDAE83E4A141}
-\makelabel{sl2reps:SL2RepsRepN}{4.2.2}{X7A3A34B886A52E2B}
-\makelabel{sl2reps:SL2RepsModuleR}{4.3.1}{X8799C86A83FDD22B}
-\makelabel{sl2reps:SL2RepsRepR}{4.3.2}{X7B7A217C8634042C}
-\makelabel{sl2reps:SL2RepsRepRUnary}{4.3.3}{X87D9D1497ACD4A1E}
+\makelabel{sl2reps:SL2RepsPrimePowerIrrepsOfLevel}{3.2.1}{X85C95DC07AC11205}
+\makelabel{sl2reps:SL2RepsExceptions}{3.3.1}{X82646BF88466E216}
+\makelabel{sl2reps:SL2RepsSL2Conj}{4.1.1}{X7F816DE77BADF5BC}
+\makelabel{sl2reps:SL2RepsChiST}{4.1.2}{X78E0537D7C06CAEE}
+\makelabel{sl2reps:SL2RepsIrrepPositionTest}{4.1.3}{X7E8C59607A1226E7}
+\makelabel{sl2reps:SL2RepsModuleD}{5.1.1}{X78D4833F85945690}
+\makelabel{sl2reps:SL2RepsRepD}{5.1.2}{X84376A29780650AD}
+\makelabel{sl2reps:SL2RepsModuleN}{5.2.1}{X86D9DDAE83E4A141}
+\makelabel{sl2reps:SL2RepsRepN}{5.2.2}{X7A3A34B886A52E2B}
+\makelabel{sl2reps:SL2RepsModuleR}{5.3.1}{X8799C86A83FDD22B}
+\makelabel{sl2reps:SL2RepsRepR}{5.3.2}{X7B7A217C8634042C}
+\makelabel{sl2reps:SL2RepsRepRUnary}{5.3.3}{X87D9D1497ACD4A1E}

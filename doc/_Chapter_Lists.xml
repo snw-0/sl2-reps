@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- This is an automatically generated file. -->
-<Chapter Label="Chapter_Methods_for_constructing_lists_of_representations">
-<Heading>Methods for constructing lists of representations</Heading>
+<Chapter Label="Chapter_Lists">
+<Heading>Lists of representations</Heading>
 
-<Section Label="Chapter_Methods_for_constructing_lists_of_representations_Section_Irreducible_representations">
-<Heading>Irreducible representations</Heading>
+<Section Label="Chapter_Lists_Section_Degree">
+<Heading>Lists by degree</Heading>
 
-<P/>
- TODO: Description of this.
 <ManSection>
   <Func Arg="degree" Name="SL2Reps_PrimePowerIrrepsOfDegree" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
@@ -53,6 +51,12 @@
 </ManSection>
 
 
+</Section>
+
+
+<Section Label="Chapter_Lists_Section_Level">
+<Heading>Lists by level</Heading>
+
 <ManSection>
   <Func Arg="p, lambda" Name="SL2Reps_PrimePowerIrrepsOfLevel" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
@@ -63,6 +67,12 @@
  </Description>
 </ManSection>
 
+
+</Section>
+
+
+<Section Label="Chapter_Lists_Section_Exceptions">
+<Heading>Lists of exceptional representations</Heading>
 
 <ManSection>
   <Func Arg="arg" Name="SL2Reps_Exceptions" />

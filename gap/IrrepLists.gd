@@ -4,11 +4,11 @@
 
 # Lists of Representations.
 
-#! @Chapter Methods for constructing lists of representations
+#! @Chapter Lists
+#! @ChapterTitle Lists of representations
 
-#! @Section Irreducible representations
-#!
-#! TODO: Description of this.
+#! @Section Degree
+#! @SectionTitle Lists by degree
 
 #! @Arguments degree
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
@@ -38,20 +38,20 @@ DeclareGlobalFunction( "SL2Reps_IrrepsOfDegree" );
 #!  that are at most the given degree.
 DeclareGlobalFunction( "SL2Reps_IrrepsOfDegreeAtMost" );
 
+#! @Section Level
+#! @SectionTitle Lists by level
+
 #! @Arguments p, lambda
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
-#!  with level exactly $p^\lambda$, or equivalently, those which factor through
-#!  $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ but not through
-#!  $\mathrm{SL}_2(\mathbb{Z}/m\mathbb{Z})$ for any $m < p^\lambda$.
+#!  with level exactly $p^\lambda$.
 DeclareGlobalFunction( "SL2Reps_PrimePowerIrrepsOfLevel" );
+
+#! @Section Exceptions
+#! @SectionTitle Lists of exceptional representations
 
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of the 18 exceptional irreps of $\mathrm{SL}_2(\mathbb{Z})$.
-#!  All but 18 of the irreps of $\mathrm{SL}_2(\mathbb{Z})$ with prime power level
-#!  may be found as subrepresentations of quadratic modules; this function constructs the
-#!  18 exceptions, all of which may be found as the tensor product of two
-#!  subrepresentations of quadratic modules.
-DeclareGlobalFunction( "SL2Reps_ExceptionalPrimePowerIrreps" );
+DeclareGlobalFunction( "SL2Reps_Exceptions" );
