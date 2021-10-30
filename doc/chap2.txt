@@ -68,7 +68,7 @@
   the   quadratic   module  with  [23XM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus
   \mathbb{Z}/p^\lambda\mathbb{Z}[123X       and       [23XQ(x,y)       =      \frac{x^2
   +xy+\frac{1+u}{4}y^2}{p^\lambda}[123X (where, for [23Xp \neq 2[123X, [23Xu[123X is chosen so that [23Xu
-  \equiv  3  \mod  4[123X with [23X\left(\frac{-u}{p}\right) = -1[123X, and for [23Xp=2[123X, [23Xu=3[123X) is
+  \equiv  3[123X  mod  4  with [23X\left(\frac{-u}{p}\right) = -1[123X, and for [23Xp=2[123X, [23Xu=3[123X) is
   said  to  be of type [23XN[123X and denoted [23XN(p,\lambda)[123X. Information on [23X(M,Q)[123X may be
   obtained via [2XSL2Reps_ModuleN[102X ([14X5.2-1[114X), and subrepresentations of [23XD(p,\lambda)[123X
   with level [23Xp^\lambda[123X may be constructed via [2XSL2Reps_RepN[102X ([14X5.2-2[114X).[133X
@@ -79,7 +79,7 @@
   [33X[0;0YThe construction of type [23XR[123X varies depending on whether [23Xp=2[123X.[133X
   
   [33X[0;0YFirst,  if  [23Xp[123X  is  an  odd prime, let [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots,
-  \lambda\}[123X,  and  [23Xr,t \in \{1,u\}[123X with [23Xu[123X a quadratic non-residue [23X\mod p[123X. Then
+  \lambda\}[123X,  and  [23Xr,t  \in \{1,u\}[123X with [23Xu[123X a quadratic non-residue mod [23Xp[123X. Then
   define        [23XM        =        \mathbb{Z}/p^\lambda\mathbb{Z}        \oplus
   \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}[123X  and [23XQ(x,y) = \frac{r(x^2 + p^\sigma
   t y^2)}{p^\lambda}[123X.[133X
