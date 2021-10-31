@@ -1,8 +1,17 @@
 # The GAP package SL2Reps
 
-TODO: add a description of your package; perhaps also instructions how how to
-install and use it, resp. where to find out more
+This package, `SL2Reps`, provides methods for constructing and testing matrix presentations of the representations of `SL_2(Z)`.
 
+Irreducible representations of prime-power level are constructed individually by means of Weyl representations, and from these a list of all representations of a given degree or level may be produced.
+
+@Section Installation
+
+To install `SL2Reps`, first download it from `TODO`, then place it in the `pkg` subdirectory of your GAP installation (or in the `pkg` subdirectory of any other GAP
+root directory, for example one added with the `-l` argument).
+
+`SL2Reps` is then loaded with the GAP command
+
+`gap> LoadPackage( "SL2Reps" );`
 
 ## Contact
 

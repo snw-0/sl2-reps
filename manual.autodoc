@@ -19,7 +19,7 @@ root directory, for example one added with the `-l` argument).
 
 @Section Usage
 
-TODO: Link to other sections.
+Individual representations may be constructed via the methods in <Ref Chap="Chapter_Irreps"/>, while lists of representations with given degrees or levels may be constructed with those in <Ref Chap="Chapter_Lists"/>.
 
 This package uses an `InfoClass`, `InfoSL2Reps`. It may be set to `0` (silent),
 `1` (info), or `2` (verbose). To change it, use
