@@ -6,7 +6,9 @@
   
   [33X[0;0YIrreducible   representations   of   prime-power   level   are   constructed
   individually  by means of Weyl representations, and from these a list of all
-  representations of a given degree or level may be produced.[133X
+  representations  of  a  given degree or level may be produced. The format is
+  designed  to  be  useful  in  the  study  of  modular  tensor  categories in
+  particular.[133X
   
   
   [1X1.1 [33X[0;0YInstallation[133X[101X
@@ -22,7 +24,9 @@
   
   [1X1.2 [33X[0;0YUsage[133X[101X
   
-  [33X[0;0YTODO: Link to other sections.[133X
+  [33X[0;0YIndividual  representations  may  be constructed via the methods in [14X5[114X, while
+  lists  of  representations  with  given degrees or levels may be constructed
+  with those in [14X3[114X.[133X
   
   [33X[0;0YThis  package uses an [10XInfoClass[110X, [10XInfoSL2Reps[110X. It may be set to [10X0[110X (silent), [10X1[110X
   (info), or [10X2[110X (verbose). To change it, use[133X

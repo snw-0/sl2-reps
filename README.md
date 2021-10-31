@@ -1,8 +1,8 @@
 # The GAP package SL2Reps
 
-This package, `SL2Reps`, provides methods for constructing and testing matrix presentations of the representations of `SL_2(Z)`.
+This package, `SL2Reps`, provides methods for constructing and testing matrix presentations of the representations of the group SL_2(Z).
 
-Irreducible representations of prime-power level are constructed individually by means of Weyl representations, and from these a list of all representations of a given degree or level may be produced.
+Irreducible representations of prime-power level are constructed individually by means of Weyl representations, and from these a list of all representations of a given degree or level may be produced.  The format is designed to be useful in the study of modular tensor categories in particular.
 
 @Section Installation
 
@@ -15,8 +15,7 @@ root directory, for example one added with the `-l` argument).
 
 ## Contact
 
-TODO: add info on how to contact you and/or how to report issues with your
-package
+The maintainer may be contacted at `swil311@lsu.edu`.
 
 ## License
 

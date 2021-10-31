@@ -5,7 +5,7 @@ presentations of the representations of $\mathrm{SL}_2(\mathbb{Z})$.
 
 Irreducible representations of prime-power level are constructed individually by means
 of Weyl representations, and from these a list of all representations of a given degree
-or level may be produced.
+or level may be produced. The format is designed to be useful in the study of modular tensor categories in particular.
 
 @Section Installation
 

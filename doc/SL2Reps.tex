@@ -145,7 +145,8 @@ representations of $\mathrm{SL}_2(\mathbb{Z})$.
 
  Irreducible representations of prime-power level are constructed individually
 by means of Weyl representations, and from these a list of all representations
-of a given degree or level may be produced. 
+of a given degree or level may be produced. The format is designed to be
+useful in the study of modular tensor categories in particular. 
 
  
 \section{\textcolor{Chapter }{Installation}}\label{Chapter_Introduction_Section_Installation}
@@ -169,7 +170,8 @@ of a given degree or level may be produced.
 {
   
 
- TODO: Link to other sections. 
+ Individual representations may be constructed via the methods in \ref{Chapter_Irreps}, while lists of representations with given degrees or levels may be
+constructed with those in \ref{Chapter_Lists}. 
 
  This package uses an \texttt{InfoClass}, \texttt{InfoSL2Reps}. It may be set to \texttt{0} (silent), \texttt{1} (info), or \texttt{2} (verbose). To change it, use 
 
@@ -600,6 +602,7 @@ a list of lists of the form $[S,T]$
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
