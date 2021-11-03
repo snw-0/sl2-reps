@@ -11,10 +11,22 @@
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_D"/>.
 <ManSection>
   <Func Arg="p,ld" Name="SL2Reps_ModuleD" />
- <Returns>a record describing <Math>(M,Q)</Math>
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>D</Math>.
+<P/>
+  <Code>Agrp</Code> describes the elements of <Math>\mathfrak{A} = (\mathbb{Z}/p^\lambda\mathbb{Z})^\times</Math>
+  (see <Cite Key="NW76" Where="Section 2.1"/>).
+<P/>
+  <Code>Bp</Code> describes a set of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
+  correspond to a basis the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
+  associated to any primitive character <Math>\chi \in \hat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
+  For other characters, we must use different bases which are particular to each case.
+<P/>
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepD"/> to a function.
+<P/>
+  <Code>IsPrim(chi)</Code> tests whether a given character (e.g. from <Code>Char(i,j)</Code>) is primitive.
  </Description>
 </ManSection>
 
@@ -24,8 +36,8 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>D</Math> with level <Math>p^\lambda</Math>
-  corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
+  Constructs the modular data for the irreducible representation(s) of type <Math>D</Math> with
+  level <Math>p^\lambda</Math> corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
  </Description>
 </ManSection>
 
@@ -40,10 +52,22 @@
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_N"/>.
 <ManSection>
   <Func Arg="p,ld" Name="SL2Reps_ModuleN" />
- <Returns>a record describing <Math>(M,Q)</Math>
+ <Returns>a record <Code>rec(Agrp, Bp, Char, Nm, Prod)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>N</Math>.
+<P/>
+  <Code>Agrp</Code> describes the elements of <Math>\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</Math>
+  (see <Cite Key="NW76" Where="Section 2.2"/>).
+<P/>
+  <Code>Bp</Code> describes a set of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
+  correspond to a basis the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
+  associated to any primitive character <Math>\chi \in \hat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
+  For other characters, we must use different bases which are particular to each case.
+<P/>
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepN"/> to a function.
+<P/>
+  <Code>Nm(a)</Code> and <Code>Prod(a,b)</Code> are the norm and product functions on <Math>M</Math>, respectively.
  </Description>
 </ManSection>
 
@@ -53,7 +77,7 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>N</Math> with level <Math>p^\lambda</Math>
+  Constructs the modular data for the irreducible representation(s) of type <Math>N</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
  </Description>
 </ManSection>
@@ -69,10 +93,27 @@
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_R"/>.
 <ManSection>
   <Func Arg="p,ld,sigma,r,t" Name="SL2Reps_ModuleR" />
- <Returns>a record describing <Math>(M,Q)</Math>
+ <Returns>a record <Code>rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>R</Math>.
+<P/>
+  <Code>Agrp</Code> describes the elements of <Math>\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</Math>
+  (see <Cite Key="NW76" Where="Section 2.3 - 2.5"/>).
+<P/>
+  Representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math> can depend on the choice of
+  character, even for primitive characters <Math>\chi</Math> with <Math>\chi^2 \not\equiv 1</Math>.  Thus, we
+  cannot provide them here, and they are instead calculated by <Ref Func="SL2Reps_RepR"/>.
+<P/>
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepR"/> to a function.
+<P/>
+  <Code>IsPrim(chi)</Code> tests whether a given character (e.g. from <Code>Char</Code>) is primitive.
+<P/>
+  <Code>Nm(a)</Code>, <Code>Ord(a)</Code>, and <Code>Prod(a,b)</Code> are the norm, order, and product functions on <Math>M</Math>, respectively.
+<P/>
+  <Code>c</Code> is a scalar used in calculating the <Math>S</Math>-matrix; namely <Math>c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))</Math>.
+<P/>
+  <Code>tM</Code> is the group <Math>M - pM</Math>.
  </Description>
 </ManSection>
 
@@ -82,8 +123,10 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of type <Math>R</Math> with level <Math>p^\lambda</Math>
+  Constructs the modular data for the irreducible representation(s) of type <Math>R</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
+<P/>
+  When <Math>\sigma = \lambda</Math>, this falls through to <Ref Func="SL2Reps_RepRUnary"/>.
  </Description>
 </ManSection>
 
@@ -93,7 +136,7 @@
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
-  Constructs the irreducible representation(s) of unary type <Math>R</Math> (that is, with <Math>\sigma = \lambda</Math>)
+  Constructs the modular data for the irreducible representation(s) of unary type <Math>R</Math> (that is, with <Math>\sigma = \lambda</Math>)
   with level <Math>p^\lambda</Math>.
  </Description>
 </ManSection>

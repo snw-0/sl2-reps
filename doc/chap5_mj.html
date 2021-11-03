@@ -59,9 +59,17 @@
 <h5>5.1-1 SL2Reps_ModuleD</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(D\)</span>.</p>
+
+<p><code class="code">Agrp</code> describes the elements of <span class="SimpleMath">\(\mathfrak{A} = (\mathbb{Z}/p^\lambda\mathbb{Z})^\times\)</span> (see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.1]</a>).</p>
+
+<p><code class="code">Bp</code> describes a set of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \hat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. For other characters, we must use different bases which are particular to each case.</p>
+
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepD</code> (<a href="chap5_mj.html#X84376A29780650AD"><span class="RefLink">5.1-2</span></a>) to a function.</p>
+
+<p><code class="code">IsPrim(chi)</code> tests whether a given character (e.g. from <code class="code">Char(i,j)</code>) is primitive.</p>
 
 <p><a id="X84376A29780650AD" name="X84376A29780650AD"></a></p>
 
@@ -70,7 +78,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
 
-<p>Constructs the irreducible representation(s) of type <span class="SimpleMath">\(D\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
+<p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(D\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
 
 <p><a id="X7CD74CFC84B38042" name="X7CD74CFC84B38042"></a></p>
 
@@ -83,9 +91,17 @@
 <h5>5.2-1 SL2Reps_ModuleN</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, Nm, Prod)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(N\)</span>.</p>
+
+<p><code class="code">Agrp</code> describes the elements of <span class="SimpleMath">\(\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\)</span> (see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.2]</a>).</p>
+
+<p><code class="code">Bp</code> describes a set of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \hat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. For other characters, we must use different bases which are particular to each case.</p>
+
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepN</code> (<a href="chap5_mj.html#X7A3A34B886A52E2B"><span class="RefLink">5.2-2</span></a>) to a function.</p>
+
+<p><code class="code">Nm(a)</code> and <code class="code">Prod(a,b)</code> are the norm and product functions on <span class="SimpleMath">\(M\)</span>, respectively.</p>
 
 <p><a id="X7A3A34B886A52E2B" name="X7A3A34B886A52E2B"></a></p>
 
@@ -94,7 +110,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
 
-<p>Constructs the irreducible representation(s) of type <span class="SimpleMath">\(N\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
+<p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(N\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
 
 <p><a id="X7D9759387C499FA0" name="X7D9759387C499FA0"></a></p>
 
@@ -107,9 +123,23 @@
 <h5>5.3-1 SL2Reps_ModuleR</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<p>Returns: a record <code class="code">rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(R\)</span>.</p>
+
+<p><code class="code">Agrp</code> describes the elements of <span class="SimpleMath">\(\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\)</span> (see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.3 - 2.5]</a>).</p>
+
+<p>Representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span> can depend on the choice of character, even for primitive characters <span class="SimpleMath">\(\chi\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. Thus, we cannot provide them here, and they are instead calculated by <code class="func">SL2Reps_RepR</code> (<a href="chap5_mj.html#X7B7A217C8634042C"><span class="RefLink">5.3-2</span></a>).</p>
+
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepR</code> (<a href="chap5_mj.html#X7B7A217C8634042C"><span class="RefLink">5.3-2</span></a>) to a function.</p>
+
+<p><code class="code">IsPrim(chi)</code> tests whether a given character (e.g. from <code class="code">Char</code>) is primitive.</p>
+
+<p><code class="code">Nm(a)</code>, <code class="code">Ord(a)</code>, and <code class="code">Prod(a,b)</code> are the norm, order, and product functions on <span class="SimpleMath">\(M\)</span>, respectively.</p>
+
+<p><code class="code">c</code> is a scalar used in calculating the <span class="SimpleMath">\(S\)</span>-matrix; namely <span class="SimpleMath">\(c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))\)</span>.</p>
+
+<p><code class="code">tM</code> is the group <span class="SimpleMath">\(M - pM\)</span>.</p>
 
 <p><a id="X7B7A217C8634042C" name="X7B7A217C8634042C"></a></p>
 
@@ -118,7 +148,9 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
 
-<p>Constructs the irreducible representation(s) of type <span class="SimpleMath">\(R\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
+<p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(R\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index</code>.</p>
+
+<p>When <span class="SimpleMath">\(\sigma = \lambda\)</span>, this falls through to <code class="func">SL2Reps_RepRUnary</code> (<a href="chap5_mj.html#X87D9D1497ACD4A1E"><span class="RefLink">5.3-3</span></a>).</p>
 
 <p><a id="X87D9D1497ACD4A1E" name="X87D9D1497ACD4A1E"></a></p>
 
@@ -127,7 +159,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
 
-<p>Constructs the irreducible representation(s) of unary type <span class="SimpleMath">\(R\)</span> (that is, with <span class="SimpleMath">\(\sigma = \lambda\)</span>) with level <span class="SimpleMath">\(p^\lambda\)</span>.</p>
+<p>Constructs the modular data for the irreducible representation(s) of unary type <span class="SimpleMath">\(R\)</span> (that is, with <span class="SimpleMath">\(\sigma = \lambda\)</span>) with level <span class="SimpleMath">\(p^\lambda\)</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib_mj.html">[Next Chapter]</a>&nbsp;  </div>

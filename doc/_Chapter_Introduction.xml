@@ -31,7 +31,7 @@ root directory, for example one added with the <Code>-l</Code> argument).
 <Heading>Usage</Heading>
 
 <P/>
-Individual representations may be constructed via the methods in <Ref Chap="Chapter_Irreps"/>, while lists of representations with given degrees or levels may be constructed with those in <Ref Chap="Chapter_Lists"/>.
+Specific irreducible representations may be constructed via the methods in Chapter <Ref Chap="Chapter_Irreps"/>, while lists of irreducible representations with a given degree or level may be constructed with those in Chapter <Ref Chap="Chapter_Lists"/>.
 <P/>
 This package uses an <Code>InfoClass</Code>, <Code>InfoSL2Reps</Code>. It may be set to <Code>0</Code> (silent),
 <Code>1</Code> (info), or <Code>2</Code> (verbose). To change it, use

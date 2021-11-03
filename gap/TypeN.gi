@@ -268,7 +268,7 @@ function(p, ld, chi_index)
         T := DiagonalMat(List(Bp, x -> E(l)^(Nm(x))));
         deg := Length(Bp);
     else
-        # TODO: figure out what is going on in this case.
+        # TODO: refactor this case.
         Info(InfoSL2Reps, 2, "SL2Reps : chi is not primitive, or Ord(chi) <= 2. It is also not the Steinberg representation. The first decomposition method gives the following representation corresponding to Chi that is reducible.");
 
         N := Tuples([0..l-1], 2);;

@@ -2,11 +2,11 @@
   
   [1XReferences[101X
   
-  [[20XNob76[120X]  [16XNobs,  A.[116X,  [17XDie irreduziblen Darstellungen der Gruppen SL_2(Z_p), insbesondere SL_2(Z_2). I[117X, [18XComment. Math.
-  Helv.[118X, [19X51[119X, 4 (1976), 465--489.
+  [[20XNob76[120X]  [16XNobs,  A.[116X,  [17XDie  irreduziblen  Darstellungen der Gruppen SL_2(Z_p), insbesondere SL_2(Z_2). I[117X, [18XComment.
+  Math. Helv.[118X, [19X51[119X, 4 (1976), 465--489.
   
-  [[20XNW76[120X]  [16XNobs,  A. and Wolfart, J.[116X, [17XDie irreduziblen Darstellungen der Gruppen SL_2(Z_p), insbesondere SL_2(Z_p). II[117X,
-  [18XComment. Math. Helv.[118X, [19X51[119X, 4 (1976), 491--526.
+  [[20XNW76[120X]  [16XNobs,  A. and Wolfart, J.[116X, [17XDie irreduziblen Darstellungen der Gruppen SL_2(Z_p), insbesondere SL_2(Z_p).
+  II[117X, [18XComment. Math. Helv.[118X, [19X51[119X, 4 (1976), 491--526.
   
   
   
