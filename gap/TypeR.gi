@@ -6,7 +6,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( SL2Reps_ModuleR,
+InstallGlobalFunction( SL2ModuleR,
 function(p, ld, si, r, t)
     local l, ls, m1, m2, M, tM, pM,
             Prod, Pow, Ord, Nm,
@@ -339,7 +339,7 @@ function(p, ld, si, r, t)
     );
 end );
 
-InstallGlobalFunction( SL2Reps_RepR,
+InstallGlobalFunction( SL2IrrepR,
 function(p, ld, si, r, t, chi_index)
     local l, M_rec, Agrp, Chi, IsPrim, tM, Nm, Prod, Ord, c,
             Tr, AOrbit, Epsilon,
@@ -348,8 +348,8 @@ function(p, ld, si, r, t, chi_index)
 
     if p > 2 and si = ld then
         # unary case.
-        Info(InfoSL2Reps, 2, "SL2Reps : p > 2 and ld - si = 0; this is the unary case. This can also be invoked directly as SL2Reps_RepRUnary(p, ld, r).");
-        return SL2Reps_RepRUnary(p, ld, r);
+        Info(InfoSL2Reps, 2, "SL2Reps : p > 2 and ld - si = 0; this is the unary case. This can also be invoked directly as SL2IrrepRUnary(p, ld, r).");
+        return SL2IrrepRUnary(p, ld, r);
     fi;
 
     if (not chi_index[1] in Integers) or (not chi_index[2] in Integers) then
@@ -358,7 +358,7 @@ function(p, ld, si, r, t, chi_index)
     fi;
 
     # this will check if p,ld,si,r,t are valid
-    M_rec := SL2Reps_ModuleR(p, ld, si, r, t);
+    M_rec := SL2ModuleR(p, ld, si, r, t);
 
     l := p^ld;
 
@@ -891,7 +891,7 @@ function(p, ld, si, r, t, chi_index)
                     k := k + 2;
                 else
                     # Yes, it is.  We should scale by 1 / Sqrt(Chi(a)).
-                    U[k][k] := 1 / _SL2Reps_SqrtOfRootOfUnity(Chi(a[1]));
+                    U[k][k] := 1 / _SL2SqrtOfRootOfUnity(Chi(a[1]));
                     k := k + 1;
                 fi;
             until k > Length(Bp);
@@ -1310,7 +1310,7 @@ function(p, ld, si, r, t, chi_index)
     fi;
 end );
 
-InstallGlobalFunction( SL2Reps_RepRUnary,
+InstallGlobalFunction( SL2IrrepRUnary,
 function(p, ld, r)
     local l, M, B_f, B_g, x, y, k, c, s, S_p, T_p, deg_p, S_m, T_m, deg_m, xi, U, V, i;
 

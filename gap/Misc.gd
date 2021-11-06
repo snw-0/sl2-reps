@@ -5,13 +5,13 @@
 DeclareInfoClass( "InfoSL2Reps" );
 
 # Private helper functions
-DeclareGlobalFunction( "_SL2Reps_SqrtOfRootOfUnity" );
-DeclareGlobalFunction( "_SL2Reps_SomeQuadraticNonResidue" );
-DeclareGlobalFunction( "_SL2Reps_Factorizations" );
-DeclareGlobalFunction( "_SL2Reps_RecordIrrep" );
-DeclareGlobalFunction( "_SL2Reps_ConjClassesOdd" );
-DeclareGlobalFunction( "_SL2Reps_ConjClassesEven" );
-DeclareGlobalFunction( "_SL2Reps_ConjClasses" );
+DeclareGlobalFunction( "_SL2SqrtOfRootOfUnity" );
+DeclareGlobalFunction( "_SL2QuadNonRes" );
+DeclareGlobalFunction( "_SL2Factorizations" );
+DeclareGlobalFunction( "_SL2RecordIrrep" );
+DeclareGlobalFunction( "_SL2ConjClassesOdd" );
+DeclareGlobalFunction( "_SL2ConjClassesEven" );
+DeclareGlobalFunction( "_SL2ConjClasses" );
 
 # DeclareGlobalFunction( "_SL2Reps_CharNorm" );
 # DeclareGlobalFunction( "_SL2Reps_RepChi" );

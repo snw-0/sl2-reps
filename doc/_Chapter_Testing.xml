@@ -8,7 +8,7 @@
 <Heading>Testing</Heading>
 
 <ManSection>
-  <Func Arg="p,ld" Name="SL2Reps_SL2Conj" />
+  <Func Arg="p,ld" Name="SL2WithConjClasses" />
  <Returns>the group <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> with conjugacy classes set to the format we use.
 </Returns>
  <Description>
@@ -18,19 +18,19 @@
 
 
 <ManSection>
-  <Func Arg="S,T,p,ld" Name="SL2Reps_ChiST" />
+  <Func Arg="S,T,p,ld" Name="SL2ChiST" />
  <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>
 </Returns>
  <Description>
 Converts the modular data <Math>(S,T)</Math>, which must have level dividing <Math>p^\lambda</Math>,
  into a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>, presented in a
- form matching the conjugacy classes used in <Code>SL2Reps_SL2Conj</Code>.
+ form matching the conjugacy classes used in <Code>SL2WithConjClasses</Code>.
  </Description>
 </ManSection>
 
 
 <ManSection>
-  <Func Arg="p, lambda" Name="SL2Reps_IrrepPositionTest" />
+  <Func Arg="p, lambda" Name="SL2IrrepPositionTest" />
  <Returns>a boolean
 </Returns>
  <Description>

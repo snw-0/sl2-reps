@@ -10,7 +10,7 @@
 <P/>
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_D"/>.
 <ManSection>
-  <Func Arg="p,ld" Name="SL2Reps_ModuleD" />
+  <Func Arg="p,ld" Name="SL2ModuleD" />
  <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
@@ -24,7 +24,7 @@
   associated to any primitive character <Math>\chi \in \hat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
   For other characters, we must use different bases which are particular to each case.
 <P/>
-  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepD"/> to a function.
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2IrrepD"/> to a function.
 <P/>
   <Code>IsPrim(chi)</Code> tests whether a given character (e.g. from <Code>Char(i,j)</Code>) is primitive.
  </Description>
@@ -32,7 +32,7 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,chi_index" Name="SL2Reps_RepD" />
+  <Func Arg="p,ld,chi_index" Name="SL2IrrepD" />
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
@@ -51,7 +51,7 @@
 <P/>
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_N"/>.
 <ManSection>
-  <Func Arg="p,ld" Name="SL2Reps_ModuleN" />
+  <Func Arg="p,ld" Name="SL2ModuleN" />
  <Returns>a record <Code>rec(Agrp, Bp, Char, Nm, Prod)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
@@ -65,7 +65,7 @@
   associated to any primitive character <Math>\chi \in \hat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
   For other characters, we must use different bases which are particular to each case.
 <P/>
-  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepN"/> to a function.
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2IrrepN"/> to a function.
 <P/>
   <Code>Nm(a)</Code> and <Code>Prod(a,b)</Code> are the norm and product functions on <Math>M</Math>, respectively.
  </Description>
@@ -73,7 +73,7 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,chi_index" Name="SL2Reps_RepN" />
+  <Func Arg="p,ld,chi_index" Name="SL2IrrepN" />
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
@@ -92,7 +92,7 @@
 <P/>
  See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_R"/>.
 <ManSection>
-  <Func Arg="p,ld,sigma,r,t" Name="SL2Reps_ModuleR" />
+  <Func Arg="p,ld,sigma,r,t" Name="SL2ModuleR" />
  <Returns>a record <Code>rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)</Code> describing <Math>(M,Q)</Math>
 </Returns>
  <Description>
@@ -103,9 +103,9 @@
 <P/>
   Representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math> can depend on the choice of
   character, even for primitive characters <Math>\chi</Math> with <Math>\chi^2 \not\equiv 1</Math>.  Thus, we
-  cannot provide them here, and they are instead calculated by <Ref Func="SL2Reps_RepR"/>.
+  cannot provide them here, and they are instead calculated by <Ref Func="SL2IrrepR"/>.
 <P/>
-  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2Reps_RepR"/> to a function.
+  <Code>Char(i,j)</Code> converts the <Code>chi_index</Code> used in <Ref Func="SL2IrrepR"/> to a function.
 <P/>
   <Code>IsPrim(chi)</Code> tests whether a given character (e.g. from <Code>Char</Code>) is primitive.
 <P/>
@@ -119,20 +119,20 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,sigma,r,t,chi_index" Name="SL2Reps_RepR" />
+  <Func Arg="p,ld,sigma,r,t,chi_index" Name="SL2IrrepR" />
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>
   Constructs the modular data for the irreducible representation(s) of type <Math>R</Math> with level <Math>p^\lambda</Math>
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index</Code>.
 <P/>
-  When <Math>\sigma = \lambda</Math>, this falls through to <Ref Func="SL2Reps_RepRUnary"/>.
+  When <Math>\sigma = \lambda</Math>, this falls through to <Ref Func="SL2IrrepRUnary"/>.
  </Description>
 </ManSection>
 
 
 <ManSection>
-  <Func Arg="p,ld,r" Name="SL2Reps_RepRUnary" />
+  <Func Arg="p,ld,r" Name="SL2IrrepRUnary" />
  <Returns>a list of lists of the form <Math>[S,T]</Math>
 </Returns>
  <Description>

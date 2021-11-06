@@ -2,22 +2,22 @@
   
   [1XIndex[101X
   
-  [2XSL2Reps_ChiST[102X 4.1-2 
-  [2XSL2Reps_Exceptions[102X 3.3-1 
-  [2XSL2Reps_IrrepPositionTest[102X 4.1-3 
-  [2XSL2Reps_IrrepsOfDegree[102X 3.1-3 
-  [2XSL2Reps_IrrepsOfDegreeAtMost[102X 3.1-4 
-  [2XSL2Reps_ModuleD[102X 5.1-1 
-  [2XSL2Reps_ModuleN[102X 5.2-1 
-  [2XSL2Reps_ModuleR[102X 5.3-1 
-  [2XSL2Reps_PrimePowerIrrepsOfDegree[102X 3.1-1 
-  [2XSL2Reps_PrimePowerIrrepsOfDegreeAtMost[102X 3.1-2 
-  [2XSL2Reps_PrimePowerIrrepsOfLevel[102X 3.2-1 
-  [2XSL2Reps_RepD[102X 5.1-2 
-  [2XSL2Reps_RepN[102X 5.2-2 
-  [2XSL2Reps_RepR[102X 5.3-2 
-  [2XSL2Reps_RepRUnary[102X 5.3-3 
-  [2XSL2Reps_SL2Conj[102X 4.1-1 
+  [2XSL2ChiST[102X 4.1-2 
+  [2XSL2ExceptionalIrreps[102X 3.3-1 
+  [2XSL2IrrepD[102X 5.1-2 
+  [2XSL2IrrepN[102X 5.2-2 
+  [2XSL2IrrepPositionTest[102X 4.1-3 
+  [2XSL2IrrepR[102X 5.3-2 
+  [2XSL2IrrepRUnary[102X 5.3-3 
+  [2XSL2IrrepsOfDegree[102X 3.1-3 
+  [2XSL2IrrepsOfDegreeAtMost[102X 3.1-4 
+  [2XSL2ModuleD[102X 5.1-1 
+  [2XSL2ModuleN[102X 5.2-1 
+  [2XSL2ModuleR[102X 5.3-1 
+  [2XSL2PrimePowerIrrepsOfDegree[102X 3.1-1 
+  [2XSL2PrimePowerIrrepsOfDegreeAtMost[102X 3.1-2 
+  [2XSL2PrimePowerIrrepsOfLevel[102X 3.2-1 
+  [2XSL2WithConjClasses[102X 4.1-1 
   
   
   -------------------------------------------------------

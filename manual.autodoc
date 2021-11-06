@@ -42,7 +42,7 @@ For any representation $\rho$ of $\mathrm{SL}_2(\mathbb{Z})$, we may decompose $
 
 Such representations may be constructed using Weyl representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  The Weyl representations used by this package have the following form.  Let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ of rank 1 or 2, and a quadratic form $Q$ on $M$, such that $(M,Q)$ is of one of the three types described in <Ref Sect="Chapter_Description_Section_Weyl"/>.  The **quadratic module** $(M,Q)$ then gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, denoted $W(M,Q)$.
 
-With a finite number of exceptions, every representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ may be found as a subrepresentation of $W(M,Q)$ for an appropriate choice of $(M,Q)$ <Cite Key="NW76" Where="Hauptsatz 2"/>.  The 18 exceptions may be found as the tensor product of two such subrepresentations; these may be generated with <Ref Func="SL2Reps_Exceptions"/>.
+With a finite number of exceptions, every representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ may be found as a subrepresentation of $W(M,Q)$ for an appropriate choice of $(M,Q)$ <Cite Key="NW76" Where="Hauptsatz 2"/>.  The 18 exceptions may be found as the tensor product of two such subrepresentations; these may be generated with <Ref Func="SL2ExceptionalIrreps"/>.
 
 Representations of $\mathrm{SL}_2(\mathbb{Z})$ may then be found as direct sums of these prime-power representations.
 
@@ -51,11 +51,11 @@ Representations of $\mathrm{SL}_2(\mathbb{Z})$ may then be found as direct sums 
 
 @Subsection Type D
 
-Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2Reps_ModuleD"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2Reps_RepD"/>.
+Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepD"/>.
 
 @Subsection Type N
 
-Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ (where, for $p \neq 2$, $u$ is chosen so that $u \equiv 3$ mod 4 with $\left(\frac{-u}{p}\right) = -1$, and for $p=2$, $u=3$) is said to be of type $N$ and denoted $N(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2Reps_ModuleN"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2Reps_RepN"/>.
+Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ (where, for $p \neq 2$, $u$ is chosen so that $u \equiv 3$ mod 4 with $\left(\frac{-u}{p}\right) = -1$, and for $p=2$, $u=3$) is said to be of type $N$ and denoted $N(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepN"/>.
 
 @Subsection Type R
 
@@ -65,4 +65,4 @@ First, if $p$ is an odd prime, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \la
 
 On the other hand, if $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define $M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}$ and $Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}$.
 
-In either case, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2Reps_ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2Reps_RepR"/>.  Note that if $\sigma = \lambda$ for $p \neq 2$, then the second factor of $M$ is trivial (and hence $t$ is irrelevant); this special case is handled by <Ref Func="SL2Reps_RepRUnary"/>.
+In either case, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.  Note that if $\sigma = \lambda$ for $p \neq 2$, then the second factor of $M$ is trivial (and hence $t$ is irrelevant); this special case is handled by <Ref Func="SL2IrrepRUnary"/>.

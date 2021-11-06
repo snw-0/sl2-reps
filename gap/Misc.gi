@@ -9,7 +9,7 @@
 #----------------------------------------
 # Returns a square root of the given root of unity.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_SqrtOfRootOfUnity,
+InstallGlobalFunction( _SL2SqrtOfRootOfUnity,
 function(b)
     local desc;
 
@@ -26,7 +26,7 @@ end );
 #----------------------------------------
 # Returns a quadratic non-residue mod p.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_SomeQuadraticNonResidue,
+InstallGlobalFunction( _SL2QuadNonRes,
 function(p)
     local j;
 
@@ -40,7 +40,7 @@ end );
 #----------------------------------------
 # Returns a list of all factorizations of n.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_Factorizations,
+InstallGlobalFunction( _SL2Factorizations,
 function(n)
     local o, f, Step;
 
@@ -96,7 +96,7 @@ end );
 #----------------------------------------
 # Records an irrep into irrep_list.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_RecordIrrep,
+InstallGlobalFunction( _SL2RecordIrrep,
 function(irrep_list, name, rho, l)
     Info(InfoSL2Reps, 1, name, " [level ", l, "]");
     # record rho in the form [S, T, degree, level, name]
@@ -116,7 +116,7 @@ end );
 # Note that s^2 is central and can be computed easily.
 # Update: 1. Merged cases, deleted size of the conj classes; 2. Simplified the expression of the word presentation of the representatives; 3. Sorted the output so that id and -id are the first two conj classes.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_ConjClassesOdd,
+InstallGlobalFunction( _SL2ConjClassesOdd,
 function(p, ld)
     local l, u, uinv, Ald, aset1, type11, type1u, type12, type13, Type1, type2h, Type2, i;
 
@@ -169,7 +169,7 @@ end );
 # Prod(a[1], n -> t^n*s) * s^(2*a[2]).
 # Sorted the output so that id and -id are the first two conj classes.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_ConjClassesEven,
+InstallGlobalFunction( _SL2ConjClassesEven,
 function(ld)
     local l, 3inv, 5inv, 7inv, Type1, Type2, d, h, e1, e1inv, e2, e2inv, a;
 
@@ -289,12 +289,12 @@ end );
 #----------------------------------------
 # Returns conj class representative information of SL(2, Z/p^ld Z) for ld (>= 1) using ConjClassesOdd or ConjClassesEven.
 #---------------------------------------
-InstallGlobalFunction( _SL2Reps_ConjClasses,
+InstallGlobalFunction( _SL2ConjClasses,
 function (p, ld)
     if p = 2 then
-        return _SL2Reps_ConjClassesEven(ld);
+        return _SL2ConjClassesEven(ld);
     elif p > 2 then
-        return _SL2Reps_ConjClassesOdd(p,ld);
+        return _SL2ConjClassesOdd(p,ld);
     fi;
 end );
 

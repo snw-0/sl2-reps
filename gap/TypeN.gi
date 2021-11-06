@@ -6,7 +6,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( SL2Reps_ModuleN,
+InstallGlobalFunction( SL2ModuleN,
 function(p, ld)
     local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp;
 
@@ -143,7 +143,7 @@ function(p, ld)
     );
 end );
 
-InstallGlobalFunction( SL2Reps_RepN,
+InstallGlobalFunction( SL2IrrepN,
 function(p, ld, chi_index)
     local l, M_rec, Agrp, Chi, Bp, beta, Nm, Prod, Tr, sxy, S, T, deg,
             N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
@@ -154,7 +154,7 @@ function(p, ld, chi_index)
     fi;
 
     # this will check if p,ld are valid
-    M_rec := SL2Reps_ModuleN(p, ld);
+    M_rec := SL2ModuleN(p, ld);
 
     l := p^ld;
 
@@ -220,13 +220,13 @@ function(p, ld, chi_index)
                     Add(U, 1);
                 od;
                 for j in [1 .. Length(Bp) / 4] do
-                    Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/4])[1])));
+                    Add(U, _SL2SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/4])[1])));
                 od;
                 for j in [1 .. Length(Bp) / 4] do
-                    Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 2 * Length(Bp)/4])[1])));
+                    Add(U, _SL2SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 2 * Length(Bp)/4])[1])));
                 od;
                 for j in [1 .. Length(Bp) / 4] do
-                    Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 3 * Length(Bp)/4])[1])));
+                    Add(U, _SL2SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + 3 * Length(Bp)/4])[1])));
                 od;
             else
                 # For p = 2, ld = 2, Bp consists of theta_1 and theta_3.
@@ -237,7 +237,7 @@ function(p, ld, chi_index)
                     Add(U, 1);
                 od;
                 for j in [1 .. Length(Bp) / 2] do
-                    Add(U, _SL2Reps_SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/2])[1])));
+                    Add(U, _SL2SqrtOfRootOfUnity(1 / Chi(beta(Bp[1 + Length(Bp)/2])[1])));
                 od;
             fi;
 

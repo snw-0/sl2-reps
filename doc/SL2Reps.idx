@@ -1,16 +1,16 @@
-\indexentry{SL2RepsuScorePrimePowerIrrepsOfDegree@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Prime}\-\texttt  {Power}\-\texttt  {Irreps}\-\texttt  {Of}\-\texttt  {Degree}|hyperpage}{6}
-\indexentry{SL2RepsuScorePrimePowerIrrepsOfDegreeAtMost@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Prime}\-\texttt  {Power}\-\texttt  {Irreps}\-\texttt  {Of}\-\texttt  {Degree}\-\texttt  {At}\-\texttt  {Most}|hyperpage}{6}
-\indexentry{SL2RepsuScoreIrrepsOfDegree@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Irreps}\-\texttt  {Of}\-\texttt  {Degree}|hyperpage}{6}
-\indexentry{SL2RepsuScoreIrrepsOfDegreeAtMost@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Irreps}\-\texttt  {Of}\-\texttt  {Degree}\-\texttt  {At}\-\texttt  {Most}|hyperpage}{6}
-\indexentry{SL2RepsuScorePrimePowerIrrepsOfLevel@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Prime}\-\texttt  {Power}\-\texttt  {Irreps}\-\texttt  {Of}\-\texttt  {Level}|hyperpage}{6}
-\indexentry{SL2RepsuScoreExceptions@\texttt  {SL2Reps{\textunderscore }Exceptions}|hyperpage}{7}
-\indexentry{SL2RepsuScoreSL2Conj@\texttt  {SL2Reps{\textunderscore }SL2Conj}|hyperpage}{8}
-\indexentry{SL2RepsuScoreChiST@\texttt  {SL2Reps{\textunderscore }ChiST}|hyperpage}{8}
-\indexentry{SL2RepsuScoreIrrepPositionTest@\texttt  {SL2}\-\texttt  {Reps{\textunderscore }}\-\texttt  {Irrep}\-\texttt  {Position}\-\texttt  {Test}|hyperpage}{8}
-\indexentry{SL2RepsuScoreModuleD@\texttt  {SL2Reps{\textunderscore }ModuleD}|hyperpage}{9}
-\indexentry{SL2RepsuScoreRepD@\texttt  {SL2Reps{\textunderscore }RepD}|hyperpage}{9}
-\indexentry{SL2RepsuScoreModuleN@\texttt  {SL2Reps{\textunderscore }ModuleN}|hyperpage}{9}
-\indexentry{SL2RepsuScoreRepN@\texttt  {SL2Reps{\textunderscore }RepN}|hyperpage}{10}
-\indexentry{SL2RepsuScoreModuleR@\texttt  {SL2Reps{\textunderscore }ModuleR}|hyperpage}{10}
-\indexentry{SL2RepsuScoreRepR@\texttt  {SL2Reps{\textunderscore }RepR}|hyperpage}{10}
-\indexentry{SL2RepsuScoreRepRUnary@\texttt  {SL2Reps{\textunderscore }RepRUnary}|hyperpage}{10}
+\indexentry{SL2PrimePowerIrrepsOfDegree@\texttt  {SL2PrimePowerIrrepsOfDegree}|hyperpage}{6}
+\indexentry{SL2PrimePowerIrrepsOfDegreeAtMost@\texttt  {SL2PrimePowerIrrepsOfDegreeAtMost}|hyperpage}{6}
+\indexentry{SL2IrrepsOfDegree@\texttt  {SL2IrrepsOfDegree}|hyperpage}{6}
+\indexentry{SL2IrrepsOfDegreeAtMost@\texttt  {SL2IrrepsOfDegreeAtMost}|hyperpage}{6}
+\indexentry{SL2PrimePowerIrrepsOfLevel@\texttt  {SL2PrimePowerIrrepsOfLevel}|hyperpage}{6}
+\indexentry{SL2ExceptionalIrreps@\texttt  {SL2ExceptionalIrreps}|hyperpage}{7}
+\indexentry{SL2WithConjClasses@\texttt  {SL2WithConjClasses}|hyperpage}{8}
+\indexentry{SL2ChiST@\texttt  {SL2ChiST}|hyperpage}{8}
+\indexentry{SL2IrrepPositionTest@\texttt  {SL2IrrepPositionTest}|hyperpage}{8}
+\indexentry{SL2ModuleD@\texttt  {SL2ModuleD}|hyperpage}{9}
+\indexentry{SL2IrrepD@\texttt  {SL2IrrepD}|hyperpage}{9}
+\indexentry{SL2ModuleN@\texttt  {SL2ModuleN}|hyperpage}{9}
+\indexentry{SL2IrrepN@\texttt  {SL2IrrepN}|hyperpage}{10}
+\indexentry{SL2ModuleR@\texttt  {SL2ModuleR}|hyperpage}{10}
+\indexentry{SL2IrrepR@\texttt  {SL2IrrepR}|hyperpage}{10}
+\indexentry{SL2IrrepRUnary@\texttt  {SL2IrrepRUnary}|hyperpage}{10}

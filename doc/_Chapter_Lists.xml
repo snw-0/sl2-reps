@@ -8,7 +8,7 @@
 <Heading>Lists by degree</Heading>
 
 <ManSection>
-  <Func Arg="degree" Name="SL2Reps_PrimePowerIrrepsOfDegree" />
+  <Func Arg="degree" Name="SL2PrimePowerIrrepsOfDegree" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>
@@ -19,7 +19,7 @@
 
 
 <ManSection>
-  <Func Arg="max_degree" Name="SL2Reps_PrimePowerIrrepsOfDegreeAtMost" />
+  <Func Arg="max_degree" Name="SL2PrimePowerIrrepsOfDegreeAtMost" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>
@@ -30,7 +30,7 @@
 
 
 <ManSection>
-  <Func Arg="degree" Name="SL2Reps_IrrepsOfDegree" />
+  <Func Arg="degree" Name="SL2IrrepsOfDegree" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>
@@ -41,7 +41,7 @@
 
 
 <ManSection>
-  <Func Arg="degree" Name="SL2Reps_IrrepsOfDegreeAtMost" />
+  <Func Arg="degree" Name="SL2IrrepsOfDegreeAtMost" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>
@@ -58,7 +58,7 @@
 <Heading>Lists by level</Heading>
 
 <ManSection>
-  <Func Arg="p, lambda" Name="SL2Reps_PrimePowerIrrepsOfLevel" />
+  <Func Arg="p, lambda" Name="SL2PrimePowerIrrepsOfLevel" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>
@@ -75,7 +75,7 @@
 <Heading>Lists of exceptional representations</Heading>
 
 <ManSection>
-  <Func Arg="arg" Name="SL2Reps_Exceptions" />
+  <Func Arg="arg" Name="SL2ExceptionalIrreps" />
  <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>
 </Returns>
  <Description>

@@ -25,21 +25,21 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X82DA126D7F755B1C">5.1 <span class="Heading">Representations of type D</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78D4833F85945690">5.1-1 SL2Reps_ModuleD</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X84376A29780650AD">5.1-2 SL2Reps_RepD</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X845D92CB7841CB0B">5.1-1 SL2ModuleD</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7FDB517981A2C091">5.1-2 SL2IrrepD</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7CD74CFC84B38042">5.2 <span class="Heading">Representations of type N</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X86D9DDAE83E4A141">5.2-1 SL2Reps_ModuleN</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A3A34B886A52E2B">5.2-2 SL2Reps_RepN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A50CC5A7933E207">5.2-1 SL2ModuleN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X81D60FE878F02838">5.2-2 SL2IrrepN</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7D9759387C499FA0">5.3 <span class="Heading">Representations of type R</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8799C86A83FDD22B">5.3-1 SL2Reps_ModuleR</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7B7A217C8634042C">5.3-2 SL2Reps_RepR</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X87D9D1497ACD4A1E">5.3-3 SL2Reps_RepRUnary</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7B10D99E7AEAC411">5.3-1 SL2ModuleR</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X80961A2C7C5F632E">5.3-2 SL2IrrepR</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C94E3007A1BEE85">5.3-3 SL2IrrepRUnary</a></span>
 </div></div>
 </div>
 
@@ -51,11 +51,11 @@
 
 <p>See <a href="chap2.html#X7AEC048F793F1D79"><span class="RefLink">2.2-1</span></a>.</p>
 
-<p><a id="X78D4833F85945690" name="X78D4833F85945690"></a></p>
+<p><a id="X845D92CB7841CB0B" name="X845D92CB7841CB0B"></a></p>
 
-<h5>5.1-1 SL2Reps_ModuleD</h5>
+<h5>5.1-1 SL2ModuleD</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim)</code> describing <span class="Math">(M,Q)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">D</span>.</p>
@@ -64,15 +64,15 @@
 
 <p><code class="code">Bp</code> describes a set of representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span>, which correspond to a basis the <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace associated to any primitive character <span class="Math">\chi \in \hat{\mathfrak{A}}</span> with <span class="Math">\chi^2 \not\equiv 1</span>. For other characters, we must use different bases which are particular to each case.</p>
 
-<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepD</code> (<a href="chap5.html#X84376A29780650AD"><span class="RefLink">5.1-2</span></a>) to a function.</p>
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2IrrepD</code> (<a href="chap5.html#X7FDB517981A2C091"><span class="RefLink">5.1-2</span></a>) to a function.</p>
 
 <p><code class="code">IsPrim(chi)</code> tests whether a given character (e.g. from <code class="code">Char(i,j)</code>) is primitive.</p>
 
-<p><a id="X84376A29780650AD" name="X84376A29780650AD"></a></p>
+<p><a id="X7FDB517981A2C091" name="X7FDB517981A2C091"></a></p>
 
-<h5>5.1-2 SL2Reps_RepD</h5>
+<h5>5.1-2 SL2IrrepD</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="Math">D</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
@@ -83,11 +83,11 @@
 
 <p>See <a href="chap2.html#X84E15A1E8326AF4F"><span class="RefLink">2.2-2</span></a>.</p>
 
-<p><a id="X86D9DDAE83E4A141" name="X86D9DDAE83E4A141"></a></p>
+<p><a id="X7A50CC5A7933E207" name="X7A50CC5A7933E207"></a></p>
 
-<h5>5.2-1 SL2Reps_ModuleN</h5>
+<h5>5.2-1 SL2ModuleN</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record <code class="code">rec(Agrp, Bp, Char, Nm, Prod)</code> describing <span class="Math">(M,Q)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">N</span>.</p>
@@ -96,15 +96,15 @@
 
 <p><code class="code">Bp</code> describes a set of representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span>, which correspond to a basis the <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace associated to any primitive character <span class="Math">\chi \in \hat{\mathfrak{A}}</span> with <span class="Math">\chi^2 \not\equiv 1</span>. For other characters, we must use different bases which are particular to each case.</p>
 
-<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepN</code> (<a href="chap5.html#X7A3A34B886A52E2B"><span class="RefLink">5.2-2</span></a>) to a function.</p>
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2IrrepN</code> (<a href="chap5.html#X81D60FE878F02838"><span class="RefLink">5.2-2</span></a>) to a function.</p>
 
 <p><code class="code">Nm(a)</code> and <code class="code">Prod(a,b)</code> are the norm and product functions on <span class="Math">M</span>, respectively.</p>
 
-<p><a id="X7A3A34B886A52E2B" name="X7A3A34B886A52E2B"></a></p>
+<p><a id="X81D60FE878F02838" name="X81D60FE878F02838"></a></p>
 
-<h5>5.2-2 SL2Reps_RepN</h5>
+<h5>5.2-2 SL2IrrepN</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="Math">N</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
@@ -115,20 +115,20 @@
 
 <p>See <a href="chap2.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>.</p>
 
-<p><a id="X8799C86A83FDD22B" name="X8799C86A83FDD22B"></a></p>
+<p><a id="X7B10D99E7AEAC411" name="X7B10D99E7AEAC411"></a></p>
 
-<h5>5.3-1 SL2Reps_ModuleR</h5>
+<h5>5.3-1 SL2ModuleR</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record <code class="code">rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)</code> describing <span class="Math">(M,Q)</span></p>
 
 <p>Constructs information about the underlying quadratic module <span class="Math">(M,Q)</span> of type <span class="Math">R</span>.</p>
 
 <p><code class="code">Agrp</code> describes the elements of <span class="Math">\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</span> (see <a href="chapBib.html#biBNW76">[NW76, Section 2.3 - 2.5]</a>).</p>
 
-<p>Representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span> can depend on the choice of character, even for primitive characters <span class="Math">\chi</span> with <span class="Math">\chi^2 \not\equiv 1</span>. Thus, we cannot provide them here, and they are instead calculated by <code class="func">SL2Reps_RepR</code> (<a href="chap5.html#X7B7A217C8634042C"><span class="RefLink">5.3-2</span></a>).</p>
+<p>Representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span> can depend on the choice of character, even for primitive characters <span class="Math">\chi</span> with <span class="Math">\chi^2 \not\equiv 1</span>. Thus, we cannot provide them here, and they are instead calculated by <code class="func">SL2IrrepR</code> (<a href="chap5.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>).</p>
 
-<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2Reps_RepR</code> (<a href="chap5.html#X7B7A217C8634042C"><span class="RefLink">5.3-2</span></a>) to a function.</p>
+<p><code class="code">Char(i,j)</code> converts the <code class="code">chi_index</code> used in <code class="func">SL2IrrepR</code> (<a href="chap5.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>) to a function.</p>
 
 <p><code class="code">IsPrim(chi)</code> tests whether a given character (e.g. from <code class="code">Char</code>) is primitive.</p>
 
@@ -138,22 +138,22 @@
 
 <p><code class="code">tM</code> is the group <span class="Math">M - pM</span>.</p>
 
-<p><a id="X7B7A217C8634042C" name="X7B7A217C8634042C"></a></p>
+<p><a id="X80961A2C7C5F632E" name="X80961A2C7C5F632E"></a></p>
 
-<h5>5.3-2 SL2Reps_RepR</h5>
+<h5>5.3-2 SL2IrrepR</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="Math">R</span> with level <span class="Math">p^\lambda</span> corresponding to the character <span class="Math">\chi</span> indexed by <code class="code">chi_index</code>.</p>
 
-<p>When <span class="Math">\sigma = \lambda</span>, this falls through to <code class="func">SL2Reps_RepRUnary</code> (<a href="chap5.html#X87D9D1497ACD4A1E"><span class="RefLink">5.3-3</span></a>).</p>
+<p>When <span class="Math">\sigma = \lambda</span>, this falls through to <code class="func">SL2IrrepRUnary</code> (<a href="chap5.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>).</p>
 
-<p><a id="X87D9D1497ACD4A1E" name="X87D9D1497ACD4A1E"></a></p>
+<p><a id="X7C94E3007A1BEE85" name="X7C94E3007A1BEE85"></a></p>
 
-<h5>5.3-3 SL2Reps_RepRUnary</h5>
+<h5>5.3-3 SL2IrrepRUnary</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_RepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="Math">[S,T]</span></p>
 
 <p>Constructs the modular data for the irreducible representation(s) of unary type <span class="Math">R</span> (that is, with <span class="Math">\sigma = \lambda</span>) with level <span class="Math">p^\lambda</span>.</p>

@@ -6,7 +6,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( SL2Reps_ModuleD,
+InstallGlobalFunction( SL2ModuleD,
 function(p, ld)
     local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, IsPrim, a;
 
@@ -104,7 +104,7 @@ function(p, ld)
     );
 end );
 
-InstallGlobalFunction( SL2Reps_RepD,
+InstallGlobalFunction( SL2IrrepD,
 function(p, ld, chi_index)
     local i, j, l, M_rec, Agrp, Chi, IsPrim, Bp, sxy, S, T, deg, w, U, a, b, k;
 
@@ -114,7 +114,7 @@ function(p, ld, chi_index)
     fi;
 
     # this will check if p,ld are valid
-    M_rec := SL2Reps_ModuleD(p, ld);
+    M_rec := SL2ModuleD(p, ld);
 
     l := p^ld;
 
@@ -213,7 +213,7 @@ function(p, ld, chi_index)
                     k := k + 2;
                 else
                     # b[1] is invertible, so we scale by Sqrt(Chi(a)).
-                    U[k][k] := 1 / _SL2Reps_SqrtOfRootOfUnity(Chi(a[1]));
+                    U[k][k] := 1 / _SL2SqrtOfRootOfUnity(Chi(a[1]));
                     k := k + 1;
                 fi;
             until k > Length(Bp);

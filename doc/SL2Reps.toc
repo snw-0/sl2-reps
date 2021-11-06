@@ -9,29 +9,29 @@
 \contentsline {subsection}{\numberline {2.2.3}\textcolor {Chapter }{Type R}}{5}{subsection.2.2.3}%
 \contentsline {chapter}{\numberline {3}\textcolor {Chapter }{Lists of representations}}{6}{chapter.3}%
 \contentsline {section}{\numberline {3.1}\textcolor {Chapter }{Lists by degree}}{6}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}\textcolor {Chapter }{SL2Reps{\textunderscore }PrimePowerIrrepsOfDegree}}{6}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}\textcolor {Chapter }{SL2Reps{\textunderscore }PrimePowerIrrepsOfDegreeAtMost}}{6}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}\textcolor {Chapter }{SL2Reps{\textunderscore }IrrepsOfDegree}}{6}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}\textcolor {Chapter }{SL2Reps{\textunderscore }IrrepsOfDegreeAtMost}}{6}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.1}\textcolor {Chapter }{SL2PrimePowerIrrepsOfDegree}}{6}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}\textcolor {Chapter }{SL2PrimePowerIrrepsOfDegreeAtMost}}{6}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}\textcolor {Chapter }{SL2IrrepsOfDegree}}{6}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}\textcolor {Chapter }{SL2IrrepsOfDegreeAtMost}}{6}{subsection.3.1.4}%
 \contentsline {section}{\numberline {3.2}\textcolor {Chapter }{Lists by level}}{6}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}\textcolor {Chapter }{SL2Reps{\textunderscore }PrimePowerIrrepsOfLevel}}{6}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}\textcolor {Chapter }{SL2PrimePowerIrrepsOfLevel}}{6}{subsection.3.2.1}%
 \contentsline {section}{\numberline {3.3}\textcolor {Chapter }{Lists of exceptional representations}}{7}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}\textcolor {Chapter }{SL2Reps{\textunderscore }Exceptions}}{7}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.1}\textcolor {Chapter }{SL2ExceptionalIrreps}}{7}{subsection.3.3.1}%
 \contentsline {chapter}{\numberline {4}\textcolor {Chapter }{Methods for testing}}{8}{chapter.4}%
 \contentsline {section}{\numberline {4.1}\textcolor {Chapter }{Testing}}{8}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}\textcolor {Chapter }{SL2Reps{\textunderscore }SL2Conj}}{8}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}\textcolor {Chapter }{SL2Reps{\textunderscore }ChiST}}{8}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}\textcolor {Chapter }{SL2Reps{\textunderscore }IrrepPositionTest}}{8}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.1}\textcolor {Chapter }{SL2WithConjClasses}}{8}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}\textcolor {Chapter }{SL2ChiST}}{8}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}\textcolor {Chapter }{SL2IrrepPositionTest}}{8}{subsection.4.1.3}%
 \contentsline {chapter}{\numberline {5}\textcolor {Chapter }{Irreducible representations of prime-power level}}{9}{chapter.5}%
 \contentsline {section}{\numberline {5.1}\textcolor {Chapter }{Representations of type D}}{9}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}\textcolor {Chapter }{SL2Reps{\textunderscore }ModuleD}}{9}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}\textcolor {Chapter }{SL2Reps{\textunderscore }RepD}}{9}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.1}\textcolor {Chapter }{SL2ModuleD}}{9}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}\textcolor {Chapter }{SL2IrrepD}}{9}{subsection.5.1.2}%
 \contentsline {section}{\numberline {5.2}\textcolor {Chapter }{Representations of type N}}{9}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}\textcolor {Chapter }{SL2Reps{\textunderscore }ModuleN}}{9}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}\textcolor {Chapter }{SL2Reps{\textunderscore }RepN}}{10}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.1}\textcolor {Chapter }{SL2ModuleN}}{9}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}\textcolor {Chapter }{SL2IrrepN}}{10}{subsection.5.2.2}%
 \contentsline {section}{\numberline {5.3}\textcolor {Chapter }{Representations of type R}}{10}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}\textcolor {Chapter }{SL2Reps{\textunderscore }ModuleR}}{10}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}\textcolor {Chapter }{SL2Reps{\textunderscore }RepR}}{10}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}\textcolor {Chapter }{SL2Reps{\textunderscore }RepRUnary}}{10}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.1}\textcolor {Chapter }{SL2ModuleR}}{10}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}\textcolor {Chapter }{SL2IrrepR}}{10}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}\textcolor {Chapter }{SL2IrrepRUnary}}{10}{subsection.5.3.3}%
 \contentsline {chapter}{References}{12}{chapter*.2}%
 \contentsline {chapter}{Index}{13}{section*.3}%

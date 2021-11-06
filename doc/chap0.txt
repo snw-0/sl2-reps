@@ -43,30 +43,30 @@
       2.2-3 [33X[0;0YType R[133X
   3 [33X[0;0YLists of representations[133X
     3.1 [33X[0;0YLists by degree[133X
-      3.1-1 SL2Reps_PrimePowerIrrepsOfDegree
-      3.1-2 SL2Reps_PrimePowerIrrepsOfDegreeAtMost
-      3.1-3 SL2Reps_IrrepsOfDegree
-      3.1-4 SL2Reps_IrrepsOfDegreeAtMost
+      3.1-1 SL2PrimePowerIrrepsOfDegree
+      3.1-2 SL2PrimePowerIrrepsOfDegreeAtMost
+      3.1-3 SL2IrrepsOfDegree
+      3.1-4 SL2IrrepsOfDegreeAtMost
     3.2 [33X[0;0YLists by level[133X
-      3.2-1 SL2Reps_PrimePowerIrrepsOfLevel
+      3.2-1 SL2PrimePowerIrrepsOfLevel
     3.3 [33X[0;0YLists of exceptional representations[133X
-      3.3-1 SL2Reps_Exceptions
+      3.3-1 SL2ExceptionalIrreps
   4 [33X[0;0YMethods for testing[133X
     4.1 [33X[0;0YTesting[133X
-      4.1-1 SL2Reps_SL2Conj
-      4.1-2 SL2Reps_ChiST
-      4.1-3 SL2Reps_IrrepPositionTest
+      4.1-1 SL2WithConjClasses
+      4.1-2 SL2ChiST
+      4.1-3 SL2IrrepPositionTest
   5 [33X[0;0YIrreducible representations of prime-power level[133X
     5.1 [33X[0;0YRepresentations of type D[133X
-      5.1-1 SL2Reps_ModuleD
-      5.1-2 SL2Reps_RepD
+      5.1-1 SL2ModuleD
+      5.1-2 SL2IrrepD
     5.2 [33X[0;0YRepresentations of type N[133X
-      5.2-1 SL2Reps_ModuleN
-      5.2-2 SL2Reps_RepN
+      5.2-1 SL2ModuleN
+      5.2-2 SL2IrrepN
     5.3 [33X[0;0YRepresentations of type R[133X
-      5.3-1 SL2Reps_ModuleR
-      5.3-2 SL2Reps_RepR
-      5.3-3 SL2Reps_RepRUnary
+      5.3-1 SL2ModuleR
+      5.3-2 SL2IrrepR
+      5.3-3 SL2IrrepRUnary
   
   
   [32X

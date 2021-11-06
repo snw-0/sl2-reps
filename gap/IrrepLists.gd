@@ -15,28 +15,28 @@
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that are exactly the given degree and have prime power level.
-DeclareGlobalFunction( "SL2Reps_PrimePowerIrrepsOfDegree" );
+DeclareGlobalFunction( "SL2PrimePowerIrrepsOfDegree" );
 
 #! @Arguments max_degree
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that are at most the given degree and have prime power level.
-DeclareGlobalFunction( "SL2Reps_PrimePowerIrrepsOfDegreeAtMost" );
+DeclareGlobalFunction( "SL2PrimePowerIrrepsOfDegreeAtMost" );
 
 #! @Arguments degree
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that are exactly the given degree.
-DeclareGlobalFunction( "SL2Reps_IrrepsOfDegree" );
+DeclareGlobalFunction( "SL2IrrepsOfDegree" );
 
 #! @Arguments degree
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that are at most the given degree.
-DeclareGlobalFunction( "SL2Reps_IrrepsOfDegreeAtMost" );
+DeclareGlobalFunction( "SL2IrrepsOfDegreeAtMost" );
 
 #! @Section Level
 #! @SectionTitle Lists by level
@@ -46,7 +46,7 @@ DeclareGlobalFunction( "SL2Reps_IrrepsOfDegreeAtMost" );
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  with level exactly $p^\lambda$.
-DeclareGlobalFunction( "SL2Reps_PrimePowerIrrepsOfLevel" );
+DeclareGlobalFunction( "SL2PrimePowerIrrepsOfLevel" );
 
 #! @Section Exceptions
 #! @SectionTitle Lists of exceptional representations
@@ -54,4 +54,4 @@ DeclareGlobalFunction( "SL2Reps_PrimePowerIrrepsOfLevel" );
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`
 #! @Description
 #!  Constructs a list of the 18 exceptional irreps of $\mathrm{SL}_2(\mathbb{Z})$.
-DeclareGlobalFunction( "SL2Reps_Exceptions" );
+DeclareGlobalFunction( "SL2ExceptionalIrreps" );

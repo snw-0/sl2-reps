@@ -209,7 +209,7 @@ Chinese remainder theorem. Therefore, to characterize all representations of $\m
 described in \cite[Section 1]{Nobs1}. The Weyl representations used by this package have the following form. Let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$. Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ of rank 1 or 2, and a quadratic form $Q$ on $M$, such that $(M,Q)$ is of one of the three types described in \ref{Chapter_Description_Section_Weyl}. The \emph{quadratic module} $(M,Q)$ then gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, denoted $W(M,Q)$. 
 
  With a finite number of exceptions, every representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ may be found as a subrepresentation of $W(M,Q)$ for an appropriate choice of $(M,Q)$ \cite[Hauptsatz 2]{NW76}. The 18 exceptions may be found as the tensor product of two such
-subrepresentations; these may be generated with \texttt{SL2Reps{\textunderscore}Exceptions} (\ref{SL2RepsuScoreExceptions}). 
+subrepresentations; these may be generated with \texttt{SL2ExceptionalIrreps} (\ref{SL2ExceptionalIrreps}).
 
  Representations of $\mathrm{SL}_2(\mathbb{Z})$ may then be found as direct sums of these prime-power representations. 
 
@@ -229,7 +229,7 @@ subrepresentations; these may be generated with \texttt{SL2Reps{\textunderscore}
 {
   
 
- Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2Reps{\textunderscore}ModuleD} (\ref{SL2RepsuScoreModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2Reps{\textunderscore}RepD} (\ref{SL2RepsuScoreRepD}). 
+ Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleD} (\ref{SL2ModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepD} (\ref{SL2IrrepD}).
 
  }
 
@@ -240,7 +240,7 @@ subrepresentations; these may be generated with \texttt{SL2Reps{\textunderscore}
 {
   
 
- Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ (where, for $p \neq 2$, $u$ is chosen so that $u \equiv 3$ mod 4 with $\left(\frac{-u}{p}\right) = -1$, and for $p=2$, $u=3$) is said to be of type $N$ and denoted $N(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2Reps{\textunderscore}ModuleN} (\ref{SL2RepsuScoreModuleN}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2Reps{\textunderscore}RepN} (\ref{SL2RepsuScoreRepN}). 
+ Let $p$ be prime and $\lambda \geq 1$. Then the Weyl representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ (where, for $p \neq 2$, $u$ is chosen so that $u \equiv 3$ mod 4 with $\left(\frac{-u}{p}\right) = -1$, and for $p=2$, $u=3$) is said to be of type $N$ and denoted $N(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleN} (\ref{SL2ModuleN}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepN} (\ref{SL2IrrepN}).
 
  }
 
@@ -259,7 +259,7 @@ subrepresentations; these may be generated with \texttt{SL2Reps{\textunderscore}
  On the other hand, if $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define $M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus
 \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}$ and $Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}$. 
 
- In either case, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$. Information on $(M,Q)$ may be obtained via \texttt{SL2Reps{\textunderscore}ModuleR} (\ref{SL2RepsuScoreModuleR}), and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via \texttt{SL2Reps{\textunderscore}RepR} (\ref{SL2RepsuScoreRepR}). Note that if $\sigma = \lambda$ for $p \neq 2$, then the second factor of $M$ is trivial (and hence $t$ is irrelevant); this special case is handled by \texttt{SL2Reps{\textunderscore}RepRUnary} (\ref{SL2RepsuScoreRepRUnary}). }
+ In either case, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleR} (\ref{SL2ModuleR}), and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepR} (\ref{SL2IrrepR}). Note that if $\sigma = \lambda$ for $p \neq 2$, then the second factor of $M$ is trivial (and hence $t$ is irrelevant); this special case is handled by \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary}). }
 
  }
 
@@ -277,11 +277,11 @@ subrepresentations; these may be generated with \texttt{SL2Reps{\textunderscore}
 {
   
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}PrimePowerIrrepsOfDegree}}
+\subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfDegree}}
 \logpage{[ 3, 1, 1 ]}\nobreak
-\hyperdef{L}{X7F86FF007C1D95BC}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}PrimePowerIrrepsOfDegree({\mdseries\slshape degree})\index{SL2RepsuScorePrimePowerIrrepsOfDegree@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Prime}\-\texttt{Power}\-\texttt{Irreps}\-\texttt{Of}\-\texttt{Degree}}
-\label{SL2RepsuScorePrimePowerIrrepsOfDegree}
+\hyperdef{L}{X7AFFB022821949A7}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2PrimePowerIrrepsOfDegree({\mdseries\slshape degree})\index{SL2PrimePowerIrrepsOfDegree@\texttt{SL2PrimePowerIrrepsOfDegree}}
+\label{SL2PrimePowerIrrepsOfDegree}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -292,11 +292,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}PrimePowerIrrepsOfDegreeAtMost}}
+\subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfDegreeAtMost}}
 \logpage{[ 3, 1, 2 ]}\nobreak
-\hyperdef{L}{X7EC26C3878FA3090}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}PrimePowerIrrepsOfDegreeAtMost({\mdseries\slshape max{\textunderscore}degree})\index{SL2RepsuScorePrimePowerIrrepsOfDegreeAtMost@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Prime}\-\texttt{Power}\-\texttt{Irreps}\-\texttt{Of}\-\texttt{Degree}\-\texttt{At}\-\texttt{Most}}
-\label{SL2RepsuScorePrimePowerIrrepsOfDegreeAtMost}
+\hyperdef{L}{X7CF672A47E035702}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2PrimePowerIrrepsOfDegreeAtMost({\mdseries\slshape max{\textunderscore}degree})\index{SL2PrimePowerIrrepsOfDegreeAtMost@\texttt{SL2PrimePowerIrrepsOfDegreeAtMost}}
+\label{SL2PrimePowerIrrepsOfDegreeAtMost}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -307,11 +307,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}IrrepsOfDegree}}
+\subsection{\textcolor{Chapter }{SL2IrrepsOfDegree}}
 \logpage{[ 3, 1, 3 ]}\nobreak
-\hyperdef{L}{X7E0CE1527A1F87FF}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}IrrepsOfDegree({\mdseries\slshape degree})\index{SL2RepsuScoreIrrepsOfDegree@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Irreps}\-\texttt{Of}\-\texttt{Degree}}
-\label{SL2RepsuScoreIrrepsOfDegree}
+\hyperdef{L}{X7CC7D26D7E37A1B9}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepsOfDegree({\mdseries\slshape degree})\index{SL2IrrepsOfDegree@\texttt{SL2IrrepsOfDegree}}
+\label{SL2IrrepsOfDegree}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -322,11 +322,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}IrrepsOfDegreeAtMost}}
+\subsection{\textcolor{Chapter }{SL2IrrepsOfDegreeAtMost}}
 \logpage{[ 3, 1, 4 ]}\nobreak
-\hyperdef{L}{X84DC721D7FB5A944}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}IrrepsOfDegreeAtMost({\mdseries\slshape degree})\index{SL2RepsuScoreIrrepsOfDegreeAtMost@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Irreps}\-\texttt{Of}\-\texttt{Degree}\-\texttt{At}\-\texttt{Most}}
-\label{SL2RepsuScoreIrrepsOfDegreeAtMost}
+\hyperdef{L}{X78044A4683369ADC}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepsOfDegreeAtMost({\mdseries\slshape degree})\index{SL2IrrepsOfDegreeAtMost@\texttt{SL2IrrepsOfDegreeAtMost}}
+\label{SL2IrrepsOfDegreeAtMost}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -344,11 +344,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 {
   
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}PrimePowerIrrepsOfLevel}}
+\subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfLevel}}
 \logpage{[ 3, 2, 1 ]}\nobreak
-\hyperdef{L}{X85C95DC07AC11205}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}PrimePowerIrrepsOfLevel({\mdseries\slshape p, lambda})\index{SL2RepsuScorePrimePowerIrrepsOfLevel@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Prime}\-\texttt{Power}\-\texttt{Irreps}\-\texttt{Of}\-\texttt{Level}}
-\label{SL2RepsuScorePrimePowerIrrepsOfLevel}
+\hyperdef{L}{X7A0D2DB780D99B11}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2PrimePowerIrrepsOfLevel({\mdseries\slshape p, lambda})\index{SL2PrimePowerIrrepsOfLevel@\texttt{SL2PrimePowerIrrepsOfLevel}}
+\label{SL2PrimePowerIrrepsOfLevel}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -366,11 +366,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 {
   
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}Exceptions}}
+\subsection{\textcolor{Chapter }{SL2ExceptionalIrreps}}
 \logpage{[ 3, 3, 1 ]}\nobreak
-\hyperdef{L}{X82646BF88466E216}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}Exceptions({\mdseries\slshape arg})\index{SL2RepsuScoreExceptions@\texttt{SL2Reps{\textunderscore}Exceptions}}
-\label{SL2RepsuScoreExceptions}
+\hyperdef{L}{X85078197803C9848}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ExceptionalIrreps({\mdseries\slshape arg})\index{SL2ExceptionalIrreps@\texttt{SL2ExceptionalIrreps}}
+\label{SL2ExceptionalIrreps}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of records of the form \texttt{rec(S, T, degree, level, name)} 
@@ -395,11 +395,11 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 {
   
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}SL2Conj}}
+\subsection{\textcolor{Chapter }{SL2WithConjClasses}}
 \logpage{[ 4, 1, 1 ]}\nobreak
-\hyperdef{L}{X7F816DE77BADF5BC}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}SL2Conj({\mdseries\slshape p, ld})\index{SL2RepsuScoreSL2Conj@\texttt{SL2Reps{\textunderscore}SL2Conj}}
-\label{SL2RepsuScoreSL2Conj}
+\hyperdef{L}{X801680187A8CA462}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2WithConjClasses({\mdseries\slshape p, ld})\index{SL2WithConjClasses@\texttt{SL2WithConjClasses}}
+\label{SL2WithConjClasses}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 the group $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ with conjugacy classes set to the format we use. 
@@ -412,26 +412,26 @@ the group $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ with conjugacy classes
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}ChiST}}
+\subsection{\textcolor{Chapter }{SL2ChiST}}
 \logpage{[ 4, 1, 2 ]}\nobreak
-\hyperdef{L}{X78E0537D7C06CAEE}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}ChiST({\mdseries\slshape S, T, p, ld})\index{SL2RepsuScoreChiST@\texttt{SL2Reps{\textunderscore}ChiST}}
-\label{SL2RepsuScoreChiST}
+\hyperdef{L}{X7A97C7C77C7608D0}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ChiST({\mdseries\slshape S, T, p, ld})\index{SL2ChiST@\texttt{SL2ChiST}}
+\label{SL2ChiST}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ 
 
 
 
- Converts the modular data $(S,T)$, which must have level dividing $p^\lambda$, into a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, presented in a form matching the conjugacy classes used in \texttt{SL2Reps{\textunderscore}SL2Conj}. }
+ Converts the modular data $(S,T)$, which must have level dividing $p^\lambda$, into a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, presented in a form matching the conjugacy classes used in \texttt{SL2WithConjClasses}. }
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}IrrepPositionTest}}
+\subsection{\textcolor{Chapter }{SL2IrrepPositionTest}}
 \logpage{[ 4, 1, 3 ]}\nobreak
-\hyperdef{L}{X7E8C59607A1226E7}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}IrrepPositionTest({\mdseries\slshape p, lambda})\index{SL2RepsuScoreIrrepPositionTest@\texttt{SL2}\-\texttt{Reps{\textunderscore}}\-\texttt{Irrep}\-\texttt{Position}\-\texttt{Test}}
-\label{SL2RepsuScoreIrrepPositionTest}
+\hyperdef{L}{X7FB0262F7E0F1B95}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepPositionTest({\mdseries\slshape p, lambda})\index{SL2IrrepPositionTest@\texttt{SL2IrrepPositionTest}}
+\label{SL2IrrepPositionTest}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a boolean 
@@ -458,11 +458,11 @@ a boolean
 
  See \ref{Chapter_Description_Section_Weyl_Subsection_Type_D}. 
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}ModuleD}}
+\subsection{\textcolor{Chapter }{SL2ModuleD}}
 \logpage{[ 5, 1, 1 ]}\nobreak
-\hyperdef{L}{X78D4833F85945690}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}ModuleD({\mdseries\slshape p, ld})\index{SL2RepsuScoreModuleD@\texttt{SL2Reps{\textunderscore}ModuleD}}
-\label{SL2RepsuScoreModuleD}
+\hyperdef{L}{X845D92CB7841CB0B}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleD({\mdseries\slshape p, ld})\index{SL2ModuleD@\texttt{SL2ModuleD}}
+\label{SL2ModuleD}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a record \texttt{rec(Agrp, Bp, Char, IsPrim)} describing $(M,Q)$
@@ -476,17 +476,17 @@ a record \texttt{rec(Agrp, Bp, Char, IsPrim)} describing $(M,Q)$
  \texttt{Bp} describes a set of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \hat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case.
 
- \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2Reps{\textunderscore}RepD} (\ref{SL2RepsuScoreRepD}) to a function.
+ \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2IrrepD} (\ref{SL2IrrepD}) to a function.
 
  \texttt{IsPrim(chi)} tests whether a given character (e.g. from \texttt{Char(i,j)}) is primitive. }
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}RepD}}
+\subsection{\textcolor{Chapter }{SL2IrrepD}}
 \logpage{[ 5, 1, 2 ]}\nobreak
-\hyperdef{L}{X84376A29780650AD}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}RepD({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2RepsuScoreRepD@\texttt{SL2Reps{\textunderscore}RepD}}
-\label{SL2RepsuScoreRepD}
+\hyperdef{L}{X7FDB517981A2C091}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepD({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2IrrepD@\texttt{SL2IrrepD}}
+\label{SL2IrrepD}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of lists of the form $[S,T]$ 
@@ -506,11 +506,11 @@ a list of lists of the form $[S,T]$
 
  See \ref{Chapter_Description_Section_Weyl_Subsection_Type_N}. 
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}ModuleN}}
+\subsection{\textcolor{Chapter }{SL2ModuleN}}
 \logpage{[ 5, 2, 1 ]}\nobreak
-\hyperdef{L}{X86D9DDAE83E4A141}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}ModuleN({\mdseries\slshape p, ld})\index{SL2RepsuScoreModuleN@\texttt{SL2Reps{\textunderscore}ModuleN}}
-\label{SL2RepsuScoreModuleN}
+\hyperdef{L}{X7A50CC5A7933E207}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleN({\mdseries\slshape p, ld})\index{SL2ModuleN@\texttt{SL2ModuleN}}
+\label{SL2ModuleN}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a record \texttt{rec(Agrp, Bp, Char, Nm, Prod)} describing $(M,Q)$
@@ -525,17 +525,17 @@ a record \texttt{rec(Agrp, Bp, Char, Nm, Prod)} describing $(M,Q)$
  \texttt{Bp} describes a set of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \hat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case.
 
- \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2Reps{\textunderscore}RepN} (\ref{SL2RepsuScoreRepN}) to a function.
+ \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2IrrepN} (\ref{SL2IrrepN}) to a function.
 
  \texttt{Nm(a)} and \texttt{Prod(a,b)} are the norm and product functions on $M$, respectively. }
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}RepN}}
+\subsection{\textcolor{Chapter }{SL2IrrepN}}
 \logpage{[ 5, 2, 2 ]}\nobreak
-\hyperdef{L}{X7A3A34B886A52E2B}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}RepN({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2RepsuScoreRepN@\texttt{SL2Reps{\textunderscore}RepN}}
-\label{SL2RepsuScoreRepN}
+\hyperdef{L}{X81D60FE878F02838}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepN({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2IrrepN@\texttt{SL2IrrepN}}
+\label{SL2IrrepN}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of lists of the form $[S,T]$ 
@@ -555,11 +555,11 @@ a list of lists of the form $[S,T]$
 
  See \ref{Chapter_Description_Section_Weyl_Subsection_Type_R}. 
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}ModuleR}}
+\subsection{\textcolor{Chapter }{SL2ModuleR}}
 \logpage{[ 5, 3, 1 ]}\nobreak
-\hyperdef{L}{X8799C86A83FDD22B}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}ModuleR({\mdseries\slshape p, ld, sigma, r, t})\index{SL2RepsuScoreModuleR@\texttt{SL2Reps{\textunderscore}ModuleR}}
-\label{SL2RepsuScoreModuleR}
+\hyperdef{L}{X7B10D99E7AEAC411}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleR({\mdseries\slshape p, ld, sigma, r, t})\index{SL2ModuleR@\texttt{SL2ModuleR}}
+\label{SL2ModuleR}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a record \texttt{rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)} describing $(M,Q)$
@@ -571,9 +571,9 @@ a record \texttt{rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)} describing $(M,Q
  \texttt{Agrp} describes the elements of $\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon)
 = 1 \}$ (see \cite[Section 2.3 - 2.5]{NW76}).
 
- Representatives for the $\mathfrak{A}$-orbits on $M^\times$ can depend on the choice of character, even for primitive characters $\chi$ with $\chi^2 \not\equiv 1$. Thus, we cannot provide them here, and they are instead calculated by \texttt{SL2Reps{\textunderscore}RepR} (\ref{SL2RepsuScoreRepR}).
+ Representatives for the $\mathfrak{A}$-orbits on $M^\times$ can depend on the choice of character, even for primitive characters $\chi$ with $\chi^2 \not\equiv 1$. Thus, we cannot provide them here, and they are instead calculated by \texttt{SL2IrrepR} (\ref{SL2IrrepR}).
 
- \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2Reps{\textunderscore}RepR} (\ref{SL2RepsuScoreRepR}) to a function.
+ \texttt{Char(i,j)} converts the \texttt{chi{\textunderscore}index} used in \texttt{SL2IrrepR} (\ref{SL2IrrepR}) to a function.
 
  \texttt{IsPrim(chi)} tests whether a given character (e.g. from \texttt{Char}) is primitive.
 
@@ -585,11 +585,11 @@ a record \texttt{rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)} describing $(M,Q
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}RepR}}
+\subsection{\textcolor{Chapter }{SL2IrrepR}}
 \logpage{[ 5, 3, 2 ]}\nobreak
-\hyperdef{L}{X7B7A217C8634042C}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}RepR({\mdseries\slshape p, ld, sigma, r, t, chi{\textunderscore}index})\index{SL2RepsuScoreRepR@\texttt{SL2Reps{\textunderscore}RepR}}
-\label{SL2RepsuScoreRepR}
+\hyperdef{L}{X80961A2C7C5F632E}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepR({\mdseries\slshape p, ld, sigma, r, t, chi{\textunderscore}index})\index{SL2IrrepR@\texttt{SL2IrrepR}}
+\label{SL2IrrepR}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of lists of the form $[S,T]$ 
@@ -598,15 +598,15 @@ a list of lists of the form $[S,T]$
 
  Constructs the modular data for the irreducible representation(s) of type $R$ with level $p^\lambda$ corresponding to the character $\chi$ indexed by \texttt{chi{\textunderscore}index}.
 
- When $\sigma = \lambda$, this falls through to \texttt{SL2Reps{\textunderscore}RepRUnary} (\ref{SL2RepsuScoreRepRUnary}). }
+ When $\sigma = \lambda$, this falls through to \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary}). }
 
  
 
-\subsection{\textcolor{Chapter }{SL2Reps{\textunderscore}RepRUnary}}
+\subsection{\textcolor{Chapter }{SL2IrrepRUnary}}
 \logpage{[ 5, 3, 3 ]}\nobreak
-\hyperdef{L}{X87D9D1497ACD4A1E}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2Reps{\textunderscore}RepRUnary({\mdseries\slshape p, ld, r})\index{SL2RepsuScoreRepRUnary@\texttt{SL2Reps{\textunderscore}RepRUnary}}
-\label{SL2RepsuScoreRepRUnary}
+\hyperdef{L}{X7C94E3007A1BEE85}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepRUnary({\mdseries\slshape p, ld, r})\index{SL2IrrepRUnary@\texttt{SL2IrrepRUnary}}
+\label{SL2IrrepRUnary}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a list of lists of the form $[S,T]$ 
@@ -640,15 +640,6 @@ type $R$ (that is, with $\sigma = \lambda$) with level $p^\lambda$. }
 
 \printindex
 
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
 \immediate\write\pagenrlog{["End"], \arabic{page}];}

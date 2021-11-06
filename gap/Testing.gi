@@ -6,7 +6,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( SL2Reps_SL2Conj,
+InstallGlobalFunction( SL2WithConjClasses,
 function(p, ld)
     local l, CC, o, s, t, G, C1, c, ccl;
 
@@ -17,7 +17,7 @@ function(p, ld)
     fi;
 
     l := p^ld;
-    CC := _SL2Reps_ConjClasses(p, ld);
+    CC := _SL2ConjClasses(p, ld);
     o := ZmodnZObj(1, l);
     s := [[0,1],[-1,0]] * o;
     t := [[1,1],[0,1]] * o;
@@ -58,7 +58,7 @@ function(p, ld)
     return G;
 end );
 
-InstallGlobalFunction( SL2Reps_ChiST,
+InstallGlobalFunction( SL2ChiST,
 function(S, T, p, ld)
     local l, ordT, dim, CC, s2, TS, i, ProdTrace,
             C1, Du, c,
@@ -79,7 +79,7 @@ function(S, T, p, ld)
 
     l := p^ld;
 
-    CC := _SL2Reps_ConjClasses(p, ld);
+    CC := _SL2ConjClasses(p, ld);
 
     s2 := S^2;
     s2 := s2[1][1]; # assuming S^2 = +-1
@@ -148,7 +148,7 @@ function(S, T, p, ld)
     return C1;
 end );
 
-InstallGlobalFunction( SL2Reps_IrrepPositionTest,
+InstallGlobalFunction( SL2IrrepPositionTest,
 function(p, ld)
     local irrep_list, count, i, G, irreps, PositionTest, pos_list, rho;
 
@@ -163,13 +163,13 @@ function(p, ld)
     count := 0;
     for i in [1 .. ld] do
         Info(InfoSL2Reps, 1, "Level ", p^i, ":");
-        irrep_list[i] := SL2Reps_PrimePowerIrrepsOfLevel(p, i);
+        irrep_list[i] := SL2PrimePowerIrrepsOfLevel(p, i);
         count := count + Length(irrep_list[i]);
     od;
     Info(InfoSL2Reps, 1, "In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");
 
     Info(InfoSL2Reps, 1, "Constructing irreps via conjugacy classes.");
-    G := SL2Reps_SL2Conj(p, ld);
+    G := SL2WithConjClasses(p, ld);
     irreps := Irr(G);
     # This always includes the trivial irrep, so we ignore it.
     Info(InfoSL2Reps, 1, Length(irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
@@ -177,7 +177,7 @@ function(p, ld)
     PositionTest := function(irreps, rho, pos_list)
         local pos;
 
-        pos := Position(irreps, SL2Reps_ChiST(rho.S, rho.T, p, ld));
+        pos := Position(irreps, SL2ChiST(rho.S, rho.T, p, ld));
         if pos = fail then
             Info(InfoSL2Reps, 1, rho.name, " not found!");
         else

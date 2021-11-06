@@ -28,20 +28,20 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X80406B597E11D7C6">3.1 <span class="Heading">Lists by degree</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F86FF007C1D95BC">3.1-1 SL2Reps_PrimePowerIrrepsOfDegree</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EC26C3878FA3090">3.1-2 SL2Reps_PrimePowerIrrepsOfDegreeAtMost</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E0CE1527A1F87FF">3.1-3 SL2Reps_IrrepsOfDegree</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84DC721D7FB5A944">3.1-4 SL2Reps_IrrepsOfDegreeAtMost</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AFFB022821949A7">3.1-1 SL2PrimePowerIrrepsOfDegree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CF672A47E035702">3.1-2 SL2PrimePowerIrrepsOfDegreeAtMost</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC7D26D7E37A1B9">3.1-3 SL2IrrepsOfDegree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78044A4683369ADC">3.1-4 SL2IrrepsOfDegreeAtMost</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X78C583957D3FF6ED">3.2 <span class="Heading">Lists by level</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85C95DC07AC11205">3.2-1 SL2Reps_PrimePowerIrrepsOfLevel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A0D2DB780D99B11">3.2-1 SL2PrimePowerIrrepsOfLevel</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X80400C6D79D4D0D6">3.3 <span class="Heading">Lists of exceptional representations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82646BF88466E216">3.3-1 SL2Reps_Exceptions</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85078197803C9848">3.3-1 SL2ExceptionalIrreps</a></span>
 </div></div>
 </div>
 
@@ -51,38 +51,38 @@
 
 <h4>3.1 <span class="Heading">Lists by degree</span></h4>
 
-<p><a id="X7F86FF007C1D95BC" name="X7F86FF007C1D95BC"></a></p>
+<p><a id="X7AFFB022821949A7" name="X7AFFB022821949A7"></a></p>
 
-<h5>3.1-1 SL2Reps_PrimePowerIrrepsOfDegree</h5>
+<h5>3.1-1 SL2PrimePowerIrrepsOfDegree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_PrimePowerIrrepsOfDegree</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2PrimePowerIrrepsOfDegree</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of all irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> that are exactly the given degree and have prime power level.</p>
 
-<p><a id="X7EC26C3878FA3090" name="X7EC26C3878FA3090"></a></p>
+<p><a id="X7CF672A47E035702" name="X7CF672A47E035702"></a></p>
 
-<h5>3.1-2 SL2Reps_PrimePowerIrrepsOfDegreeAtMost</h5>
+<h5>3.1-2 SL2PrimePowerIrrepsOfDegreeAtMost</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_PrimePowerIrrepsOfDegreeAtMost</code>( <var class="Arg">max_degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2PrimePowerIrrepsOfDegreeAtMost</code>( <var class="Arg">max_degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of all irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> that are at most the given degree and have prime power level.</p>
 
-<p><a id="X7E0CE1527A1F87FF" name="X7E0CE1527A1F87FF"></a></p>
+<p><a id="X7CC7D26D7E37A1B9" name="X7CC7D26D7E37A1B9"></a></p>
 
-<h5>3.1-3 SL2Reps_IrrepsOfDegree</h5>
+<h5>3.1-3 SL2IrrepsOfDegree</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_IrrepsOfDegree</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepsOfDegree</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of all irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> that are exactly the given degree.</p>
 
-<p><a id="X84DC721D7FB5A944" name="X84DC721D7FB5A944"></a></p>
+<p><a id="X78044A4683369ADC" name="X78044A4683369ADC"></a></p>
 
-<h5>3.1-4 SL2Reps_IrrepsOfDegreeAtMost</h5>
+<h5>3.1-4 SL2IrrepsOfDegreeAtMost</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_IrrepsOfDegreeAtMost</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepsOfDegreeAtMost</code>( <var class="Arg">degree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of all irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> that are at most the given degree.</p>
@@ -91,11 +91,11 @@
 
 <h4>3.2 <span class="Heading">Lists by level</span></h4>
 
-<p><a id="X85C95DC07AC11205" name="X85C95DC07AC11205"></a></p>
+<p><a id="X7A0D2DB780D99B11" name="X7A0D2DB780D99B11"></a></p>
 
-<h5>3.2-1 SL2Reps_PrimePowerIrrepsOfLevel</h5>
+<h5>3.2-1 SL2PrimePowerIrrepsOfLevel</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_PrimePowerIrrepsOfLevel</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2PrimePowerIrrepsOfLevel</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of all irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> with level exactly <span class="SimpleMath">\(p^\lambda\)</span>.</p>
@@ -104,11 +104,11 @@
 
 <h4>3.3 <span class="Heading">Lists of exceptional representations</span></h4>
 
-<p><a id="X82646BF88466E216" name="X82646BF88466E216"></a></p>
+<p><a id="X85078197803C9848" name="X85078197803C9848"></a></p>
 
-<h5>3.3-1 SL2Reps_Exceptions</h5>
+<h5>3.3-1 SL2ExceptionalIrreps</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_Exceptions</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ExceptionalIrreps</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of records of the form <code class="code">rec(S, T, degree, level, name)</code></p>
 
 <p>Constructs a list of the 18 exceptional irreps of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span>.</p>

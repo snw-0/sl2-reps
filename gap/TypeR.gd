@@ -19,9 +19,9 @@
 #!
 #!  Representatives for the $\mathfrak{A}$-orbits on $M^\times$ can depend on the choice of
 #!  character, even for primitive characters $\chi$ with $\chi^2 \not\equiv 1$.  Thus, we
-#!  cannot provide them here, and they are instead calculated by <Ref Func="SL2Reps_RepR"/>.
+#!  cannot provide them here, and they are instead calculated by <Ref Func="SL2IrrepR"/>.
 #!
-#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2Reps_RepR"/> to a function.
+#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2IrrepR"/> to a function.
 #!
 #!  `IsPrim(chi)` tests whether a given character (e.g. from `Char`) is primitive.
 #!
@@ -30,7 +30,7 @@
 #!  `c` is a scalar used in calculating the $S$-matrix; namely $c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))$.
 #!
 #!  `tM` is the group $M - pM$.
-DeclareGlobalFunction( "SL2Reps_ModuleR" );
+DeclareGlobalFunction( "SL2ModuleR" );
 
 #! @Arguments p,ld,sigma,r,t,chi_index
 #! @Returns a list of lists of the form $[S,T]$
@@ -38,12 +38,12 @@ DeclareGlobalFunction( "SL2Reps_ModuleR" );
 #!  Constructs the modular data for the irreducible representation(s) of type $R$ with level $p^\lambda$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
 #!
-#!  When $\sigma = \lambda$, this falls through to <Ref Func="SL2Reps_RepRUnary"/>.
-DeclareGlobalFunction( "SL2Reps_RepR" );
+#!  When $\sigma = \lambda$, this falls through to <Ref Func="SL2IrrepRUnary"/>.
+DeclareGlobalFunction( "SL2IrrepR" );
 
 #! @Arguments p,ld,r
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of unary type $R$ (that is, with $\sigma = \lambda$)
 #!  with level $p^\lambda$.
-DeclareGlobalFunction( "SL2Reps_RepRUnary" );
+DeclareGlobalFunction( "SL2IrrepRUnary" );

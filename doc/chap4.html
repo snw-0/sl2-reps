@@ -25,9 +25,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7DE7E7187BE24368">4.1 <span class="Heading">Testing</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F816DE77BADF5BC">4.1-1 SL2Reps_SL2Conj</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78E0537D7C06CAEE">4.1-2 SL2Reps_ChiST</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E8C59607A1226E7">4.1-3 SL2Reps_IrrepPositionTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X801680187A8CA462">4.1-1 SL2WithConjClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A97C7C77C7608D0">4.1-2 SL2ChiST</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7FB0262F7E0F1B95">4.1-3 SL2IrrepPositionTest</a></span>
 </div></div>
 </div>
 
@@ -37,27 +37,27 @@
 
 <h4>4.1 <span class="Heading">Testing</span></h4>
 
-<p><a id="X7F816DE77BADF5BC" name="X7F816DE77BADF5BC"></a></p>
+<p><a id="X801680187A8CA462" name="X801680187A8CA462"></a></p>
 
-<h5>4.1-1 SL2Reps_SL2Conj</h5>
+<h5>4.1-1 SL2WithConjClasses</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_SL2Conj</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2WithConjClasses</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: the group <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> with conjugacy classes set to the format we use.</p>
 
-<p><a id="X78E0537D7C06CAEE" name="X78E0537D7C06CAEE"></a></p>
+<p><a id="X7A97C7C77C7608D0" name="X7A97C7C77C7608D0"></a></p>
 
-<h5>4.1-2 SL2Reps_ChiST</h5>
+<h5>4.1-2 SL2ChiST</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_ChiST</code>( <var class="Arg">S</var>, <var class="Arg">T</var>, <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ChiST</code>( <var class="Arg">S</var>, <var class="Arg">T</var>, <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list representing a character of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span></p>
 
-<p>Converts the modular data <span class="Math">(S,T)</span>, which must have level dividing <span class="Math">p^\lambda</span>, into a character of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>, presented in a form matching the conjugacy classes used in <code class="code">SL2Reps_SL2Conj</code>.</p>
+<p>Converts the modular data <span class="Math">(S,T)</span>, which must have level dividing <span class="Math">p^\lambda</span>, into a character of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>, presented in a form matching the conjugacy classes used in <code class="code">SL2WithConjClasses</code>.</p>
 
-<p><a id="X7E8C59607A1226E7" name="X7E8C59607A1226E7"></a></p>
+<p><a id="X7FB0262F7E0F1B95" name="X7FB0262F7E0F1B95"></a></p>
 
-<h5>4.1-3 SL2Reps_IrrepPositionTest</h5>
+<h5>4.1-3 SL2IrrepPositionTest</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2Reps_IrrepPositionTest</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepPositionTest</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>Constructs and tests all irreps of level dividing <span class="Math">p^\lambda</span> by checking their positions in <code class="code">Irr(G)</code>.</p>

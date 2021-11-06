@@ -41,7 +41,7 @@
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X    may    be    found   as   a
   subrepresentation  of  [23XW(M,Q)[123X  for  an  appropriate  choice  of [23X(M,Q)[123X [NW76,
   Hauptsatz  2].  The  18 exceptions may be found as the tensor product of two
-  such  subrepresentations;  these  may  be  generated with [2XSL2Reps_Exceptions[102X
+  such  subrepresentations;  these  may be generated with [2XSL2ExceptionalIrreps[102X
   ([14X3.3-1[114X).[133X
   
   [33X[0;0YRepresentations  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X  may  then be found as direct
@@ -57,8 +57,8 @@
   the   quadratic   module  with  [23XM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus
   \mathbb{Z}/p^\lambda\mathbb{Z}[123X  and [23XQ(x,y) = \frac{xy}{p^\lambda}[123X is said to
   be  of type [23XD[123X and denoted [23XD(p,\lambda)[123X. Information on [23X(M,Q)[123X may be obtained
-  via  [2XSL2Reps_ModuleD[102X  ([14X5.1-1[114X),  and  subrepresentations of [23XD(p,\lambda)[123X with
-  level [23Xp^\lambda[123X may be constructed via [2XSL2Reps_RepD[102X ([14X5.1-2[114X).[133X
+  via  [2XSL2ModuleD[102X  ([14X5.1-1[114X),  and subrepresentations of [23XD(p,\lambda)[123X with level
+  [23Xp^\lambda[123X may be constructed via [2XSL2IrrepD[102X ([14X5.1-2[114X).[133X
   
   
   [1X2.2-2 [33X[0;0YType N[133X[101X
@@ -69,8 +69,8 @@
   +xy+\frac{1+u}{4}y^2}{p^\lambda}[123X (where, for [23Xp \neq 2[123X, [23Xu[123X is chosen so that [23Xu
   \equiv  3[123X  mod  4  with [23X\left(\frac{-u}{p}\right) = -1[123X, and for [23Xp=2[123X, [23Xu=3[123X) is
   said  to  be of type [23XN[123X and denoted [23XN(p,\lambda)[123X. Information on [23X(M,Q)[123X may be
-  obtained via [2XSL2Reps_ModuleN[102X ([14X5.2-1[114X), and subrepresentations of [23XD(p,\lambda)[123X
-  with level [23Xp^\lambda[123X may be constructed via [2XSL2Reps_RepN[102X ([14X5.2-2[114X).[133X
+  obtained via [2XSL2ModuleN[102X ([14X5.2-1[114X), and subrepresentations of [23XD(p,\lambda)[123X with
+  level [23Xp^\lambda[123X may be constructed via [2XSL2IrrepN[102X ([14X5.2-2[114X).[133X
   
   
   [1X2.2-3 [33X[0;0YType R[133X[101X
@@ -91,9 +91,9 @@
   
   [33X[0;0YIn  either  case,  the  resulting representation is said to be of type [23XR[123X and
   denoted  [23XR(p,\lambda,\sigma,r,t)[123X.  Information  on [23X(M,Q)[123X may be obtained via
-  [2XSL2Reps_ModuleR[102X  ([14X5.3-1[114X),  and subrepresentations of [23XR(p,\lambda,\sigma,r,t)[123X
-  with  level [23Xp^\lambda[123X may be constructed via [2XSL2Reps_RepR[102X ([14X5.3-2[114X). Note that
-  if  [23X\sigma  =  \lambda[123X  for [23Xp \neq 2[123X, then the second factor of [23XM[123X is trivial
-  (and   hence   [23Xt[123X   is   irrelevant);   this   special  case  is  handled  by
-  [2XSL2Reps_RepRUnary[102X ([14X5.3-3[114X).[133X
+  [2XSL2ModuleR[102X  ([14X5.3-1[114X),  and subrepresentations of [23XR(p,\lambda,\sigma,r,t)[123X with
+  level  [23Xp^\lambda[123X  may  be  constructed  via  [2XSL2IrrepR[102X ([14X5.3-2[114X). Note that if
+  [23X\sigma  =  \lambda[123X for [23Xp \neq 2[123X, then the second factor of [23XM[123X is trivial (and
+  hence  [23Xt[123X  is  irrelevant);  this  special  case is handled by [2XSL2IrrepRUnary[102X
+  ([14X5.3-3[114X).[133X
   

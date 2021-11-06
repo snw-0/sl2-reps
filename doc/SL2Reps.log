@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  2 NOV 2021 23:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  5 NOV 2021 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -546,20 +546,12 @@ Chapter 5.
 
  [10] [11]) [12
 
-] (./SL2Reps.ind
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
-[]\T1/cmtt/m/n/10.95 SL2\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Reps_\T1/ptm/m/n/
-10.95 -\T1/cmtt/m/n/10.95 Prime\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Power\T1/p
-tm/m/n/10.95 -\T1/cmtt/m/n/10.95 Irreps\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Of
-\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Degree\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.
-95 At\T1/ptm/m/n/10.95 -
- []
-
-[13
+] (./SL2Reps.ind [13
 
 
 
-]) (./SL2Reps.aux)
+])
+(./SL2Reps.aux)
 Package rerunfilecheck Info: File `SL2Reps.out' has not changed.
 (rerunfilecheck)             Checksum: 72C71B53B0CE3A805284818CE4E29D6A;2634.
 Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
@@ -567,8 +559,8 @@ Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  10719 strings out of 478519
- 157049 string characters out of 5849437
- 475020 words of memory out of 5000000
+ 156912 string characters out of 5849437
+ 474931 words of memory out of 5000000
  28399 multiletter control sequences out of 15000+600000
  467875 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -590,7 +582,7 @@ mf-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on SL2Reps.pdf (13 pages, 215524 bytes).
+Output written on SL2Reps.pdf (13 pages, 215856 bytes).
 PDF statistics:
  362 PDF objects out of 1000 (max. 8388607)
  313 compressed objects within 4 object streams

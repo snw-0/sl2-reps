@@ -21,7 +21,7 @@ For any representation <Math>\rho</Math> of <Math>\mathrm{SL}_2(\mathbb{Z})</Mat
 <P/>
 Such representations may be constructed using Weyl representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  The Weyl representations used by this package have the following form.  Let <Math>p</Math> be a prime number and <Math>\lambda \in \mathbb{Z}^+</Math>.  Choose a <Math>\mathbb{Z}/p^\lambda\mathbb{Z}</Math>-module <Math>M</Math> of rank 1 or 2, and a quadratic form <Math>Q</Math> on <Math>M</Math>, such that <Math>(M,Q)</Math> is of one of the three types described in <Ref Sect="Chapter_Description_Section_Weyl"/>.  The <Emph>quadratic module</Emph> <Math>(M,Q)</Math> then gives rise to a representation of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>, denoted <Math>W(M,Q)</Math>.
 <P/>
-With a finite number of exceptions, every representation of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> may be found as a subrepresentation of <Math>W(M,Q)</Math> for an appropriate choice of <Math>(M,Q)</Math> <Cite Key="NW76" Where="Hauptsatz 2"/>.  The 18 exceptions may be found as the tensor product of two such subrepresentations; these may be generated with <Ref Func="SL2Reps_Exceptions"/>.
+With a finite number of exceptions, every representation of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> may be found as a subrepresentation of <Math>W(M,Q)</Math> for an appropriate choice of <Math>(M,Q)</Math> <Cite Key="NW76" Where="Hauptsatz 2"/>.  The 18 exceptions may be found as the tensor product of two such subrepresentations; these may be generated with <Ref Func="SL2ExceptionalIrreps"/>.
 <P/>
 Representations of <Math>\mathrm{SL}_2(\mathbb{Z})</Math> may then be found as direct sums of these prime-power representations.
 <P/>
@@ -36,7 +36,7 @@ Representations of <Math>\mathrm{SL}_2(\mathbb{Z})</Math> may then be found as d
 <Heading>Type D</Heading>
 
 <P/>
-Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weyl representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{xy}{p^\lambda}</Math> is said to be of type <Math>D</Math> and denoted <Math>D(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2Reps_ModuleD"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2Reps_RepD"/>.
+Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weyl representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{xy}{p^\lambda}</Math> is said to be of type <Math>D</Math> and denoted <Math>D(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepD"/>.
 <P/>
 </Subsection>
 
@@ -45,7 +45,7 @@ Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weyl repre
 <Heading>Type N</Heading>
 
 <P/>
-Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weyl representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}</Math> (where, for <Math>p \neq 2</Math>, <Math>u</Math> is chosen so that <Math>u \equiv 3</Math> mod 4 with <Math>\left(\frac{-u}{p}\right) = -1</Math>, and for <Math>p=2</Math>, <Math>u=3</Math>) is said to be of type <Math>N</Math> and denoted <Math>N(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2Reps_ModuleN"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2Reps_RepN"/>.
+Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weyl representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}</Math> (where, for <Math>p \neq 2</Math>, <Math>u</Math> is chosen so that <Math>u \equiv 3</Math> mod 4 with <Math>\left(\frac{-u}{p}\right) = -1</Math>, and for <Math>p=2</Math>, <Math>u=3</Math>) is said to be of type <Math>N</Math> and denoted <Math>N(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepN"/>.
 <P/>
 </Subsection>
 
@@ -60,7 +60,7 @@ First, if <Math>p</Math> is an odd prime, let <Math>\lambda \geq 2</Math>, <Math
 <P/>
 On the other hand, if <Math>p=2</Math>, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{0, \dots, \lambda-2\}</Math> and <Math>r,t \in \{1,3,5,7\}</Math>. Then define <Math>M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}</Math>.
 <P/>
-In either case, the resulting representation is said to be of type <Math>R</Math> and denoted <Math>R(p,\lambda,\sigma,r,t)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2Reps_ModuleR"/>, and subrepresentations of <Math>R(p,\lambda,\sigma,r,t)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2Reps_RepR"/>.  Note that if <Math>\sigma = \lambda</Math> for <Math>p \neq 2</Math>, then the second factor of <Math>M</Math> is trivial (and hence <Math>t</Math> is irrelevant); this special case is handled by <Ref Func="SL2Reps_RepRUnary"/>.
+In either case, the resulting representation is said to be of type <Math>R</Math> and denoted <Math>R(p,\lambda,\sigma,r,t)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of <Math>R(p,\lambda,\sigma,r,t)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepR"/>.  Note that if <Math>\sigma = \lambda</Math> for <Math>p \neq 2</Math>, then the second factor of <Math>M</Math> is trivial (and hence <Math>t</Math> is irrelevant); this special case is handled by <Ref Func="SL2IrrepRUnary"/>.
 </Subsection>
 
 

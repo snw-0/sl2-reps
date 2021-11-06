@@ -23,14 +23,14 @@
 #!  associated to any primitive character $\chi \in \hat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
 #!  For other characters, we must use different bases which are particular to each case.
 #!
-#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2Reps_RepD"/> to a function.
+#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2IrrepD"/> to a function.
 #!
 #!  `IsPrim(chi)` tests whether a given character (e.g. from `Char(i,j)`) is primitive.
-DeclareGlobalFunction( "SL2Reps_ModuleD" );
+DeclareGlobalFunction( "SL2ModuleD" );
 
 #! @Arguments p,ld,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of type $D$ with
 #!  level $p^\lambda$ corresponding to the character $\chi$ indexed by `chi_index`.
-DeclareGlobalFunction( "SL2Reps_RepD" );
+DeclareGlobalFunction( "SL2IrrepD" );

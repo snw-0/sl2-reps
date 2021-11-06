@@ -6,9 +6,9 @@
   
   [33X[0;0YSee [14X2.2-1[114X.[133X
   
-  [1X5.1-1 SL2Reps_ModuleD[101X
+  [1X5.1-1 SL2ModuleD[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_ModuleD[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2ModuleD[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim)[110X describing [23X(M,Q)[123X[133X
   
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
@@ -24,14 +24,14 @@
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2Reps_RepD[102X ([14X5.1-2[114X) to a function.[133X
+  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2IrrepD[102X ([14X5.1-2[114X) to a function.[133X
   
   [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  a  given  character  (e.g.  from  [10XChar(i,j)[110X) is
   primitive.[133X
   
-  [1X5.1-2 SL2Reps_RepD[101X
+  [1X5.1-2 SL2IrrepD[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_RepD[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepD[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XD[123X
@@ -43,9 +43,9 @@
   
   [33X[0;0YSee [14X2.2-2[114X.[133X
   
-  [1X5.2-1 SL2Reps_ModuleN[101X
+  [1X5.2-1 SL2ModuleN[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_ModuleN[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2ModuleN[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, Nm, Prod)[110X describing [23X(M,Q)[123X[133X
   
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
@@ -61,13 +61,13 @@
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2Reps_RepN[102X ([14X5.2-2[114X) to a function.[133X
+  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2IrrepN[102X ([14X5.2-2[114X) to a function.[133X
   
   [33X[0;0Y[10XNm(a)[110X and [10XProd(a,b)[110X are the norm and product functions on [23XM[123X, respectively.[133X
   
-  [1X5.2-2 SL2Reps_RepN[101X
+  [1X5.2-2 SL2IrrepN[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_RepN[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepN[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XN[123X
@@ -79,9 +79,9 @@
   
   [33X[0;0YSee [14X2.2-3[114X.[133X
   
-  [1X5.3-1 SL2Reps_ModuleR[101X
+  [1X5.3-1 SL2ModuleR[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_ModuleR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2ModuleR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya  record [10Xrec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)[110X describing
             [23X(M,Q)[123X[133X
   
@@ -94,9 +94,9 @@
   [33X[0;0YRepresentatives  for  the  [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X can depend on the
   choice  of  character,  even  for  primitive  characters  [23X\chi[123X  with  [23X\chi^2
   \not\equiv  1[123X.  Thus,  we  cannot  provide  them  here, and they are instead
-  calculated by [2XSL2Reps_RepR[102X ([14X5.3-2[114X).[133X
+  calculated by [2XSL2IrrepR[102X ([14X5.3-2[114X).[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2Reps_RepR[102X ([14X5.3-2[114X) to a function.[133X
+  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2IrrepR[102X ([14X5.3-2[114X) to a function.[133X
   
   [33X[0;0Y[10XIsPrim(chi)[110X tests whether a given character (e.g. from [10XChar[110X) is primitive.[133X
   
@@ -108,20 +108,20 @@
   
   [33X[0;0Y[10XtM[110X is the group [23XM - pM[123X.[133X
   
-  [1X5.3-2 SL2Reps_RepR[101X
+  [1X5.3-2 SL2IrrepR[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_RepR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XR[123X
   with  level  [23Xp^\lambda[123X  corresponding  to  the  character  [23X\chi[123X  indexed  by
   [10Xchi_index[110X.[133X
   
-  [33X[0;0YWhen [23X\sigma = \lambda[123X, this falls through to [2XSL2Reps_RepRUnary[102X ([14X5.3-3[114X).[133X
+  [33X[0;0YWhen [23X\sigma = \lambda[123X, this falls through to [2XSL2IrrepRUnary[102X ([14X5.3-3[114X).[133X
   
-  [1X5.3-3 SL2Reps_RepRUnary[101X
+  [1X5.3-3 SL2IrrepRUnary[101X
   
-  [33X[1;0Y[29X[2XSL2Reps_RepRUnary[102X( [3Xp[103X, [3Xld[103X, [3Xr[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepRUnary[102X( [3Xp[103X, [3Xld[103X, [3Xr[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
   
   [33X[0;0YConstructs  the  modular data for the irreducible representation(s) of unary

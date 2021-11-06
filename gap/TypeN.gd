@@ -22,14 +22,14 @@
 #!  associated to any primitive character $\chi \in \hat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
 #!  For other characters, we must use different bases which are particular to each case.
 #!
-#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2Reps_RepN"/> to a function.
+#!  `Char(i,j)` converts the `chi_index` used in <Ref Func="SL2IrrepN"/> to a function.
 #!
 #!  `Nm(a)` and `Prod(a,b)` are the norm and product functions on $M$, respectively.
-DeclareGlobalFunction( "SL2Reps_ModuleN" );
+DeclareGlobalFunction( "SL2ModuleN" );
 
 #! @Arguments p,ld,chi_index
 #! @Returns a list of lists of the form $[S,T]$
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of type $N$ with level $p^\lambda$
 #!  corresponding to the character $\chi$ indexed by `chi_index`.
-DeclareGlobalFunction( "SL2Reps_RepN" );
+DeclareGlobalFunction( "SL2IrrepN" );
