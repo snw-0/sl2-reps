@@ -37,7 +37,7 @@
     1.2 [33X[0;0YUsage[133X
   2 [33X[0;0YDescription[133X
     2.1 [33X[0;0YConstruction[133X
-    2.2 [33X[0;0YWeyl representation types[133X
+    2.2 [33X[0;0YWeil representation types[133X
       2.2-1 [33X[0;0YType D[133X
       2.2-2 [33X[0;0YType N[133X
       2.2-3 [33X[0;0YType R[133X

@@ -4,7 +4,7 @@
   [33X[0;0YThe   group   [23X\mathrm{SL}_2(\mathbb{Z})[123X   is  generated  by  [23X\mathfrak{s}[123X  =
   [10X[[0,1],[-1,0]][110X and [23X\mathfrak{t}[123X = [10X[[1,1],[0,1]][110X (which satisfy the relations
   [23X\mathfrak{s}^4   =  (\mathfrak{st})^3  =  \mathrm{id}[123X).  Thus,  any  complex
-  representation  [23X\rho  :  \mathrm{SL}_2(\mathbb{Z}) \to \mathbb{C}^n[123X (where [23Xn
+  representation  [23X\rho[123X  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X on [23X\mathbb{C}^n[123X (where [23Xn
   \in  \mathbb{Z}^+[123X is called the [13Xdegree[113X of [23X\rho[123X) is defined by the [23Xn \times n[123X
   matrices  [23XS  =  \rho(\mathfrak{s})[123X  and [23XT = \rho(\mathfrak{t})[123X. In fact, any
   such representation factors through [23X\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})[123X
@@ -18,6 +18,10 @@
   i.e.  [10X[[0,-1],[1,0]][110X. When working with that convention, one must invert the
   [23XS[123X matrices output by this package.[133X
   
+  [33X[0;0YThroughout,  we  denote  by  [23X\mathbf{e}[123X  the map [23Xk \mapsto e^{2 \pi i k}[123X (an
+  isomorphism from [23X\mathbb{Q}/\mathbb{Z}[123X to the group of finite roots of unity
+  in [23X\mathbb{C}[123X).[133X
+  
   
   [1X2.1 [33X[0;0YConstruction[133X[101X
   
@@ -25,35 +29,53 @@
   [23X\rho[123X  as  a  direct  sum of irreducible representations of prime-power level
   using   the  Chinese  remainder  theorem.  Therefore,  to  characterize  all
   representations   of  [23X\mathrm{SL}_2(\mathbb{Z})[123X,  it  suffices  to  consider
-  irreducible                        representations                        of
+  irreducible              representations             (irreps)             of
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X.[133X
   
-  [33X[0;0YSuch  representations  may  be  constructed  using  Weyl  representations as
-  described  in  [Nob76,  Section  1].  The  Weyl representations used by this
+  [33X[0;0YSuch  representations  may  be  constructed  using  Weil  representations as
+  described  in  [Nob76,  Section  1].  The  Weil representations used by this
   package  have  the  following  form. Let [23Xp[123X be a prime number and [23X\lambda \in
   \mathbb{Z}^+[123X.  Choose a [23X\mathbb{Z}/p^\lambda\mathbb{Z}[123X-module [23XM[123X of rank 1 or
   2, and a quadratic form [23XQ[123X on [23XM[123X, such that [23X(M,Q)[123X is of one of the three types
-  described  in  [14X2.2[114X.  The  [13Xquadratic  module[113X  [23X(M,Q)[123X  then  gives  rise  to  a
-  representation   of  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X,  denoted
-  [23XW(M,Q)[123X.[133X
+  described  in  Section  [14X2.2[114X. The [13Xquadratic module[113X [23X(M,Q)[123X then gives rise to a
+  representation   of   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  on  the
+  vector  space  [23XV  =  \mathbb{C}^M[123X  of  complex-valued  functions  on [23XM[123X. This
+  representation is denoted [23XW(M,Q)[123X.[133X
   
   [33X[0;0YWith    a   finite   number   of   exceptions,   every   representation   of
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X    may    be    found   as   a
   subrepresentation  of  [23XW(M,Q)[123X  for  an  appropriate  choice  of [23X(M,Q)[123X [NW76,
-  Hauptsatz  2].  The  18 exceptions may be found as the tensor product of two
+  Hauptsatz  2]  (the  18 exceptions may be found as the tensor product of two
   such  subrepresentations;  these  may be generated with [2XSL2ExceptionalIrreps[102X
-  ([14X3.3-1[114X).[133X
+  ([14X3.3-1[114X)).[133X
   
-  [33X[0;0YRepresentations  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X  may  then be found as direct
-  sums of these prime-power representations.[133X
+  [33X[0;0YThe  subrepresentations  in  question  are  often  of  the form [23XW(M,Q,\chi)[123X,
+  defined   as   follows.   Let   [23X\mathfrak{A}[123X   be  an  abelian  subgroup  of
+  \[\operatorname{Aut}(M,Q)  =  \{  \varepsilon \in \operatorname{Aut}(M) \mid
+  Q(\varepsilon  x)  =  Q(x)  \text{  for  all  }  x  \in  M\}\]  and [23X\chi \in
+  \hat{\mathfrak{A}}[123X.  Define  \[V_\chi  =  \{f  \in V \mid f(\varepsilon x) =
+  \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in
+  \mathfrak{A}\}~,\] which is a [23XSL_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant
+  subspace of [23XV[123X. We then denote by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X
+  corresponding to [23XV_\chi[123X.[133X
+  
+  [33X[0;0YIn  this  context,  we  will  frequently  refer to a character [23X\chi[123X as being
+  [13Xprimitive[113X,  which  means  that it can not be written in the form [23X\chi' \circ
+  \pi[123X,  where  [23X\pi[123X  is  the  canonical  projection  from  [23X\mathfrak{A}[123X  to the
+  corresponding  automorphism  group  [23X\mathfrak{A'}[123X  of  some quadratic module
+  [23X(pM,Q')[123X   with   [23XQ'(px)   =   pQ(x)[123X   for   all   [23Xx  \in  M[123X  and  [23X\chi'  \in
+  \hat{\mathfrak{A}'}[123X.[133X
+  
+  [33X[0;0YAll representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X may then be found as direct
+  sums of these prime-power irreps.[133X
   
   
-  [1X2.2 [33X[0;0YWeyl representation types[133X[101X
+  [1X2.2 [33X[0;0YWeil representation types[133X[101X
   
   
   [1X2.2-1 [33X[0;0YType D[133X[101X
   
-  [33X[0;0YLet [23Xp[123X be prime and [23X\lambda \geq 1[123X. Then the Weyl representation arising from
+  [33X[0;0YLet [23Xp[123X be prime and [23X\lambda \geq 1[123X. Then the Weil representation arising from
   the   quadratic   module  with  [23XM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus
   \mathbb{Z}/p^\lambda\mathbb{Z}[123X  and [23XQ(x,y) = \frac{xy}{p^\lambda}[123X is said to
   be  of type [23XD[123X and denoted [23XD(p,\lambda)[123X. Information on [23X(M,Q)[123X may be obtained
@@ -63,7 +85,7 @@
   
   [1X2.2-2 [33X[0;0YType N[133X[101X
   
-  [33X[0;0YLet [23Xp[123X be prime and [23X\lambda \geq 1[123X. Then the Weyl representation arising from
+  [33X[0;0YLet [23Xp[123X be prime and [23X\lambda \geq 1[123X. Then the Weil representation arising from
   the   quadratic   module  with  [23XM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus
   \mathbb{Z}/p^\lambda\mathbb{Z}[123X       and       [23XQ(x,y)       =      \frac{x^2
   +xy+\frac{1+u}{4}y^2}{p^\lambda}[123X (where, for [23Xp \neq 2[123X, [23Xu[123X is chosen so that [23Xu

@@ -1,6 +1,13 @@
   
   [1X5 [33X[0;0YIrreducible representations of prime-power level[133X[101X
   
+  [33X[0;0YMethods   for   generating   individual   irreducible   representations   of
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X for a given level [23Xp^\lambda[123X.[133X
+  
+  [33X[0;0YIn  each  case  (except  the  unary  type  [23XR[123X,  for  which see [2XSL2IrrepRUnary[102X
+  ([14X5.3-3[114X)),  the  underlying  module  [23XM[123X is of rank [23X2[123X, so its elements have the
+  form [23X(x,y)[123X and are thus represented by lists [23X[x,y][123X.[133X
+  
   
   [1X5.1 [33X[0;0YRepresentations of type D[133X[101X
   
@@ -14,20 +21,31 @@
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
   [23XD[123X.[133X
   
-  [33X[0;0Y[10XAgrp[110X       describes      the      elements      of      [23X\mathfrak{A}      =
-  (\mathbb{Z}/p^\lambda\mathbb{Z})^\times[123X (see [NW76, Section 2.1]).[133X
+  [33X[0;0Y[10XAgrp[110X    is    a   list   describing   the   elements   of   [23X\mathfrak{A}   =
+  (\mathbb{Z}/p^\lambda\mathbb{Z})^\times[123X (see [NW76, Section 2.1]). The group
+  [23X\mathfrak{A}[123X  has  the  following  form.  When [23Xp=2[123X and [23X\lambda \geq 3[123X, it is
+  generated  by  [23X\alpha  =  -1[123X and [23X\zeta = 5[123X. Otherwise, it is cyclic; in this
+  case,  we choose a generator [23X\alpha[123X and (for simplicity) say [23X\zeta = 1[123X. Each
+  element  [23Xa[123X  of  [23X\mathfrak{A}[123X is represented in [10XAgrp[110X by a list [10X[v, a, a_inv][110X,
+  where    [10Xv[110X    is    a   list   defined   by   [23Xa   =   \alpha^{\mathtt{v[1]}}
+  \zeta^{\mathtt{v[2]}}[123X.[133X
   
-  [33X[0;0Y[10XBp[110X  describes  a  set  of  representatives  for  the  [23X\mathfrak{A}[123X-orbits on
-  [23XM^\times[123X,       which       correspond       to       a       basis      the
+  [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
+  which          correspond          to          a          basis          the
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
   to   any   primitive  character  [23X\chi  \in  \hat{\mathfrak{A}}[123X  with  [23X\chi^2
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X converts the [10Xchi_index[110X used in [2XSL2IrrepD[102X ([14X5.1-2[114X) to a function.[133X
+  [33X[0;0Y[10XChar(i,j)[110X  converts two integers [23Xi[123X, [23Xj[123X to a function representing a character
+  of  [23X\mathfrak{A}[123X.  Each  character  in  [23X\hat{\mathfrak{A}}[123X  is  of  the form
+  [23X\chi_{i,j}[123X,     given     by    \[\chi_{i,j}(\alpha^{v}\zeta^{w})    \mapsto
+  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
+  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]  Note  that [23Xj[123X is irrelevant in
+  the cases where [23X\mathfrak{A}[123X is cyclic.[133X
   
-  [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  a  given  character  (e.g.  from  [10XChar(i,j)[110X) is
-  primitive.[133X
+  [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
+  character.[133X
   
   [1X5.1-2 SL2IrrepD[101X
   
@@ -36,7 +54,9 @@
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XD[123X
   with  level  [23Xp^\lambda[123X  corresponding  to  the  character  [23X\chi[123X  indexed  by
-  [10Xchi_index[110X.[133X
+  [10Xchi_index = [i,j][110X (see the discussion of [10XChar(i,j)[110X in [2XSL2ModuleD[102X ([14X5.1-1[114X)).[133X
+  
+  [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
   
   
   [1X5.2 [33X[0;0YRepresentations of type N[133X[101X

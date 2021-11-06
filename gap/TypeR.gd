@@ -7,7 +7,7 @@
 
 #! @Section Representations of type R
 #!
-#! See <Ref Sect="Chapter_Description_Section_Weyl_Subsection_Type_R"/>.
+#! See <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>.
 
 #! @Arguments p,ld,sigma,r,t
 #! @Returns a record `rec(Agrp, Char, IsPrim, Nm, Ord, Prod, c, tM)` describing $(M,Q)$

@@ -9,7 +9,7 @@ This package, <Code>SL2Reps</Code>, provides methods for constructing and testin
 presentations of the representations of <Math>\mathrm{SL}_2(\mathbb{Z})</Math>.
 <P/>
 Irreducible representations of prime-power level are constructed individually by means
-of Weyl representations, and from these a list of all representations of a given degree
+of Weil representations, and from these a list of all representations of a given degree
 or level may be produced. The format is designed to be useful in the study of modular tensor categories in particular.
 <P/>
 <Section Label="Chapter_Introduction_Section_Installation">
