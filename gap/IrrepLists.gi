@@ -856,7 +856,7 @@ function(degree)
         fi;
     od;
 
-    Info(InfoSL2Reps, 1, Length(irrep_list), " irreps of degree ", degree, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(irrep_list), " irreps of degree ", degree, " found.");
     return irrep_list;
 end );
 
@@ -872,12 +872,12 @@ function(max_degree)
     count := 0;
 
     for degree in [1..max_degree] do
-        Info(InfoSL2Reps, 1, "Degree ", degree, ":");
+        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", degree, ":");
         output[degree] := SL2PrimePowerIrrepsOfDegree(degree);
         count := count + Length(output[degree]);
     od;
 
-    Info(InfoSL2Reps, 1, count, " total irreps found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", count, " total irreps found.");
     return output;
 end );
 
@@ -892,9 +892,9 @@ function(degree)
     prime_power_reps := [];
 
     # collect prime-power-level irreps of degree dividing the given degree
-    Info(InfoSL2Reps, 1, "Constructing irreps of prime-power level.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of prime-power level.");
 
-    Info(InfoSL2Reps, 1, "Degree 1:");
+    Info(InfoSL2Reps, 1, "SL2Reps : Degree 1:");
 
     # The linear reps are denoted Xi_n, n in Z/12Z, with T = [zeta_12^n] and S = [i^n].
     # We handle these separately just for brevity in the output.
@@ -922,11 +922,11 @@ function(degree)
         if i = 1 then
             continue;
         fi;
-        Info(InfoSL2Reps, 1, "Degree ", i, ":");
+        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", i, ":");
         prime_power_reps[i] := SL2PrimePowerIrrepsOfDegree(i);
     od;
 
-    Info(InfoSL2Reps, 1, "Constructing tensor products.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing tensor products.");
 
     ConstructIrreps := function(rho, factors, start)
         local i, eta, output, name, new_start;
@@ -992,9 +992,9 @@ function(degree)
     SortBy(output, x -> x[4]);
 
     for i in [1 .. Length(output)] do
-        Info(InfoSL2Reps, 1, i, ": ( ", output[i][5], " ) [d: ", output[i][3], ", l: ", output[i][4] ,"]");
+        Info(InfoSL2Reps, 1, "SL2Reps : ", i, ": ( ", output[i][5], " ) [d: ", output[i][3], ", l: ", output[i][4] ,"]");
     od;
-    Info(InfoSL2Reps, 1, "Total count: ", Length(output));
+    Info(InfoSL2Reps, 1, "SL2Reps : Total count: ", Length(output));
     return output;
 end );
 
@@ -1010,12 +1010,12 @@ function(max_degree)
     count := 0;
 
     for degree in [1..max_degree] do
-        Info(InfoSL2Reps, 1, "Degree ", degree, ":");
+        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", degree, ":");
         output[degree] := SL2IrrepsOfDegree(degree);
         count := count + Length(output[degree]);
     od;
 
-    Info(InfoSL2Reps, 1, count, " total irreps found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", count, " total irreps found.");
     return output;
 end );
 
@@ -1797,7 +1797,7 @@ function(p, ld)
         fi;
     fi;
 
-    Info(InfoSL2Reps, 1, Length(irrep_list), " irreps of level ", l, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(irrep_list), " irreps of level ", l, " found.");
     return irrep_list;
 end );
 
@@ -1891,6 +1891,6 @@ function()
         od;
     od;
 
-    Info(InfoSL2Reps, 1, Length(irrep_list), " exceptional irreps found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(irrep_list), " exceptional irreps found.");
     return irrep_list;
 end );

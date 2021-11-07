@@ -98,7 +98,7 @@ end );
 #---------------------------------------
 InstallGlobalFunction( _SL2RecordIrrep,
 function(irrep_list, name, rho, l)
-    Info(InfoSL2Reps, 1, name, " [level ", l, "]");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", name, " [level ", l, "]");
     # record rho in the form [S, T, degree, level, name]
     Add(irrep_list, rec(
         S := rho[1],

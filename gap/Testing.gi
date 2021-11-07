@@ -158,37 +158,37 @@ function(p, ld)
         Error("ld must be a positive integer.");
     fi;
 
-    Info(InfoSL2Reps, 1, "Constructing irreps via Nobs-Wolfart.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps via Nobs-Wolfart.");
     irrep_list := [];
     count := 0;
     for i in [1 .. ld] do
-        Info(InfoSL2Reps, 1, "Level ", p^i, ":");
+        Info(InfoSL2Reps, 1, "SL2Reps : Level ", p^i, ":");
         irrep_list[i] := SL2PrimePowerIrrepsOfLevel(p, i);
         count := count + Length(irrep_list[i]);
     od;
-    Info(InfoSL2Reps, 1, "In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");
 
-    Info(InfoSL2Reps, 1, "Constructing irreps via conjugacy classes.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps via conjugacy classes.");
     G := SL2WithConjClasses(p, ld);
     irreps := Irr(G);
     # This always includes the trivial irrep, so we ignore it.
-    Info(InfoSL2Reps, 1, Length(irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
 
     PositionTest := function(irreps, rho, pos_list)
         local pos;
 
         pos := Position(irreps, SL2ChiST(rho.S, rho.T, p, ld));
         if pos = fail then
-            Info(InfoSL2Reps, 1, rho.name, " not found!");
+            Info(InfoSL2Reps, 1, "SL2Reps : ", rho.name, " not found!");
         else
-            Info(InfoSL2Reps, 1, rho.name, ": ", pos);
+            Info(InfoSL2Reps, 1, "SL2Reps : ", rho.name, ": ", pos);
             Add(pos_list, pos);
         fi;
     end;
 
     pos_list := [];
 
-    Info(InfoSL2Reps, 1, "Performing position test:");
+    Info(InfoSL2Reps, 1, "SL2Reps : Performing position test:");
     for i in [1 .. ld] do
         for rho in irrep_list[i] do
             PositionTest(irreps, rho, pos_list);
@@ -196,13 +196,13 @@ function(p, ld)
     od;
 
     if Length(pos_list) <> Length(AsSet(pos_list)) then
-        Info(InfoSL2Reps, 1, "WARNING: duplicates found:\n", pos_list);
+        Info(InfoSL2Reps, 1, "SL2Reps : WARNING: duplicates found:\n", pos_list);
         return false;
     elif Length(pos_list) <> Length(irreps)-1 then
-        Info(InfoSL2Reps, 1, "WARNING: mismatched number of irreps:\n", pos_list);
+        Info(InfoSL2Reps, 1, "SL2Reps : WARNING: mismatched number of irreps:\n", pos_list);
         return false;
     else
-        Info(InfoSL2Reps, 1, "Confirmed.");
+        Info(InfoSL2Reps, 1, "SL2Reps : 1-to-1 correspondence confirmed.");
         return true;
     fi;
 end );
