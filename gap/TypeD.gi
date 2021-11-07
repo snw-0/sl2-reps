@@ -10,6 +10,8 @@ InstallGlobalFunction( SL2ModuleD,
 function(p, ld)
     local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, IsPrim, a;
 
+    # TODO: add Nm and Prod functions, even though we don't need them
+
     if not IsPrime(p) then
         Error("p must be prime.");
     elif not ld in PositiveIntegers then

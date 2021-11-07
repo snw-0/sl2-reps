@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  5 NOV 2021 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  6 NOV 2021 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -538,13 +538,63 @@ Chapter 4.
 
 ]
 Chapter 5.
+
+Underfull \hbox (badness 2662) in paragraph at lines 503--509
+\T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
+[]$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
+/m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
+cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\
+T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 z
+eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
+5 ) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mapsto
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--509
+\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
+95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
+/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
+/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha|\T1/cmtt/m/n/10.95 }\\T
+1/ptm/m/n/10.95 right) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n
+/10.95 {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt
+/m/n/10.95 \\T1/ptm/m/n/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 wj\T1/c
+mtt/m/n/10.95 }{\T1/ptm/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 zeta|\
+T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
+95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
+ []
+
 [9
 
-] (./SL2Reps.bbl (./SL2Reps.brf)
+]
+Underfull \hbox (badness 2662) in paragraph at lines 560--566
+\T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
+[]$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
+/m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
+cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\
+T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 z
+eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
+5 ) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mapsto
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--566
+\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
+95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
+/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
+/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha|\T1/cmtt/m/n/10.95 }\\T
+1/ptm/m/n/10.95 right) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n
+/10.95 {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt
+/m/n/10.95 \\T1/ptm/m/n/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 wj\T1/c
+mtt/m/n/10.95 }{\T1/ptm/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 zeta|\
+T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
+95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
+ []
+
+[10] (./SL2Reps.bbl (./SL2Reps.brf)
 \tf@brf=\write8
 \openout8 = `SL2Reps.brf'.
 
- [10] [11]) [12
+ [11]) [12
 
 ] (./SL2Reps.ind [13
 
@@ -553,39 +603,40 @@ Chapter 5.
 ])
 (./SL2Reps.aux)
 Package rerunfilecheck Info: File `SL2Reps.out' has not changed.
-(rerunfilecheck)             Checksum: 72C71B53B0CE3A805284818CE4E29D6A;2634.
+(rerunfilecheck)             Checksum: F87E7FE9DD54C75D29D4D8BC68E8DB18;2634.
 Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
-(rerunfilecheck)             Checksum: F5C9C60FB6969EA0D755B6407B3A734A;297.
+(rerunfilecheck)             Checksum: 26A250F5D81C29F8FEE5BD15B22724D8;297.
  ) 
 Here is how much of TeX's memory you used:
- 10719 strings out of 478519
- 156912 string characters out of 5849437
- 474931 words of memory out of 5000000
- 28399 multiletter control sequences out of 15000+600000
- 467875 words of font info for 110 fonts, out of 8000000 for 9000
+ 10724 strings out of 478519
+ 156969 string characters out of 5849437
+ 476934 words of memory out of 5000000
+ 28402 multiletter control sequences out of 15000+600000
+ 468379 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,6n,94p,760b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,7n,94p,764b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 {z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 }{z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><z:/Programs/t
 exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><z:/Programs/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><z:/Program
-s/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><z:/Pr
-ograms/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfst1095.pfb><z:/Pro
-grams/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><z:/Prog
-rams/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><z:/Progr
-ams/texlive/2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><z:/Programs/texliv
-e/2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><z:/Programs/texlive/2021/tex
-mf-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type
-1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on SL2Reps.pdf (13 pages, 215856 bytes).
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><z:/Programs/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><z:/Programs
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><z:/Pro
+grams/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfst1095.pfb><z:/Prog
+rams/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><z:/Progr
+ams/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><z:/Progra
+ms/texlive/2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><z:/Programs/texlive
+/2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><z:/Programs/texlive/2021/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/fo
+nts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1
+/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on SL2Reps.pdf (13 pages, 229470 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 313 compressed objects within 4 object streams
+ 369 PDF objects out of 1000 (max. 8388607)
+ 318 compressed objects within 4 object streams
  91 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

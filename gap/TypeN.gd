@@ -36,6 +36,10 @@
 #!  Note that $i$ is irrelevant in the cases where $\mathfrak{A}$ is cyclic.
 #!
 #!  `IsPrim(chi)` tests whether the output of `Char(i,j)` represents a primitive character.
+#!  As a special case, for $p=2$, $\lambda=2$, a character is primitive if $\chi(-1) = -1$.
+#!  For all other cases, a character is primitive if it is injective on $\langle\omicron\rangle \leq \mathfrak{A}$,
+#!  where $\omicron$ is defined as follows.  If $\lambda = 1$, $\omicron = \zeta$; otherwise
+#!  $\omicron = \alpha$.
 #!
 #!  `Nm(a)` and `Prod(a,b)` are the norm and product functions on $M$, respectively.
 DeclareGlobalFunction( "SL2ModuleN" );

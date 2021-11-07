@@ -39,6 +39,9 @@
 #!  Note that $j$ is irrelevant in the cases where $\mathfrak{A}$ is cyclic.
 #!
 #!  `IsPrim(chi)` tests whether the output of `Char(i,j)` represents a primitive character.
+#!  A character is primitive if it is injective on $\langle\omicron\rangle \leq \mathfrak{A}$,
+#!  where $\omicron$ is defined as follows.  If $p=2$ and $\lambda \geq 3$, $\omicron = 5$.
+#!  If $\lambda = 1$, $\omicron = \alpha$.  In all other cases, $\omicron = 1+p$.
 DeclareGlobalFunction( "SL2ModuleD" );
 
 #! @Arguments p,ld,chi_index
