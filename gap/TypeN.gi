@@ -8,7 +8,7 @@
 
 InstallGlobalFunction( SL2ModuleN,
 function(p, ld)
-    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, i, j, u, theta, Bp;
+    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, IsPrim, i, j, u, theta, Bp;
 
     if not IsPrime(p) then
         Error("p must be prime.");
@@ -99,6 +99,25 @@ function(p, ld)
         return Chi;
     end;
 
+    # function to determine if chi is primitive.
+    if ld = 1 then
+        # alpha is trivial; chi is primitive if injective on zeta (the second factor)
+        # not described explicitly in NW; inferred from the tables on pp.521-522.
+        IsPrim := function(chi)
+            return Ord(zeta) = Order(chi([0,1]));
+        end;
+    elif p = 2 and ld = 2 then
+        # special case: chi is primitive if chi(-1) = -1 (see NW p.494).
+        IsPrim := function(chi)
+            return chi([0,3]) = -1;
+        end;
+    else
+        # chi is primitive if injective on alpha.
+        IsPrim := function(chi)
+            return Ord(alpha) = Order(chi([1,0]));
+        end;
+    fi;
+
     # Find the bases for primitive chars, which depend only on p and ld.
     # For odd p, pick u to be the smallest quad nonres mod p (any quad nonres works).
     if p > 2 then
@@ -137,6 +156,7 @@ function(p, ld)
     return rec(
         Agrp := Agrp,
         Char := Char,
+        IsPrim := IsPrim,
         Bp := Bp,
         Nm := Nm,
         Prod := Prod
@@ -145,8 +165,8 @@ end );
 
 InstallGlobalFunction( SL2IrrepN,
 function(p, ld, chi_index)
-    local l, M_rec, Agrp, Chi, Bp, beta, Nm, Prod, Tr, sxy, S, T, deg,
-            N, B, O, tO, BQ, a, j, k, VInd, Prim1, Prim2, Prim3, U;
+    local l, M_rec, Agrp, Chi, IsPrim, Bp, beta, Nm, Prod, Tr, sxy, S, T, deg,
+            N, B, O, tO, BQ, a, j, k, VInd, U;
 
     if (not chi_index[1] in Integers) or (not chi_index[2] in Integers) then
         Error("chi must have integer indices.");
@@ -160,6 +180,7 @@ function(p, ld, chi_index)
 
     Agrp := M_rec.Agrp;
     Chi := M_rec.Char(chi_index[1], chi_index[2]);
+    IsPrim := M_rec.IsPrim;
     Bp := M_rec.Bp;
     Nm := M_rec.Nm;
     Prod := M_rec.Prod;
@@ -172,21 +193,19 @@ function(p, ld, chi_index)
         return (Nm([x[1]+y[1], x[2]+y[2]]) - Nm(x) - Nm(y)) mod l;
     end;
 
-    # TODO: refactor the primitive / chi^2 = 1 / etc. logic.
-
-    Prim1 := (((p = 2) and (ld > 2)) or ((p > 2) and (ld > 1))) and (Gcd(chi_index[1], p) = 1);
-
-    Prim2 := (p = 2) and (ld = 2) and (Chi([ 0, 3 ]) = -1);
-
-    Prim3 := (p>2) and (ld = 1) and ((chi_index[2] mod (p+1)/2) <> 0);
-
-    if Prim1 or Prim2 or Prim3 then
+    if IsPrim(Chi) then
         Info(InfoSL2Reps, 2, "SL2Reps : chi is primitive.");
-        # TODO; can we get here with chi^2 = 1? if so, what then?  Seems like we fall through to cases below, like 2,3,1,0.
-        if Length(AsSet(List(Agrp, x -> Chi(x[1])^2))) > 1 then
-            Info(InfoSL2Reps, 2, "SL2Reps : chi^2 != 1.");
-        else
+
+        if AsSet(List(Agrp, x -> Chi(x[1])^2)) = [1] then
+            # This should only be possible if p=2, ld=3 (and thus ord(alpha) = 2, ord(zeta) = 6).
+            # In that case, chi_index = [1,0] and [1,3] are prim. but also square to 1;
+            # the rep. then decomposes into two full-level irreps, which are extracted via
+            # a base-change (see below).
+            # For all other cases (as far as I understand it) chi^2 = 1 implies that chi
+            # is non-primitive.
             Info(InfoSL2Reps, 2, "SL2Reps : chi^2 = 1.");
+        else
+            Info(InfoSL2Reps, 2, "SL2Reps : chi^2 != 1.");
         fi;
 
         sxy := function(x, y)
@@ -269,7 +288,7 @@ function(p, ld, chi_index)
         deg := Length(Bp);
     else
         # TODO: refactor this case.
-        Info(InfoSL2Reps, 2, "SL2Reps : chi is not primitive, or Ord(chi) <= 2. It is also not the Steinberg representation. The first decomposition method gives the following representation corresponding to Chi that is reducible.");
+        Info(InfoSL2Reps, 2, "SL2Reps : chi is not primitive. It is also not the Steinberg representation. The first decomposition method gives the following representation corresponding to Chi that is reducible.");
 
         N := Tuples([0..l-1], 2);;
         B := [];
