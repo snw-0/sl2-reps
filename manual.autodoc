@@ -33,13 +33,13 @@ If such representation factors through $\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})
 
 `rec(S, T, degree, level, name)`
 
-where the name follows the conventions of <Cite Key="NW76"/>.  Note that our definition of $\mathfrak{s}$ follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. `[[0,-1],[1,0]]`.  When working with that convention, one must invert the $S$ matrices output by this package.
+where the name follows the conventions of <Cite Key="NW76"/>.  Note that our definition of $\mathfrak{s}$ follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. `[[0,-1],[1,0]]`. (which provides a different presentation of SL(2,Z).) When working with that convention, one must invert the $S$ matrices output by this package.
 
 Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$).
 
 @Section Construction
 
-For any representation $\rho$ of $\mathrm{SL}_2(\mathbb{Z})$, we may decompose $\rho$ as a direct sum of irreducible representations of prime-power level using the Chinese remainder theorem.  Therefore, to characterize all representations of $\mathrm{SL}_2(\mathbb{Z})$, it suffices to consider irreducible representations (irreps) of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$.
+For any representation $\rho$ of $\mathrm{SL}_2(\mathbb{Z})$, we may decompose $\rho$ as a direct sum of irreducible representations (irreps). Each irreducible representation can be factorized into a tensor poduct of irr-reps whose levels are powers of distinct primes using the Chinese remainder theorem.  Therefore, to characterize all representations of $\mathrm{SL}_2(\mathbb{Z})$, it suffices to consider irreducible representations of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$.
 
 Such representations may be constructed using Weil representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  The Weil representations used by this package have the following form.  Let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ of rank 1 or 2, and a quadratic form $Q$ on $M$, such that $(M,Q)$ is of one of the three types described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  The **quadratic module** $(M,Q)$ then gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$.  This representation is denoted $W(M,Q)$.
 
