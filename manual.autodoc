@@ -1,7 +1,7 @@
 @Chapter Introduction
 
 This package, `SL2Reps`, provides methods for constructing and testing matrix
-presentations of the representations of $\mathrm{SL}_2(\mathbb{Z})$.
+presentations of the representations of $\mathrm{SL}_2(\mathbb{Z})$ whose kernels are congruence subgroup of $\mathrm{SL}_2(\mathbb{Z})$.
 
 Irreducible representations of prime-power level are constructed individually by means
 of Weil representations, and from these a list of all representations of a given degree
