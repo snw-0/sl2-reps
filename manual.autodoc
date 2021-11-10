@@ -41,19 +41,19 @@ Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isom
 
 For any representation $\rho$ of $\mathrm{SL}_2(\mathbb{Z})$, we may decompose $\rho$ as a direct sum of irreducible representations (irreps). Each irreducible representation can be factorized into a tensor poduct of irr-reps whose levels are powers of distinct primes using the Chinese remainder theorem.  Therefore, to characterize all representations of $\mathrm{SL}_2(\mathbb{Z})$, it suffices to consider irreducible representations of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$.
 
-Such representations may be constructed using Weil representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  The Weil representations used by this package have the following form.  Let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ of rank 1 or 2, and a quadratic form $Q: M \to \mathbb{C}^\times$, such that $(M,Q)$ is of one of the three types described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  The **quadratic module** $(M,Q)$ then gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$.  This representation is denoted $W(M,Q)$.
+Such representations may be constructed using Weil representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  The Weil representations used by this package have the following form.  Let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ of rank 1 or 2, and a quadratic form $Q: M \to \mathbb{C}^\times$ such that $(M,Q)$ is of one of the three types described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  The **quadratic module** $(M,Q)$ then gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$.  This representation is denoted $W(M,Q)$.
 
 With a finite number of exceptions, every representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ may be found as a subrepresentation of $W(M,Q)$ for an appropriate choice of $(M,Q)$ <Cite Key="NW76" Where="Hauptsatz 2"/> (the 18 exceptions may be found as the tensor product of two such subrepresentations; these may be generated with <Ref Func="SL2ExceptionalIrreps"/>).
 
 The subrepresentations in question are often of the form $W(M,Q,\chi)$, defined as follows.  Let $\mathfrak{A}$ be an abelian subgroup of
 \[\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}\]
-and $\chi \in \hat{\mathfrak{A}}$.  Define
+and $\chi \in \hat{\mathfrak{A}}$ is a 1-dimensional character of $\mathfrak{A}$.  Define
 \[V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
-which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$.  We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ corresponding to $V_\chi$.
+which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$.  We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$.
 
 In this context, we will frequently refer to a character $\chi$ as being **primitive**, which means that it can not be written in the form $\chi' \circ \pi$, where $\pi$ is the canonical projection from $\mathfrak{A}$ to the corresponding automorphism group $\mathfrak{A'}$ of some quadratic module $(pM,Q')$ with $Q'(px) = pQ(x)$ for all $x \in M$ and $\chi' \in \hat{\mathfrak{A}'}$.
 
-All representations of $\mathrm{SL}_2(\mathbb{Z})$ may then be found as direct sums of these prime-power irreps.
+All the irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can be constructed by tensor product of these prime-power irreps.
 
 @Section Weil
 @SectionTitle Weil representation types
