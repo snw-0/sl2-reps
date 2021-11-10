@@ -64,7 +64,7 @@ Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weil repre
 <Heading>Type R</Heading>
 
 <P/>
-The construction of type <Math>R</Math> varies depending on whether <Math>p=2</Math>.
+The structure of <Math>(M,Q)</Math> of type <Math>R</Math> depends upon three additional parameters: <Math>\sigma</Math>, <Math>r</Math>, and <Math>t</Math>. The relevant values thereof depend on whether <Math>p=2</Math>, as follows.
 <P/>
 First, if <Math>p</Math> is an odd prime, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{1, \dots, \lambda\}</Math>, and <Math>r,t \in \{1,u\}</Math> with <Math>u</Math> a quadratic non-residue mod <Math>p</Math>.  Then define <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}</Math>.
 <P/>

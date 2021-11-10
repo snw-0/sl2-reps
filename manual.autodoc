@@ -69,7 +69,7 @@ Let $p$ be prime and $\lambda \geq 1$. Then the Weil representation arising from
 
 @Subsection Type R
 
-The construction of type $R$ varies depending on whether $p=2$.
+The structure of $(M,Q)$ of type $R$ depends upon three additional parameters: $\sigma$, $r$, and $t$. The relevant values thereof depend on whether $p=2$, as follows.
 
 First, if $p$ is an odd prime, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda\}$, and $r,t \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$.  Then define $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}$ and $Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}$.
 

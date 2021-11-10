@@ -97,7 +97,9 @@
   
   [1X2.2-3 [33X[0;0YType R[133X[101X
   
-  [33X[0;0YThe construction of type [23XR[123X varies depending on whether [23Xp=2[123X.[133X
+  [33X[0;0YThe  structure  of [23X(M,Q)[123X of type [23XR[123X depends upon three additional parameters:
+  [23X\sigma[123X,  [23Xr[123X,  and  [23Xt[123X.  The  relevant values thereof depend on whether [23Xp=2[123X, as
+  follows.[133X
   
   [33X[0;0YFirst,  if  [23Xp[123X  is  an  odd prime, let [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots,
   \lambda\}[123X,  and  [23Xr,t  \in \{1,u\}[123X with [23Xu[123X a quadratic non-residue mod [23Xp[123X. Then
