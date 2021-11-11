@@ -6,17 +6,20 @@
   [23X\mathfrak{s}^4   =  (\mathfrak{st})^3  =  \mathrm{id}[123X).  Thus,  any  complex
   representation  [23X\rho[123X  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X on [23X\mathbb{C}^n[123X (where [23Xn
   \in  \mathbb{Z}^+[123X is called the [13Xdegree[113X of [23X\rho[123X) is defined by the [23Xn \times n[123X
-  matrices  [23XS  =  \rho(\mathfrak{s})[123X  and [23XT = \rho(\mathfrak{t})[123X. In fact, any
-  such representation factors through [23X\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})[123X
-  for  some  [23X\ell \in \mathbb{Z}^+[123X; the smallest such [23X\ell[123X is called the [13Xlevel[113X
-  of [23X\rho[123X. We therefore present representations in the form of a record[133X
+  matrices [23XS = \rho(\mathfrak{s})[123X and [23XT = \rho(\mathfrak{t})[123X.[133X
   
-  [33X[0;0Y[10Xrec(S, T, degree, level, name)[110X[133X
+  [33X[0;0YThis    package    constructs    representations    which   factor   through
+  [23X\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})[123X for some [23X\ell \in \mathbb{Z}^+[123X; the
+  smallest  such  [23X\ell[123X  is  called  the [13Xlevel[113X of the representation. It may be
+  shown  that  any  representation  arising from a modular tensor category has
+  this property [DLN15]. We therefore present representations in the form of a
+  record [10Xrec(S, T, degree, level, name)[110X where the name follows the conventions
+  of [NW76].[133X
   
-  [33X[0;0Ywhere  the  name follows the conventions of [NW76]. Note that our definition
-  of  [23X\mathfrak{s}[123X  follows that of [Nob76]; other authors prefer the inverse,
-  i.e.  [10X[[0,-1],[1,0]][110X. When working with that convention, one must invert the
-  [23XS[123X matrices output by this package.[133X
+  [33X[0;0YNote  that  our  definition  of  [23X\mathfrak{s}[123X follows that of [Nob76]; other
+  authors prefer the inverse, i.e. [10X[[0,-1],[1,0]][110X. (which provides a different
+  presentation of SL(2,Z).) When working with that convention, one must invert
+  the [23XS[123X matrices output by this package.[133X
   
   [33X[0;0YThroughout,  we  denote  by  [23X\mathbf{e}[123X  the map [23Xk \mapsto e^{2 \pi i k}[123X (an
   isomorphism from [23X\mathbb{Q}/\mathbb{Z}[123X to the group of finite roots of unity
@@ -25,49 +28,70 @@
   
   [1X2.1 [33X[0;0YConstruction[133X[101X
   
-  [33X[0;0YFor  any  representation [23X\rho[123X of [23X\mathrm{SL}_2(\mathbb{Z})[123X, we may decompose
-  [23X\rho[123X  as  a  direct  sum of irreducible representations of prime-power level
-  using   the  Chinese  remainder  theorem.  Therefore,  to  characterize  all
-  representations   of  [23X\mathrm{SL}_2(\mathbb{Z})[123X,  it  suffices  to  consider
-  irreducible              representations             (irreps)             of
-  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X.[133X
+  [33X[0;0YAny  representation [23X\rho[123X of [23X\mathrm{SL}_2(\mathbb{Z})[123X can be decomposed into
+  a  direct  sum  of irreducible representations (irreps). Further, each irrep
+  can be factorized into a tensor product of irreps whose levels are powers of
+  distinct  primes  (using  the  Chinese  remainder  theorem).  Therefore,  to
+  characterize  all  representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X, it suffices
+  to  consider  irreps  of  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  for
+  primes [23Xp[123X and positive integers [23X\lambda[123X.[133X
   
   [33X[0;0YSuch  representations  may  be  constructed  using  Weil  representations as
-  described  in  [Nob76,  Section  1].  The  Weil representations used by this
-  package  have  the  following  form. Let [23Xp[123X be a prime number and [23X\lambda \in
-  \mathbb{Z}^+[123X.  Choose a [23X\mathbb{Z}/p^\lambda\mathbb{Z}[123X-module [23XM[123X of rank 1 or
-  2, and a quadratic form [23XQ[123X on [23XM[123X, such that [23X(M,Q)[123X is of one of the three types
-  described  in  Section  [14X2.2[114X. The [13Xquadratic module[113X [23X(M,Q)[123X then gives rise to a
-  representation   of   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  on  the
-  vector  space  [23XV  =  \mathbb{C}^M[123X  of  complex-valued  functions  on [23XM[123X. This
-  representation is denoted [23XW(M,Q)[123X.[133X
+  described  in  [Nob76,  Section  1].  We give a brief summary of the process
+  here.  First, if [23XM[123X is any additive abelian group, a [13Xquadratic form[113X on [23XM[123X is a
+  map  [23XQ  : M \to \mathbb{Q}/\mathbb{Z}[123X such that [23XQ(-x) = Q(x)[123X for all [23Xx \in M[123X
+  and [23XB(x,y) = Q(x+y) - Q(x) - Q(y)[123X defines a [23X\mathbb{Z}[123X-bilinear map [23XM \times
+  M \to \mathbb{Q}/\mathbb{Z}[123X.[133X
+  
+  [33X[0;0YNow  let  [23Xp[123X  be  a  prime  number  and  [23X\lambda  \in  \mathbb{Z}^+[123X. Choose a
+  [23X\mathbb{Z}/p^\lambda\mathbb{Z}[123X-module  [23XM[123X of rank 1 or 2 and a quadratic form
+  [23XQ[123X  on  [23XM[123X  such that the pair [23X(M,Q)[123X is of one of the three types described in
+  Section  [14X2.2[114X. Then the [13Xquadratic module[113X [23X(M,Q)[123X gives rise to a representation
+  of  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  on  the  vector space [23XV =
+  \mathbb{C}^M[123X  of  complex-valued  functions  on  [23XM[123X.  This  representation is
+  denoted [23XW(M,Q)[123X.[133X
   
   [33X[0;0YWith    a   finite   number   of   exceptions,   every   representation   of
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X    may    be    found   as   a
   subrepresentation  of  [23XW(M,Q)[123X  for  an  appropriate  choice  of [23X(M,Q)[123X [NW76,
-  Hauptsatz  2]  (the  18 exceptions may be found as the tensor product of two
-  such  subrepresentations;  these  may be generated with [2XSL2ExceptionalIrreps[102X
-  ([14X3.3-1[114X)).[133X
+  Hauptsatz  2] (the 18 exceptions can be constructed as the tensor product of
+  two    such    subrepresentations;    these    can    be    generated   with
+  [2XSL2ExceptionalIrreps[102X ([14X3.3-1[114X)).[133X
   
   [33X[0;0YThe  subrepresentations  in  question  are  often  of  the form [23XW(M,Q,\chi)[123X,
-  defined   as   follows.   Let   [23X\mathfrak{A}[123X   be  an  abelian  subgroup  of
-  \[\operatorname{Aut}(M,Q)  =  \{  \varepsilon \in \operatorname{Aut}(M) \mid
-  Q(\varepsilon  x)  =  Q(x)  \text{  for  all  }  x  \in  M\}\]  and [23X\chi \in
-  \hat{\mathfrak{A}}[123X.  Define  \[V_\chi  =  \{f  \in V \mid f(\varepsilon x) =
-  \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in
-  \mathfrak{A}\}~,\] which is a [23XSL_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant
-  subspace of [23XV[123X. We then denote by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X
-  corresponding to [23XV_\chi[123X.[133X
+  defined as follows. Let [23X\mathfrak{A}[123X be an abelian subgroup of[133X
+  
+  
+  [24X[33X[0;6Y\operatorname{Aut}(M,Q)  =  \{  \varepsilon  \in  \operatorname{Aut}(M) \mid
+  Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}[133X
+  
+  [124X
+  
+  [33X[0;0Yand  let  [23X\chi  \in  \widehat{\mathfrak{A}}[123X  be a 1-dimensional character of
+  [23X\mathfrak{A}[123X. Define[133X
+  
+  
+  [24X[33X[0;6YV_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for
+  all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,[133X
+  
+  [124X
+  
+  [33X[0;0Ywhich  is a [23XSL_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant subspace of [23XV[123X. We
+  then denote by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on [23XV_\chi[123X.[133X
   
   [33X[0;0YIn  this  context,  we  will  frequently  refer to a character [23X\chi[123X as being
-  [13Xprimitive[113X,  which  means  that it can not be written in the form [23X\chi' \circ
-  \pi[123X,  where  [23X\pi[123X  is  the  canonical  projection  from  [23X\mathfrak{A}[123X  to the
-  corresponding  automorphism  group  [23X\mathfrak{A'}[123X  of  some quadratic module
-  [23X(pM,Q')[123X   with   [23XQ'(px)   =   pQ(x)[123X   for   all   [23Xx  \in  M[123X  and  [23X\chi'  \in
-  \hat{\mathfrak{A}'}[123X.[133X
+  [13Xprimitive[113X,  which  means that there exists some [23X\varepsilon \in \mathfrak{A}[123X
+  such  that  [23X\chi(\varepsilon)  \neq 1[123X and [23X\varepsilon[123X fixes the submodule [23XpM[123X
+  pointwise  (except  for  one  special  case of type [23XR[123X; for this, see Section
+  [14X2.2-3[114X). This amounts to saying that [23X\chi[123X does not factor through a quadratic
+  module of lower level.[133X
   
-  [33X[0;0YAll representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X may then be found as direct
-  sums of these prime-power irreps.[133X
+  [33X[0;0YAll  the  irreducible representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X of finite
+  level  can now be constructed by taking tensor products of these prime-power
+  irreps.  Note that, if two representations are defined by pairs [10X[S1, T1][110X and
+  [10X[S2,  T2][110X, then their tensor product may be calculated using the GAP command
+  [10XKroneckerProduct[110X,         namely         as        [10X[KroneckerProduct(S1,S2),
+  KroneckerProduct(T1,T2)][110X.[133X
   
   
   [1X2.2 [33X[0;0YWeil representation types[133X[101X
@@ -82,6 +106,23 @@
   via  [2XSL2ModuleD[102X  ([14X5.1-1[114X),  and subrepresentations of [23XD(p,\lambda)[123X with level
   [23Xp^\lambda[123X may be constructed via [2XSL2IrrepD[102X ([14X5.1-2[114X).[133X
   
+  [33X[0;0YHere we define[133X
+  
+  
+  [24X[33X[0;6Y\mathfrak{A} = (\mathbb{Z}/p^\lambda\mathbb{Z})^\times[133X
+  
+  [124X
+  
+  [33X[0;0Yacting  on  [23XM[123X by multiplication; see [NW76, Section 2.1]. This group has the
+  following  structure. When [23Xp=2[123X and [23X\lambda \geq 3[123X, it is generated by [23X\alpha
+  =  -1[123X  and  [23X\zeta  =  5[123X.  Otherwise, it is cyclic; in this case, we choose a
+  generator [23X\alpha[123X and (for simplicity) say [23X\zeta = 1[123X.[133X
+  
+  [33X[0;0YA  character  of [23X\mathfrak{A}[123X is primitive if and only if it is injective on
+  the  subgroup  [23X\langle\omicron\rangle  \leq  \mathfrak{A}[123X, where [23X\omicron[123X is
+  chosen  as follows. If [23Xp=2[123X and [23X\lambda \geq 3[123X, [23X\omicron = 5[123X. If [23X\lambda = 1[123X,
+  [23X\omicron = \alpha[123X. In all other cases, [23X\omicron = 1+p[123X.[133X
+  
   
   [1X2.2-2 [33X[0;0YType N[133X[101X
   
@@ -93,6 +134,27 @@
   said  to  be of type [23XN[123X and denoted [23XN(p,\lambda)[123X. Information on [23X(M,Q)[123X may be
   obtained via [2XSL2ModuleN[102X ([14X5.2-1[114X), and subrepresentations of [23XD(p,\lambda)[123X with
   level [23Xp^\lambda[123X may be constructed via [2XSL2IrrepN[102X ([14X5.2-2[114X).[133X
+  
+  [33X[0;0YHere we define[133X
+  
+  
+  [24X[33X[0;6Y\mathfrak{A}       =       \{\varepsilon       \in       M^\times       \mid
+  \operatorname{Nm}(\varepsilon) = 1 \}[133X
+  
+  [124X
+  
+  [33X[0;0Yacting  on  [23XM[123X by multiplication; see [NW76, Section 2.2]. This group has the
+  following  structure.  When  [23X\lambda  \geq  2[123X, it is generated by [23X\alpha[123X and
+  [23X\zeta[123X:  for  [23Xp=2[123X, [23X|\alpha| = 2^{\lambda-2}[123X and [23X|\zeta| = 6[123X, while for [23Xp \neq
+  2[123X,  [23X|\alpha|  =  p^{\lambda-1}[123X  and  [23X|\zeta|  = p+1[123X. On the other hand, when
+  [23X\lambda  =  1[123X,  [23X\mathfrak{A}[123X  is cyclic; in this case, we choose a generator
+  [23X\zeta[123X with [23X|\zeta| = p+1[123X and (for simplicity) say [23X\alpha = 1[123X.[133X
+  
+  [33X[0;0YAs  a  special  case,  for  [23Xp=2[123X,  [23X\lambda=2[123X,  a character of [23X\mathfrak{A}[123X is
+  primitive  if and only if [23X\chi(-1) = -1[123X. For all other cases, a character of
+  [23X\mathfrak{A}[123X  is  primitive  if  and only if it is injective on the subgroup
+  [23X\langle\omicron\rangle  \leq  \mathfrak{A}[123X,  where  [23X\omicron[123X  is  chosen  as
+  follows. If [23X\lambda = 1[123X, [23X\omicron = \zeta[123X; otherwise [23X\omicron = \alpha[123X.[133X
   
   
   [1X2.2-3 [33X[0;0YType R[133X[101X

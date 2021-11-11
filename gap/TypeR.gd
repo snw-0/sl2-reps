@@ -38,8 +38,8 @@
 #!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}$.
 #!
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which
-#!  correspond to a basis the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace
-#!  associated to any primitive character $\chi \in \hat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
+#!  correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace
+#!  associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
 #!  For other characters, we must use different bases which are particular to each case.
 #!
 #!  `Char(i,j)` converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$.
