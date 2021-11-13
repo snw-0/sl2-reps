@@ -10,16 +10,19 @@
   
   [33X[0;0YThis    package    constructs    representations    which   factor   through
   [23X\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})[123X for some [23X\ell \in \mathbb{Z}^+[123X; the
-  smallest  such  [23X\ell[123X  is  called  the [13Xlevel[113X of the representation. It may be
-  shown  that  any  representation  arising from a modular tensor category has
-  this property [DLN15]. We therefore present representations in the form of a
-  record [10Xrec(S, T, degree, level, name)[110X where the name follows the conventions
-  of [NW76].[133X
+  smallest  such  [23X\ell[123X  is  called  the  [13Xlevel[113X  of the representation. One may
+  equivalently  say  that  the  kernel  of  the representation is a congruence
+  subgroup.  It  has been shown that any representation arising from a modular
+  tensor category has this property [DLN15].[133X
+  
+  [33X[0;0YWe  therefore  present  representations  in  the  form of a record [10Xrec(S, T,
+  degree, level, name)[110X where the name follows the conventions of [NW76].[133X
   
   [33X[0;0YNote  that  our  definition  of  [23X\mathfrak{s}[123X follows that of [Nob76]; other
-  authors prefer the inverse, i.e. [10X[[0,-1],[1,0]][110X. (which provides a different
-  presentation of SL(2,Z).) When working with that convention, one must invert
-  the [23XS[123X matrices output by this package.[133X
+  authors  prefer the inverse, i.e. [23X\mathfrak{s}[123X = [10X[[0,-1],[1,0]][110X (under which
+  convention    the    relations    are    [23X\mathfrak{s}^4    =    \mathrm{id}[123X,
+  [23X(\mathfrak{s}\mathfrak{t})^3  =  \mathfrak{s}^2[123X).  When  working  with  that
+  convention, one must invert the [23XS[123X matrices output by this package.[133X
   
   [33X[0;0YThroughout,  we  denote  by  [23X\mathbf{e}[123X  the map [23Xk \mapsto e^{2 \pi i k}[123X (an
   isomorphism from [23X\mathbb{Q}/\mathbb{Z}[123X to the group of finite roots of unity
@@ -29,12 +32,13 @@
   [1X2.1 [33X[0;0YConstruction[133X[101X
   
   [33X[0;0YAny  representation [23X\rho[123X of [23X\mathrm{SL}_2(\mathbb{Z})[123X can be decomposed into
-  a  direct  sum  of irreducible representations (irreps). Further, each irrep
-  can be factorized into a tensor product of irreps whose levels are powers of
-  distinct  primes  (using  the  Chinese  remainder  theorem).  Therefore,  to
-  characterize  all  representations of [23X\mathrm{SL}_2(\mathbb{Z})[123X, it suffices
-  to  consider  irreps  of  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  for
-  primes [23Xp[123X and positive integers [23X\lambda[123X.[133X
+  a  direct  sum of irreducible representations (irreps). Further, if [23X\rho[123X has
+  finite  level,  each irrep can be factorized into a tensor product of irreps
+  whose  levels  are  powers  of  distinct primes (using the Chinese remainder
+  theorem).    Therefore,    to    characterize    all    representations   of
+  [23X\mathrm{SL}_2(\mathbb{Z})[123X,    it    suffices    to    consider   irreps   of
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X  for  primes  [23Xp[123X  and  positive
+  integers [23X\lambda[123X.[133X
   
   [33X[0;0YSuch  representations  may  be  constructed  using  Weil  representations as
   described  in  [Nob76,  Section  1].  We give a brief summary of the process
