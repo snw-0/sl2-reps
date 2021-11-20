@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  11 NOV 2021 01:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  19 NOV 2021 23:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,18 +528,24 @@ Chapter 1.
 Chapter 2.
 [4
 
-] [5] [6]
+] [5]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
+10.
+ (z:/Programs/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+[6] [7]
 Chapter 3.
-[7
+[8
 
-] [8]
+] [9]
 Chapter 4.
-[9
+[10
 
 ]
 Chapter 5.
 
-Underfull \hbox (badness 2662) in paragraph at lines 513--519
+Underfull \hbox (badness 2662) in paragraph at lines 557--563
 \T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
 []$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
 /m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
@@ -550,7 +556,7 @@ eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--519
+Underfull \hbox (badness 10000) in paragraph at lines 557--563
 \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
 95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
 /10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
@@ -563,10 +569,10 @@ T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
 95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
  []
 
-[10
+[11
 
 ]
-Underfull \hbox (badness 2662) in paragraph at lines 568--574
+Underfull \hbox (badness 2662) in paragraph at lines 612--618
 \T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
 []$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
 /m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
@@ -577,7 +583,7 @@ eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 568--574
+Underfull \hbox (badness 10000) in paragraph at lines 612--618
 \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
 95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
 /10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
@@ -590,8 +596,8 @@ T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
 95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
  []
 
-[11]
-Underfull \hbox (badness 2662) in paragraph at lines 640--646
+[12]
+Underfull \hbox (badness 2662) in paragraph at lines 684--690
 \T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
 []$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
 /m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
@@ -602,7 +608,7 @@ eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 640--646
+Underfull \hbox (badness 10000) in paragraph at lines 684--690
 \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
 95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
 /10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
@@ -615,13 +621,13 @@ T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
 95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
  []
 
-[12] (./SL2Reps.bbl (./SL2Reps.brf)
+[13] (./SL2Reps.bbl (./SL2Reps.brf)
 \tf@brf=\write8
 \openout8 = `SL2Reps.brf'.
 
- [13]) [14
+ [14]) [15
 
-] (./SL2Reps.ind [15
+] (./SL2Reps.ind [16
 
 
 
@@ -630,16 +636,16 @@ T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
 Package rerunfilecheck Info: File `SL2Reps.out' has not changed.
 (rerunfilecheck)             Checksum: F87E7FE9DD54C75D29D4D8BC68E8DB18;2634.
 Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
-(rerunfilecheck)             Checksum: DD31AA969D8E37CF6314A5E4B53597B7;429.
+(rerunfilecheck)             Checksum: 936F4FB06D73E4AC1F076B7C20EF535B;524.
  ) 
 Here is how much of TeX's memory you used:
- 10732 strings out of 478519
- 157039 string characters out of 5849437
- 480968 words of memory out of 5000000
- 28407 multiletter control sequences out of 15000+600000
- 470023 words of font info for 114 fonts, out of 8000000 for 9000
+ 10759 strings out of 478519
+ 157451 string characters out of 5849437
+ 480973 words of memory out of 5000000
+ 28429 multiletter control sequences out of 15000+600000
+ 470337 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,8n,94p,670b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,8n,94p,670b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
 {z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 }{z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><z:/Programs/
@@ -658,10 +664,10 @@ f-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on SL2Reps.pdf (15 pages, 238276 bytes).
+Output written on SL2Reps.pdf (16 pages, 243443 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 94 named destinations out of 1000 (max. 500000)
+ 397 PDF objects out of 1000 (max. 8388607)
+ 343 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

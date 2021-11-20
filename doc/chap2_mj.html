@@ -62,7 +62,7 @@
 
 <p>Now let <span class="SimpleMath">\(p\)</span> be a prime number and <span class="SimpleMath">\(\lambda \in \mathbb{Z}^+\)</span>. Choose a <span class="SimpleMath">\(\mathbb{Z}/p^\lambda\mathbb{Z}\)</span>-module <span class="SimpleMath">\(M\)</span> of rank 1 or 2 and a quadratic form <span class="SimpleMath">\(Q\)</span> on <span class="SimpleMath">\(M\)</span> such that the pair <span class="SimpleMath">\((M,Q)\)</span> is of one of the three types described in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Then the <em>quadratic module</em> <span class="SimpleMath">\((M,Q)\)</span> gives rise to a representation of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> on the vector space <span class="SimpleMath">\(V = \mathbb{C}^M\)</span> of complex-valued functions on <span class="SimpleMath">\(M\)</span>. This representation is denoted <span class="SimpleMath">\(W(M,Q)\)</span>.</p>
 
-<p>With a finite number of exceptions, every representation of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> may be found as a subrepresentation of <span class="SimpleMath">\(W(M,Q)\)</span> for an appropriate choice of <span class="SimpleMath">\((M,Q)\)</span> <a href="chapBib_mj.html#biBNW76">[NW76, Hauptsatz 2]</a> (the 18 exceptions can be constructed as the tensor product of two such subrepresentations; these can be generated with <code class="func">SL2ExceptionalIrreps</code> (<a href="chap3_mj.html#X85078197803C9848"><span class="RefLink">3.3-1</span></a>)).</p>
+<p>With a finite number of exceptions, every representation of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> may be found as a subrepresentation of <span class="SimpleMath">\(W(M,Q)\)</span> for an appropriate choice of <span class="SimpleMath">\((M,Q)\)</span> <a href="chapBib_mj.html#biBNW76">[NW76, Hauptsatz 2]</a> (the 18 <em>exceptional representations</em> can be constructed as the tensor product of two such subrepresentations; these can be generated with <code class="func">SL2ExceptionalIrreps</code> (<a href="chap3_mj.html#X85078197803C9848"><span class="RefLink">3.3-1</span></a>)).</p>
 
 <p>The subrepresentations in question are often of the form <span class="SimpleMath">\(W(M,Q,\chi)\)</span>, defined as follows. Let <span class="SimpleMath">\(\mathfrak{A}\)</span> be an abelian subgroup of</p>
 
@@ -74,9 +74,11 @@
 
 <p>which is a <span class="SimpleMath">\(SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace of <span class="SimpleMath">\(V\)</span>. We then denote by <span class="SimpleMath">\(W(M,Q,\chi)\)</span> the subrepresentation of <span class="SimpleMath">\(W(M,Q)\)</span> on <span class="SimpleMath">\(V_\chi\)</span>.</p>
 
-<p>In this context, we will frequently refer to a character <span class="SimpleMath">\(\chi\)</span> as being <em>primitive</em>, which means that there exists some <span class="SimpleMath">\(\varepsilon \in \mathfrak{A}\)</span> such that <span class="SimpleMath">\(\chi(\varepsilon) \neq 1\)</span> and <span class="SimpleMath">\(\varepsilon\)</span> fixes the submodule <span class="SimpleMath">\(pM\)</span> pointwise (except for one special case of type <span class="SimpleMath">\(R\)</span>; for this, see Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>). This amounts to saying that <span class="SimpleMath">\(\chi\)</span> does not factor through a quadratic module of lower level.</p>
+<p>In this context, we will frequently refer to a character <span class="SimpleMath">\(\chi\)</span> as being <em>primitive</em>, which means, roughly speaking, that <span class="SimpleMath">\(\chi\)</span> does not factor through a quadratic module of lower level. With the exception of a single family of modules of type <span class="SimpleMath">\(R\)</span> (the <em>extremal</em> case, for which see Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>) primitivity amounts to the following: there exists some <span class="SimpleMath">\(\varepsilon \in \mathfrak{A}\)</span> such that <span class="SimpleMath">\(\chi(\varepsilon) \neq 1\)</span> and <span class="SimpleMath">\(\varepsilon\)</span> fixes the submodule <span class="SimpleMath">\(pM\)</span> pointwise. Explicit descriptions of the primitive characters are given in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>.</p>
 
-<p>All the irreducible representations of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are defined by pairs <code class="code">[S1, T1]</code> and <code class="code">[S2, T2]</code>, then their tensor product may be calculated using the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2), KroneckerProduct(T1,T2)]</code>.</p>
+<p>The prime-power irreps then fall into three cases. The overwhelming majority are of the form <span class="SimpleMath">\(W(M,Q,\chi)\)</span> for <span class="SimpleMath">\(\chi\)</span> primitive. A finite number, and a single infinite family arising from the extremal case (Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>), are instead constructed by using non-primitive characters. Finally, the 18 exceptional irreps are constructed as tensor products of two irreps from the other two cases.</p>
+
+<p>All the irreducible representations of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are defined by pairs <code class="code">[S1,T1]</code> and <code class="code">[S2,T2]</code>, then their tensor product may be calculated via the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</code>.</p>
 
 <p><a id="X861BA4A8800E1A08" name="X861BA4A8800E1A08"></a></p>
 
@@ -108,7 +110,7 @@
 
 <p>acting on <span class="SimpleMath">\(M\)</span> by multiplication; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.2]</a>. This group has the following structure. When <span class="SimpleMath">\(\lambda \geq 2\)</span>, it is generated by <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\zeta\)</span>: for <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(|\alpha| = 2^{\lambda-2}\)</span> and <span class="SimpleMath">\(|\zeta| = 6\)</span>, while for <span class="SimpleMath">\(p \neq 2\)</span>, <span class="SimpleMath">\(|\alpha| = p^{\lambda-1}\)</span> and <span class="SimpleMath">\(|\zeta| = p+1\)</span>. On the other hand, when <span class="SimpleMath">\(\lambda = 1\)</span>, <span class="SimpleMath">\(\mathfrak{A}\)</span> is cyclic; in this case, we choose a generator <span class="SimpleMath">\(\zeta\)</span> with <span class="SimpleMath">\(|\zeta| = p+1\)</span> and (for simplicity) say <span class="SimpleMath">\(\alpha = 1\)</span>.</p>
 
-<p>As a special case, for <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda=2\)</span>, a character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if <span class="SimpleMath">\(\chi(-1) = -1\)</span>. For all other cases, a character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if it is injective on the subgroup <span class="SimpleMath">\(\langle\omicron\rangle \leq \mathfrak{A}\)</span>, where <span class="SimpleMath">\(\omicron\)</span> is chosen as follows. If <span class="SimpleMath">\(\lambda = 1\)</span>, <span class="SimpleMath">\(\omicron = \zeta\)</span>; otherwise <span class="SimpleMath">\(\omicron = \alpha\)</span>.</p>
+<p>For <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda=2\)</span>, a character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if <span class="SimpleMath">\(\chi(-1) = -1\)</span>. For all other cases, a character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if it is injective on the subgroup <span class="SimpleMath">\(\langle\omicron\rangle \leq \mathfrak{A}\)</span>, where <span class="SimpleMath">\(\omicron\)</span> is chosen as follows. If <span class="SimpleMath">\(\lambda = 1\)</span>, <span class="SimpleMath">\(\omicron = \zeta\)</span>; otherwise <span class="SimpleMath">\(\omicron = \alpha\)</span>.</p>
 
 <p><a id="X85A14FDA8467E361" name="X85A14FDA8467E361"></a></p>
 
@@ -120,8 +122,72 @@
 
 <p>On the other hand, if <span class="SimpleMath">\(p=2\)</span>, let <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{0, \dots, \lambda-2\}\)</span> and <span class="SimpleMath">\(r,t \in \{1,3,5,7\}\)</span>. Then define <span class="SimpleMath">\(M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}\)</span> and <span class="SimpleMath">\(Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}\)</span>.</p>
 
-<p>In either case, the resulting representation is said to be of type <span class="SimpleMath">\(R\)</span> and denoted <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span>. Information on <span class="SimpleMath">\((M,Q)\)</span> may be obtained via <code class="func">SL2ModuleR</code> (<a href="chap5_mj.html#X7B10D99E7AEAC411"><span class="RefLink">5.3-1</span></a>), and subrepresentations of <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap5_mj.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>). Note that if <span class="SimpleMath">\(\sigma = \lambda\)</span> for <span class="SimpleMath">\(p \neq 2\)</span>, then the second factor of <span class="SimpleMath">\(M\)</span> is trivial (and hence <span class="SimpleMath">\(t\)</span> is irrelevant); this special case is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap5_mj.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>).</p>
+<p>In either case, the resulting representation is said to be of type <span class="SimpleMath">\(R\)</span> and denoted <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span>. Information on <span class="SimpleMath">\((M,Q)\)</span> may be obtained via <code class="func">SL2ModuleR</code> (<a href="chap5_mj.html#X7B10D99E7AEAC411"><span class="RefLink">5.3-1</span></a>), and subrepresentations of <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap5_mj.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>).</p>
 
+<p>There are two special cases to consider. First, if <span class="SimpleMath">\(\sigma = \lambda\)</span> for <span class="SimpleMath">\(p \neq 2\)</span>, then the second factor of <span class="SimpleMath">\(M\)</span> is trivial (and hence <span class="SimpleMath">\(t\)</span> is irrelevant); this special case is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap5_mj.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>) (which is called by <code class="func">SL2IrrepR</code> (<a href="chap5_mj.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>) when appropriate).</p>
+
+<p>Second, if <span class="SimpleMath">\(\sigma = \lambda - 2\)</span> for <span class="SimpleMath">\(p = 2\)</span>, <span class="SimpleMath">\(\lambda \geq 2\)</span>, then the second factor of <span class="SimpleMath">\(M\)</span> is isomorphic to <span class="SimpleMath">\(\mathbb{Z}/2\mathbb{Z}\)</span>, and collapses in <span class="SimpleMath">\(2M\)</span>; we call this case the <em>extremal</em> family. Here, <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span> is itself abelian, so we let <span class="SimpleMath">\(\mathfrak{A} = \operatorname{Aut}(M,Q)\)</span>. This group has the following structure:</p>
+
+
+<ul>
+<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span>, <span class="SimpleMath">\(t=1\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle \tau \rangle\)</span> where <span class="SimpleMath">\(\tau : (x,y) \mapsto (y,x)\)</span>; a character <span class="SimpleMath">\(\chi\)</span> is primitive if <span class="SimpleMath">\(\chi(\tau) = -1\)</span>.</p>
+
+</li>
+<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span>, <span class="SimpleMath">\(t = 3\)</span>, <span class="SimpleMath">\(\mathfrak{A}\)</span> is trivial; there are no primitive characters.</p>
+
+</li>
+<li><p>For <span class="SimpleMath">\(\lambda = 3\)</span> or <span class="SimpleMath">\(4\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \{\pm 1\}\)</span>; there are no primitive characters.</p>
+
+</li>
+<li><p>Finally, for <span class="SimpleMath">\(\lambda \geq 5\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle -1 \rangle \times \langle \alpha \rangle\)</span> with <span class="SimpleMath">\(\alpha \neq -1\)</span> of order 2, and a character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> is primitive if <span class="SimpleMath">\(\chi(\alpha) = -1\)</span>. Note that the reason for this special case is that the usual test for primitivity (described in Section <a href="chap2_mj.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails here, as there are no elements of <span class="SimpleMath">\(\mathfrak{A}\)</span> fixing <span class="SimpleMath">\(2M\)</span> pointwise.</p>
+
+</li>
+</ul>
+<p>Outside of these special cases, we define</p>
+
+<p class="center">\[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\]</p>
+
+<p>acting on <span class="SimpleMath">\(M\)</span> by multiplication; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.3 - 2.4]</a>. The structure of <span class="SimpleMath">\(\mathfrak{A}\)</span> is as follows, and a character is primitive if it is injective on <span class="SimpleMath">\(\langle\omicron\rangle \leq \mathfrak{A}\)</span>, with <span class="SimpleMath">\(\omicron = \alpha\)</span> except when specified:</p>
+
+
+<ul>
+<li><p>Suppose <span class="SimpleMath">\(p \neq 2\)</span>, <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{1, \dots, \lambda - 1\}\)</span>. If <span class="SimpleMath">\(\lambda \geq 3\)</span> and <span class="SimpleMath">\(\sigma=t=1\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\zeta\rangle\)</span> with <span class="SimpleMath">\(\alpha\)</span> of order <span class="SimpleMath">\(3^{\lambda-2}\)</span> and <span class="SimpleMath">\(\zeta\)</span> of order 6. Otherwise, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha\)</span> of order <span class="SimpleMath">\(p^{\lambda - \sigma}\)</span>.</p>
+
+</li>
+<li><p>Suppose <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda \geq 3\)</span>, <span class="SimpleMath">\(\sigma \in \{0, \dots, \lambda - 3\}\)</span>. Then the structure of <span class="SimpleMath">\((M,Q)\)</span>) depends on <span class="SimpleMath">\(r,t\)</span>, but only up to an equivalence class described in <a href="chapBib_mj.html#biBNobs1">[Nob76, Satz 4]</a>; we assume without loss of generality that <span class="SimpleMath">\(r,t\)</span> are minimal positive representatives thereunder. Then:</p>
+
+
+<ul>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=1\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\zeta\rangle\)</span> with <span class="SimpleMath">\(\zeta = (0,1)\)</span> of order 4. Here <span class="SimpleMath">\(\omicron = -1 = \zeta^2\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=1\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\zeta\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},4)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span> and <span class="SimpleMath">\(\zeta = (0,1)\)</span> of order 4.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=5\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\zeta\rangle\)</span> with <span class="SimpleMath">\(\zeta = (2,1)\)</span> of order 4. Here <span class="SimpleMath">\(\omicron = -1\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=5\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (2,3 \mod{4})\)</span> of order <span class="SimpleMath">\(2^{\lambda-2}\)</span>. Here <span class="SimpleMath">\(\omicron = -\alpha^2\)</span> when <span class="SimpleMath">\(\lambda = 4\)</span> and <span class="SimpleMath">\(\omicron = \alpha\)</span> otherwise.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r = 1\)</span>, <span class="SimpleMath">\(t \in \{3,7\}\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle-1\rangle\)</span>. Here <span class="SimpleMath">\(\omicron = -1\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r = 1\)</span>, <span class="SimpleMath">\(t \in \{3,7\}\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},4)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 1\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},2)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma = 2\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},2)\)</span> of order <span class="SimpleMath">\(2^{\lambda-4}\)</span>.</p>
+
+</li>
+<li><p>If <span class="SimpleMath">\(\sigma \geq 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},1)\)</span> of order <span class="SimpleMath">\(2^{\lambda-\sigma-1}\)</span>.</p>
+
+</li>
+</ul>
+</li>
+</ul>
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 

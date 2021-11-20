@@ -1322,7 +1322,7 @@ function(p, ld)
             # R_3^0(1, t, chi)_+-, for chi != 1 and t in {3,7}.
             # |A| = 2, so there's only one non-trivial chi, indexed by [0,1].
             # chi squares to 1, giving two subreps.
-            # SL2IrrepR returns a list with the two supreps, + and -.
+            # SL2IrrepR returns a list with the two subreps, + and -.
             for t in [3,7] do
                 rho := SL2IrrepR(2,3,0,1,t,[0,1]);
                 name := Concatenation("R_3^0(1,", String(t), ",[0,1])+");

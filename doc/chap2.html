@@ -59,7 +59,7 @@
 
 <p>Now let <span class="Math">p</span> be a prime number and <span class="Math">\lambda \in \mathbb{Z}^+</span>. Choose a <span class="Math">\mathbb{Z}/p^\lambda\mathbb{Z}</span>-module <span class="Math">M</span> of rank 1 or 2 and a quadratic form <span class="Math">Q</span> on <span class="Math">M</span> such that the pair <span class="Math">(M,Q)</span> is of one of the three types described in Section <a href="chap2.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Then the <em>quadratic module</em> <span class="Math">(M,Q)</span> gives rise to a representation of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> on the vector space <span class="Math">V = \mathbb{C}^M</span> of complex-valued functions on <span class="Math">M</span>. This representation is denoted <span class="Math">W(M,Q)</span>.</p>
 
-<p>With a finite number of exceptions, every representation of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> may be found as a subrepresentation of <span class="Math">W(M,Q)</span> for an appropriate choice of <span class="Math">(M,Q)</span> <a href="chapBib.html#biBNW76">[NW76, Hauptsatz 2]</a> (the 18 exceptions can be constructed as the tensor product of two such subrepresentations; these can be generated with <code class="func">SL2ExceptionalIrreps</code> (<a href="chap3.html#X85078197803C9848"><span class="RefLink">3.3-1</span></a>)).</p>
+<p>With a finite number of exceptions, every representation of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> may be found as a subrepresentation of <span class="Math">W(M,Q)</span> for an appropriate choice of <span class="Math">(M,Q)</span> <a href="chapBib.html#biBNW76">[NW76, Hauptsatz 2]</a> (the 18 <em>exceptional representations</em> can be constructed as the tensor product of two such subrepresentations; these can be generated with <code class="func">SL2ExceptionalIrreps</code> (<a href="chap3.html#X85078197803C9848"><span class="RefLink">3.3-1</span></a>)).</p>
 
 <p>The subrepresentations in question are often of the form <span class="Math">W(M,Q,\chi)</span>, defined as follows. Let <span class="Math">\mathfrak{A}</span> be an abelian subgroup of</p>
 
@@ -71,9 +71,11 @@
 
 <p>which is a <span class="Math">SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace of <span class="Math">V</span>. We then denote by <span class="Math">W(M,Q,\chi)</span> the subrepresentation of <span class="Math">W(M,Q)</span> on <span class="Math">V_\chi</span>.</p>
 
-<p>In this context, we will frequently refer to a character <span class="Math">\chi</span> as being <em>primitive</em>, which means that there exists some <span class="Math">\varepsilon \in \mathfrak{A}</span> such that <span class="Math">\chi(\varepsilon) \neq 1</span> and <span class="Math">\varepsilon</span> fixes the submodule <span class="Math">pM</span> pointwise (except for one special case of type <span class="Math">R</span>; for this, see Section <a href="chap2.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>). This amounts to saying that <span class="Math">\chi</span> does not factor through a quadratic module of lower level.</p>
+<p>In this context, we will frequently refer to a character <span class="Math">\chi</span> as being <em>primitive</em>, which means, roughly speaking, that <span class="Math">\chi</span> does not factor through a quadratic module of lower level. With the exception of a single family of modules of type <span class="Math">R</span> (the <em>extremal</em> case, for which see Section <a href="chap2.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>) primitivity amounts to the following: there exists some <span class="Math">\varepsilon \in \mathfrak{A}</span> such that <span class="Math">\chi(\varepsilon) \neq 1</span> and <span class="Math">\varepsilon</span> fixes the submodule <span class="Math">pM</span> pointwise. Explicit descriptions of the primitive characters are given in Section <a href="chap2.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>.</p>
 
-<p>All the irreducible representations of <span class="Math">\mathrm{SL}_2(\mathbb{Z})</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are defined by pairs <code class="code">[S1, T1]</code> and <code class="code">[S2, T2]</code>, then their tensor product may be calculated using the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2), KroneckerProduct(T1,T2)]</code>.</p>
+<p>The prime-power irreps then fall into three cases. The overwhelming majority are of the form <span class="Math">W(M,Q,\chi)</span> for <span class="Math">\chi</span> primitive. A finite number, and a single infinite family arising from the extremal case (Section <a href="chap2.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>), are instead constructed by using non-primitive characters. Finally, the 18 exceptional irreps are constructed as tensor products of two irreps from the other two cases.</p>
+
+<p>All the irreducible representations of <span class="Math">\mathrm{SL}_2(\mathbb{Z})</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are defined by pairs <code class="code">[S1,T1]</code> and <code class="code">[S2,T2]</code>, then their tensor product may be calculated via the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</code>.</p>
 
 <p><a id="X861BA4A8800E1A08" name="X861BA4A8800E1A08"></a></p>
 
@@ -105,7 +107,7 @@
 
 <p>acting on <span class="Math">M</span> by multiplication; see <a href="chapBib.html#biBNW76">[NW76, Section 2.2]</a>. This group has the following structure. When <span class="Math">\lambda \geq 2</span>, it is generated by <span class="Math">\alpha</span> and <span class="Math">\zeta</span>: for <span class="Math">p=2</span>, <span class="Math">|\alpha| = 2^{\lambda-2}</span> and <span class="Math">|\zeta| = 6</span>, while for <span class="Math">p \neq 2</span>, <span class="Math">|\alpha| = p^{\lambda-1}</span> and <span class="Math">|\zeta| = p+1</span>. On the other hand, when <span class="Math">\lambda = 1</span>, <span class="Math">\mathfrak{A}</span> is cyclic; in this case, we choose a generator <span class="Math">\zeta</span> with <span class="Math">|\zeta| = p+1</span> and (for simplicity) say <span class="Math">\alpha = 1</span>.</p>
 
-<p>As a special case, for <span class="Math">p=2</span>, <span class="Math">\lambda=2</span>, a character of <span class="Math">\mathfrak{A}</span> is primitive if and only if <span class="Math">\chi(-1) = -1</span>. For all other cases, a character of <span class="Math">\mathfrak{A}</span> is primitive if and only if it is injective on the subgroup <span class="Math">\langle\omicron\rangle \leq \mathfrak{A}</span>, where <span class="Math">\omicron</span> is chosen as follows. If <span class="Math">\lambda = 1</span>, <span class="Math">\omicron = \zeta</span>; otherwise <span class="Math">\omicron = \alpha</span>.</p>
+<p>For <span class="Math">p=2</span>, <span class="Math">\lambda=2</span>, a character of <span class="Math">\mathfrak{A}</span> is primitive if and only if <span class="Math">\chi(-1) = -1</span>. For all other cases, a character of <span class="Math">\mathfrak{A}</span> is primitive if and only if it is injective on the subgroup <span class="Math">\langle\omicron\rangle \leq \mathfrak{A}</span>, where <span class="Math">\omicron</span> is chosen as follows. If <span class="Math">\lambda = 1</span>, <span class="Math">\omicron = \zeta</span>; otherwise <span class="Math">\omicron = \alpha</span>.</p>
 
 <p><a id="X85A14FDA8467E361" name="X85A14FDA8467E361"></a></p>
 
@@ -117,8 +119,72 @@
 
 <p>On the other hand, if <span class="Math">p=2</span>, let <span class="Math">\lambda \geq 2</span>, <span class="Math">\sigma \in \{0, \dots, \lambda-2\}</span> and <span class="Math">r,t \in \{1,3,5,7\}</span>. Then define <span class="Math">M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}</span> and <span class="Math">Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}</span>.</p>
 
-<p>In either case, the resulting representation is said to be of type <span class="Math">R</span> and denoted <span class="Math">R(p,\lambda,\sigma,r,t)</span>. Information on <span class="Math">(M,Q)</span> may be obtained via <code class="func">SL2ModuleR</code> (<a href="chap5.html#X7B10D99E7AEAC411"><span class="RefLink">5.3-1</span></a>), and subrepresentations of <span class="Math">R(p,\lambda,\sigma,r,t)</span> with level <span class="Math">p^\lambda</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap5.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>). Note that if <span class="Math">\sigma = \lambda</span> for <span class="Math">p \neq 2</span>, then the second factor of <span class="Math">M</span> is trivial (and hence <span class="Math">t</span> is irrelevant); this special case is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap5.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>).</p>
+<p>In either case, the resulting representation is said to be of type <span class="Math">R</span> and denoted <span class="Math">R(p,\lambda,\sigma,r,t)</span>. Information on <span class="Math">(M,Q)</span> may be obtained via <code class="func">SL2ModuleR</code> (<a href="chap5.html#X7B10D99E7AEAC411"><span class="RefLink">5.3-1</span></a>), and subrepresentations of <span class="Math">R(p,\lambda,\sigma,r,t)</span> with level <span class="Math">p^\lambda</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap5.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>).</p>
 
+<p>There are two special cases to consider. First, if <span class="Math">\sigma = \lambda</span> for <span class="Math">p \neq 2</span>, then the second factor of <span class="Math">M</span> is trivial (and hence <span class="Math">t</span> is irrelevant); this special case is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap5.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>) (which is called by <code class="func">SL2IrrepR</code> (<a href="chap5.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>) when appropriate).</p>
+
+<p>Second, if <span class="Math">\sigma = \lambda - 2</span> for <span class="Math">p = 2</span>, <span class="Math">\lambda \geq 2</span>, then the second factor of <span class="Math">M</span> is isomorphic to <span class="Math">\mathbb{Z}/2\mathbb{Z}</span>, and collapses in <span class="Math">2M</span>; we call this case the <em>extremal</em> family. Here, <span class="Math">\operatorname{Aut}(M,Q)</span> is itself abelian, so we let <span class="Math">\mathfrak{A} = \operatorname{Aut}(M,Q)</span>. This group has the following structure:</p>
+
+
+<ul>
+<li><p>For <span class="Math">\lambda = 2</span>, <span class="Math">t=1</span>, <span class="Math">\mathfrak{A} = \langle \tau \rangle</span> where <span class="Math">\tau : (x,y) \mapsto (y,x)</span>; a character <span class="Math">\chi</span> is primitive if <span class="Math">\chi(\tau) = -1</span>.</p>
+
+</li>
+<li><p>For <span class="Math">\lambda = 2</span>, <span class="Math">t = 3</span>, <span class="Math">\mathfrak{A}</span> is trivial; there are no primitive characters.</p>
+
+</li>
+<li><p>For <span class="Math">\lambda = 3</span> or <span class="Math">4</span>, <span class="Math">\mathfrak{A} = \{\pm 1\}</span>; there are no primitive characters.</p>
+
+</li>
+<li><p>Finally, for <span class="Math">\lambda \geq 5</span>, <span class="Math">\mathfrak{A} = \langle -1 \rangle \times \langle \alpha \rangle</span> with <span class="Math">\alpha \neq -1</span> of order 2, and a character <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> is primitive if <span class="Math">\chi(\alpha) = -1</span>. Note that the reason for this special case is that the usual test for primitivity (described in Section <a href="chap2.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails here, as there are no elements of <span class="Math">\mathfrak{A}</span> fixing <span class="Math">2M</span> pointwise.</p>
+
+</li>
+</ul>
+<p>Outside of these special cases, we define</p>
+
+<p class="pcenter">\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</p>
+
+<p>acting on <span class="Math">M</span> by multiplication; see <a href="chapBib.html#biBNW76">[NW76, Section 2.3 - 2.4]</a>. The structure of <span class="Math">\mathfrak{A}</span> is as follows, and a character is primitive if it is injective on <span class="Math">\langle\omicron\rangle \leq \mathfrak{A}</span>, with <span class="Math">\omicron = \alpha</span> except when specified:</p>
+
+
+<ul>
+<li><p>Suppose <span class="Math">p \neq 2</span>, <span class="Math">\lambda \geq 2</span>, <span class="Math">\sigma \in \{1, \dots, \lambda - 1\}</span>. If <span class="Math">\lambda \geq 3</span> and <span class="Math">\sigma=t=1</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle\zeta\rangle</span> with <span class="Math">\alpha</span> of order <span class="Math">3^{\lambda-2}</span> and <span class="Math">\zeta</span> of order 6. Otherwise, <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha</span> of order <span class="Math">p^{\lambda - \sigma}</span>.</p>
+
+</li>
+<li><p>Suppose <span class="Math">p=2</span>, <span class="Math">\lambda \geq 3</span>, <span class="Math">\sigma \in \{0, \dots, \lambda - 3\}</span>. Then the structure of <span class="Math">(M,Q)</span>) depends on <span class="Math">r,t</span>, but only up to an equivalence class described in <a href="chapBib.html#biBNobs1">[Nob76, Satz 4]</a>; we assume without loss of generality that <span class="Math">r,t</span> are minimal positive representatives thereunder. Then:</p>
+
+
+<ul>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r \in \{1,3\}</span>, <span class="Math">t=1</span>, and <span class="Math">\lambda = 3</span>, then <span class="Math">\mathfrak{A} = \langle\zeta\rangle</span> with <span class="Math">\zeta = (0,1)</span> of order 4. Here <span class="Math">\omicron = -1 = \zeta^2</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r \in \{1,3\}</span>, <span class="Math">t=1</span>, and <span class="Math">\lambda \geq 4</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle\zeta\rangle</span> with <span class="Math">\alpha = (1 \mod{4},4)</span> of order <span class="Math">2^{\lambda-3}</span> and <span class="Math">\zeta = (0,1)</span> of order 4.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r \in \{1,3\}</span>, <span class="Math">t=5</span>, and <span class="Math">\lambda = 3</span>, then <span class="Math">\mathfrak{A} = \langle\zeta\rangle</span> with <span class="Math">\zeta = (2,1)</span> of order 4. Here <span class="Math">\omicron = -1</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r \in \{1,3\}</span>, <span class="Math">t=5</span>, and <span class="Math">\lambda \geq 4</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha = (2,3 \mod{4})</span> of order <span class="Math">2^{\lambda-2}</span>. Here <span class="Math">\omicron = -\alpha^2</span> when <span class="Math">\lambda = 4</span> and <span class="Math">\omicron = \alpha</span> otherwise.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r = 1</span>, <span class="Math">t \in \{3,7\}</span>, and <span class="Math">\lambda = 3</span>, then <span class="Math">\mathfrak{A} = \langle-1\rangle</span>. Here <span class="Math">\omicron = -1</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 0</span>, <span class="Math">r = 1</span>, <span class="Math">t \in \{3,7\}</span>, and <span class="Math">\lambda \geq 4</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha = (1 \mod{4},4)</span> of order <span class="Math">2^{\lambda-3}</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 1</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha = (1 \mod{4},2)</span> of order <span class="Math">2^{\lambda-3}</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma = 2</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha = (1 \mod{4},2)</span> of order <span class="Math">2^{\lambda-4}</span>.</p>
+
+</li>
+<li><p>If <span class="Math">\sigma \geq 3</span>, then <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</span> with <span class="Math">\alpha = (1 \mod{4},1)</span> of order <span class="Math">2^{\lambda-\sigma-1}</span>.</p>
+
+</li>
+</ul>
+</li>
+</ul>
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
 
