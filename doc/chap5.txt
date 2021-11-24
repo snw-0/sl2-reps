@@ -8,6 +8,14 @@
   ([14X5.3-3[114X)),  the  underlying  module  [23XM[123X is of rank [23X2[123X, so its elements have the
   form [23X(x,y)[123X and are thus represented by lists [23X[x,y][123X.[133X
   
+  [33X[0;0YCharacters  of  the abelian group [23X\mathfrak{A} = \langle\alpha\rangle \times
+  \langle\beta\rangle[123X,     have     the     form    [23X\chi_{i,j}[123X,    given    by
+  \[\chi_{i,j}(\alpha^{v}\zeta^{w})                                    \mapsto
+  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
+  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\] where [23Xi[123X and [23Xj[123X are integers. We
+  therefore  represent  each character by a list [23X[i,j][123X. Note that [23X\mathfrak{A}[123X
+  may be cyclic, in which case [23X\alpha[123X or [23X\beta[123X will be trivial.[133X
+  
   
   [1X5.1 [33X[0;0YRepresentations of type D[133X[101X
   

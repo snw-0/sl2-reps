@@ -12,7 +12,12 @@
 #!  In each case (except the unary type $R$, for which see <Ref Func="SL2IrrepRUnary"/>),
 #!  the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$
 #!  and are thus represented by lists $[x,y]$.
-
+#!
+#!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$,
+#!  have the form $\chi_{i,j}$, given by
+#!  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\]
+#!  where $i$ and $j$ are integers.  We therefore represent each character by a list $[i,j]$.
+#!  Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial.
 
 #! @Section Representations of type D
 #!
