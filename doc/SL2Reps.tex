@@ -4,7 +4,7 @@
 \usepackage[top=37mm,bottom=37mm,left=27mm,right=27mm]{geometry}
 \sloppy
 \pagestyle{myheadings}
-\usepackage{amssymb}
+\usepackage{amssymb,amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{makeidx}
 \makeindex
@@ -230,7 +230,7 @@ giving a norm on $M$. Then the \emph{quadratic module} $(M,Q)$ gives rise to a r
  We may construct subrepresentations $W(M,Q,\chi)$ of $W(M,Q)$ as follows. Let 
 \[\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid
 Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}\]
- and denote by $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$ the abelian subgroup defined in Section \ref{Chapter_Description_Section_Weil}. Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators are usually denoted by $\alpha$ and $\beta$. Let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (character) of $\mathfrak{A}$, and define 
+ and denote by $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$ the abelian subgroup defined in Section \ref{Chapter_Description_Section_Weil}. Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$. Let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (character) of $\mathfrak{A}$, and define
 \[V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for
 all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
  which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$. We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. 
@@ -244,7 +244,10 @@ all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
 {
   
 
- We will frequently refer to a character $\chi$ as being \emph{primitive}. With the exception of a single family of modules of type $R$ (the \emph{extremal} case, for which see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R}) primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM$ pointwise. In the extremal case, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ (see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R} for an explicit definition of $\alpha$) and $\chi$ is primitive if $\chi(\alpha) = -1$. Explicit descriptions of the primitive characters are given in Section \ref{Chapter_Description_Section_Weil}. 
+ We will frequently refer to a character $\chi$ as being \emph{primitive}. With the exception of a single family of modules of type $R$ (the \emph{extremal} case, for which see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R}) primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM$ pointwise. In the extremal case, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ (see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R} for an explicit definition of $\alpha$) and $\chi$ is primitive if $\chi(\alpha) = -1$.
+
+ Explicit descriptions of the primitive characters for each type are given in
+Section \ref{Chapter_Description_Section_Weil}.
 
  }
 
@@ -257,9 +260,10 @@ all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
 
  The prime-power irreps then fall into three cases. 
 \begin{itemize}
-\item The overwhelming majority are of the form $W(M,Q,\chi)$ for $\chi$ primitive; we call these \emph{standard}. This includes the primitive characters from the extremal case.
+\item The overwhelming majority are of the form $W(M,Q,\chi)$ for $\chi$ primitive and $\chi^2 \neq 1$; we call these \emph{standard}. This includes the primitive characters from the extremal case.
 \item A finite number, and a single infinite family arising from the extremal case
-(Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R}), are instead constructed by using non-primitive characters. We call these \emph{non-standard}.
+(Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R}), are instead constructed by using non-primitive characters or primitive
+characters $\chi$ with $\chi^2 = 1$. We call these \emph{non-standard}.
 \item Finally, 18 \emph{exceptional} irreps are constructed as tensor products of two irreps from the other two
 cases.
 \end{itemize}
@@ -286,13 +290,13 @@ prime-power irreps. Note that, if two representations are defined by pairs \text
 {
   
 
- Let $p$ be prime and $\lambda \geq 1$. Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleD} (\ref{SL2ModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepD} (\ref{SL2IrrepD}). 
+ Let $p$ be prime. If $p=2$ or $p=3$, let $\lambda \geq 2$; otherwise, let $\lambda \geq 1$. Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleD} (\ref{SL2ModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepD} (\ref{SL2IrrepD}).
 
  Here we define 
 \[\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times\]
- acting on $M$ by $a(x,y) = (a^{-1}x, ay)$; see \cite[Section 2.1]{NW76}. This group has the following structure. When $p=2$ and $\lambda \geq 3$, it is generated by $\alpha = 5$ and $\beta = -1$. Otherwise, it is cyclic; in this case, we choose a generator $\alpha$ and (for simplicity) say $\beta = 1$. 
+ acting on $M$ by $a(x,y) = (a^{-1}x, ay)$; see \cite[Section 2.1]{NW76}. This group has the following structure. When $p=2$ and $\lambda \geq 3$, it is generated by $\alpha = 5$ (of order $2^{\lambda-2}$) and $\beta = -1$. Otherwise, it is cyclic; in this case, we choose a generator $\alpha$ and say $\beta = 1$.
 
- For type $D$, a character of $\mathfrak{A}$ is primitive if and only if it is injective on the subgroup $\langle\omega\rangle \leq \mathfrak{A}$, where $\omega$ is chosen as follows. If $\lambda = 1$, or if $p=2$ and $\lambda \geq 3$, then $\omega = \alpha$. In all other cases, $\omega = 1+p$. 
+ For type $D$, a non-trivial character of $\mathfrak{A}$ is primitive if and only if it is injective on the cyclic subgroup of $\mathfrak{A}$ of maximal $p$-power order. This subgroup is trivial for $\lambda = 1$, generated by $5$ in the case $p=2$ and $\lambda \geq 3$, and generated by $1+p$ in all other cases.
 
  }
 
@@ -303,14 +307,14 @@ prime-power irreps. Note that, if two representations are defined by pairs \text
 {
   
 
- Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, choose some $u$ so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, define $u=3$. Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ is said to be of type $N$ and denoted $N(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleN} (\ref{SL2ModuleN}), and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepN} (\ref{SL2IrrepN}). 
+ Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, choose an integer $u$ so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, define $u=3$. Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ is said to be of type $N$ and denoted $N(p,\lambda)$. Information on $(M,Q)$ may be obtained via \texttt{SL2ModuleN} (\ref{SL2ModuleN}), and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepN} (\ref{SL2IrrepN}).
 
  Here we define 
 \[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon)
 = 1 \}\]
  acting on $M$ by multiplication; see \cite[Section 2.2]{NW76}. This group has the following structure. When $\lambda \geq 2$, it is generated by $\alpha$ and $\beta$: for $p=2$, $|\alpha| = 2^{\lambda-2}$ and $|\beta| = 6$, while for $p \neq 2$, $|\alpha| = p^{\lambda-1}$ and $|\beta| = p+1$. On the other hand, when $\lambda = 1$, $\mathfrak{A}$ is cyclic; in this case, we choose a generator $\beta$ with $|\beta| = p+1$ and (for simplicity) say $\alpha = 1$. 
 
- For type $N$ with $p=2$, $\lambda=2$, a character of $\mathfrak{A}$ is primitive if and only if $\chi(-1) = -1$. For all other type $N$ cases, a character of $\mathfrak{A}$ is primitive if and only if it is injective on the subgroup $\langle\omega\rangle \leq \mathfrak{A}$, where $\omega$ is chosen as follows. If $\lambda = 1$, $\omega = \beta$; otherwise $\omega = \alpha$. 
+ For type $N$ with $p=2$, $\lambda=2$, a non-trivial character of $\mathfrak{A}$ is primitive if and only if $\chi(-1) = -1$. For all other type $N$ cases, a character of $\mathfrak{A}$ is primitive if and only if it is injective on the subgroup $\langle\alpha\rangle \leq \mathfrak{A}$. Note that, when $\lambda = 1$, $\alpha = 1$, so all non-trivial characters are primitive.
 
  }
 
@@ -348,7 +352,7 @@ in Section \ref{Chapter_Description_Section_Construction}) fails, as there are n
 = 1 \}\]
  acting on $M$ by multiplication; see \cite[Section 2.3 - 2.4]{NW76}. The structure of $\mathfrak{A}$ is as follows, and a character is primitive if it is injective on $\langle\omega\rangle \leq \mathfrak{A}$, with $\omega = \alpha$ except when specified: 
 \begin{itemize}
-\item Suppose $p \neq 2$, $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda - 1\}$. If $\lambda \geq 3$ and $\sigma=t=1$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha$ of order $3^{\lambda-2}$ and $\beta$ of order 6. Otherwise, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha$ of order $p^{\lambda - \sigma}$. 
+\item Suppose $p \neq 2$, $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda - 1\}$. As a special case, if $p=3$, $\lambda \geq 3$, and $\sigma=t=1$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha$ of order $3^{\lambda-2}$ and $\beta$ of order 6. Otherwise, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha$ of order $p^{\lambda - \sigma}$.
 \item Suppose $p=2$, $\lambda \geq 3$, $\sigma \in \{0, \dots, \lambda - 3\}$. Then the structure of $(M,Q)$) depends on $r,t$, but only up to an equivalence class described in \cite[Satz 4]{Nobs1}; we assume without loss of generality that $r,t$ are minimal positive representatives thereunder. Then: 
 \begin{itemize}
 \item If $\sigma = 0$, $r \in \{1,3\}$, $t=1$, and $\lambda = 3$, then $\mathfrak{A} = \langle\beta\rangle$ with $\beta = (0,1)$ of order 4. Here $\omega = -1 = \beta^2$.
@@ -555,14 +559,14 @@ a boolean
 {
   Methods for generating individual irreducible representations of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ for a given level $p^\lambda$. 
 
- In each case (except the unary type $R$, for which see \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary})), the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$ and are thus represented by lists $[x,y]$. 
+ In each case (except the unary type $R$, for which see \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary})), the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$ and are thus represented by lists \texttt{[x,y]}.
 
  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$, have the form $\chi_{i,j}$, given by
 \texttt{\symbol{92}}[\texttt{\symbol{92}}chi{\textunderscore}\texttt{\symbol{123}}i,j\texttt{\symbol{125}}(\texttt{\symbol{92}}alpha\texttt{\symbol{94}}\texttt{\symbol{123}}v\texttt{\symbol{125}}\texttt{\symbol{92}}zeta\texttt{\symbol{94}}\texttt{\symbol{123}}w\texttt{\symbol{125}})
 \texttt{\symbol{92}}mapsto
 \texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}vi\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}alpha|\texttt{\symbol{125}}\texttt{\symbol{92}}right)
 \texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}wj\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}zeta|\texttt{\symbol{125}}\texttt{\symbol{92}}right)\texttt{\symbol{126}},\texttt{\symbol{92}}]
-where $i$ and $j$ are integers. We therefore represent each character by a list $[i,j]$. Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial. 
+where $i$ and $j$ are integers. We therefore represent each character by a list \texttt{[i,j]}. Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial, and the corresponding index $i$ or $j$ will be irrelevant.
 \section{\textcolor{Chapter }{Representations of type D}}\label{Chapter_Irreps_Section_Representations_of_type_D}
 \logpage{[ 5, 1, 0 ]}
 \hyperdef{L}{X82DA126D7F755B1C}{}
@@ -589,12 +593,7 @@ a record \texttt{rec(Agrp, Bp, Char, IsPrim)} describing $(M,Q)$
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$. Each character in $\hat{\mathfrak{A}}$ is of the form $\chi_{i,j}$, given by
-\texttt{\symbol{92}}[\texttt{\symbol{92}}chi{\textunderscore}\texttt{\symbol{123}}i,j\texttt{\symbol{125}}(\texttt{\symbol{92}}alpha\texttt{\symbol{94}}\texttt{\symbol{123}}v\texttt{\symbol{125}}\texttt{\symbol{92}}zeta\texttt{\symbol{94}}\texttt{\symbol{123}}w\texttt{\symbol{125}})
-\texttt{\symbol{92}}mapsto
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}vi\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}alpha|\texttt{\symbol{125}}\texttt{\symbol{92}}right)
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}wj\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}zeta|\texttt{\symbol{125}}\texttt{\symbol{92}}right)\texttt{\symbol{126}}.\texttt{\symbol{92}}]
-Note that $j$ is irrelevant when $\mathfrak{A}$ is cyclic. 
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. }
 
@@ -644,12 +643,7 @@ a record \texttt{rec(Agrp, Bp, Char, IsPrim, Nm, Prod)} describing $(M,Q)$
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$. Each character in $\hat{\mathfrak{A}}$ is of the form $\chi_{i,j}$, given by
-\texttt{\symbol{92}}[\texttt{\symbol{92}}chi{\textunderscore}\texttt{\symbol{123}}i,j\texttt{\symbol{125}}(\texttt{\symbol{92}}alpha\texttt{\symbol{94}}\texttt{\symbol{123}}v\texttt{\symbol{125}}\texttt{\symbol{92}}zeta\texttt{\symbol{94}}\texttt{\symbol{123}}w\texttt{\symbol{125}})
-\texttt{\symbol{92}}mapsto
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}vi\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}alpha|\texttt{\symbol{125}}\texttt{\symbol{92}}right)
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}wj\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}zeta|\texttt{\symbol{125}}\texttt{\symbol{92}}right)\texttt{\symbol{126}}.\texttt{\symbol{92}}]
-Note that $i$ is irrelevant in the cases where $\mathfrak{A}$ is cyclic. 
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. 
 
@@ -706,11 +700,7 @@ as it is decomposed in a different way; for this case, use \texttt{SL2IrrepRUnar
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$. Each character in $\hat{\mathfrak{A}}$ is of the form $\chi_{i,j}$, given by
-\texttt{\symbol{92}}[\texttt{\symbol{92}}chi{\textunderscore}\texttt{\symbol{123}}i,j\texttt{\symbol{125}}(\texttt{\symbol{92}}alpha\texttt{\symbol{94}}\texttt{\symbol{123}}v\texttt{\symbol{125}}\texttt{\symbol{92}}zeta\texttt{\symbol{94}}\texttt{\symbol{123}}w\texttt{\symbol{125}})
-\texttt{\symbol{92}}mapsto
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}vi\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}alpha|\texttt{\symbol{125}}\texttt{\symbol{92}}right)
-\texttt{\symbol{92}}mathbf\texttt{\symbol{123}}e\texttt{\symbol{125}}\texttt{\symbol{92}}left(\texttt{\symbol{92}}frac\texttt{\symbol{123}}wj\texttt{\symbol{125}}\texttt{\symbol{123}}|\texttt{\symbol{92}}zeta|\texttt{\symbol{125}}\texttt{\symbol{92}}right)\texttt{\symbol{126}}.\texttt{\symbol{92}}] 
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. 
 
@@ -781,6 +771,8 @@ type $R$ (that is, the special case where $\sigma = \lambda$) with $p$ an odd pr
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
 \immediate\write\pagenrlog{["End"], \arabic{page}];}

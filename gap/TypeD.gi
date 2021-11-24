@@ -8,7 +8,7 @@
 
 InstallGlobalFunction( SL2ModuleD,
 function(p, ld)
-    local l, M, alpha, ord, omicron, Agrp, Bp, B1, Char, IsPrim, a;
+    local l, M, alpha, ord, omega, Agrp, Bp, B1, Char, IsPrim, a;
 
     # TODO: add Nm and Prod functions, even though we don't need them
 
@@ -38,11 +38,17 @@ function(p, ld)
                     (alpha^(ord-x)) mod l # a^(-1), used for the S matrix.
                 ]);
         if ld = 1 then
-            omicron := Agrp[1];
+            # subgroup is trivial
+            for a in Agrp do
+                if a[2] = 1 then
+                    omega := a;
+                    break;
+                fi;
+            od;
         else
             for a in Agrp do
                 if a[2] = 1 + p then
-                    omicron := a;
+                    omega := a;
                     break;
                 fi;
             od;
@@ -67,7 +73,7 @@ function(p, ld)
                 ]);
         for a in Agrp do
             if a[2] = 5 then
-                omicron := a;
+                omega := a;
                 break;
             fi;
         od;
@@ -80,9 +86,9 @@ function(p, ld)
         end;
     fi;
 
-    # A character is primitive iff injective on omicron.
+    # A character is primitive iff injective on omega.
     IsPrim := function(chi)
-        return OrderMod(omicron[2], l) = Order(chi(omicron[1]));
+        return OrderMod(omega[2], l) = Order(chi(omega[1]));
     end;
 
     # Find basis.
@@ -127,7 +133,7 @@ function(p, ld, chi_index)
     IsPrim := M_rec.IsPrim;
     Bp := M_rec.Bp;
 
-    # Check for primitivity.  Primitive if chi is injective on <omicron>.
+    # Check for primitivity.  Primitive if chi is injective on <omega>.
     if not IsPrim(Chi) then
         Error("chi is NOT primitive.");
         return fail;

@@ -47,9 +47,9 @@
 
 <p>Methods for generating individual irreducible representations of <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span> for a given level <span class="Math">p^\lambda</span>.</p>
 
-<p>In each case (except the unary type <span class="Math">R</span>, for which see <code class="func">SL2IrrepRUnary</code> (<a href="chap5.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>)), the underlying module <span class="Math">M</span> is of rank <span class="Math">2</span>, so its elements have the form <span class="Math">(x,y)</span> and are thus represented by lists <span class="Math">[x,y]</span>.</p>
+<p>In each case (except the unary type <span class="Math">R</span>, for which see <code class="func">SL2IrrepRUnary</code> (<a href="chap5.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>)), the underlying module <span class="Math">M</span> is of rank <span class="Math">2</span>, so its elements have the form <span class="Math">(x,y)</span> and are thus represented by lists <code class="code">[x,y]</code>.</p>
 
-<p>Characters of the abelian group <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</span>, have the form <span class="Math">\chi_{i,j}</span>, given by \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\] where <span class="Math">i</span> and <span class="Math">j</span> are integers. We therefore represent each character by a list <span class="Math">[i,j]</span>. Note that <span class="Math">\mathfrak{A}</span> may be cyclic, in which case <span class="Math">\alpha</span> or <span class="Math">\beta</span> will be trivial.</p>
+<p>Characters of the abelian group <span class="Math">\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</span>, have the form <span class="Math">\chi_{i,j}</span>, given by \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\] where <span class="Math">i</span> and <span class="Math">j</span> are integers. We therefore represent each character by a list <code class="code">[i,j]</code>. Note that <span class="Math">\mathfrak{A}</span> may be cyclic, in which case <span class="Math">\alpha</span> or <span class="Math">\beta</span> will be trivial, and the corresponding index <span class="Math">i</span> or <span class="Math">j</span> will be irrelevant.</p>
 
 <p><a id="X82DA126D7F755B1C" name="X82DA126D7F755B1C"></a></p>
 
@@ -70,7 +70,7 @@
 
 <p><code class="code">Bp</code> is a list of representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span>, which correspond to a basis for the <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace associated to any primitive character <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> with <span class="Math">\chi^2 \not\equiv 1</span>. For other characters, we must use different bases which are particular to each case.</p>
 
-<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing a character of <span class="Math">\mathfrak{A}</span>. Each character in <span class="Math">\hat{\mathfrak{A}}</span> is of the form <span class="Math">\chi_{i,j}</span>, given by \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\] Note that <span class="Math">j</span> is irrelevant when <span class="Math">\mathfrak{A}</span> is cyclic.</p>
+<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing the character <span class="Math">\chi_{i,j} \in \widehat{\mathfrak{A}}</span>.</p>
 
 <p><code class="code">IsPrim(chi)</code> tests whether the output of <code class="code">Char(i,j)</code> represents a primitive character.</p>
 
@@ -104,7 +104,7 @@
 
 <p><code class="code">Bp</code> is a list of representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span>, which correspond to a basis for the <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace associated to any primitive character <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> with <span class="Math">\chi^2 \not\equiv 1</span>. For other characters, we must use different bases which are particular to each case.</p>
 
-<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing a character of <span class="Math">\mathfrak{A}</span>. Each character in <span class="Math">\hat{\mathfrak{A}}</span> is of the form <span class="Math">\chi_{i,j}</span>, given by \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\] Note that <span class="Math">i</span> is irrelevant in the cases where <span class="Math">\mathfrak{A}</span> is cyclic.</p>
+<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing the character <span class="Math">\chi_{i,j} \in \widehat{\mathfrak{A}}</span>.</p>
 
 <p><code class="code">IsPrim(chi)</code> tests whether the output of <code class="code">Char(i,j)</code> represents a primitive character.</p>
 
@@ -144,7 +144,7 @@
 
 <p><code class="code">Bp</code> is a list of representatives for the <span class="Math">\mathfrak{A}</span>-orbits on <span class="Math">M^\times</span>, which correspond to a basis for the <span class="Math">\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</span>-invariant subspace associated to any primitive character <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> with <span class="Math">\chi^2 \not\equiv 1</span>. For other characters, we must use different bases which are particular to each case.</p>
 
-<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing a character of <span class="Math">\mathfrak{A}</span>. Each character in <span class="Math">\hat{\mathfrak{A}}</span> is of the form <span class="Math">\chi_{i,j}</span>, given by \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]</p>
+<p><code class="code">Char(i,j)</code> converts two integers <span class="Math">i</span>, <span class="Math">j</span> to a function representing the character <span class="Math">\chi_{i,j} \in \widehat{\mathfrak{A}}</span>.</p>
 
 <p><code class="code">IsPrim(chi)</code> tests whether the output of <code class="code">Char(i,j)</code> represents a primitive character.</p>
 

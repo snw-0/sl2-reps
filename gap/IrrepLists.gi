@@ -32,6 +32,7 @@ function(degree)
             # D_1(chi), for chi primitive, chi^2 != 1.
             # Defined for p >= 3.
             # A = <alpha>, ord(alpha) = p-1.
+            # All characters are primitive, so we exclude only the trivial one.
             # Relevant character indices: [(1..(p-3)/2), 0].
             for i in [1 .. (p-3)/2] do
                 rho := SL2IrrepD(p, 1, [i, 0])[1];
@@ -97,7 +98,7 @@ function(degree)
             if (p+1)*p^(ld-1) = degree then
                 # D_ld(chi), for chi primitive, chi^2 != 1.
                 # A = <alpha>, with ord(alpha) = p^ld - p^(ld-1).
-                # chi is primitive iff it is injective on <1+p = omicron>; this occurs
+                # chi is primitive iff it is injective on <1+p = omega>; this occurs
                 # when the index of chi is coprime to p.
                 for i in [1 .. (l - l/p)/2 - 1] do
                     if Gcd(i, p) = 1 then
@@ -1041,6 +1042,7 @@ function(p, ld)
             # D_1(chi), for chi primitive, chi^2 != 1.
             # Defined for p >= 3.
             # A = <alpha>, ord(alpha) = p-1.
+            # All characters are primitive, so we exclude only the trivial one.
             # Relevant character indices: [(1..(p-3)/2), 0].
             if p > 3 then
                 for i in [1 .. (p-3)/2] do
@@ -1084,7 +1086,7 @@ function(p, ld)
 
             # D_ld(chi), for chi primitive, chi^2 != 1.
             # A = <alpha>, with ord(alpha) = p^ld - p^(ld-1).
-            # chi is primitive iff it is injective on <1+p = omicron>; this occurs
+            # chi is primitive iff it is injective on <1+p = omega>; this occurs
             # when the index of chi is coprime to p.
             for i in [1 .. (l - l/p)/2 - 1] do
                 if Gcd(i, p) = 1 then

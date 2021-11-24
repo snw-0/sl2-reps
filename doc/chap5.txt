@@ -6,15 +6,16 @@
   
   [33X[0;0YIn  each  case  (except  the  unary  type  [23XR[123X,  for  which see [2XSL2IrrepRUnary[102X
   ([14X5.3-3[114X)),  the  underlying  module  [23XM[123X is of rank [23X2[123X, so its elements have the
-  form [23X(x,y)[123X and are thus represented by lists [23X[x,y][123X.[133X
+  form [23X(x,y)[123X and are thus represented by lists [10X[x,y][110X.[133X
   
   [33X[0;0YCharacters  of  the abelian group [23X\mathfrak{A} = \langle\alpha\rangle \times
   \langle\beta\rangle[123X,     have     the     form    [23X\chi_{i,j}[123X,    given    by
   \[\chi_{i,j}(\alpha^{v}\zeta^{w})                                    \mapsto
   \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
   \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\] where [23Xi[123X and [23Xj[123X are integers. We
-  therefore  represent  each character by a list [23X[i,j][123X. Note that [23X\mathfrak{A}[123X
-  may be cyclic, in which case [23X\alpha[123X or [23X\beta[123X will be trivial.[133X
+  therefore  represent  each character by a list [10X[i,j][110X. Note that [23X\mathfrak{A}[123X
+  may  be  cyclic,  in  which  case  [23X\alpha[123X  or [23X\beta[123X will be trivial, and the
+  corresponding index [23Xi[123X or [23Xj[123X will be irrelevant.[133X
   
   
   [1X5.1 [33X[0;0YRepresentations of type D[133X[101X
@@ -41,12 +42,8 @@
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X  converts two integers [23Xi[123X, [23Xj[123X to a function representing a character
-  of  [23X\mathfrak{A}[123X.  Each  character  in  [23X\hat{\mathfrak{A}}[123X  is  of  the form
-  [23X\chi_{i,j}[123X,     given     by    \[\chi_{i,j}(\alpha^{v}\zeta^{w})    \mapsto
-  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
-  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\] Note that [23Xj[123X is irrelevant when
-  [23X\mathfrak{A}[123X is cyclic.[133X
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
   
   [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
   character.[133X
@@ -89,12 +86,8 @@
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X  converts two integers [23Xi[123X, [23Xj[123X to a function representing a character
-  of  [23X\mathfrak{A}[123X.  Each  character  in  [23X\hat{\mathfrak{A}}[123X  is  of  the form
-  [23X\chi_{i,j}[123X,     given     by    \[\chi_{i,j}(\alpha^{v}\zeta^{w})    \mapsto
-  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
-  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]  Note  that [23Xi[123X is irrelevant in
-  the cases where [23X\mathfrak{A}[123X is cyclic.[133X
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
   
   [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
   character.[133X
@@ -148,11 +141,8 @@
   \not\equiv  1[123X.  For  other characters, we must use different bases which are
   particular to each case.[133X
   
-  [33X[0;0Y[10XChar(i,j)[110X  converts two integers [23Xi[123X, [23Xj[123X to a function representing a character
-  of  [23X\mathfrak{A}[123X.  Each  character  in  [23X\hat{\mathfrak{A}}[123X  is  of  the form
-  [23X\chi_{i,j}[123X,     given     by    \[\chi_{i,j}(\alpha^{v}\zeta^{w})    \mapsto
-  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
-  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\][133X
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
   
   [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
   character.[133X

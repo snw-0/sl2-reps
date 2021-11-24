@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  19 NOV 2021 23:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  24 NOV 2021 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,13 +528,38 @@ Chapter 1.
 Chapter 2.
 [4
 
-] [5]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-10.
+]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+63.
  (z:/Programs/texlive/2021/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-[6] [7]
+Underfull \hbox (badness 7344) in paragraph at lines 272--274
+[]\T1/ptm/m/n/10.95 All the finite-dimensional ir-re-ducible rep-re-sen-ta-tion
+s of $[][]\OT1/ztmcm/m/n/10.95 (\U/msb/m/n/10.95 Z\OT1/ztmcm/m/n/10.95 )$ \T1/p
+tm/m/n/10.95 of fi-nite level can
+ []
+
+
+Underfull \hbox (badness 3078) in paragraph at lines 272--274
+\T1/ptm/m/n/10.95 now be con-structed by tak-ing ten-sor prod-ucts of these pri
+me-power ir-reps. Note that,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--274
+\T1/ptm/m/n/10.95 if two rep-re-sen-ta-tions are de-fined by pairs \T1/cmtt/m/n
+/10.95 [S1,T1] \T1/ptm/m/n/10.95 and \T1/cmtt/m/n/10.95 [S2,T2]\T1/ptm/m/n/10.9
+5 , then their ten-
+ []
+
+
+Underfull \hbox (badness 4726) in paragraph at lines 272--274
+\T1/ptm/m/n/10.95 sor prod-uct may be cal-cu-lated via the GAP com-mand \T1/cmt
+t/m/n/10.95 KroneckerProduct\T1/ptm/m/n/10.95 , namely as
+ []
+
+[5] [6] [7]
 Chapter 3.
 [8
 
@@ -545,69 +570,30 @@ Chapter 4.
 ]
 Chapter 5.
 
-Underfull \hbox (badness 2662) in paragraph at lines 557--563
-\T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
-[]$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
-/m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
-cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\
-T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 z
-eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
-5 ) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mapsto
+Underfull \hbox (badness 8170) in paragraph at lines 564--570
+[]\T1/ptm/m/n/10.95 Characters of the abelian group $\U/euf/m/n/10.95 A \OT1/zt
+mcm/m/n/10.95 = \OMS/ztmcm/m/n/10.95 h\OML/ztmcm/m/it/10.95 \OMS/ztmcm/m/n/10.
+95 i ^^B h\OML/ztmcm/m/it/10.95 ^^L\OMS/ztmcm/m/n/10.95 i$\T1/ptm/m/n/10.95 , h
+ave the form $\OML/ztmcm/m/it/10.95 ^^_[]$\T1/ptm/m/n/10.95 , given by
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 557--563
-\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
-95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
-/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
-/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha|\T1/cmtt/m/n/10.95 }\\T
-1/ptm/m/n/10.95 right) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n
-/10.95 {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt
-/m/n/10.95 \\T1/ptm/m/n/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 wj\T1/c
-mtt/m/n/10.95 }{\T1/ptm/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 zeta|\
-T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
-95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
+Underfull \hbox (badness 10000) in paragraph at lines 564--570
+\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ch
+i_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
+5 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/
+10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 zeta\T1/cmtt/m/n/10.95 ^{\T1/ptm/
+m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 ) \T1/cmtt/m/n/10.95 \\T1/ptm/
+m/n/10.95 mapsto \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95
+ {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/1
+0.95 \\T1/ptm/m/n/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/
+n/10.95 }{\T1/ptm/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha|\T1/cm
+tt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)
  []
 
 [11
 
-]
-Underfull \hbox (badness 2662) in paragraph at lines 612--618
-\T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
-[]$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
-/m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
-cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\
-T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 z
-eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
-5 ) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mapsto
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 612--618
-\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.
-95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/10.95 \\T1/ptm/m/n
-/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 vi\T1/cmtt/m/n/10.95 }{\T1/ptm
-/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha|\T1/cmtt/m/n/10.95 }\\T
-1/ptm/m/n/10.95 right) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n
-/10.95 {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt
-/m/n/10.95 \\T1/ptm/m/n/10.95 frac\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 wj\T1/c
-mtt/m/n/10.95 }{\T1/ptm/m/n/10.95 |\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 zeta|\
-T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 right)\T1/cmtt/m/n/10.95 ~\T1/ptm/m/n/10.
-95 .\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ] Note
- []
-
-[12]
-Underfull \hbox (badness 2662) in paragraph at lines 674--679
-\T1/ptm/m/n/10.95 char-ac-ter in $[]$ is of the form $\OML/ztmcm/m/it/10.95 ^^_
-[]$\T1/ptm/m/n/10.95 , given by \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt
-/m/n/10.95 \\T1/ptm/m/n/10.95 chi_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/
-cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\
-T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 z
-eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
-5 ) \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mapsto
- []
-
-(./SL2Reps.bbl (./SL2Reps.brf)
+] [12] (./SL2Reps.bbl (./SL2Reps.brf)
 \tf@brf=\write8
 \openout8 = `SL2Reps.brf'.
 
@@ -617,20 +603,21 @@ eta\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
 
 
 
-]) (./SL2Reps.aux)
+])
+(./SL2Reps.aux)
 Package rerunfilecheck Info: File `SL2Reps.out' has not changed.
 (rerunfilecheck)             Checksum: F87E7FE9DD54C75D29D4D8BC68E8DB18;2634.
 Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
-(rerunfilecheck)             Checksum: 1913CEB3FFE6339693A83EE0F825C35E;380.
+(rerunfilecheck)             Checksum: AADA59BB1DB41F3EAC22DA925980C5F6;347.
  ) 
 Here is how much of TeX's memory you used:
- 10758 strings out of 478519
- 157444 string characters out of 5849437
- 480973 words of memory out of 5000000
- 28429 multiletter control sequences out of 15000+600000
+ 10767 strings out of 478519
+ 157762 string characters out of 5849437
+ 481165 words of memory out of 5000000
+ 28432 multiletter control sequences out of 15000+600000
  470337 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,7n,94p,670b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,7n,94p,729b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
 {z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 }{z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><z:/Programs/
@@ -649,10 +636,10 @@ f-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on SL2Reps.pdf (15 pages, 240340 bytes).
+Output written on SL2Reps.pdf (15 pages, 240906 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 94 named destinations out of 1000 (max. 500000)
+ 393 PDF objects out of 1000 (max. 8388607)
+ 340 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

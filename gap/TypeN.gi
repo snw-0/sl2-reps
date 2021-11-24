@@ -101,10 +101,10 @@ function(p, ld)
 
     # function to determine if chi is primitive.
     if ld = 1 then
-        # alpha is trivial; chi is primitive if injective on beta (the second factor)
+        # alpha is trivial; chi is primitive unless it's trivial.
         # not described explicitly in NW; inferred from the tables on pp.521-522.
         IsPrim := function(chi)
-            return Ord(beta) = Order(chi([0,1]));
+            return chi([0,1]) <> 1;
         end;
     elif p = 2 and ld = 2 then
         # special case: chi is primitive if chi(-1) = -1 (see NW p.494).

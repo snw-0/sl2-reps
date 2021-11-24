@@ -11,13 +11,14 @@
 #!
 #!  In each case (except the unary type $R$, for which see <Ref Func="SL2IrrepRUnary"/>),
 #!  the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$
-#!  and are thus represented by lists $[x,y]$.
+#!  and are thus represented by lists `[x,y]`.
 #!
 #!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$,
 #!  have the form $\chi_{i,j}$, given by
 #!  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\]
-#!  where $i$ and $j$ are integers.  We therefore represent each character by a list $[i,j]$.
-#!  Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial.
+#!  where $i$ and $j$ are integers.  We therefore represent each character by a list `[i,j]`.
+#!  Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial, and the corresponding
+#!  index $i$ or $j$ will be irrelevant.
 
 #! @Section Representations of type D
 #!
@@ -40,10 +41,7 @@
 #!  associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
 #!  For other characters, we must use different bases which are particular to each case.
 #!
-#!  `Char(i,j)` converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$.
-#!  Each character in $\hat{\mathfrak{A}}$ is of the form $\chi_{i,j}$, given by
-#!  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]
-#!  Note that $j$ is irrelevant when $\mathfrak{A}$ is cyclic.
+#!  `Char(i,j)` converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 #!
 #!  `IsPrim(chi)` tests whether the output of `Char(i,j)` represents a primitive character.
 DeclareGlobalFunction( "SL2ModuleD" );

@@ -9,13 +9,14 @@
 <P/>
   In each case (except the unary type <Math>R</Math>, for which see <Ref Func="SL2IrrepRUnary"/>),
   the underlying module <Math>M</Math> is of rank <Math>2</Math>, so its elements have the form <Math>(x,y)</Math>
-  and are thus represented by lists <Math>[x,y]</Math>.
+  and are thus represented by lists <Code>[x,y]</Code>.
 <P/>
   Characters of the abelian group <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math>,
   have the form <Math>\chi_{i,j}</Math>, given by
   \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\]
-  where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Math>[i,j]</Math>.
-  Note that <Math>\mathfrak{A}</Math> may be cyclic, in which case <Math>\alpha</Math> or <Math>\beta</Math> will be trivial.
+  where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Code>[i,j]</Code>.
+  Note that <Math>\mathfrak{A}</Math> may be cyclic, in which case <Math>\alpha</Math> or <Math>\beta</Math> will be trivial, and the corresponding
+  index <Math>i</Math> or <Math>j</Math> will be irrelevant.
 <Section Label="Chapter_Irreps_Section_Representations_of_type_D">
 <Heading>Representations of type D</Heading>
 
@@ -39,10 +40,7 @@
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
   For other characters, we must use different bases which are particular to each case.
 <P/>
-  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing a character of <Math>\mathfrak{A}</Math>.
-  Each character in <Math>\hat{\mathfrak{A}}</Math> is of the form <Math>\chi_{i,j}</Math>, given by
-  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]
-  Note that <Math>j</Math> is irrelevant when <Math>\mathfrak{A}</Math> is cyclic.
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
   <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
  </Description>
@@ -90,10 +88,7 @@
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
   For other characters, we must use different bases which are particular to each case.
 <P/>
-  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing a character of <Math>\mathfrak{A}</Math>.
-  Each character in <Math>\hat{\mathfrak{A}}</Math> is of the form <Math>\chi_{i,j}</Math>, given by
-  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]
-  Note that <Math>i</Math> is irrelevant in the cases where <Math>\mathfrak{A}</Math> is cyclic.
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
   <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
 <P/>
@@ -150,9 +145,7 @@
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
   For other characters, we must use different bases which are particular to each case.
 <P/>
-  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing a character of <Math>\mathfrak{A}</Math>.
-  Each character in <Math>\hat{\mathfrak{A}}</Math> is of the form <Math>\chi_{i,j}</Math>, given by
-  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
   <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
 <P/>

@@ -27,10 +27,7 @@
 #!  associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
 #!  For other characters, we must use different bases which are particular to each case.
 #!
-#!  `Char(i,j)` converts two integers $i$, $j$ to a function representing a character of $\mathfrak{A}$.
-#!  Each character in $\hat{\mathfrak{A}}$ is of the form $\chi_{i,j}$, given by
-#!  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~.\]
-#!  Note that $i$ is irrelevant in the cases where $\mathfrak{A}$ is cyclic.
+#!  `Char(i,j)` converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 #!
 #!  `IsPrim(chi)` tests whether the output of `Char(i,j)` represents a primitive character.
 #!

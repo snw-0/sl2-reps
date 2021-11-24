@@ -32,7 +32,7 @@ Now let <Math>p</Math> be a prime number and <Math>\lambda \in \mathbb{Z}^+</Mat
 <P/>
 We may construct subrepresentations <Math>W(M,Q,\chi)</Math> of <Math>W(M,Q)</Math> as follows.  Let
 <Display>\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}</Display>
-and denote by <Math>\mathfrak{A} \leq \operatorname{Aut}(M,Q)</Math> the abelian subgroup defined in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Note that <Math>\mathfrak{A}</Math> has at most two cyclic factors, whose generators are usually denoted by <Math>\alpha</Math> and <Math>\beta</Math>.  Let <Math>\chi \in \widehat{\mathfrak{A}}</Math> be a 1-dimensional representation (character) of <Math>\mathfrak{A}</Math>, and define
+and denote by <Math>\mathfrak{A} \leq \operatorname{Aut}(M,Q)</Math> the abelian subgroup defined in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Note that <Math>\mathfrak{A}</Math> has at most two cyclic factors, whose generators we denote by <Math>\alpha</Math> and <Math>\beta</Math>.  Let <Math>\chi \in \widehat{\mathfrak{A}}</Math> be a 1-dimensional representation (character) of <Math>\mathfrak{A}</Math>, and define
 <Display>V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,</Display>
 which is a <Math>SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace of <Math>V</Math>.  We then denote by <Math>W(M,Q,\chi)</Math> the subrepresentation of <Math>W(M,Q)</Math> on <Math>V_\chi</Math>.
 <P/>
@@ -43,7 +43,9 @@ which is a <Math>SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace 
 <Heading>Primitive characters</Heading>
 
 <P/>
-We will frequently refer to a character <Math>\chi</Math> as being <Emph>primitive</Emph>.  With the exception of a single family of modules of type <Math>R</Math> (the <Emph>extremal</Emph> case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>) primitivity amounts to the following: there exists some <Math>\varepsilon \in \mathfrak{A}</Math> such that <Math>\chi(\varepsilon) \neq 1</Math> and <Math>\varepsilon</Math> fixes the submodule <Math>pM</Math> pointwise.  In the extremal case, <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</Math> (see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/> for an explicit definition of <Math>\alpha</Math>) and <Math>\chi</Math> is primitive if <Math>\chi(\alpha) = -1</Math>.  Explicit descriptions of the primitive characters are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
+We will frequently refer to a character <Math>\chi</Math> as being <Emph>primitive</Emph>.  With the exception of a single family of modules of type <Math>R</Math> (the <Emph>extremal</Emph> case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>) primitivity amounts to the following: there exists some <Math>\varepsilon \in \mathfrak{A}</Math> such that <Math>\chi(\varepsilon) \neq 1</Math> and <Math>\varepsilon</Math> fixes the submodule <Math>pM</Math> pointwise.  In the extremal case, <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</Math> (see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/> for an explicit definition of <Math>\alpha</Math>) and <Math>\chi</Math> is primitive if <Math>\chi(\alpha) = -1</Math>.
+<P/>
+Explicit descriptions of the primitive characters for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
 <P/>
 </Subsection>
 
@@ -54,8 +56,8 @@ We will frequently refer to a character <Math>\chi</Math> as being <Emph>primiti
 <P/>
 The prime-power irreps then fall into three cases.
 <List>
-    <Item>The overwhelming majority are of the form <Math>W(M,Q,\chi)</Math> for <Math>\chi</Math> primitive; we call these <Emph>standard</Emph>. This includes the primitive characters from the extremal case.</Item>
-    <Item>A finite number, and a single infinite family arising from the extremal case (Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>), are instead constructed by using non-primitive characters.  We call these <Emph>non-standard</Emph>.</Item>
+    <Item>The overwhelming majority are of the form <Math>W(M,Q,\chi)</Math> for <Math>\chi</Math> primitive and <Math>\chi^2 \neq 1</Math>; we call these <Emph>standard</Emph>. This includes the primitive characters from the extremal case.</Item>
+    <Item>A finite number, and a single infinite family arising from the extremal case (Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>), are instead constructed by using non-primitive characters or primitive characters <Math>\chi</Math> with <Math>\chi^2 = 1</Math>.  We call these <Emph>non-standard</Emph>.</Item>
     <Item>Finally, 18 <Emph>exceptional</Emph> irreps are constructed as tensor products of two irreps from the other two cases.</Item>
 </List>
 <P/>
@@ -75,14 +77,14 @@ All the finite-dimensional irreducible representations of <Math>\mathrm{SL}_2(\m
 <Heading>Type D</Heading>
 
 <P/>
-Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. Then the Weil representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{xy}{p^\lambda}</Math> is said to be of type <Math>D</Math> and denoted <Math>D(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepD"/>.
+Let <Math>p</Math> be prime.  If <Math>p=2</Math> or <Math>p=3</Math>, let <Math>\lambda \geq 2</Math>; otherwise, let <Math>\lambda \geq 1</Math>.  Then the Weil representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{xy}{p^\lambda}</Math> is said to be of type <Math>D</Math> and denoted <Math>D(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of <Math>D(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepD"/>.
 <P/>
 Here we define
 <Display>\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times</Display>
-acting on <Math>M</Math> by <Math>a(x,y) = (a^{-1}x, ay)</Math>; see <Cite Key="NW76" Where="Section 2.1"/>. This group has the following structure. When <Math>p=2</Math> and <Math>\lambda \geq 3</Math>, it is generated by <Math>\alpha = 5</Math> and <Math>\beta = -1</Math>.
-Otherwise, it is cyclic; in this case, we choose a generator <Math>\alpha</Math> and (for simplicity) say <Math>\beta = 1</Math>.
+acting on <Math>M</Math> by <Math>a(x,y) = (a^{-1}x, ay)</Math>; see <Cite Key="NW76" Where="Section 2.1"/>. This group has the following structure. When <Math>p=2</Math> and <Math>\lambda \geq 3</Math>, it is generated by <Math>\alpha = 5</Math> (of order <Math>2^{\lambda-2}</Math>) and <Math>\beta = -1</Math>.
+Otherwise, it is cyclic; in this case, we choose a generator <Math>\alpha</Math> and say <Math>\beta = 1</Math>.
 <P/>
-For type <Math>D</Math>, a character of <Math>\mathfrak{A}</Math> is primitive if and only if it is injective on the subgroup <Math>\langle\omega\rangle \leq \mathfrak{A}</Math>, where <Math>\omega</Math> is chosen as follows.  If <Math>\lambda = 1</Math>, or if <Math>p=2</Math> and <Math>\lambda \geq 3</Math>, then <Math>\omega = \alpha</Math>.  In all other cases, <Math>\omega = 1+p</Math>.
+For type <Math>D</Math>, a non-trivial character of <Math>\mathfrak{A}</Math> is primitive if and only if it is injective on the cyclic subgroup of <Math>\mathfrak{A}</Math> of maximal <Math>p</Math>-power order.  This subgroup is trivial for <Math>\lambda = 1</Math>, generated by <Math>5</Math> in the case <Math>p=2</Math> and <Math>\lambda \geq 3</Math>, and generated by <Math>1+p</Math> in all other cases.
 <P/>
 </Subsection>
 
@@ -91,13 +93,13 @@ For type <Math>D</Math>, a character of <Math>\mathfrak{A}</Math> is primitive i
 <Heading>Type N</Heading>
 
 <P/>
-Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. If <Math>p \neq 2</Math>, choose some <Math>u</Math> so that <Math>u \equiv 3</Math> mod 4 with <Math>-u</Math> a quadratic non-residue mod <Math>p</Math>; if <Math>p = 2</Math>, define <Math>u=3</Math>.  Then the Weil representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}</Math> is said to be of type <Math>N</Math> and denoted <Math>N(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of <Math>N(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepN"/>.
+Let <Math>p</Math> be prime and <Math>\lambda \geq 1</Math>. If <Math>p \neq 2</Math>, choose an integer <Math>u</Math> so that <Math>u \equiv 3</Math> mod 4 with <Math>-u</Math> a quadratic non-residue mod <Math>p</Math>; if <Math>p = 2</Math>, define <Math>u=3</Math>.  Then the Weil representation arising from the quadratic module with <Math>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}</Math> and <Math>Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}</Math> is said to be of type <Math>N</Math> and denoted <Math>N(p,\lambda)</Math>.  Information on <Math>(M,Q)</Math> may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of <Math>N(p,\lambda)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepN"/>.
 <P/>
 Here we define
 <Display>\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</Display>
 acting on <Math>M</Math> by multiplication; see <Cite Key="NW76" Where="Section 2.2"/>. This group has the following structure. When <Math>\lambda \geq 2</Math>, it is generated by <Math>\alpha</Math> and <Math>\beta</Math>: for <Math>p=2</Math>, <Math>|\alpha| = 2^{\lambda-2}</Math> and <Math>|\beta| = 6</Math>, while for <Math>p \neq 2</Math>, <Math>|\alpha| = p^{\lambda-1}</Math> and <Math>|\beta| = p+1</Math>.  On the other hand, when <Math>\lambda = 1</Math>, <Math>\mathfrak{A}</Math> is cyclic; in this case, we choose a generator <Math>\beta</Math> with <Math>|\beta| = p+1</Math> and (for simplicity) say <Math>\alpha = 1</Math>.
 <P/>
-For type <Math>N</Math> with <Math>p=2</Math>, <Math>\lambda=2</Math>, a character of <Math>\mathfrak{A}</Math> is primitive if and only if <Math>\chi(-1) = -1</Math>.  For all other type <Math>N</Math> cases, a character of <Math>\mathfrak{A}</Math> is primitive if and only if it is injective on the subgroup <Math>\langle\omega\rangle \leq \mathfrak{A}</Math>, where <Math>\omega</Math> is chosen as follows.  If <Math>\lambda = 1</Math>, <Math>\omega = \beta</Math>; otherwise <Math>\omega = \alpha</Math>.
+For type <Math>N</Math> with <Math>p=2</Math>, <Math>\lambda=2</Math>, a non-trivial character of <Math>\mathfrak{A}</Math> is primitive if and only if <Math>\chi(-1) = -1</Math>.  For all other type <Math>N</Math> cases, a character of <Math>\mathfrak{A}</Math> is primitive if and only if it is injective on the subgroup <Math>\langle\alpha\rangle \leq \mathfrak{A}</Math>.  Note that, when <Math>\lambda = 1</Math>, <Math>\alpha = 1</Math>, so all non-trivial characters are primitive.
 <P/>
 </Subsection>
 
@@ -128,7 +130,7 @@ Outside of the above two special cases, we define
 <Display>\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</Display>
 acting on <Math>M</Math> by multiplication; see <Cite Key="NW76" Where="Section 2.3 - 2.4"/>. The structure of <Math>\mathfrak{A}</Math> is as follows, and a character is primitive if it is injective on <Math>\langle\omega\rangle \leq \mathfrak{A}</Math>, with <Math>\omega = \alpha</Math> except when specified:
 <List>
-    <Item>Suppose <Math>p \neq 2</Math>, <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{1, \dots, \lambda - 1\}</Math>. If <Math>\lambda \geq 3</Math> and <Math>\sigma=t=1</Math>, then <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math> with <Math>\alpha</Math> of order <Math>3^{\lambda-2}</Math> and <Math>\beta</Math> of order 6.  Otherwise, <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</Math> with <Math>\alpha</Math> of order <Math>p^{\lambda - \sigma}</Math>.
+    <Item>Suppose <Math>p \neq 2</Math>, <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{1, \dots, \lambda - 1\}</Math>. As a special case, if <Math>p=3</Math>, <Math>\lambda \geq 3</Math>, and <Math>\sigma=t=1</Math>, then <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math> with <Math>\alpha</Math> of order <Math>3^{\lambda-2}</Math> and <Math>\beta</Math> of order 6.  Otherwise, <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle</Math> with <Math>\alpha</Math> of order <Math>p^{\lambda - \sigma}</Math>.
     </Item>
     <Item>Suppose <Math>p=2</Math>, <Math>\lambda \geq 3</Math>, <Math>\sigma \in \{0, \dots, \lambda - 3\}</Math>. Then the structure of <Math>(M,Q)</Math>) depends on <Math>r,t</Math>, but only up to an equivalence class described in <Cite Key="Nobs1" Where="Satz 4"/>; we assume without loss of generality that <Math>r,t</Math> are minimal positive representatives thereunder. Then:
     <List>
