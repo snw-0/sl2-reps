@@ -57,13 +57,13 @@ function(p, ld)
             return Chi;
         end;
     else
-        # A = <-1> * <5>.
+        # A = <5> * <-1>.
         ord := OrderMod(5, l);
-        Agrp := List(Cartesian([0 .. 1], [0 .. ord - 1]), x ->
+        Agrp := List(Cartesian([0 .. ord - 1], [0 .. 1]), x ->
                 [
                     [x[1], x[2]], # Powers of -1 and 5.
-                    (((-1)^x[1]) * (5^x[2])) mod l, # a.
-                    (((-1)^x[1]) * (5^(ord-x[2]))) mod l # a^(-1), used for the S matrix.
+                    (((5)^x[1]) * ((-1)^x[2])) mod l, # a.
+                    ((5^(ord-x[1])) * ((-1)^x[2])) mod l # a^(-1), used for the S matrix.
                 ]);
         for a in Agrp do
             if a[2] = 5 then
@@ -74,7 +74,7 @@ function(p, ld)
         Char := function(i, j)
             local Chi;
             Chi := function(x)
-                return (-1)^(x[1]*i) * E(ord)^(x[2]*j);
+                return E(ord)^(x[1]*i) * (-1)^(x[2]*j);
             end;
             return Chi;
         end;
@@ -155,7 +155,7 @@ function(p, ld, chi_index)
                 ];
             else
                 deg := 6;
-                if Chi([1,0]) = 1 then
+                if Chi([0,1]) = 1 then
                     U := [
                         [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                         [ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],

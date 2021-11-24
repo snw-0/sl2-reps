@@ -276,13 +276,13 @@ function(degree)
     l := 8;
     if 6 = degree then
         # D_3(chi)+-, for chi primitive.
-        # A = <-1> x <5>, and a character is primitive if injective on <5>.
-        # This gives two characters, [0,1] and [1,1] (note that both square to 1).
+        # A = <5> x <-1>, and a character is primitive if injective on <5>.
+        # This gives two characters, [1,0] and [1,1] (note that both square to 1).
         # SL2IrrepD returns a list of the two subreps, + and - .
-        rho := SL2IrrepD(2, 3, [0, 1]);
-        name := "D_3([0,1])+";
+        rho := SL2IrrepD(2, 3, [1, 0]);
+        name := "D_3([1,0])+";
         _SL2RecordIrrep(irrep_list, name, rho[1], l);
-        name := "D_3([0,1])-";
+        name := "D_3([1,0])-";
         _SL2RecordIrrep(irrep_list, name, rho[2], l);
 
         rho := SL2IrrepD(2, 3, [1, 1]);
@@ -370,11 +370,11 @@ function(degree)
     l := 16;
     if 24 = degree then
         # D_4(chi), for chi primitive, chi^2 != 1.
-        # A = <-1> x <5>, and a character is primitive if injective on <5>.
+        # A = <5> x <-1>, and a character is primitive if injective on <5>.
         # Note that 5 has order 4.
-        # This gives two relevant characters, [0,1] and [1,1].
-        rho := SL2IrrepD(2, 4, [0, 1])[1];
-        name := "D_4([0,1])";
+        # This gives two relevant characters, [1,0] and [1,1].
+        rho := SL2IrrepD(2, 4, [1, 0])[1];
+        name := "D_4([1,0])";
         _SL2RecordIrrep(irrep_list, name, rho, l);
 
         rho := SL2IrrepD(2, 4, [1, 1])[1];
@@ -550,11 +550,11 @@ function(degree)
     l := 32;
     if 48 = degree then
         # D_5(chi), for chi primitive.
-        # A = <-1> x <5>, and a character is primitive if injective on <5>.
+        # A = <5> x <-1>, and a character is primitive if injective on <5>.
         # Note that 5 has order 8.
-        # This gives four relevant characters, [0,1], [1,1], [0,3], [1,3].
-        for i in [0,1] do
-            for j in [1,3] do
+        # This gives four relevant characters, [1,0], [1,1], [3,0], [3,1].
+        for i in [1,3] do
+            for j in [0,1] do
                 rho := SL2IrrepD(2, 5, [i, j])[1];
                 name := Concatenation("D_5([", String(i), ",", String(j), "])");
                 _SL2RecordIrrep(irrep_list, name, rho, l);
@@ -684,10 +684,10 @@ function(degree)
         l := 2^ld;
         if 3*2^(ld-1) = degree then
             # D_ld(chi), for chi primitive.
-            # A = <-1> x <5>, and a character is primitive if injective on <5>.
+            # A = <5> x <-1>, and a character is primitive if injective on <5>.
             # Note that 5 has order 2^(ld-2).
-            for i in [0,1] do
-                for j in PrimeResidues(2^(ld-2) / 2) do
+            for i in PrimeResidues(2^(ld-2) / 2) do
+                for j in [0,1] do
                     rho := SL2IrrepD(2, ld, [i, j])[1];
                     name := Concatenation("D_", String(ld), "([", String(i), ",", String(j), "])");
                     _SL2RecordIrrep(irrep_list, name, rho, l);
@@ -1245,13 +1245,13 @@ function(p, ld)
             _SL2RecordIrrep(irrep_list, name, rho, l);
         elif ld = 3 then
             # D_3(chi)+-, for chi primitive.
-            # A = <-1> x <5>, and a character is primitive if injective on <5>.
-            # This gives two characters, [0,1] and [1,1] (note that both square to 1).
+            # A = <5> x <-1>, and a character is primitive if injective on <5>.
+            # This gives two characters, [1,0] and [1,1] (note that both square to 1).
             # SL2IrrepD returns a list of the two subreps, + and - .
-            rho := SL2IrrepD(2, 3, [0, 1]);
-            name := "D_3([0,1])+";
+            rho := SL2IrrepD(2, 3, [1, 0]);
+            name := "D_3([1,0])+";
             _SL2RecordIrrep(irrep_list, name, rho[1], l);
-            name := "D_3([0,1])-";
+            name := "D_3([1,0])-";
             _SL2RecordIrrep(irrep_list, name, rho[2], l);
 
             rho := SL2IrrepD(2, 3, [1, 1]);
@@ -1332,11 +1332,11 @@ function(p, ld)
             od;
         elif ld = 4 then
             # D_4(chi), for chi primitive, chi^2 != 1.
-            # A = <-1> x <5>, and a character is primitive if injective on <5>.
+            # A = <5> x <-1>, and a character is primitive if injective on <5>.
             # Note that 5 has order 4.
-            # This gives two relevant characters, [0,1] and [1,1].
-            rho := SL2IrrepD(2, 4, [0, 1])[1];
-            name := "D_4([0,1])";
+            # This gives two relevant characters, [1,0] and [1,1].
+            rho := SL2IrrepD(2, 4, [1, 0])[1];
+            name := "D_4([1,0])";
             _SL2RecordIrrep(irrep_list, name, rho, l);
 
             rho := SL2IrrepD(2, 4, [1, 1])[1];
@@ -1504,11 +1504,11 @@ function(p, ld)
             od;
         elif ld = 5 then
             # D_5(chi), for chi primitive.
-            # A = <-1> x <5>, and a character is primitive if injective on <5>.
+            # A = <5> x <-1>, and a character is primitive if injective on <5>.
             # Note that 5 has order 8.
-            # This gives four relevant characters, [0,1], [1,1], [0,3], [1,3].
-            for i in [0,1] do
-                for j in [1,3] do
+            # This gives four relevant characters, [1,0], [1,1], [3,0], [3,1].
+            for i in [1,3] do
+                for j in [0,1] do
                     rho := SL2IrrepD(2, 5, [i, j])[1];
                     name := Concatenation("D_5([", String(i), ",", String(j), "])");
                     _SL2RecordIrrep(irrep_list, name, rho, l);
@@ -1629,10 +1629,10 @@ function(p, ld)
             # ld > 5
 
             # D_ld(chi), for chi primitive.
-            # A = <-1> x <5>, and a character is primitive if injective on <5>.
+            # A = <5> x <-1>, and a character is primitive if injective on <5>.
             # Note that 5 has order 2^(ld-2).
-            for i in [0,1] do
-                for j in PrimeResidues(2^(ld-2) / 2) do
+            for i in PrimeResidues(2^(ld-2) / 2) do
+                for j in [0,1] do
                     rho := SL2IrrepD(2, ld, [i, j])[1];
                     name := Concatenation("D_", String(ld), "([", String(i), ",", String(j), "])");
                     _SL2RecordIrrep(irrep_list, name, rho, l);
