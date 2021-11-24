@@ -8,7 +8,7 @@
 
 InstallGlobalFunction( SL2ModuleN,
 function(p, ld)
-    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, zeta, Agrp, Char, IsPrim, i, j, u, theta, Bp;
+    local l, t, M, pM, tM, A, Nm, Prod, Pow, Ord, alpha, beta, Agrp, Char, IsPrim, i, j, u, theta, Bp;
 
     if not IsPrime(p) then
         Error("p must be prime.");
@@ -67,11 +67,11 @@ function(p, ld)
 
     A := Filtered(M, a -> Nm(a) = 1);
 
-    # Use Ord(zeta) = p+1 or 6 to find zeta.
+    # Use Ord(beta) = p+1 or 6 to find beta.
     if ld = 1 or ((p > 2) and (ld > 1)) then
-        zeta := First(A, x -> Ord(x) = p+1);
+        beta := First(A, x -> Ord(x) = p+1);
     else
-        zeta := First(A, x -> Ord(x) = 6);
+        beta := First(A, x -> Ord(x) = 6);
     fi;
 
     # Use Ord(alpha) = 2^(ld - 2) or p^(ld - 1) to find alpha.
@@ -83,28 +83,28 @@ function(p, ld)
         alpha := First(A, x -> Ord(x) = p^(ld-1) and (x[1] mod p = 1) and (x[2] mod p = 0));
     fi;
 
-    # Use powers of alpha and zeta to index elements in A.
-    Agrp := List(Cartesian([0..Ord(alpha)-1], [0..Ord(zeta)-1]), x ->
+    # Use powers of alpha and beta to index elements in A.
+    Agrp := List(Cartesian([0..Ord(alpha)-1], [0..Ord(beta)-1]), x ->
             [
                 [x[1], x[2]],
-                Prod(Pow(alpha,x[1]), Pow(zeta, x[2]))
+                Prod(Pow(alpha,x[1]), Pow(beta, x[2]))
             ]);
 
     # Use (i, j) to index chars. Each chi(i, j) is a function Agrp -> C^*.
     Char := function(i, j)
         local Chi;
         Chi := function(x)
-            return E(Ord(alpha))^(x[1]*i) * E(Ord(zeta))^(x[2]*j);
+            return E(Ord(alpha))^(x[1]*i) * E(Ord(beta))^(x[2]*j);
         end;
         return Chi;
     end;
 
     # function to determine if chi is primitive.
     if ld = 1 then
-        # alpha is trivial; chi is primitive if injective on zeta (the second factor)
+        # alpha is trivial; chi is primitive if injective on beta (the second factor)
         # not described explicitly in NW; inferred from the tables on pp.521-522.
         IsPrim := function(chi)
-            return Ord(zeta) = Order(chi([0,1]));
+            return Ord(beta) = Order(chi([0,1]));
         end;
     elif p = 2 and ld = 2 then
         # special case: chi is primitive if chi(-1) = -1 (see NW p.494).
@@ -197,7 +197,7 @@ function(p, ld, chi_index)
         Info(InfoSL2Reps, 2, "SL2Reps : chi is primitive.");
 
         if AsSet(List(Agrp, x -> Chi(x[1])^2)) = [1] then
-            # This should only be possible if p=2, ld=3 (and thus ord(alpha) = 2, ord(zeta) = 6).
+            # This should only be possible if p=2, ld=3 (and thus ord(alpha) = 2, ord(beta) = 6).
             # In that case, chi_index = [1,0] and [1,3] are prim. but also square to 1;
             # the rep. then decomposes into two full-level irreps, which are extracted via
             # a base-change (see below).

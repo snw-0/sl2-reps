@@ -11,7 +11,7 @@ function(p, ld, si, r, t)
     local l, ls, m1, m2, M, tM, pM,
             Prod, Pow, Ord, Nm,
             t_rep, r_rep,
-            A, A01, Aind, Agrp, alpha, zeta, zeta_coords, AOrbit,
+            A, A01, Aind, Agrp, alpha, beta, beta_coords, AOrbit,
             Char, omicron, IsPrim, c,
             a, b;
 
@@ -107,7 +107,7 @@ function(p, ld, si, r, t)
                 Error("This type is the same as Type N.");
             elif ld = 4 then
                 alpha := [1,0];
-                zeta := [7,0];
+                beta := [7,0];
                 Agrp := [[0,0, [1, 0]], [0,1, [7,0]]];
                 omicron := [[1,0], alpha];
 
@@ -146,14 +146,14 @@ function(p, ld, si, r, t)
                 else
                     alpha := [(1 - (2^(ld-3) * t)) mod m1, 1];
                 fi;
-                zeta := [-1 mod m1, 0];
+                beta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
             fi;
 
             Aind := Cartesian([0 .. 1], [0 .. 1]);
             Agrp := List(Aind, x -> [
                     [x[1], x[2]],
-                    Prod(Pow(alpha, x[1]), Pow(zeta, x[2]))
+                    Prod(Pow(alpha, x[1]), Pow(beta, x[2]))
                     ]);
 
             Char := function(i, j)
@@ -171,7 +171,7 @@ function(p, ld, si, r, t)
             #
             # Then, we apply table on p. 496, NW part II to find generators of A.
             # In all cases except ld=3, si=0, t=5 (for which see below)
-            # we have A = <alpha> x <zeta> with zeta = [-1,0] or [0,1].
+            # we have A = <alpha> x <beta> with beta = [-1,0] or [0,1].
             #
             # A character is primitive if injective on:
             # <-1>, when ld = 3 and si = 0,
@@ -184,7 +184,7 @@ function(p, ld, si, r, t)
                     if ld = 3 then
                         # Unique case: ord(alpha) = 1.
                         alpha := [1,0];
-                        zeta := [0,1];
+                        beta := [0,1];
                         omicron := [[0,2], [-1 mod m1, 0]];
                     else
                         # Note: NW give alpha = (4, 1 mod 4) here.
@@ -196,18 +196,18 @@ function(p, ld, si, r, t)
                         #
                         # We therefore use the latter throughout.
                         alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 4);
-                        zeta := [0,1];
+                        beta := [0,1];
                         omicron := [[1,0], alpha];
                     fi;
                 elif r in [1,3] and t = 5 then
                     if ld = 3 then
                         # Unique case: see footnote NW p. 496.
                         alpha := [1,0];
-                        zeta := [2,1];
+                        beta := [2,1];
                         omicron := [[0,2], [-1 mod m1, 0]];
                     else
                         alpha := First(A, x -> x[1] = 2 and (x[2] mod 4) = 3);
-                        zeta := [-1 mod m1, 0];
+                        beta := [-1 mod m1, 0];
                         if ld = 4 then
                             omicron := [[2,1],
                                     Prod([-1 mod m1, 0], Pow(alpha, 2))];
@@ -218,11 +218,11 @@ function(p, ld, si, r, t)
                 elif r = 1 and t in [3,7] then
                     if ld = 3 then
                         alpha := [1,0];
-                        zeta := [-1 mod m1, 0];
+                        beta := [-1 mod m1, 0];
                         omicron := [[0,1], [-1 mod m1, 0]];
                     else
                         alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 4);
-                        zeta := [-1 mod m1, 0];
+                        beta := [-1 mod m1, 0];
                         omicron := [[1,0], alpha];
                     fi;
                 fi;
@@ -232,30 +232,30 @@ function(p, ld, si, r, t)
                 # but for this question they differ only in which alpha is selected,
                 # not the criterion therefore.
                 alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 2);
-                zeta := [-1 mod m1, 0];
+                beta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
             elif si = 2 then
                 r_rep := r mod 4;
                 alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 2);
-                zeta := [-1 mod m1, 0];
+                beta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
             else
                 r_rep := r mod 8;
                 alpha := First(A, x -> (x[1] mod 4 = 1) and x[2] = 1);
-                zeta := [-1 mod m1, 0];
+                beta := [-1 mod m1, 0];
                 omicron := [[1,0], alpha];
             fi;
 
-            Aind := Cartesian([0 .. Ord(alpha) - 1], [0 .. Ord(zeta) - 1]);
+            Aind := Cartesian([0 .. Ord(alpha) - 1], [0 .. Ord(beta) - 1]);
             Agrp := List(Aind, x -> [
                     [x[1], x[2]],
-                    Prod(Pow(alpha, x[1]), Pow(zeta, x[2]))
+                    Prod(Pow(alpha, x[1]), Pow(beta, x[2]))
                     ]);
 
             Char := function(i, j)
                 local Chi;
                 Chi := function(x)
-                    return E(Ord(alpha))^(x[1]*i) * E(Ord(zeta))^(x[2]*j);
+                    return E(Ord(alpha))^(x[1]*i) * E(Ord(beta))^(x[2]*j);
                 end;
                 return Chi;
             end;
@@ -263,10 +263,10 @@ function(p, ld, si, r, t)
     else
         if p = 3 and ld >= 3 and si = 1 and t = 1 then
             # Special case:
-            # A is not cyclic; instead, A = <alpha> x <zeta>
-            # where Ord(alpha) = 3^(ld-2) and Ord(zeta) = 6.
+            # A is not cyclic; instead, A = <alpha> x <beta>
+            # where Ord(alpha) = 3^(ld-2) and Ord(beta) = 6.
             #
-            # alpha and -zeta are both found in the group A_0 - A_1.
+            # alpha and -beta are both found in the group A_0 - A_1.
             #
             # pM is fixed pointwise by the subgroup generated by
             # alpha^(3^(ld-3)) = [1, 3^(ld-2)].
@@ -275,20 +275,20 @@ function(p, ld, si, r, t)
             if ld = 3 then
                 # Unique case; alpha = alpha^(3^(ld-3)).
                 alpha := [1,3];
-                zeta := [23,7];
+                beta := [23,7];
             else
-                zeta_coords := List([1,3,5],
+                beta_coords := List([1,3,5],
                         x -> (1 + 3 * (1/2) * ((x * 3^(ld-2)) - 1)) mod m1);
                 A01 := Filtered(A, x -> (x[1] mod (ls*t) = 1) and (x[2] mod p <> 0));
-                alpha := First(A01, x -> not x[1] in zeta_coords);
-                zeta := Prod([-1 mod m1, 0], First(A01, x -> x[1] in zeta_coords));
+                alpha := First(A01, x -> not x[1] in beta_coords);
+                beta := Prod([-1 mod m1, 0], First(A01, x -> x[1] in beta_coords));
             fi;
             omicron := [[1,0], alpha];
 
             Aind := Cartesian([0 .. (3^(ld-2)) - 1], [0 .. 5]);
             Agrp := List(Aind, x -> [
                     [x[1], x[2]],
-                    Prod(Pow(alpha, x[1]), Pow(zeta, x[2]))
+                    Prod(Pow(alpha, x[1]), Pow(beta, x[2]))
                     ]);
 
             Char := function(i, j)
