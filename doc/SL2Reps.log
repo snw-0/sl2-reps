@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  24 NOV 2021 13:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  28 NOV 2021 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -582,7 +582,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 564--570
 \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 [\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 ch
 i_\T1/cmtt/m/n/10.95 {\T1/ptm/m/n/10.95 i,j\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.9
 5 (\T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 alpha\T1/cmtt/m/n/10.95 ^{\T1/ptm/m/n/
-10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 zeta\T1/cmtt/m/n/10.95 ^{\T1/ptm/
+10.95 v\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 beta\T1/cmtt/m/n/10.95 ^{\T1/ptm/
 m/n/10.95 w\T1/cmtt/m/n/10.95 }\T1/ptm/m/n/10.95 ) \T1/cmtt/m/n/10.95 \\T1/ptm/
 m/n/10.95 mapsto \T1/cmtt/m/n/10.95 \\T1/ptm/m/n/10.95 mathbf\T1/cmtt/m/n/10.95
  {\T1/ptm/m/n/10.95 e\T1/cmtt/m/n/10.95 }\\T1/ptm/m/n/10.95 left(\T1/cmtt/m/n/1
@@ -636,7 +636,7 @@ f-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on SL2Reps.pdf (15 pages, 240906 bytes).
+Output written on SL2Reps.pdf (15 pages, 240510 bytes).
 PDF statistics:
  393 PDF objects out of 1000 (max. 8388607)
  340 compressed objects within 4 object streams

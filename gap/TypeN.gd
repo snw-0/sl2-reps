@@ -19,7 +19,7 @@
 #!
 #!  `Agrp` is a list describing the elements of $\mathfrak{A}$.
 #!  Each element $a \in \mathfrak{A}$ is represented in `Agrp` by a list `[v, a]`,
-#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}$.
+#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$.
 #!  Note that $\alpha$ is trivial, and hence `v[1]` is irrelevant, when $\mathfrak{A}$ is cyclic.
 #!
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which

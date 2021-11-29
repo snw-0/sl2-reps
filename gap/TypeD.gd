@@ -15,10 +15,10 @@
 #!
 #!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$,
 #!  have the form $\chi_{i,j}$, given by
-#!  \[\chi_{i,j}(\alpha^{v}\zeta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\]
+#!  \[\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,\]
 #!  where $i$ and $j$ are integers.  We therefore represent each character by a list `[i,j]`.
-#!  Note that $\mathfrak{A}$ may be cyclic, in which case $\alpha$ or $\beta$ will be trivial, and the corresponding
-#!  index $i$ or $j$ will be irrelevant.
+#!  Note that in some cases $\alpha$ or $\beta$ is trivial, and the corresponding index
+#!  $i$ or $j$ is therefore irrelevant.
 
 #! @Section Representations of type D
 #!
@@ -33,8 +33,8 @@
 #!
 #!  `Agrp` is a list describing the elements of $\mathfrak{A}$.
 #!  Each element $a \in \mathfrak{A}$ is represented in `Agrp` by a list `[v, a, a_inv]`,
-#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}$.
-#!  Note that $\zeta$ is trivial, and hence `v[2]` is irrelevant, when $\mathfrak{A}$ is cyclic.
+#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$.
+#!  Note that $\beta$ is trivial, and hence `v[2]` is irrelevant, when $\mathfrak{A}$ is cyclic.
 #!
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which
 #!  correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace

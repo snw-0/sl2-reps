@@ -31,12 +31,12 @@ function(degree)
         if p + 1 = degree and p > 3 then
             # D_1(chi), for chi primitive, chi^2 != 1.
             # Defined for p >= 3.
-            # A = <alpha>, ord(alpha) = p-1.
-            # All characters are primitive, so we exclude only the trivial one.
-            # Relevant character indices: [(1..(p-3)/2), 0].
+            # A = <beta> (alpha is trivial) with ord(beta) = p-1.
+            # All non-trivial characters are primitive.
+            # Relevant character indices: [0, (1..(p-3)/2)].
             for i in [1 .. (p-3)/2] do
-                rho := SL2IrrepD(p, 1, [i, 0])[1];
-                name := Concatenation("D_1([", String(i), ",0])");
+                rho := SL2IrrepD(p, 1, [0, i])[1];
+                name := Concatenation("D_1([0,", String(i), "])");
                 _SL2RecordIrrep(irrep_list, name, rho, l);
             od;
         fi;
@@ -97,15 +97,32 @@ function(degree)
             l := p^ld;
             if (p+1)*p^(ld-1) = degree then
                 # D_ld(chi), for chi primitive, chi^2 != 1.
-                # A = <alpha>, with ord(alpha) = p^ld - p^(ld-1).
-                # chi is primitive iff it is injective on <1+p = omega>; this occurs
-                # when the index of chi is coprime to p.
-                for i in [1 .. (l - l/p)/2 - 1] do
-                    if Gcd(i, p) = 1 then
-                        rho := SL2IrrepD(p, ld, [i, 0])[1];
-                        name := Concatenation("D_", String(ld), "([", String(i), ",0])");
-                        _SL2RecordIrrep(irrep_list, name, rho, l);
+                # A = <alpha> x <beta>, with ord(alpha) = p^(ld-1) and ord(beta) = p-1.
+                # chi is primitive iff it is injective on <alpha>.
+                # Remember chi and bar(chi) give same rep; for j = 0 or (p-1)/2,
+                # bar(chi(i,j)) = chi(-i, j).
+                # We handle that case first:
+                for i in PrimeResidues(p^(ld-1)) do
+                    if i > p^(ld-1) / 2 then
+                        break;
                     fi;
+                    rho := SL2IrrepD(p, ld, [i, 0])[1];
+                    name := Concatenation("D_", String(ld), "([", String(i), ",0])");
+                    _SL2RecordIrrep(irrep_list, name, rho, l);
+
+                    rho := SL2IrrepD(p, ld, [i, (p-1)/2])[1];
+                    name := Concatenation("D_", String(ld), "([", String(i), ",", String((p-1)/2), "])");
+                    _SL2RecordIrrep(irrep_list, name, rho, l);
+                od;
+                # Then the rest:
+                for i in PrimeResidues(p^(ld-1)) do
+                    for j in [1 .. (p-3)/2] do
+                        if Gcd(i, p) = 1 then
+                            rho := SL2IrrepD(p, ld, [i, j])[1];
+                            name := Concatenation("D_", String(ld), "([", String(i), ",", String(j), "])");
+                            _SL2RecordIrrep(irrep_list, name, rho, l);
+                        fi;
+                    od;
                 od;
             fi;
 
@@ -115,6 +132,7 @@ function(degree)
                 # chi is primitive if injective on <alpha>.
                 # Remember chi and bar(chi) give same rep; for j = 0 or (p+1)/2,
                 # bar(chi(i,j)) = chi(-i, j).
+                # We handle that case first:
                 for i in PrimeResidues(p^(ld-1)) do
                     if i > p^(ld-1) / 2 then
                         break;
@@ -127,6 +145,7 @@ function(degree)
                     name := Concatenation("N_", String(ld), "([", String(i), ",", String((p+1)/2), "])");
                     _SL2RecordIrrep(irrep_list, name, rho, l);
                 od;
+                # Then the rest:
                 for i in PrimeResidues(p^(ld-1)) do
                     for j in [1 .. (p-1)/2] do
                         rho := SL2IrrepN(p, ld, [i, j])[1];
@@ -1041,16 +1060,14 @@ function(p, ld)
         if ld = 1 then
             # D_1(chi), for chi primitive, chi^2 != 1.
             # Defined for p >= 3.
-            # A = <alpha>, ord(alpha) = p-1.
-            # All characters are primitive, so we exclude only the trivial one.
-            # Relevant character indices: [(1..(p-3)/2), 0].
-            if p > 3 then
-                for i in [1 .. (p-3)/2] do
-                    rho := SL2IrrepD(p, 1, [i, 0])[1];
-                    name := Concatenation("D_1([", String(i), ",0])");
-                    _SL2RecordIrrep(irrep_list, name, rho, l);
-                od;
-            fi;
+            # A = <beta> (alpha is trivial) with ord(beta) = p-1.
+            # All non-trivial characters are primitive.
+            # Relevant character indices: [0, (1..(p-3)/2)].
+            for i in [1 .. (p-3)/2] do
+                rho := SL2IrrepD(p, 1, [0, i])[1];
+                name := Concatenation("D_1([0,", String(i), "])");
+                _SL2RecordIrrep(irrep_list, name, rho, l);
+            od;
 
             # N_1(chi), for chi primitive.
             # A = <zeta>, ord(zeta) = p+1.
@@ -1085,15 +1102,32 @@ function(p, ld)
             # ld >= 2.
 
             # D_ld(chi), for chi primitive, chi^2 != 1.
-            # A = <alpha>, with ord(alpha) = p^ld - p^(ld-1).
-            # chi is primitive iff it is injective on <1+p = omega>; this occurs
-            # when the index of chi is coprime to p.
-            for i in [1 .. (l - l/p)/2 - 1] do
-                if Gcd(i, p) = 1 then
-                    rho := SL2IrrepD(p, ld, [i, 0])[1];
-                    name := Concatenation("D_", String(ld), "([", String(i), ",0])");
-                    _SL2RecordIrrep(irrep_list, name, rho, l);
+            # A = <alpha> x <beta>, with ord(alpha) = p^(ld-1) and ord(beta) = p-1.
+            # chi is primitive iff it is injective on <alpha>.
+            # Remember chi and bar(chi) give same rep; for j = 0 or (p-1)/2,
+            # bar(chi(i,j)) = chi(-i, j).
+            # We handle that case first:
+            for i in PrimeResidues(p^(ld-1)) do
+                if i > p^(ld-1) / 2 then
+                    break;
                 fi;
+                rho := SL2IrrepD(p, ld, [i, 0])[1];
+                name := Concatenation("D_", String(ld), "([", String(i), ",0])");
+                _SL2RecordIrrep(irrep_list, name, rho, l);
+
+                rho := SL2IrrepD(p, ld, [i, (p-1)/2])[1];
+                name := Concatenation("D_", String(ld), "([", String(i), ",", String((p-1)/2), "])");
+                _SL2RecordIrrep(irrep_list, name, rho, l);
+            od;
+            # Then the rest:
+            for i in PrimeResidues(p^(ld-1)) do
+                for j in [1 .. (p-3)/2] do
+                    if Gcd(i, p) = 1 then
+                        rho := SL2IrrepD(p, ld, [i, j])[1];
+                        name := Concatenation("D_", String(ld), "([", String(i), ",", String(j), "])");
+                        _SL2RecordIrrep(irrep_list, name, rho, l);
+                    fi;
+                od;
             od;
 
             # N_ld(chi), for chi primitive.

@@ -27,7 +27,7 @@
 #!
 #!  `Agrp` is a list describing the elements of $\mathfrak{A}$. Each element $a$ of
 #!  $\mathfrak{A}$ is represented in `Agrp` by a list `[v, a]`,
-#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}$.
+#!  where `v` is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$.
 #!
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which
 #!  correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace

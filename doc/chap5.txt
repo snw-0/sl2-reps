@@ -10,12 +10,12 @@
   
   [33X[0;0YCharacters  of  the abelian group [23X\mathfrak{A} = \langle\alpha\rangle \times
   \langle\beta\rangle[123X,     have     the     form    [23X\chi_{i,j}[123X,    given    by
-  \[\chi_{i,j}(\alpha^{v}\zeta^{w})                                    \mapsto
+  \[\chi_{i,j}(\alpha^{v}\beta^{w})                                    \mapsto
   \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
-  \mathbf{e}\left(\frac{wj}{|\zeta|}\right)~,\] where [23Xi[123X and [23Xj[123X are integers. We
-  therefore  represent  each character by a list [10X[i,j][110X. Note that [23X\mathfrak{A}[123X
-  may  be  cyclic,  in  which  case  [23X\alpha[123X  or [23X\beta[123X will be trivial, and the
-  corresponding index [23Xi[123X or [23Xj[123X will be irrelevant.[133X
+  \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,\] where [23Xi[123X and [23Xj[123X are integers. We
+  therefore  represent each character by a list [10X[i,j][110X. Note that in some cases
+  [23X\alpha[123X  or [23X\beta[123X is trivial, and the corresponding index [23Xi[123X or [23Xj[123X is therefore
+  irrelevant.[133X
   
   
   [1X5.1 [33X[0;0YRepresentations of type D[133X[101X
@@ -32,8 +32,8 @@
   
   [33X[0;0Y[10XAgrp[110X  is  a list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa \in
   \mathfrak{A}[123X  is  represented  in [10XAgrp[110X by a list [10X[v, a, a_inv][110X, where [10Xv[110X is a
-  list  defined by [23Xa = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}[123X. Note that
-  [23X\zeta[123X is trivial, and hence [10Xv[2][110X is irrelevant, when [23X\mathfrak{A}[123X is cyclic.[133X
+  list  defined by [23Xa = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}[123X. Note that
+  [23X\beta[123X is trivial, and hence [10Xv[2][110X is irrelevant, when [23X\mathfrak{A}[123X is cyclic.[133X
   
   [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
   which        correspond        to        a        basis        for       the
@@ -75,7 +75,7 @@
   
   [33X[0;0Y[10XAgrp[110X  is  a list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa \in
   \mathfrak{A}[123X  is  represented  in  [10XAgrp[110X  by a list [10X[v, a][110X, where [10Xv[110X is a list
-  defined  by  [23Xa  =  \alpha^{\mathtt{v[1]}}  \zeta^{\mathtt{v[2]}}[123X.  Note that
+  defined  by  [23Xa  =  \alpha^{\mathtt{v[1]}}  \beta^{\mathtt{v[2]}}[123X.  Note that
   [23X\alpha[123X  is  trivial,  and  hence  [10Xv[1][110X  is  irrelevant, when [23X\mathfrak{A}[123X is
   cyclic.[133X
   
@@ -132,7 +132,7 @@
   
   [33X[0;0Y[10XAgrp[110X  is  a  list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa[123X of
   [23X\mathfrak{A}[123X  is  represented  in  [10XAgrp[110X  by a list [10X[v, a][110X, where [10Xv[110X is a list
-  defined by [23Xa = \alpha^{\mathtt{v[1]}} \zeta^{\mathtt{v[2]}}[123X.[133X
+  defined by [23Xa = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}[123X.[133X
   
   [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
   which        correspond        to        a        basis        for       the
