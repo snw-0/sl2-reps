@@ -9,7 +9,7 @@
   form [23X(x,y)[123X and are thus represented by lists [10X[x,y][110X.[133X
   
   [33X[0;0YCharacters  of  the abelian group [23X\mathfrak{A} = \langle\alpha\rangle \times
-  \langle\beta\rangle[123X, have the form [23X\chi_{i,j}[123X, given by[133X
+  \langle\beta\rangle[123X have the form [23X\chi_{i,j}[123X, given by[133X
   
   
   [24X[33X[0;6Y\chi_{i,j}(\alpha^{v}\beta^{w})                                      \mapsto

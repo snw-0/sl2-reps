@@ -13,7 +13,7 @@
 #!  the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$
 #!  and are thus represented by lists `[x,y]`.
 #!
-#!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$,
+#!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$
 #!  have the form $\chi_{i,j}$, given by
 #!  $$\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,$$
 #!  where $i$ and $j$ are integers.  We therefore represent each character by a list `[i,j]`.

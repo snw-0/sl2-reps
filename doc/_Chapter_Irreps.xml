@@ -12,7 +12,7 @@
   the underlying module <Math>M</Math> is of rank <Math>2</Math>, so its elements have the form <Math>(x,y)</Math>
   and are thus represented by lists <Code>[x,y]</Code>.
 <P/>
-  Characters of the abelian group <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math>,
+  Characters of the abelian group <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math>
   have the form <Math>\chi_{i,j}</Math>, given by
   <Display>\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,</Display>
   where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Code>[i,j]</Code>.
