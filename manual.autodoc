@@ -93,7 +93,7 @@ acts on $M$ by $a(x,y) = (a^{-1}x, ay)$ and is thus identified with a subgroup o
         <Item>$\beta$</Item>
         <Item>$\mathfrak{A}_0$</Item>
     </Row>
-    <HorLine></HorLine>
+    <HorLine/>
     <Row>
         <Item>$>2$</Item>
         <Item>$1$</Item>
@@ -144,7 +144,7 @@ The group $\mathfrak{A}$ has order $p^{\lambda-1}(p+1)$ and $\mathfrak{A} = \lan
         <Item>$\beta$</Item>
         <Item>$\mathfrak{A}_0$</Item>
     </Row>
-    <HorLine></HorLine>
+    <HorLine/>
     <Row>
         <Item>$>2$</Item>
         <Item>$1$</Item>
@@ -218,7 +218,7 @@ of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of
             <Item>$\beta$</Item>
             <Item>$\mathfrak{A}_0$</Item>
         </Row>
-        <HorLine></HorLine>
+        <HorLine/>
         <Row>
             <Item>$3$</Item>
             <Item>$2$</Item>
@@ -277,7 +277,7 @@ of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of
             <Item>$\beta$</Item>
             <Item>$\mathfrak{A}_0$</Item>
         </Row>
-        <HorLine></HorLine>
+        <HorLine/>
         <Row>
             <Item>$3$</Item>
             <Item>$0$</Item>

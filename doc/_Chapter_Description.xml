@@ -94,7 +94,7 @@ acts on <Math>M</Math> by <Math>a(x,y) = (a^{-1}x, ay)</Math> and is thus identi
         <Item><Math>\beta</Math></Item>
         <Item><Math>\mathfrak{A}_0</Math></Item>
     </Row>
-    <HorLine></HorLine>
+    <HorLine/>
     <Row>
         <Item><Math>>2</Math></Item>
         <Item><Math>1</Math></Item>
@@ -150,7 +150,7 @@ The group <Math>\mathfrak{A}</Math> has order <Math>p^{\lambda-1}(p+1)</Math> an
         <Item><Math>\beta</Math></Item>
         <Item><Math>\mathfrak{A}_0</Math></Item>
     </Row>
-    <HorLine></HorLine>
+    <HorLine/>
     <Row>
         <Item><Math>>2</Math></Item>
         <Item><Math>1</Math></Item>
@@ -228,7 +228,7 @@ of <Math>M^\times</Math> acts on <Math>M</Math> by multiplication and is identif
             <Item><Math>\beta</Math></Item>
             <Item><Math>\mathfrak{A}_0</Math></Item>
         </Row>
-        <HorLine></HorLine>
+        <HorLine/>
         <Row>
             <Item><Math>3</Math></Item>
             <Item><Math>2</Math></Item>
@@ -286,7 +286,7 @@ of <Math>M^\times</Math> acts on <Math>M</Math> by multiplication and is identif
             <Item><Math>\beta</Math></Item>
             <Item><Math>\mathfrak{A}_0</Math></Item>
         </Row>
-        <HorLine></HorLine>
+        <HorLine/>
         <Row>
             <Item><Math>3</Math></Item>
             <Item><Math>0</Math></Item>

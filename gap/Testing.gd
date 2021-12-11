@@ -22,5 +22,5 @@ DeclareGlobalFunction( "SL2ChiST" );
 #! @Arguments p,lambda
 #! @Returns a boolean.
 #! @Description Constructs and tests all irreps of level dividing $p^\lambda$ by checking their
-#! positions in `Irr(G)` (see [GAP documentation]).
+#! positions in `Irr(G)` (see <URL> <Link>https://www.gap-system.org/Manuals/doc/ref/chap71.html#X873B3CC57E9A5492</Link><LinkText>Section 71.8-2 of the GAP Manual</LinkText></URL>).
 DeclareGlobalFunction( "SL2IrrepPositionTest" );
