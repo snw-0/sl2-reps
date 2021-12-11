@@ -23,7 +23,7 @@ Specific irreducible representations may be constructed via the methods in Chapt
 This package uses an `InfoClass`, `InfoSL2Reps`. It may be set to `0` (silent),
 `1` (info), or `2` (verbose). To change it, use
 
-`gap> SetInfoLevel(InfoSL2Reps, k);`
+`gap> SetInfoLevel( InfoSL2Reps, k );`
 
 @Chapter Description
 
@@ -36,7 +36,7 @@ We therefore present representations in the form of a record `rec(S, T, degree, 
 
 Note that our definition of $\mathfrak{s}$ follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. $\mathfrak{s}$ = `[[0,-1],[1,0]]` (under which convention the relations are $\mathfrak{s}^4 = \mathrm{id}$, $(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2$). When working with that convention, one must invert the $S$ matrices output by this package.
 
-Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$).
+Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$).  For a group $G$, we denote by $\widehat{G}$ the character group $\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)$.
 
 @Section Construction
 
@@ -44,93 +44,334 @@ Any representation $\rho$ of $\mathrm{SL}_2(\mathbb{Z})$ can be decomposed into 
 
 @Subsection Weil representations
 
-Such representations may be constructed using Weil representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  We give a brief summary of the process here.  First, if $M$ is any additive abelian group, a **quadratic form** on $M$ is a map $Q : M \to \mathbb{Q}/\mathbb{Z}$ such that $Q(-x) = Q(x)$ for all $x \in M$ and $B(x,y) = Q(x+y) - Q(x) - Q(y)$ defines a $\mathbb{Z}$-bilinear map $M \times M \to \mathbb{Q}/\mathbb{Z}$.
+Such representations may be constructed using Weil representations as described in <Cite Key="Nobs1" Where="Section 1"/>.  We give a brief summary of the process here.  First, if $M$ is any additive abelian group, a **quadratic form** on $M$ is a map $Q : M \to \mathbb{Q}/\mathbb{Z}$ such that
+<List>
+    <Item>$Q(-x) = Q(x)$ for all $x \in M$, and</Item>
+    <Item>$B(x,y) = Q(x+y) - Q(x) - Q(y)$ defines a $\mathbb{Z}$-bilinear map $M \times M \to \mathbb{Q}/\mathbb{Z}$.</Item>
+</List>
 
-Now let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ and a quadratic form $Q$ on $M$ such that the pair $(M,Q)$ is of one of the three types described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Each such $M$ is a ring, and has at most 2 cyclic factors as an additive group.  Those with 2 cyclic factors may be identified with a quotient of the quadratic integers, giving a norm on $M$.  Then the **quadratic module** $(M,Q)$ gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$.  This representation is denoted $W(M,Q)$.
+Now let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$.  Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ and a quadratic form $Q$ on $M$ such that the pair $(M,Q)$ is of one of the three types described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Each such $M$ is a ring, and has at most 2 cyclic factors as an additive group.  Those with 2 cyclic factors may be identified with a quotient of the quadratic integers, giving a norm on $M$.  Then the **quadratic module** $(M,Q)$ gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$.  This representation is denoted $W(M,Q)$.  Note that the **central charge** of $(M,Q)$ is given by $S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))$.
 
-We may construct subrepresentations $W(M,Q,\chi)$ of $W(M,Q)$ as follows.  Let
-$$\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}$$
-and denote by $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$ the abelian subgroup defined in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$.  Let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (character) of $\mathfrak{A}$, and define
+We may construct subrepresentations $W(M,Q,\chi)$ of $W(M,Q)$ as follows.  Denote
+$$\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}~.$$
+We then associate to $(M,Q)$ an abelian subgroup $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$; the structure of this group depends on $(M,Q)$ and is described in Section <Ref Sect="Chapter_Description_Section_Weil"/>.  Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$.  Now, let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (**character**) of $\mathfrak{A}$, and define
 $$V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,$$
-which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$.  We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$.
+which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$.  We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. Note that $W(M,Q,\chi) \cong W(M,Q,\overline{\chi})$.
 
 @Subsection Primitive characters
 
-We will frequently refer to a character $\chi$ as being **primitive**.  With the exception of a single family of modules of type $R$ (the **extremal** case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>) primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM$ pointwise.  In the extremal case, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ (see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/> for an explicit definition of $\alpha$) and $\chi$ is primitive if $\chi(\alpha) = -1$.
+For the abelian groups $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$, we will frequently refer to a character $\chi \in \widehat{\mathfrak{A}}$ as being **primitive**.  With the exception of a single family of modules of type $R$ (the **extremal** case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>), primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM \subset M$ pointwise.  There exists a subgroup $\mathfrak{A}_0 \leq \mathfrak{A}$ such that a non-trivial $\chi \in \widehat{\mathfrak{A}}$ is primitive if and only if $\chi$ is injective on $\mathfrak{A}_0$ (or, equivalently, if $\mathfrak{A}_0 \cap \operatorname{ker} \chi$ is trivial).
 
-Explicit descriptions of the primitive characters for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
+Explicit descriptions of the group $\mathfrak{A}_0$ and the primitive characters of $\mathfrak{A}$ for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
 
 @Subsection Irrep types
 
 The prime-power irreps then fall into three cases.
 <List>
     <Item>The overwhelming majority are of the form $W(M,Q,\chi)$ for $\chi$ primitive and $\chi^2 \neq 1$; we call these **standard**. This includes the primitive characters from the extremal case.</Item>
-    <Item>A finite number, and a single infinite family arising from the extremal case (Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>), are instead constructed by using non-primitive characters or primitive characters $\chi$ with $\chi^2 = 1$.  We call these **non-standard**.</Item>
+    <Item>A finite number, and a single infinite family arising from the extremal case (Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>), are instead constructed by using non-primitive characters or primitive characters $\chi$ with $\chi^2 = 1$.  We call these **non-standard**.</Item>
     <Item>Finally, 18 **exceptional** irreps are constructed as tensor products of two irreps from the other two cases.</Item>
 </List>
 
-All the finite-dimensional irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can now be constructed by taking tensor products of these prime-power irreps.  Note that, if two representations are defined by pairs `[S1,T1]` and `[S2,T2]`, then their tensor product may be calculated via the GAP command `KroneckerProduct`, namely as `[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]`.
+All the finite-dimensional irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can now be constructed by taking tensor products of these prime-power irreps.  Note that, if two representations are determined by pairs `[S1,T1]` and `[S2,T2]`, then the pair for their tensor product may be calculated via the GAP command `KroneckerProduct`, namely as `[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]`.
 
 @Section Weil
 @SectionTitle Weil representation types
 
 @Subsection Type D
 
-Let $p$ be prime.  If $p=2$ or $p=3$, let $\lambda \geq 2$; otherwise, let $\lambda \geq 1$.  Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{xy}{p^\lambda}$ is said to be of type $D$ and denoted $D(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepD"/>.
+Let $p$ be prime.  If $p=2$ or $p=3$, let $\lambda \geq 2$; otherwise, let $\lambda \geq 1$.  Then the Weil representation arising from the quadratic module with $$M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{xy}{p^\lambda}$$ is said to be of type $D$ and denoted $D(p,\lambda)$.  Information on type $D$ quadratic modules may be obtained via <Ref Func="SL2ModuleD"/>, and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepD"/>.
 
-Here we define
+The group
 $$\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times$$
-acting on $M$ by $a(x,y) = (a^{-1}x, ay)$; see <Cite Key="NW76" Where="Section 2.1"/>. This group has the following structure. When $p=2$, $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha = 5$ (of order $2^{\lambda-2}$; notably, for $\lambda=2$, $\alpha$ is trivial) and $\beta = -1$. Otherwise, $\mathfrak{A}$ is cyclic; in this case, we write $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha = p+1$ (of order $p^{\lambda-1}$; for $\lambda=1$, $\alpha$ is trivial) and $\beta$ an arbitrarily chosen element of order $p+1$.
-
-For type $D$, a non-trivial character of $\mathfrak{A}$ is primitive if and only if it is injective on the cyclic subgroup of $\mathfrak{A}$ of maximal $p$-power order, which is generated by $\alpha$.  As a particular case, when $\alpha$ is trivial (i.e. $p=2$ and $\lambda=2$ or $p$ odd and $\lambda=1$), all non-trivial characters are primitive.
+acts on $M$ by $a(x,y) = (a^{-1}x, ay)$ and is thus identified with a subgroup of $\operatorname{Aut}(M,Q)$; see <Cite Key="NW76" Where="Section 2.1"/>. The group $\mathfrak{A}$ has order $p^{\lambda-1}(p-1)$ and $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$.  The relevant information for type $D$ quadratic modules is as follows:
+<Table Align="ccccc">
+    <Row>
+        <Item>$p$</Item>
+        <Item>$\lambda$</Item>
+        <Item>$\alpha$</Item>
+        <Item>$\beta$</Item>
+        <Item>$\mathfrak{A}_0$</Item>
+    </Row>
+    <HorLine></HorLine>
+    <Row>
+        <Item>$>2$</Item>
+        <Item>$1$</Item>
+        <Item>$1$</Item>
+        <Item>$|\beta| = p-1$</Item>
+        <Item>$\langle 1 \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$>2$</Item>
+        <Item>$>1$</Item>
+        <Item>$|\alpha| = p^{\lambda-1}$ (e.g. $\alpha = 1 + p$)</Item>
+        <Item>$|\beta| = p-1$</Item>
+        <Item>$\langle \alpha \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$2$</Item>
+        <Item>$2$</Item>
+        <Item>$1$</Item>
+        <Item>$-1$</Item>
+        <Item>$\langle 1 \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$2$</Item>
+        <Item>$>2$</Item>
+        <Item>$|\alpha| = 2^{\lambda-2}$ (e.g. $\alpha = 5$)</Item>
+        <Item>$-1$</Item>
+        <Item>$\langle \alpha \rangle$</Item>
+    </Row>
+</Table>
+When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive.
 
 @Subsection Type N
 
-Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, choose an integer $u$ so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, define $u=3$.  Then the Weil representation arising from the quadratic module with $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}$ and $Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$ is said to be of type $N$ and denoted $N(p,\lambda)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepN"/>.
+Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, let $u$ be a positive integer so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, let $u=3$.  Then the Weil representation arising from the quadratic module with $$M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}$$ is said to be of type $N$ and denoted $N(p,\lambda)$.  Information on type $N$ quadratic modules may be obtained via <Ref Func="SL2ModuleN"/>, and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepN"/>.
 
-Here we define
+The additive group $M$ is a ring with multiplication given by
+$$(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - \frac{1+u}{4}y_1y_2, x_1y_2 + x_2y_1 + y_1y_2)$$
+and identity element $(1,0)$.  We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + \frac{1+u}{4}y^2$ on $M$; then the multiplicative subgroup
 $$\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}$$
-acting on $M$ by multiplication; see <Cite Key="NW76" Where="Section 2.2"/>. This group has the following structure. When $\lambda \geq 2$, it is generated by $\alpha$ and $\beta$: for $p=2$, $|\alpha| = 2^{\lambda-2}$ and $|\beta| = 6$, while for $p \neq 2$, $|\alpha| = p^{\lambda-1}$ and $|\beta| = p+1$.  On the other hand, when $\lambda = 1$, $\mathfrak{A}$ is cyclic; in this case, we choose a generator $\beta$ with $|\beta| = p+1$ and (for simplicity) say $\alpha = 1$.
+of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see <Cite Key="NW76" Where="Section 2.2"/>.
 
-For type $N$ with $p=2$, $\lambda=2$, a non-trivial character of $\mathfrak{A}$ is primitive if and only if $\chi(-1) = -1$.  For all other type $N$ cases, a character of $\mathfrak{A}$ is primitive if and only if it is injective on the subgroup $\langle\alpha\rangle \leq \mathfrak{A}$.  Note that, when $\lambda = 1$, $\alpha = 1$, so all non-trivial characters are primitive.
+The group $\mathfrak{A}$ has order $p^{\lambda-1}(p+1)$ and $\mathfrak{A} = \langle \alpha \rangle \times \langle \beta \rangle$.  The relevant information for type $N$ quadratic modules is as follows:
+<Table Align="ccccc">
+    <Row>
+        <Item>$p$</Item>
+        <Item>$\lambda$</Item>
+        <Item>$\alpha$</Item>
+        <Item>$\beta$</Item>
+        <Item>$\mathfrak{A}_0$</Item>
+    </Row>
+    <HorLine></HorLine>
+    <Row>
+        <Item>$>2$</Item>
+        <Item>$1$</Item>
+        <Item>$(1,0)$</Item>
+        <Item>$|\beta| = p+1$</Item>
+        <Item>$\langle (1,0) \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$>2$</Item>
+        <Item>$>1$</Item>
+        <Item>$|\alpha| = p^{\lambda-1}$</Item>
+        <Item>$|\beta| = p+1$</Item>
+        <Item>$\langle \alpha \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$2$</Item>
+        <Item>$1$</Item>
+        <Item>$(1,0)$</Item>
+        <Item>$|\beta| = 3$</Item>
+        <Item>$\langle (1,0) \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$2$</Item>
+        <Item>$2$</Item>
+        <Item>$(1,0)$</Item>
+        <Item>$|\beta| = 6$</Item>
+        <Item>$\langle (-1,0) \rangle$</Item>
+    </Row>
+    <Row>
+        <Item>$2$</Item>
+        <Item>$>2$</Item>
+        <Item>$|\alpha| = p^{\lambda-2}$</Item>
+        <Item>$|\beta| = 6$</Item>
+        <Item>$\langle \alpha \rangle$</Item>
+    </Row>
+</Table>
+When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive.
 
 @Subsection Type R
+@SubsectionTitle Type R, generic cases
 
-The structure of $(M,Q)$ of type $R$ depends upon three additional parameters: $\sigma$, $r$, and $t$. The relevant values thereof depend on whether $p=2$, as follows.
+The structure of the quadratic module $(M,Q)$ of type $R$ depends upon three additional parameters: $\sigma$, $r$, and $t$. Details are as follows:
 
-First, if $p$ is an odd prime, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda\}$, and $r,t \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$.  Then define $M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}$ and $Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}$.
-
-On the other hand, if $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define $M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}$ and $Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}$.
-
-In either case, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$.  Information on $(M,Q)$ may be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.
-
-There are two special cases to consider. First, if $\sigma = \lambda$ for $p \neq 2$, then the second factor of $M$ is trivial (and hence $t$ is irrelevant); this special case is handled by <Ref Func="SL2IrrepRUnary"/> (which is called by <Ref Func="SL2IrrepR"/> when appropriate).
-
-Second, if $\sigma = \lambda - 2$ for $p = 2$, $\lambda \geq 2$, then the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and collapses in $2M$; we call this case the **extremal** family. Here, $\operatorname{Aut}(M,Q)$ is itself abelian, so we let $\mathfrak{A} = \operatorname{Aut}(M,Q)$. This group has the following structure:
 <List>
-    <Item>For $\lambda = 2$, $t=1$, $\mathfrak{A} = \langle \tau \rangle$ where $\tau : (x,y) \mapsto (y,x)$; a character $\chi$ is primitive if $\chi(\tau) = -1$.</Item>
-    <Item>For $\lambda = 2$, $t = 3$, $\mathfrak{A}$ is trivial; there are no primitive characters.</Item>
-    <Item>For $\lambda = 3$ or $4$, $\mathfrak{A} = \{\pm 1\}$; there are no primitive characters.</Item>
-    <Item>Finally, for $\lambda \geq 5$, $\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle$ with $\alpha \neq -1$ of order 2, and a character $\chi \in \widehat{\mathfrak{A}}$ is primitive if $\chi(\alpha) = -1$. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of $\mathfrak{A}$ fixing $2M$ pointwise.</Item>
+    <Item>If $p$ is odd, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda\}$, and $r,t \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$.  Then define $$M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.$$
+    When $\sigma = \lambda$, the second factor of $M$ is trivial, and $(M,Q)$ is said to be in the **unary** family; otherwise, it is called **generic**.</Item>
+    <Item>If $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define $$M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.$$
+    When $\sigma = \lambda - 2$, the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and $(M,Q)$ is said to be in the **extremal** family; otherwise, it is called **generic**.</Item>
 </List>
 
-Outside of the above two special cases, we define
+In all cases, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$.  The additive group $M$ admits a ring structure with multiplication
+$$(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)$$
+and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2$ on $M$.
+
+In this section, we detail generic type $R$ quadratic modules. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
+
+Let $(M,Q)$ be a generic type $R$ quadratic modules.  Information on $(M,Q)$ can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.
+
+The multiplicative subgroup
 $$\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}$$
-acting on $M$ by multiplication; see <Cite Key="NW76" Where="Section 2.3 - 2.4"/>. The structure of $\mathfrak{A}$ is as follows, and a character is primitive if it is injective on $\langle\omega\rangle \leq \mathfrak{A}$, with $\omega = \alpha$ except when specified:
+of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see <Cite Key="NW76" Where="Section 2.3 - 2.4"/>.  The relevant information is as follows:
 <List>
-    <Item>Suppose $p \neq 2$, $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda - 1\}$. As a special case, if $p=3$, $\lambda \geq 3$, and $\sigma=t=1$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha$ of order $3^{\lambda-2}$ and $\beta$ of order 6.  Otherwise, $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha$ of order $p^{\lambda - \sigma}$.
-    </Item>
-    <Item>Suppose $p=2$, $\lambda \geq 3$, $\sigma \in \{0, \dots, \lambda - 3\}$. Then the structure of $(M,Q)$) depends on $r,t$, but only up to an equivalence class described in <Cite Key="Nobs1" Where="Satz 4"/>; we assume without loss of generality that $r,t$ are minimal positive representatives thereunder. Then:
-    <List>
-        <Item>If $\sigma = 0$, $r \in \{1,3\}$, $t=1$, and $\lambda = 3$, then $\mathfrak{A} = \langle\beta\rangle$ with $\beta = (0,1)$ of order 4. Here $\omega = -1 = \beta^2$.</Item>
-        <Item>If $\sigma = 0$, $r \in \{1,3\}$, $t=1$, and $\lambda \geq 4$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with $\alpha = (1 \mod{4},4)$ of order $2^{\lambda-3}$ and $\beta = (0,1)$ of order 4.</Item>
-        <Item>If $\sigma = 0$, $r \in \{1,3\}$, $t=5$, and $\lambda = 3$, then $\mathfrak{A} = \langle\beta\rangle$ with $\beta = (2,1)$ of order 4. Here $\omega = -1$.</Item>
-        <Item>If $\sigma = 0$, $r \in \{1,3\}$, $t=5$, and $\lambda \geq 4$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha = (2,3 \mod{4})$ of order $2^{\lambda-2}$. Here $\omega = -\alpha^2$ when $\lambda = 4$ and $\omega = \alpha$ otherwise.</Item>
-        <Item>If $\sigma = 0$, $r = 1$, $t \in \{3,7\}$, and $\lambda = 3$, then $\mathfrak{A} = \langle-1\rangle$. Here $\omega = -1$.</Item>
-        <Item>If $\sigma = 0$, $r = 1$, $t \in \{3,7\}$, and $\lambda \geq 4$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha = (1 \mod{4},4)$ of order $2^{\lambda-3}$.</Item>
-        <Item>If $\sigma = 1$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha = (1 \mod{4},2)$ of order $2^{\lambda-3}$.</Item>
-        <Item>If $\sigma = 2$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha = (1 \mod{4},2)$ of order $2^{\lambda-4}$.</Item>
-        <Item>If $\sigma \geq 3$, then $\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle$ with $\alpha = (1 \mod{4},1)$ of order $2^{\lambda-\sigma-1}$.</Item>
-    </List>
-    </Item>
+    <Item>If $p$ is odd, $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with order $2p^{\lambda-\sigma}$.  In this case, for fixed $p$, $\lambda$, $\sigma$, each pair $(r,t)$ gives rise to a distinct quadratic module <Cite Key="Nobs1" Where="Satz 4"/>.  The following table covers a complete list of representatives of equivalence classes of such modules.
+    <Table Align="ccccccc">
+        <Row>
+            <Item>$p$</Item>
+            <Item>$\lambda$</Item>
+            <Item>$\sigma$</Item>
+            <Item>$(r,t)$</Item>
+            <Item>$\alpha$</Item>
+            <Item>$\beta$</Item>
+            <Item>$\mathfrak{A}_0$</Item>
+        </Row>
+        <HorLine></HorLine>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$2$</Item>
+            <Item>$1$</Item>
+            <Item>$r,t \in \{1,2\}$</Item>
+            <Item>$|\alpha| = 3$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$\geq 3$</Item>
+            <Item>$1$</Item>
+            <Item>$t=1$, $r \in \{1,2\}$</Item>
+            <Item>$|\alpha| = 3^{\lambda-\sigma-1}$</Item>
+            <Item>$|\beta| = 6$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$\geq 3$</Item>
+            <Item>$1$</Item>
+            <Item>$t=2$, $r \in \{1,2\}$</Item>
+            <Item>$|\alpha| = 3^{\lambda-\sigma}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$\geq 3$</Item>
+            <Item>$2,\dots,\lambda-1$</Item>
+            <Item>$r,t \in \{1,2\}$</Item>
+            <Item>$|\alpha| = 3^{\lambda-\sigma}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 5$</Item>
+            <Item>$\geq 2$</Item>
+            <Item>$1, \dots,\lambda - 1$</Item>
+            <Item>$r,t \in \{1,u\}$</Item>
+            <Item>$|\alpha| = p^{\lambda-\sigma}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+    </Table></Item>
+
+    <Item>If $p=2$, then the generic case occurs when $\lambda \geq 3$ and $\sigma \in \{0,\dots,\lambda-3\}$. Again, $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$; the order is $2^{\lambda-\sigma-k}$ with $k \in \{0,1,2\}$ (as specified below).  In this case, for fixed $p$, $\lambda$, $\sigma$, two pairs $(r_1,t_1)$ and $(r_2,t_2)$ may give rise to equivalent quadratic modules <Cite Key="Nobs1" Where="Satz 4"/>.  The following table covers a complete list of representatives of equivalence classes of such modules.
+    <Table Align="ccccccc">
+        <Row>
+            <Item>$\lambda$</Item>
+            <Item>$\sigma$</Item>
+            <Item>$r$</Item>
+            <Item>$t$</Item>
+            <Item>$\alpha = (x,y)$</Item>
+            <Item>$\beta$</Item>
+            <Item>$\mathfrak{A}_0$</Item>
+        </Row>
+        <HorLine></HorLine>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$0$</Item>
+            <Item>$1,3$</Item>
+            <Item>$1,5$</Item>
+            <Item>$(1,0)$</Item>
+            <Item>$(\frac{t-1}{2},1)$</Item>
+            <Item>$\langle (-1,0) \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$3$</Item>
+            <Item>$0$</Item>
+            <Item>$1$</Item>
+            <Item>$3,7$</Item>
+            <Item>$(1,0)$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle (-1,0) \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$4$</Item>
+            <Item>$0$</Item>
+            <Item>$1,3$</Item>
+            <Item>$5$</Item>
+            <Item>$x=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle -\alpha^2 \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 4$</Item>
+            <Item>$0$</Item>
+            <Item>$1,3$</Item>
+            <Item>$1$</Item>
+            <Item>$x \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}$</Item>
+            <Item>$(0,1)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 4$</Item>
+            <Item>$0$</Item>
+            <Item>$1$</Item>
+            <Item>$3,7$</Item>
+            <Item>$x \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 5$</Item>
+            <Item>$0$</Item>
+            <Item>$1,3$</Item>
+            <Item>$5$</Item>
+            <Item>$x=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 3$</Item>
+            <Item>$1,2$</Item>
+            <Item>$1,3,5,7$</Item>
+            <Item>$1,3,5,7$</Item>
+            <Item>$x\equiv 1 \operatorname{mod} 4, y=2, |\alpha| = 2^{\lambda-\sigma-2}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+        <Row>
+            <Item>$\geq 3$</Item>
+            <Item>$\geq 3$</Item>
+            <Item>$1,3,5,7$</Item>
+            <Item>$1,3,5,7$</Item>
+            <Item>$x\equiv 1 \operatorname{mod} 4, y=1, |\alpha| = 2^{\lambda-\sigma-1}$</Item>
+            <Item>$(-1,0)$</Item>
+            <Item>$\langle \alpha \rangle$</Item>
+        </Row>
+    </Table></Item>
 </List>
+
+
+@Subsection Type R Special
+@SubsectionTitle Type R, unary and extremal cases
+
+This section covers the unary and extremal cases of type $R$.
+
+First, in the unary family, we have $p$ odd and $\sigma = \lambda$.  Then the second factor of $M$ is trivial (and hence $t$ is irrelevant).  We then denote $R_{p^\lambda}(r) = R(p,\lambda,\lambda,r,t)$.  In this case, we do not decompose $W(M,Q)$ using characters: instead, if $\lambda \leq 2$, then $W(M,Q)$ contains two distinct irreducible subrepresentations of level $p^\lambda$, denoted $R_{p^\lambda}(r)_{\pm}$; otherwise, it contains a single such subrepresentation, denoted $R_{p^\lambda}(r)_1$.  The unary family is handled by <Ref Func="SL2IrrepRUnary"/> (which is called by <Ref Func="SL2IrrepR"/> when appropriate).
+
+Second, in the extremal family, we have $p=2$, $\lambda \geq 2$, and $\sigma = \lambda - 2$.  Then the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and collapses in $2M$.  Here, $\operatorname{Aut}(M,Q)$ is itself abelian, so we let $\mathfrak{A} = \operatorname{Aut}(M,Q)$. This group has order 1, 2, or 4, with the following structure:
+<List>
+    <Item>For $\lambda = 2$ and $t=1$, $\mathfrak{A} = \langle \tau \rangle$ where $\tau : (x,y) \mapsto (y,x)$, and $\mathfrak{A}_0 = \mathfrak{A} = \langle\tau\rangle$.</Item>
+    <Item>For $\lambda = 2$ and $t = 3$, $\mathfrak{A}$ is trivial; there are no primitive characters.</Item>
+    <Item>For $\lambda = 3$ or $4$, $\mathfrak{A} = \{\pm 1\}$ acting on $M$ by multiplication; there are no primitive characters.</Item>
+    <Item>Finally, for $\lambda \geq 5$, $\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle$ with $\alpha$ of order 2, and $\mathfrak{A}_0 = \langle\alpha\rangle$. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of $\mathfrak{A}$ fixing $2M$ pointwise.</Item>
+</List>
+The extremal family is handled by <Ref Func="SL2ModuleR"/> and <Ref Func="SL2IrrepR"/>, just like the generic case.
+
+@Chapter Irreps
+
+@Chapter Lists
+
+@Chapter Testing

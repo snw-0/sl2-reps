@@ -3,6 +3,6 @@
 <!-- This is an automatically generated file. -->
 <#Include SYSTEM "_Chapter_Introduction.xml">
 <#Include SYSTEM "_Chapter_Description.xml">
+<#Include SYSTEM "_Chapter_Irreps.xml">
 <#Include SYSTEM "_Chapter_Lists.xml">
 <#Include SYSTEM "_Chapter_Testing.xml">
-<#Include SYSTEM "_Chapter_Irreps.xml">

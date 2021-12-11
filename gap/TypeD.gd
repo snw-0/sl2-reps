@@ -15,7 +15,7 @@
 #!
 #!  Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$,
 #!  have the form $\chi_{i,j}$, given by
-#!  \[\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,\]
+#!  $$\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,$$
 #!  where $i$ and $j$ are integers.  We therefore represent each character by a list `[i,j]`.
 #!  Note that in some cases $\alpha$ or $\beta$ is trivial, and the corresponding index
 #!  $i$ or $j$ is therefore irrelevant.

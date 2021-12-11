@@ -27,11 +27,11 @@
   [1X1.2 [33X[0;0YUsage[133X[101X
   
   [33X[0;0YSpecific  irreducible  representations may be constructed via the methods in
-  Chapter [14X5[114X, while lists of irreducible representations with a given degree or
-  level may be constructed with those in Chapter [14X3[114X.[133X
+  Chapter [14X3[114X, while lists of irreducible representations with a given degree or
+  level may be constructed with those in Chapter [14X4[114X.[133X
   
   [33X[0;0YThis  package uses an [10XInfoClass[110X, [10XInfoSL2Reps[110X. It may be set to [10X0[110X (silent), [10X1[110X
   (info), or [10X2[110X (verbose). To change it, use[133X
   
-  [33X[0;0Y[10Xgap> SetInfoLevel(InfoSL2Reps, k);[110X[133X
+  [33X[0;0Y[10Xgap> SetInfoLevel( InfoSL2Reps, k );[110X[133X
   

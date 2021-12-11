@@ -35,7 +35,7 @@ Specific irreducible representations may be constructed via the methods in Chapt
 This package uses an <Code>InfoClass</Code>, <Code>InfoSL2Reps</Code>. It may be set to <Code>0</Code> (silent),
 <Code>1</Code> (info), or <Code>2</Code> (verbose). To change it, use
 <P/>
-<Code>gap> SetInfoLevel(InfoSL2Reps, k);</Code>
+<Code>gap> SetInfoLevel( InfoSL2Reps, k );</Code>
 <P/>
 </Section>
 

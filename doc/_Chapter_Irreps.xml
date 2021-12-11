@@ -4,6 +4,7 @@
 <Chapter Label="Chapter_Irreps">
 <Heading>Irreducible representations of prime-power level</Heading>
 
+<P/>
   Methods for generating individual irreducible representations of
   <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> for a given level <Math>p^\lambda</Math>.
 <P/>
@@ -13,7 +14,7 @@
 <P/>
   Characters of the abelian group <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math>,
   have the form <Math>\chi_{i,j}</Math>, given by
-  \[\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,\]
+  <Display>\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,</Display>
   where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Code>[i,j]</Code>.
   Note that in some cases <Math>\alpha</Math> or <Math>\beta</Math> is trivial, and the corresponding index
   <Math>i</Math> or <Math>j</Math> is therefore irrelevant.
@@ -154,8 +155,7 @@
   <Code>c</Code> is a scalar used in calculating the <Math>S</Math>-matrix; namely
   <Math>c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))</Math>.
   Note that this is equal to <Math>S_Q(-1) / \sqrt{|M|}</Math>, where
-  <Math>S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))</Math>
-  is also known as the central charge.
+  <Math>S_Q(-1)</Math> is the central charge (see Section <Ref Sect="Chapter_Description_Section_Construction_Subsection_Weil_representations"/>).
 <P/>
   <Code>tM</Code> is a list describing the elements of the group <Math>M - pM</Math>.
  </Description>

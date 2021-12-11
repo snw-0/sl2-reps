@@ -42,7 +42,9 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X84E15A1E8326AF4F">2.2-2 <span class="Heading">Type N</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85A14FDA8467E361">2.2-3 <span class="Heading">Type R</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B788E2F87AF51CA">2.2-3 <span class="Heading">Type R, generic cases</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B1E74AC85CBD40B">2.2-4 <span class="Heading">Type R, unary and extremal cases</span></a>
 </span>
 </div></div>
 </div>
@@ -57,7 +59,7 @@
 
 <p>Note that our definition of <span class="SimpleMath">\(\mathfrak{s}\)</span> follows that of <a href="chapBib_mj.html#biBNobs1">[Nob76]</a>; other authors prefer the inverse, i.e. <span class="SimpleMath">\(\mathfrak{s}\)</span> = <code class="code">[[0,-1],[1,0]]</code> (under which convention the relations are <span class="SimpleMath">\(\mathfrak{s}^4 = \mathrm{id}\)</span>, <span class="SimpleMath">\((\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2\)</span>). When working with that convention, one must invert the <span class="SimpleMath">\(S\)</span> matrices output by this package.</p>
 
-<p>Throughout, we denote by <span class="SimpleMath">\(\mathbf{e}\)</span> the map <span class="SimpleMath">\(k \mapsto e^{2 \pi i k}\)</span> (an isomorphism from <span class="SimpleMath">\(\mathbb{Q}/\mathbb{Z}\)</span> to the group of finite roots of unity in <span class="SimpleMath">\(\mathbb{C}\)</span>).</p>
+<p>Throughout, we denote by <span class="SimpleMath">\(\mathbf{e}\)</span> the map <span class="SimpleMath">\(k \mapsto e^{2 \pi i k}\)</span> (an isomorphism from <span class="SimpleMath">\(\mathbb{Q}/\mathbb{Z}\)</span> to the group of finite roots of unity in <span class="SimpleMath">\(\mathbb{C}\)</span>). For a group <span class="SimpleMath">\(G\)</span>, we denote by <span class="SimpleMath">\(\widehat{G}\)</span> the character group <span class="SimpleMath">\(\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)\)</span>.</p>
 
 <p><a id="X7F6278CD87400D49" name="X7F6278CD87400D49"></a></p>
 
@@ -69,27 +71,36 @@
 
 <h5>2.1-1 <span class="Heading">Weil representations</span></h5>
 
-<p>Such representations may be constructed using Weil representations as described in <a href="chapBib_mj.html#biBNobs1">[Nob76, Section 1]</a>. We give a brief summary of the process here. First, if <span class="SimpleMath">\(M\)</span> is any additive abelian group, a <em>quadratic form</em> on <span class="SimpleMath">\(M\)</span> is a map <span class="SimpleMath">\(Q : M \to \mathbb{Q}/\mathbb{Z}\)</span> such that <span class="SimpleMath">\(Q(-x) = Q(x)\)</span> for all <span class="SimpleMath">\(x \in M\)</span> and <span class="SimpleMath">\(B(x,y) = Q(x+y) - Q(x) - Q(y)\)</span> defines a <span class="SimpleMath">\(\mathbb{Z}\)</span>-bilinear map <span class="SimpleMath">\(M \times M \to \mathbb{Q}/\mathbb{Z}\)</span>.</p>
+<p>Such representations may be constructed using Weil representations as described in <a href="chapBib_mj.html#biBNobs1">[Nob76, Section 1]</a>. We give a brief summary of the process here. First, if <span class="SimpleMath">\(M\)</span> is any additive abelian group, a <em>quadratic form</em> on <span class="SimpleMath">\(M\)</span> is a map <span class="SimpleMath">\(Q : M \to \mathbb{Q}/\mathbb{Z}\)</span> such that</p>
 
-<p>Now let <span class="SimpleMath">\(p\)</span> be a prime number and <span class="SimpleMath">\(\lambda \in \mathbb{Z}^+\)</span>. Choose a <span class="SimpleMath">\(\mathbb{Z}/p^\lambda\mathbb{Z}\)</span>-module <span class="SimpleMath">\(M\)</span> and a quadratic form <span class="SimpleMath">\(Q\)</span> on <span class="SimpleMath">\(M\)</span> such that the pair <span class="SimpleMath">\((M,Q)\)</span> is of one of the three types described in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Each such <span class="SimpleMath">\(M\)</span> is a ring, and has at most 2 cyclic factors as an additive group. Those with 2 cyclic factors may be identified with a quotient of the quadratic integers, giving a norm on <span class="SimpleMath">\(M\)</span>. Then the <em>quadratic module</em> <span class="SimpleMath">\((M,Q)\)</span> gives rise to a representation of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> on the vector space <span class="SimpleMath">\(V = \mathbb{C}^M\)</span> of complex-valued functions on <span class="SimpleMath">\(M\)</span>. This representation is denoted <span class="SimpleMath">\(W(M,Q)\)</span>.</p>
 
-<p>We may construct subrepresentations <span class="SimpleMath">\(W(M,Q,\chi)\)</span> of <span class="SimpleMath">\(W(M,Q)\)</span> as follows. Let</p>
+<ul>
+<li><p><span class="SimpleMath">\(Q(-x) = Q(x)\)</span> for all <span class="SimpleMath">\(x \in M\)</span>, and</p>
 
-<p class="center">\[\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}\]</p>
+</li>
+<li><p><span class="SimpleMath">\(B(x,y) = Q(x+y) - Q(x) - Q(y)\)</span> defines a <span class="SimpleMath">\(\mathbb{Z}\)</span>-bilinear map <span class="SimpleMath">\(M \times M \to \mathbb{Q}/\mathbb{Z}\)</span>.</p>
 
-<p>and denote by <span class="SimpleMath">\(\mathfrak{A} \leq \operatorname{Aut}(M,Q)\)</span> the abelian subgroup defined in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Note that <span class="SimpleMath">\(\mathfrak{A}\)</span> has at most two cyclic factors, whose generators we denote by <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>. Let <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> be a 1-dimensional representation (character) of <span class="SimpleMath">\(\mathfrak{A}\)</span>, and define</p>
+</li>
+</ul>
+<p>Now let <span class="SimpleMath">\(p\)</span> be a prime number and <span class="SimpleMath">\(\lambda \in \mathbb{Z}^+\)</span>. Choose a <span class="SimpleMath">\(\mathbb{Z}/p^\lambda\mathbb{Z}\)</span>-module <span class="SimpleMath">\(M\)</span> and a quadratic form <span class="SimpleMath">\(Q\)</span> on <span class="SimpleMath">\(M\)</span> such that the pair <span class="SimpleMath">\((M,Q)\)</span> is of one of the three types described in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Each such <span class="SimpleMath">\(M\)</span> is a ring, and has at most 2 cyclic factors as an additive group. Those with 2 cyclic factors may be identified with a quotient of the quadratic integers, giving a norm on <span class="SimpleMath">\(M\)</span>. Then the <em>quadratic module</em> <span class="SimpleMath">\((M,Q)\)</span> gives rise to a representation of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> on the vector space <span class="SimpleMath">\(V = \mathbb{C}^M\)</span> of complex-valued functions on <span class="SimpleMath">\(M\)</span>. This representation is denoted <span class="SimpleMath">\(W(M,Q)\)</span>. Note that the <em>central charge</em> of <span class="SimpleMath">\((M,Q)\)</span> is given by <span class="SimpleMath">\(S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))\)</span>.</p>
+
+<p>We may construct subrepresentations <span class="SimpleMath">\(W(M,Q,\chi)\)</span> of <span class="SimpleMath">\(W(M,Q)\)</span> as follows. Denote</p>
+
+<p class="center">\[\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}~.\]</p>
+
+<p>We then associate to <span class="SimpleMath">\((M,Q)\)</span> an abelian subgroup <span class="SimpleMath">\(\mathfrak{A} \leq \operatorname{Aut}(M,Q)\)</span>; the structure of this group depends on <span class="SimpleMath">\((M,Q)\)</span> and is described in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>. Note that <span class="SimpleMath">\(\mathfrak{A}\)</span> has at most two cyclic factors, whose generators we denote by <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>. Now, let <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> be a 1-dimensional representation (<em>character</em>) of <span class="SimpleMath">\(\mathfrak{A}\)</span>, and define</p>
 
 <p class="center">\[V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]</p>
 
-<p>which is a <span class="SimpleMath">\(SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace of <span class="SimpleMath">\(V\)</span>. We then denote by <span class="SimpleMath">\(W(M,Q,\chi)\)</span> the subrepresentation of <span class="SimpleMath">\(W(M,Q)\)</span> on <span class="SimpleMath">\(V_\chi\)</span>.</p>
+<p>which is a <span class="SimpleMath">\(SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace of <span class="SimpleMath">\(V\)</span>. We then denote by <span class="SimpleMath">\(W(M,Q,\chi)\)</span> the subrepresentation of <span class="SimpleMath">\(W(M,Q)\)</span> on <span class="SimpleMath">\(V_\chi\)</span>. Note that <span class="SimpleMath">\(W(M,Q,\chi) \cong W(M,Q,\overline{\chi})\)</span>.</p>
 
 <p><a id="X828CAE1686C1C1A5" name="X828CAE1686C1C1A5"></a></p>
 
 <h5>2.1-2 <span class="Heading">Primitive characters</span></h5>
 
-<p>We will frequently refer to a character <span class="SimpleMath">\(\chi\)</span> as being <em>primitive</em>. With the exception of a single family of modules of type <span class="SimpleMath">\(R\)</span> (the <em>extremal</em> case, for which see Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>) primitivity amounts to the following: there exists some <span class="SimpleMath">\(\varepsilon \in \mathfrak{A}\)</span> such that <span class="SimpleMath">\(\chi(\varepsilon) \neq 1\)</span> and <span class="SimpleMath">\(\varepsilon\)</span> fixes the submodule <span class="SimpleMath">\(pM\)</span> pointwise. In the extremal case, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> (see Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a> for an explicit definition of <span class="SimpleMath">\(\alpha\)</span>) and <span class="SimpleMath">\(\chi\)</span> is primitive if <span class="SimpleMath">\(\chi(\alpha) = -1\)</span>.</p>
+<p>For the abelian groups <span class="SimpleMath">\(\mathfrak{A} \leq \operatorname{Aut}(M,Q)\)</span>, we will frequently refer to a character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> as being <em>primitive</em>. With the exception of a single family of modules of type <span class="SimpleMath">\(R\)</span> (the <em>extremal</em> case, for which see Section <a href="chap2_mj.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>), primitivity amounts to the following: there exists some <span class="SimpleMath">\(\varepsilon \in \mathfrak{A}\)</span> such that <span class="SimpleMath">\(\chi(\varepsilon) \neq 1\)</span> and <span class="SimpleMath">\(\varepsilon\)</span> fixes the submodule <span class="SimpleMath">\(pM \subset M\)</span> pointwise. There exists a subgroup <span class="SimpleMath">\(\mathfrak{A}_0 \leq \mathfrak{A}\)</span> such that a non-trivial <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> is primitive if and only if <span class="SimpleMath">\(\chi\)</span> is injective on <span class="SimpleMath">\(\mathfrak{A}_0\)</span> (or, equivalently, if <span class="SimpleMath">\(\mathfrak{A}_0 \cap \operatorname{ker} \chi\)</span> is trivial).</p>
 
-<p>Explicit descriptions of the primitive characters for each type are given in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>.</p>
+<p>Explicit descriptions of the group <span class="SimpleMath">\(\mathfrak{A}_0\)</span> and the primitive characters of <span class="SimpleMath">\(\mathfrak{A}\)</span> for each type are given in Section <a href="chap2_mj.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>.</p>
 
 <p><a id="X85605F1983AA938D" name="X85605F1983AA938D"></a></p>
 
@@ -102,14 +113,14 @@
 <li><p>The overwhelming majority are of the form <span class="SimpleMath">\(W(M,Q,\chi)\)</span> for <span class="SimpleMath">\(\chi\)</span> primitive and <span class="SimpleMath">\(\chi^2 \neq 1\)</span>; we call these <em>standard</em>. This includes the primitive characters from the extremal case.</p>
 
 </li>
-<li><p>A finite number, and a single infinite family arising from the extremal case (Section <a href="chap2_mj.html#X85A14FDA8467E361"><span class="RefLink">2.2-3</span></a>), are instead constructed by using non-primitive characters or primitive characters <span class="SimpleMath">\(\chi\)</span> with <span class="SimpleMath">\(\chi^2 = 1\)</span>. We call these <em>non-standard</em>.</p>
+<li><p>A finite number, and a single infinite family arising from the extremal case (Section <a href="chap2_mj.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>), are instead constructed by using non-primitive characters or primitive characters <span class="SimpleMath">\(\chi\)</span> with <span class="SimpleMath">\(\chi^2 = 1\)</span>. We call these <em>non-standard</em>.</p>
 
 </li>
 <li><p>Finally, 18 <em>exceptional</em> irreps are constructed as tensor products of two irreps from the other two cases.</p>
 
 </li>
 </ul>
-<p>All the finite-dimensional irreducible representations of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are defined by pairs <code class="code">[S1,T1]</code> and <code class="code">[S2,T2]</code>, then their tensor product may be calculated via the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</code>.</p>
+<p>All the finite-dimensional irreducible representations of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z})\)</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are determined by pairs <code class="code">[S1,T1]</code> and <code class="code">[S2,T2]</code>, then the pair for their tensor product may be calculated via the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</code>.</p>
 
 <p><a id="X861BA4A8800E1A08" name="X861BA4A8800E1A08"></a></p>
 
@@ -119,106 +130,347 @@
 
 <h5>2.2-1 <span class="Heading">Type D</span></h5>
 
-<p>Let <span class="SimpleMath">\(p\)</span> be prime. If <span class="SimpleMath">\(p=2\)</span> or <span class="SimpleMath">\(p=3\)</span>, let <span class="SimpleMath">\(\lambda \geq 2\)</span>; otherwise, let <span class="SimpleMath">\(\lambda \geq 1\)</span>. Then the Weil representation arising from the quadratic module with <span class="SimpleMath">\(M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}\)</span> and <span class="SimpleMath">\(Q(x,y) = \frac{xy}{p^\lambda}\)</span> is said to be of type <span class="SimpleMath">\(D\)</span> and denoted <span class="SimpleMath">\(D(p,\lambda)\)</span>. Information on <span class="SimpleMath">\((M,Q)\)</span> may be obtained via <code class="func">SL2ModuleD</code> (<a href="chap5_mj.html#X845D92CB7841CB0B"><span class="RefLink">5.1-1</span></a>), and subrepresentations of <span class="SimpleMath">\(D(p,\lambda)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepD</code> (<a href="chap5_mj.html#X7FDB517981A2C091"><span class="RefLink">5.1-2</span></a>).</p>
+<p>Let <span class="SimpleMath">\(p\)</span> be prime. If <span class="SimpleMath">\(p=2\)</span> or <span class="SimpleMath">\(p=3\)</span>, let <span class="SimpleMath">\(\lambda \geq 2\)</span>; otherwise, let <span class="SimpleMath">\(\lambda \geq 1\)</span>. Then the Weil representation arising from the quadratic module with</p>
 
-<p>Here we define</p>
+<p class="center">\[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{xy}{p^\lambda}\]</p>
+
+<p>is said to be of type <span class="SimpleMath">\(D\)</span> and denoted <span class="SimpleMath">\(D(p,\lambda)\)</span>. Information on type <span class="SimpleMath">\(D\)</span> quadratic modules may be obtained via <code class="func">SL2ModuleD</code> (<a href="chap3_mj.html#X845D92CB7841CB0B"><span class="RefLink">3.1-1</span></a>), and subrepresentations of <span class="SimpleMath">\(D(p,\lambda)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepD</code> (<a href="chap3_mj.html#X7FDB517981A2C091"><span class="RefLink">3.1-2</span></a>).</p>
+
+<p>The group</p>
 
 <p class="center">\[\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times\]</p>
 
-<p>acting on <span class="SimpleMath">\(M\)</span> by <span class="SimpleMath">\(a(x,y) = (a^{-1}x, ay)\)</span>; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.1]</a>. This group has the following structure. When <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\alpha = 5\)</span> (of order <span class="SimpleMath">\(2^{\lambda-2}\)</span>; notably, for <span class="SimpleMath">\(\lambda=2\)</span>, <span class="SimpleMath">\(\alpha\)</span> is trivial) and <span class="SimpleMath">\(\beta = -1\)</span>. Otherwise, <span class="SimpleMath">\(\mathfrak{A}\)</span> is cyclic; in this case, we write <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\alpha = p+1\)</span> (of order <span class="SimpleMath">\(p^{\lambda-1}\)</span>; for <span class="SimpleMath">\(\lambda=1\)</span>, <span class="SimpleMath">\(\alpha\)</span> is trivial) and <span class="SimpleMath">\(\beta\)</span> an arbitrarily chosen element of order <span class="SimpleMath">\(p+1\)</span>.</p>
+<p>acts on <span class="SimpleMath">\(M\)</span> by <span class="SimpleMath">\(a(x,y) = (a^{-1}x, ay)\)</span> and is thus identified with a subgroup of <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span>; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.1]</a>. The group <span class="SimpleMath">\(\mathfrak{A}\)</span> has order <span class="SimpleMath">\(p^{\lambda-1}(p-1)\)</span> and <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span>. The relevant information for type <span class="SimpleMath">\(D\)</span> quadratic modules is as follows:</p>
 
-<p>For type <span class="SimpleMath">\(D\)</span>, a non-trivial character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if it is injective on the cyclic subgroup of <span class="SimpleMath">\(\mathfrak{A}\)</span> of maximal <span class="SimpleMath">\(p\)</span>-power order, which is generated by <span class="SimpleMath">\(\alpha\)</span>. As a particular case, when <span class="SimpleMath">\(\alpha\)</span> is trivial (i.e. <span class="SimpleMath">\(p=2\)</span> and <span class="SimpleMath">\(\lambda=2\)</span> or <span class="SimpleMath">\(p\)</span> odd and <span class="SimpleMath">\(\lambda=1\)</span>), all non-trivial characters are primitive.</p>
+<div class="pcenter"><table class="GAPDocTable">
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(p\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\lambda\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\alpha\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\beta\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\mathfrak{A}_0\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = p-1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle 1 \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = p^{\lambda-1}\)</span> (e.g. <span class="SimpleMath">\(\alpha = 1 + p\)</span>)</td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = p-1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(-1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle 1 \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = 2^{\lambda-2}\)</span> (e.g. <span class="SimpleMath">\(\alpha = 5\)</span>)</td>
+<td class="tdcenter"><span class="SimpleMath">\(-1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+</table><br /><p>&nbsp;</p><br />
+</div>
+
+<p>When <span class="SimpleMath">\(\mathfrak{A}_0\)</span> is trivial, every non-trivial character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> is primitive.</p>
 
 <p><a id="X84E15A1E8326AF4F" name="X84E15A1E8326AF4F"></a></p>
 
 <h5>2.2-2 <span class="Heading">Type N</span></h5>
 
-<p>Let <span class="SimpleMath">\(p\)</span> be prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>. If <span class="SimpleMath">\(p \neq 2\)</span>, choose an integer <span class="SimpleMath">\(u\)</span> so that <span class="SimpleMath">\(u \equiv 3\)</span> mod 4 with <span class="SimpleMath">\(-u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>; if <span class="SimpleMath">\(p = 2\)</span>, define <span class="SimpleMath">\(u=3\)</span>. Then the Weil representation arising from the quadratic module with <span class="SimpleMath">\(M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}\)</span> and <span class="SimpleMath">\(Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}\)</span> is said to be of type <span class="SimpleMath">\(N\)</span> and denoted <span class="SimpleMath">\(N(p,\lambda)\)</span>. Information on <span class="SimpleMath">\((M,Q)\)</span> may be obtained via <code class="func">SL2ModuleN</code> (<a href="chap5_mj.html#X7A50CC5A7933E207"><span class="RefLink">5.2-1</span></a>), and subrepresentations of <span class="SimpleMath">\(N(p,\lambda)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepN</code> (<a href="chap5_mj.html#X81D60FE878F02838"><span class="RefLink">5.2-2</span></a>).</p>
+<p>Let <span class="SimpleMath">\(p\)</span> be prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>. If <span class="SimpleMath">\(p \neq 2\)</span>, let <span class="SimpleMath">\(u\)</span> be a positive integer so that <span class="SimpleMath">\(u \equiv 3\)</span> mod 4 with <span class="SimpleMath">\(-u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>; if <span class="SimpleMath">\(p = 2\)</span>, let <span class="SimpleMath">\(u=3\)</span>. Then the Weil representation arising from the quadratic module with</p>
 
-<p>Here we define</p>
+<p class="center">\[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}\]</p>
 
-<p class="center">\[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\]</p>
+<p>is said to be of type <span class="SimpleMath">\(N\)</span> and denoted <span class="SimpleMath">\(N(p,\lambda)\)</span>. Information on type <span class="SimpleMath">\(N\)</span> quadratic modules may be obtained via <code class="func">SL2ModuleN</code> (<a href="chap3_mj.html#X7A50CC5A7933E207"><span class="RefLink">3.2-1</span></a>), and subrepresentations of <span class="SimpleMath">\(N(p,\lambda)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepN</code> (<a href="chap3_mj.html#X81D60FE878F02838"><span class="RefLink">3.2-2</span></a>).</p>
 
-<p>acting on <span class="SimpleMath">\(M\)</span> by multiplication; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.2]</a>. This group has the following structure. When <span class="SimpleMath">\(\lambda \geq 2\)</span>, it is generated by <span class="SimpleMath">\(\alpha\)</span> and <span class="SimpleMath">\(\beta\)</span>: for <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(|\alpha| = 2^{\lambda-2}\)</span> and <span class="SimpleMath">\(|\beta| = 6\)</span>, while for <span class="SimpleMath">\(p \neq 2\)</span>, <span class="SimpleMath">\(|\alpha| = p^{\lambda-1}\)</span> and <span class="SimpleMath">\(|\beta| = p+1\)</span>. On the other hand, when <span class="SimpleMath">\(\lambda = 1\)</span>, <span class="SimpleMath">\(\mathfrak{A}\)</span> is cyclic; in this case, we choose a generator <span class="SimpleMath">\(\beta\)</span> with <span class="SimpleMath">\(|\beta| = p+1\)</span> and (for simplicity) say <span class="SimpleMath">\(\alpha = 1\)</span>.</p>
+<p>The additive group <span class="SimpleMath">\(M\)</span> is a ring with multiplication given by</p>
 
-<p>For type <span class="SimpleMath">\(N\)</span> with <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda=2\)</span>, a non-trivial character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if <span class="SimpleMath">\(\chi(-1) = -1\)</span>. For all other type <span class="SimpleMath">\(N\)</span> cases, a character of <span class="SimpleMath">\(\mathfrak{A}\)</span> is primitive if and only if it is injective on the subgroup <span class="SimpleMath">\(\langle\alpha\rangle \leq \mathfrak{A}\)</span>. Note that, when <span class="SimpleMath">\(\lambda = 1\)</span>, <span class="SimpleMath">\(\alpha = 1\)</span>, so all non-trivial characters are primitive.</p>
+<p class="center">\[(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - \frac{1+u}{4}y_1y_2, x_1y_2 + x_2y_1 + y_1y_2)\]</p>
 
-<p><a id="X85A14FDA8467E361" name="X85A14FDA8467E361"></a></p>
-
-<h5>2.2-3 <span class="Heading">Type R</span></h5>
-
-<p>The structure of <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(R\)</span> depends upon three additional parameters: <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span>. The relevant values thereof depend on whether <span class="SimpleMath">\(p=2\)</span>, as follows.</p>
-
-<p>First, if <span class="SimpleMath">\(p\)</span> is an odd prime, let <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{1, \dots, \lambda\}\)</span>, and <span class="SimpleMath">\(r,t \in \{1,u\}\)</span> with <span class="SimpleMath">\(u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>. Then define <span class="SimpleMath">\(M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}\)</span> and <span class="SimpleMath">\(Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}\)</span>.</p>
-
-<p>On the other hand, if <span class="SimpleMath">\(p=2\)</span>, let <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{0, \dots, \lambda-2\}\)</span> and <span class="SimpleMath">\(r,t \in \{1,3,5,7\}\)</span>. Then define <span class="SimpleMath">\(M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}\)</span> and <span class="SimpleMath">\(Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}\)</span>.</p>
-
-<p>In either case, the resulting representation is said to be of type <span class="SimpleMath">\(R\)</span> and denoted <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span>. Information on <span class="SimpleMath">\((M,Q)\)</span> may be obtained via <code class="func">SL2ModuleR</code> (<a href="chap5_mj.html#X7B10D99E7AEAC411"><span class="RefLink">5.3-1</span></a>), and subrepresentations of <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap5_mj.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>).</p>
-
-<p>There are two special cases to consider. First, if <span class="SimpleMath">\(\sigma = \lambda\)</span> for <span class="SimpleMath">\(p \neq 2\)</span>, then the second factor of <span class="SimpleMath">\(M\)</span> is trivial (and hence <span class="SimpleMath">\(t\)</span> is irrelevant); this special case is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap5_mj.html#X7C94E3007A1BEE85"><span class="RefLink">5.3-3</span></a>) (which is called by <code class="func">SL2IrrepR</code> (<a href="chap5_mj.html#X80961A2C7C5F632E"><span class="RefLink">5.3-2</span></a>) when appropriate).</p>
-
-<p>Second, if <span class="SimpleMath">\(\sigma = \lambda - 2\)</span> for <span class="SimpleMath">\(p = 2\)</span>, <span class="SimpleMath">\(\lambda \geq 2\)</span>, then the second factor of <span class="SimpleMath">\(M\)</span> is isomorphic to <span class="SimpleMath">\(\mathbb{Z}/2\mathbb{Z}\)</span>, and collapses in <span class="SimpleMath">\(2M\)</span>; we call this case the <em>extremal</em> family. Here, <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span> is itself abelian, so we let <span class="SimpleMath">\(\mathfrak{A} = \operatorname{Aut}(M,Q)\)</span>. This group has the following structure:</p>
-
-
-<ul>
-<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span>, <span class="SimpleMath">\(t=1\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle \tau \rangle\)</span> where <span class="SimpleMath">\(\tau : (x,y) \mapsto (y,x)\)</span>; a character <span class="SimpleMath">\(\chi\)</span> is primitive if <span class="SimpleMath">\(\chi(\tau) = -1\)</span>.</p>
-
-</li>
-<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span>, <span class="SimpleMath">\(t = 3\)</span>, <span class="SimpleMath">\(\mathfrak{A}\)</span> is trivial; there are no primitive characters.</p>
-
-</li>
-<li><p>For <span class="SimpleMath">\(\lambda = 3\)</span> or <span class="SimpleMath">\(4\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \{\pm 1\}\)</span>; there are no primitive characters.</p>
-
-</li>
-<li><p>Finally, for <span class="SimpleMath">\(\lambda \geq 5\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle\)</span> with <span class="SimpleMath">\(\alpha \neq -1\)</span> of order 2, and a character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> is primitive if <span class="SimpleMath">\(\chi(\alpha) = -1\)</span>. Note that, for this special case, the usual test for primitivity (described in Section <a href="chap2_mj.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails, as there are no elements of <span class="SimpleMath">\(\mathfrak{A}\)</span> fixing <span class="SimpleMath">\(2M\)</span> pointwise.</p>
-
-</li>
-</ul>
-<p>Outside of the above two special cases, we define</p>
+<p>and identity element <span class="SimpleMath">\((1,0)\)</span>. We define a norm <span class="SimpleMath">\(\operatorname{Nm}(x,y) = x^2 + xy + \frac{1+u}{4}y^2\)</span> on <span class="SimpleMath">\(M\)</span>; then the multiplicative subgroup</p>
 
 <p class="center">\[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\]</p>
 
-<p>acting on <span class="SimpleMath">\(M\)</span> by multiplication; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.3 - 2.4]</a>. The structure of <span class="SimpleMath">\(\mathfrak{A}\)</span> is as follows, and a character is primitive if it is injective on <span class="SimpleMath">\(\langle\omega\rangle \leq \mathfrak{A}\)</span>, with <span class="SimpleMath">\(\omega = \alpha\)</span> except when specified:</p>
+<p>of <span class="SimpleMath">\(M^\times\)</span> acts on <span class="SimpleMath">\(M\)</span> by multiplication and is identified with a subgroup of <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span>; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.2]</a>.</p>
+
+<p>The group <span class="SimpleMath">\(\mathfrak{A}\)</span> has order <span class="SimpleMath">\(p^{\lambda-1}(p+1)\)</span> and <span class="SimpleMath">\(\mathfrak{A} = \langle \alpha \rangle \times \langle \beta \rangle\)</span>. The relevant information for type <span class="SimpleMath">\(N\)</span> quadratic modules is as follows:</p>
+
+<div class="pcenter"><table class="GAPDocTable">
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(p\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\lambda\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\alpha\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\beta\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\mathfrak{A}_0\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = p+1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle (1,0) \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = p^{\lambda-1}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = p+1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle (1,0) \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = 6\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle (-1,0) \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(&gt;2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = p^{\lambda-2}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = 6\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+</table><br /><p>&nbsp;</p><br />
+</div>
+
+<p>When <span class="SimpleMath">\(\mathfrak{A}_0\)</span> is trivial, every non-trivial character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> is primitive.</p>
+
+<p><a id="X7B788E2F87AF51CA" name="X7B788E2F87AF51CA"></a></p>
+
+<h5>2.2-3 <span class="Heading">Type R, generic cases</span></h5>
+
+<p>The structure of the quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(R\)</span> depends upon three additional parameters: <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span>. Details are as follows:</p>
 
 
 <ul>
-<li><p>Suppose <span class="SimpleMath">\(p \neq 2\)</span>, <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{1, \dots, \lambda - 1\}\)</span>. As a special case, if <span class="SimpleMath">\(p=3\)</span>, <span class="SimpleMath">\(\lambda \geq 3\)</span>, and <span class="SimpleMath">\(\sigma=t=1\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\alpha\)</span> of order <span class="SimpleMath">\(3^{\lambda-2}\)</span> and <span class="SimpleMath">\(\beta\)</span> of order 6. Otherwise, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha\)</span> of order <span class="SimpleMath">\(p^{\lambda - \sigma}\)</span>.</p>
+<li><p>If <span class="SimpleMath">\(p\)</span> is odd, let <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{1, \dots, \lambda\}\)</span>, and <span class="SimpleMath">\(r,t \in \{1,u\}\)</span> with <span class="SimpleMath">\(u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>. Then define</p>
+
+<p class="center">\[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.\]</p>
+
+<p>When <span class="SimpleMath">\(\sigma = \lambda\)</span>, the second factor is trivial, and <span class="SimpleMath">\((M,Q)\)</span> is said to be in the <em>unary</em> family; otherwise, it is called <em>generic</em>.</p>
 
 </li>
-<li><p>Suppose <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda \geq 3\)</span>, <span class="SimpleMath">\(\sigma \in \{0, \dots, \lambda - 3\}\)</span>. Then the structure of <span class="SimpleMath">\((M,Q)\)</span>) depends on <span class="SimpleMath">\(r,t\)</span>, but only up to an equivalence class described in <a href="chapBib_mj.html#biBNobs1">[Nob76, Satz 4]</a>; we assume without loss of generality that <span class="SimpleMath">\(r,t\)</span> are minimal positive representatives thereunder. Then:</p>
+<li><p>If <span class="SimpleMath">\(p=2\)</span>, let <span class="SimpleMath">\(\lambda \geq 2\)</span>, <span class="SimpleMath">\(\sigma \in \{0, \dots, \lambda-2\}\)</span> and <span class="SimpleMath">\(r,t \in \{1,3,5,7\}\)</span>. Then define</p>
+
+<p class="center">\[M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.\]</p>
+
+<p>When <span class="SimpleMath">\(\sigma = \lambda - 2\)</span>, the second factor is isomorphic to <span class="SimpleMath">\(\mathbb{Z}/2\mathbb{Z}\)</span>, and <span class="SimpleMath">\((M,Q)\)</span> is said to be in the <em>extremal</em> family; otherwise, it is called <em>generic</em>.</p>
+
+</li>
+</ul>
+<p>In all cases, the resulting representation is said to be of type <span class="SimpleMath">\(R\)</span> and denoted <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span>. The additive group <span class="SimpleMath">\(M\)</span> admits a ring structure with multiplication</p>
+
+<p class="center">\[(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)\]</p>
+
+<p>and identity element <span class="SimpleMath">\((1,0)\)</span>. We define a norm <span class="SimpleMath">\(\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2\)</span> on <span class="SimpleMath">\(M\)</span>.</p>
+
+<p>In this section, we detail generic type <span class="SimpleMath">\(R\)</span> quadratic modules. Information on the unary and extremal cases is covered in Section <a href="chap2_mj.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>.</p>
+
+<p>Let <span class="SimpleMath">\((M,Q)\)</span> be a generic type <span class="SimpleMath">\(R\)</span> quadratic modules. Information on <span class="SimpleMath">\((M,Q)\)</span> can be obtained via <code class="func">SL2ModuleR</code> (<a href="chap3_mj.html#X7B10D99E7AEAC411"><span class="RefLink">3.3-1</span></a>), and subrepresentations of <span class="SimpleMath">\(R(p,\lambda,\sigma,r,t)\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap3_mj.html#X80961A2C7C5F632E"><span class="RefLink">3.3-2</span></a>).</p>
+
+<p>The multiplicative subgroup</p>
+
+<p class="center">\[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}\]</p>
+
+<p>of <span class="SimpleMath">\(M^\times\)</span> acts on <span class="SimpleMath">\(M\)</span> by multiplication and is identified with a subgroup of <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span>; see <a href="chapBib_mj.html#biBNW76">[NW76, Section 2.3 - 2.4]</a>. The relevant information is as follows:</p>
 
 
 <ul>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=1\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\beta = (0,1)\)</span> of order 4. Here <span class="SimpleMath">\(\omega = -1 = \beta^2\)</span>.</p>
+<li><p>If <span class="SimpleMath">\(p\)</span> is odd, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> with order <span class="SimpleMath">\(2p^{\lambda-\sigma}\)</span>. In this case, for fixed <span class="SimpleMath">\(p\)</span>, <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, each pair <span class="SimpleMath">\((r,t)\)</span> gives rise to a distinct quadratic module <a href="chapBib_mj.html#biBNobs1">[Nob76, Satz 4]</a>. The following table covers a complete list of representatives of equivalence classes of such modules.</p>
+
+<div class="pcenter"><table class="GAPDocTable">
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(p\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\lambda\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\sigma\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((r,t)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\alpha\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\beta\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\mathfrak{A}_0\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(r,t \in \{1,2\}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(t=1\)</span>, <span class="SimpleMath">\(r \in \{1,2\}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = 3^{\lambda-\sigma-1}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\beta| = 6\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(t=2\)</span>, <span class="SimpleMath">\(r \in \{1,2\}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = 3^{\lambda-\sigma}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(2,\dots,\lambda-1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(r,t \in \{1,2\}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = 3^{\lambda-\sigma}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 5\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1, \dots,\lambda - 1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(r,t \in \{1,u\}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(|\alpha| = p^{\lambda-\sigma}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+</table><br /><p>&nbsp;</p><br />
+</div>
 
 </li>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=1\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},4)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span> and <span class="SimpleMath">\(\beta = (0,1)\)</span> of order 4.</p>
+<li><p>If <span class="SimpleMath">\(p=2\)</span>, then the generic case occurs when <span class="SimpleMath">\(\lambda \geq 3\)</span> and <span class="SimpleMath">\(\sigma \in \{0,\dots,\lambda-3\}\)</span>. Again, <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span>; the order is <span class="SimpleMath">\(2^{\lambda-\sigma-k}\)</span> with <span class="SimpleMath">\(k \in \{0,1,2\}\)</span> (as specified below). In this case, for fixed <span class="SimpleMath">\(p\)</span>, <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, two pairs <span class="SimpleMath">\((r_1,t_1)\)</span> and <span class="SimpleMath">\((r_2,t_2)\)</span> may give rise to equivalent quadratic modules <a href="chapBib_mj.html#biBNobs1">[Nob76, Satz 4]</a>. The following table covers a complete list of representatives of equivalence classes of such modules.</p>
 
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=5\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\beta\rangle\)</span> with <span class="SimpleMath">\(\beta = (2,1)\)</span> of order 4. Here <span class="SimpleMath">\(\omega = -1\)</span>.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r \in \{1,3\}\)</span>, <span class="SimpleMath">\(t=5\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (2,3 \mod{4})\)</span> of order <span class="SimpleMath">\(2^{\lambda-2}\)</span>. Here <span class="SimpleMath">\(\omega = -\alpha^2\)</span> when <span class="SimpleMath">\(\lambda = 4\)</span> and <span class="SimpleMath">\(\omega = \alpha\)</span> otherwise.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r = 1\)</span>, <span class="SimpleMath">\(t \in \{3,7\}\)</span>, and <span class="SimpleMath">\(\lambda = 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle-1\rangle\)</span>. Here <span class="SimpleMath">\(\omega = -1\)</span>.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 0\)</span>, <span class="SimpleMath">\(r = 1\)</span>, <span class="SimpleMath">\(t \in \{3,7\}\)</span>, and <span class="SimpleMath">\(\lambda \geq 4\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},4)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span>.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 1\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},2)\)</span> of order <span class="SimpleMath">\(2^{\lambda-3}\)</span>.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma = 2\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},2)\)</span> of order <span class="SimpleMath">\(2^{\lambda-4}\)</span>.</p>
-
-</li>
-<li><p>If <span class="SimpleMath">\(\sigma \geq 3\)</span>, then <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle\)</span> with <span class="SimpleMath">\(\alpha = (1 \mod{4},1)\)</span> of order <span class="SimpleMath">\(2^{\lambda-\sigma-1}\)</span>.</p>
+<div class="pcenter"><table class="GAPDocTable">
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\lambda\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\sigma\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(r\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(t\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\alpha = (x,y)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\beta\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\mathfrak{A}_0\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,5\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((\frac{t-1}{2},1)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle (-1,0) \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(3,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle (-1,0) \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(4\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(5\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle -\alpha^2 \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 4\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((0,1)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 4\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(3,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 5\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(0\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(5\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,2\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3,5,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3,5,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x\equiv 1 \operatorname{mod} 4, y=2, |\alpha| = 2^{\lambda-\sigma-2}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+<tr>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\geq 3\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3,5,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(1,3,5,7\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(x\equiv 1 \operatorname{mod} 4, y=1, |\alpha| = 2^{\lambda-\sigma-1}\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\((-1,0)\)</span></td>
+<td class="tdcenter"><span class="SimpleMath">\(\langle \alpha \rangle\)</span></td>
+</tr>
+</table><br /><p>&nbsp;</p><br />
+</div>
 
 </li>
 </ul>
+<p><a id="X7B1E74AC85CBD40B" name="X7B1E74AC85CBD40B"></a></p>
+
+<h5>2.2-4 <span class="Heading">Type R, unary and extremal cases</span></h5>
+
+<p>This section covers the unary and extremal cases of type <span class="SimpleMath">\(R\)</span>.</p>
+
+<p>First, in the unary family, we have <span class="SimpleMath">\(p\)</span> odd and <span class="SimpleMath">\(\sigma = \lambda\)</span>. Then the second factor of <span class="SimpleMath">\(M\)</span> is trivial (and hence <span class="SimpleMath">\(t\)</span> is irrelevant). We then denote <span class="SimpleMath">\(R_{p^\lambda}(r) = R(p,\lambda,\lambda,r,t)\)</span>. In this case, we do not decompose <span class="SimpleMath">\(W(M,Q)\)</span> using characters: instead, if <span class="SimpleMath">\(\lambda \leq 2\)</span>, then <span class="SimpleMath">\(W(M,Q)\)</span> contains two distinct irreducible subrepresentations of level <span class="SimpleMath">\(p^\lambda\)</span>, denoted <span class="SimpleMath">\(R_{p^\lambda}(r)_{\pm}\)</span>; otherwise, it contains a single such subrepresentation, denoted <span class="SimpleMath">\(R_{p^\lambda}(r)_1\)</span>. The unary family is handled by <code class="func">SL2IrrepRUnary</code> (<a href="chap3_mj.html#X7C94E3007A1BEE85"><span class="RefLink">3.3-3</span></a>) (which is called by <code class="func">SL2IrrepR</code> (<a href="chap3_mj.html#X80961A2C7C5F632E"><span class="RefLink">3.3-2</span></a>) when appropriate).</p>
+
+<p>Second, in the extremal family, we have <span class="SimpleMath">\(p=2\)</span>, <span class="SimpleMath">\(\lambda \geq 2\)</span>, and <span class="SimpleMath">\(\sigma = \lambda - 2\)</span>. Then the second factor of <span class="SimpleMath">\(M\)</span> is isomorphic to <span class="SimpleMath">\(\mathbb{Z}/2\mathbb{Z}\)</span>, and collapses in <span class="SimpleMath">\(2M\)</span>. Here, <span class="SimpleMath">\(\operatorname{Aut}(M,Q)\)</span> is itself abelian, so we let <span class="SimpleMath">\(\mathfrak{A} = \operatorname{Aut}(M,Q)\)</span>. This group has order 1, 2, or 4, with the following structure:</p>
+
+
+<ul>
+<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span> and <span class="SimpleMath">\(t=1\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle \tau \rangle\)</span> where <span class="SimpleMath">\(\tau : (x,y) \mapsto (y,x)\)</span>, and <span class="SimpleMath">\(\mathfrak{A}_0 = \mathfrak{A} = \langle\tau\rangle\)</span>.</p>
+
+</li>
+<li><p>For <span class="SimpleMath">\(\lambda = 2\)</span> and <span class="SimpleMath">\(t = 3\)</span>, <span class="SimpleMath">\(\mathfrak{A}\)</span> is trivial; there are no primitive characters.</p>
+
+</li>
+<li><p>For <span class="SimpleMath">\(\lambda = 3\)</span> or <span class="SimpleMath">\(4\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \{\pm 1\}\)</span> acting on <span class="SimpleMath">\(M\)</span> by multiplication; there are no primitive characters.</p>
+
+</li>
+<li><p>Finally, for <span class="SimpleMath">\(\lambda \geq 5\)</span>, <span class="SimpleMath">\(\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle\)</span> with <span class="SimpleMath">\(\alpha\)</span> of order 2, and <span class="SimpleMath">\(\mathfrak{A}_0 = \langle\alpha\rangle\)</span>. Note that, for this special case, the usual test for primitivity (described in Section <a href="chap2_mj.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails, as there are no elements of <span class="SimpleMath">\(\mathfrak{A}\)</span> fixing <span class="SimpleMath">\(2M\)</span> pointwise.</p>
+
 </li>
 </ul>
+<p>The extremal family is handled by <code class="func">SL2ModuleR</code> (<a href="chap3_mj.html#X7B10D99E7AEAC411"><span class="RefLink">3.3-1</span></a>) and <code class="func">SL2IrrepR</code> (<a href="chap3_mj.html#X80961A2C7C5F632E"><span class="RefLink">3.3-2</span></a>), just like the generic case.</p>
+
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Next Chapter]</a>&nbsp;  </div>
 

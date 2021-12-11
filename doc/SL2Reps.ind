@@ -1,20 +1,20 @@
 \begin{theindex}
 
-  \item \texttt  {SL2ChiST}, \hyperpage{10}
-  \item \texttt  {SL2ExceptionalIrreps}, \hyperpage{9}
-  \item \texttt  {SL2IrrepD}, \hyperpage{12}
-  \item \texttt  {SL2IrrepN}, \hyperpage{12}
-  \item \texttt  {SL2IrrepPositionTest}, \hyperpage{10}
-  \item \texttt  {SL2IrrepR}, \hyperpage{13}
-  \item \texttt  {SL2IrrepRUnary}, \hyperpage{13}
-  \item \texttt  {SL2IrrepsOfDegree}, \hyperpage{8}
-  \item \texttt  {SL2IrrepsOfDegreeAtMost}, \hyperpage{8}
-  \item \texttt  {SL2ModuleD}, \hyperpage{11}
-  \item \texttt  {SL2ModuleN}, \hyperpage{12}
-  \item \texttt  {SL2ModuleR}, \hyperpage{12}
-  \item \texttt  {SL2PrimePowerIrrepsOfDegree}, \hyperpage{8}
-  \item \texttt  {SL2PrimePowerIrrepsOfDegreeAtMost}, \hyperpage{8}
-  \item \texttt  {SL2PrimePowerIrrepsOfLevel}, \hyperpage{8}
-  \item \texttt  {SL2WithConjClasses}, \hyperpage{10}
+  \item \texttt  {SL2ChiST}, \hyperpage{14}
+  \item \texttt  {SL2ExceptionalIrreps}, \hyperpage{13}
+  \item \texttt  {SL2IrrepD}, \hyperpage{10}
+  \item \texttt  {SL2IrrepN}, \hyperpage{10}
+  \item \texttt  {SL2IrrepPositionTest}, \hyperpage{14}
+  \item \texttt  {SL2IrrepR}, \hyperpage{11}
+  \item \texttt  {SL2IrrepRUnary}, \hyperpage{11}
+  \item \texttt  {SL2IrrepsOfDegree}, \hyperpage{12}
+  \item \texttt  {SL2IrrepsOfDegreeAtMost}, \hyperpage{12}
+  \item \texttt  {SL2ModuleD}, \hyperpage{9}
+  \item \texttt  {SL2ModuleN}, \hyperpage{10}
+  \item \texttt  {SL2ModuleR}, \hyperpage{10}
+  \item \texttt  {SL2PrimePowerIrrepsOfDegree}, \hyperpage{12}
+  \item \texttt  {SL2PrimePowerIrrepsOfDegreeAtMost}, \hyperpage{12}
+  \item \texttt  {SL2PrimePowerIrrepsOfLevel}, \hyperpage{12}
+  \item \texttt  {SL2WithConjClasses}, \hyperpage{14}
 
 \end{theindex}

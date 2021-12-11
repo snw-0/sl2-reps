@@ -43,8 +43,7 @@
 #!  `c` is a scalar used in calculating the $S$-matrix; namely
 #!  $c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))$.
 #!  Note that this is equal to $S_Q(-1) / \sqrt{|M|}$, where
-#!  $S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))$
-#!  is also known as the central charge.
+#!  $S_Q(-1)$ is the central charge (see Section <Ref Sect="Chapter_Description_Section_Construction_Subsection_Weil_representations"/>).
 #!
 #!  `tM` is a list describing the elements of the group $M - pM$.
 DeclareGlobalFunction( "SL2ModuleR" );

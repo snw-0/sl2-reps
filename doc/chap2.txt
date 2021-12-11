@@ -28,7 +28,8 @@
   
   [33X[0;0YThroughout,  we  denote  by  [23X\mathbf{e}[123X  the map [23Xk \mapsto e^{2 \pi i k}[123X (an
   isomorphism from [23X\mathbb{Q}/\mathbb{Z}[123X to the group of finite roots of unity
-  in [23X\mathbb{C}[123X).[133X
+  in  [23X\mathbb{C}[123X). For a group [23XG[123X, we denote by [23X\widehat{G}[123X the character group
+  [23X\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)[123X.[133X
   
   
   [1X2.1 [33X[0;0YConstruction[133X[101X
@@ -48,9 +49,12 @@
   [33X[0;0YSuch  representations  may  be  constructed  using  Weil  representations as
   described  in  [Nob76,  Section  1].  We give a brief summary of the process
   here.  First, if [23XM[123X is any additive abelian group, a [13Xquadratic form[113X on [23XM[123X is a
-  map  [23XQ  : M \to \mathbb{Q}/\mathbb{Z}[123X such that [23XQ(-x) = Q(x)[123X for all [23Xx \in M[123X
-  and [23XB(x,y) = Q(x+y) - Q(x) - Q(y)[123X defines a [23X\mathbb{Z}[123X-bilinear map [23XM \times
-  M \to \mathbb{Q}/\mathbb{Z}[123X.[133X
+  map [23XQ : M \to \mathbb{Q}/\mathbb{Z}[123X such that[133X
+  
+  [30X    [33X[0;6Y[23XQ(-x) = Q(x)[123X for all [23Xx \in M[123X, and[133X
+  
+  [30X    [33X[0;6Y[23XB(x,y)  =  Q(x+y)  -  Q(x)  - Q(y)[123X defines a [23X\mathbb{Z}[123X-bilinear map [23XM
+        \times M \to \mathbb{Q}/\mathbb{Z}[123X.[133X
   
   [33X[0;0YNow  let  [23Xp[123X  be  a  prime  number  and  [23X\lambda  \in  \mathbb{Z}^+[123X. Choose a
   [23X\mathbb{Z}/p^\lambda\mathbb{Z}[123X-module  [23XM[123X  and  a  quadratic form [23XQ[123X on [23XM[123X such
@@ -61,20 +65,22 @@
   gives          rise          to          a         representation         of
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X   on  the  vector  space  [23XV  =
   \mathbb{C}^M[123X  of  complex-valued  functions  on  [23XM[123X.  This  representation is
-  denoted [23XW(M,Q)[123X.[133X
+  denoted  [23XW(M,Q)[123X. Note that the [13Xcentral charge[113X of [23X(M,Q)[123X is given by [23XS_Q(-1) =
+  \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))[123X.[133X
   
-  [33X[0;0YWe may construct subrepresentations [23XW(M,Q,\chi)[123X of [23XW(M,Q)[123X as follows. Let[133X
+  [33X[0;0YWe may construct subrepresentations [23XW(M,Q,\chi)[123X of [23XW(M,Q)[123X as follows. Denote[133X
   
   
   [24X[33X[0;6Y\operatorname{Aut}(M,Q)  =  \{  \varepsilon  \in  \operatorname{Aut}(M) \mid
-  Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}[133X
+  Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}~.[133X
   
   [124X
   
-  [33X[0;0Yand denote by [23X\mathfrak{A} \leq \operatorname{Aut}(M,Q)[123X the abelian subgroup
-  defined  in  Section  [14X2.2[114X.  Note  that  [23X\mathfrak{A}[123X  has at most two cyclic
-  factors,  whose  generators  we  denote  by  [23X\alpha[123X  and [23X\beta[123X. Let [23X\chi \in
-  \widehat{\mathfrak{A}}[123X  be  a  1-dimensional  representation  (character) of
+  [33X[0;0YWe   then   associate   to  [23X(M,Q)[123X  an  abelian  subgroup  [23X\mathfrak{A}  \leq
+  \operatorname{Aut}(M,Q)[123X; the structure of this group depends on [23X(M,Q)[123X and is
+  described  in  Section  [14X2.2[114X.  Note  that [23X\mathfrak{A}[123X has at most two cyclic
+  factors,  whose  generators we denote by [23X\alpha[123X and [23X\beta[123X. Now, let [23X\chi \in
+  \widehat{\mathfrak{A}}[123X  be  a  1-dimensional  representation  ([13Xcharacter[113X) of
   [23X\mathfrak{A}[123X, and define[133X
   
   
@@ -84,22 +90,25 @@
   [124X
   
   [33X[0;0Ywhich  is a [23XSL_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant subspace of [23XV[123X. We
-  then denote by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on [23XV_\chi[123X.[133X
+  then  denote  by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on [23XV_\chi[123X. Note
+  that [23XW(M,Q,\chi) \cong W(M,Q,\overline{\chi})[123X.[133X
   
   
   [1X2.1-2 [33X[0;0YPrimitive characters[133X[101X
   
-  [33X[0;0YWe  will  frequently  refer to a character [23X\chi[123X as being [13Xprimitive[113X. With the
-  exception  of  a  single family of modules of type [23XR[123X (the [13Xextremal[113X case, for
-  which  see Section [14X2.2-3[114X) primitivity amounts to the following: there exists
-  some  [23X\varepsilon  \in  \mathfrak{A}[123X  such that [23X\chi(\varepsilon) \neq 1[123X and
-  [23X\varepsilon[123X  fixes  the  submodule  [23XpM[123X  pointwise.  In  the  extremal  case,
-  [23X\mathfrak{A}  =  \langle\alpha\rangle  \times  \langle-1\rangle[123X (see Section
-  [14X2.2-3[114X  for  an  explicit  definition  of  [23X\alpha[123X)  and  [23X\chi[123X is primitive if
-  [23X\chi(\alpha) = -1[123X.[133X
+  [33X[0;0YFor  the  abelian  groups [23X\mathfrak{A} \leq \operatorname{Aut}(M,Q)[123X, we will
+  frequently  refer  to  a  character [23X\chi \in \widehat{\mathfrak{A}}[123X as being
+  [13Xprimitive[113X.  With  the exception of a single family of modules of type [23XR[123X (the
+  [13Xextremal[113X  case,  for  which  see  Section [14X2.2-4[114X), primitivity amounts to the
+  following:   there  exists  some  [23X\varepsilon  \in  \mathfrak{A}[123X  such  that
+  [23X\chi(\varepsilon)  \neq  1[123X  and [23X\varepsilon[123X fixes the submodule [23XpM \subset M[123X
+  pointwise.  There  exists  a  subgroup [23X\mathfrak{A}_0 \leq \mathfrak{A}[123X such
+  that  a non-trivial [23X\chi \in \widehat{\mathfrak{A}}[123X is primitive if and only
+  if  [23X\chi[123X is injective on [23X\mathfrak{A}_0[123X (or, equivalently, if [23X\mathfrak{A}_0
+  \cap \operatorname{ker} \chi[123X is trivial).[133X
   
-  [33X[0;0YExplicit descriptions of the primitive characters for each type are given in
-  Section [14X2.2[114X.[133X
+  [33X[0;0YExplicit   descriptions  of  the  group  [23X\mathfrak{A}_0[123X  and  the  primitive
+  characters of [23X\mathfrak{A}[123X for each type are given in Section [14X2.2[114X.[133X
   
   
   [1X2.1-3 [33X[0;0YIrrep types[133X[101X
@@ -111,7 +120,7 @@
         primitive characters from the extremal case.[133X
   
   [30X    [33X[0;6YA  finite  number,  and  a  single  infinite  family  arising from the
-        extremal  case  (Section  [14X2.2-3[114X),  are  instead  constructed  by using
+        extremal  case  (Section  [14X2.2-4[114X),  are  instead  constructed  by using
         non-primitive characters or primitive characters [23X\chi[123X with [23X\chi^2 = 1[123X.
         We call these [13Xnon-standard[113X.[133X
   
@@ -121,8 +130,9 @@
   [33X[0;0YAll     the     finite-dimensional     irreducible     representations    of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X  of  finite level can now be constructed by taking
   tensor   products   of   these   prime-power   irreps.  Note  that,  if  two
-  representations  are defined by pairs [10X[S1,T1][110X and [10X[S2,T2][110X, then their tensor
-  product  may  be  calculated via the GAP command [10XKroneckerProduct[110X, namely as
+  representations  are  determined by pairs [10X[S1,T1][110X and [10X[S2,T2][110X, then the pair
+  for   their   tensor   product   may  be  calculated  via  the  GAP  command
+  [10XKroneckerProduct[110X,                          namely                         as
   [10X[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)][110X.[133X
   
   
@@ -132,48 +142,70 @@
   [1X2.2-1 [33X[0;0YType D[133X[101X
   
   [33X[0;0YLet  [23Xp[123X  be  prime. If [23Xp=2[123X or [23Xp=3[123X, let [23X\lambda \geq 2[123X; otherwise, let [23X\lambda
-  \geq  1[123X. Then the Weil representation arising from the quadratic module with
-  [23XM = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}[123X and
-  [23XQ(x,y)  =  \frac{xy}{p^\lambda}[123X  is  said  to  be  of  type  [23XD[123X  and  denoted
-  [23XD(p,\lambda)[123X.  Information  on [23X(M,Q)[123X may be obtained via [2XSL2ModuleD[102X ([14X5.1-1[114X),
-  and   subrepresentations   of  [23XD(p,\lambda)[123X  with  level  [23Xp^\lambda[123X  may  be
-  constructed via [2XSL2IrrepD[102X ([14X5.1-2[114X).[133X
+  \geq 1[123X. Then the Weil representation arising from the quadratic module with[133X
   
-  [33X[0;0YHere we define[133X
+  
+  [24X[33X[0;6YM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus  \mathbb{Z}/p^\lambda\mathbb{Z}
+  \qquad \text{and} \qquad Q(x,y) = \frac{xy}{p^\lambda}[133X
+  
+  [124X
+  
+  [33X[0;0Yis  said  to  be  of  type [23XD[123X and denoted [23XD(p,\lambda)[123X. Information on type [23XD[123X
+  quadratic   modules   may   be   obtained   via   [2XSL2ModuleD[102X   ([14X3.1-1[114X),  and
+  subrepresentations  of  [23XD(p,\lambda)[123X with level [23Xp^\lambda[123X may be constructed
+  via [2XSL2IrrepD[102X ([14X3.1-2[114X).[133X
+  
+  [33X[0;0YThe group[133X
   
   
   [24X[33X[0;6Y\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times[133X
   
   [124X
   
-  [33X[0;0Yacting  on  [23XM[123X by [23Xa(x,y) = (a^{-1}x, ay)[123X; see [NW76, Section 2.1]. This group
-  has  the  following structure. When [23Xp=2[123X, [23X\mathfrak{A} = \langle\alpha\rangle
-  \times \langle\beta\rangle[123X with [23X\alpha = 5[123X (of order [23X2^{\lambda-2}[123X; notably,
-  for [23X\lambda=2[123X, [23X\alpha[123X is trivial) and [23X\beta = -1[123X. Otherwise, [23X\mathfrak{A}[123X is
-  cyclic;  in  this  case, we write [23X\mathfrak{A} = \langle\alpha\rangle \times
-  \langle\beta\rangle[123X   with   [23X\alpha  =  p+1[123X  (of  order  [23Xp^{\lambda-1}[123X;  for
-  [23X\lambda=1[123X,  [23X\alpha[123X  is  trivial)  and [23X\beta[123X an arbitrarily chosen element of
-  order [23Xp+1[123X.[133X
+  [33X[0;0Yacts  on  [23XM[123X by [23Xa(x,y) = (a^{-1}x, ay)[123X and is thus identified with a subgroup
+  of  [23X\operatorname{Aut}(M,Q)[123X; see [NW76, Section 2.1]. The group [23X\mathfrak{A}[123X
+  has  order [23Xp^{\lambda-1}(p-1)[123X and [23X\mathfrak{A} = \langle\alpha\rangle \times
+  \langle\beta\rangle[123X.  The  relevant information for type [23XD[123X quadratic modules
+  is as follows:[133X
   
-  [33X[0;0YFor type [23XD[123X, a non-trivial character of [23X\mathfrak{A}[123X is primitive if and only
-  if it is injective on the cyclic subgroup of [23X\mathfrak{A}[123X of maximal [23Xp[123X-power
-  order,  which  is  generated by [23X\alpha[123X. As a particular case, when [23X\alpha[123X is
-  trivial  (i.e.  [23Xp=2[123X  and  [23X\lambda=2[123X or [23Xp[123X odd and [23X\lambda=1[123X), all non-trivial
-  characters are primitive.[133X
+        [23Xp[123X    [23X\lambda[123X                        [23X\alpha[123X                            [23X\beta[123X           [23X\mathfrak{A}_0[123X       
+        ────   ─────────   ──────────────────────────────────────────────────   ───────────────   ────────────────────────  
+        [23X>2[123X      [23X1[123X                             [23X1[123X                           [23X|\beta| = p-1[123X     [23X\langle 1 \rangle[123X      
+        [23X>2[123X     [23X>1[123X      [23X|\alpha| = p^{\lambda-1}[123X (e.g. [23X\alpha = 1 + p[123X)   [23X|\beta| = p-1[123X   [23X\langle \alpha \rangle[123X   
+        [23X2[123X       [23X2[123X                             [23X1[123X                                [23X-1[123X           [23X\langle 1 \rangle[123X      
+        [23X2[123X      [23X>2[123X        [23X|\alpha| = 2^{\lambda-2}[123X (e.g. [23X\alpha = 5[123X)          [23X-1[123X         [23X\langle \alpha \rangle[123X   
+  
+  [33X[0;0YWhen  [23X\mathfrak{A}_0[123X  is  trivial,  every  non-trivial  character  [23X\chi  \in
+  \widehat{\mathfrak{A}}[123X is primitive.[133X
   
   
   [1X2.2-2 [33X[0;0YType N[133X[101X
   
-  [33X[0;0YLet  [23Xp[123X be prime and [23X\lambda \geq 1[123X. If [23Xp \neq 2[123X, choose an integer [23Xu[123X so that
-  [23Xu  \equiv  3[123X  mod  4 with [23X-u[123X a quadratic non-residue mod [23Xp[123X; if [23Xp = 2[123X, define
-  [23Xu=3[123X. Then the Weil representation arising from the quadratic module with [23XM =
-  \mathbb{Z}/p^\lambda\mathbb{Z}   \oplus  \mathbb{Z}/p^\lambda\mathbb{Z}[123X  and
-  [23XQ(x,y)  = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}[123X is said to be of type [23XN[123X
-  and   denoted  [23XN(p,\lambda)[123X.  Information  on  [23X(M,Q)[123X  may  be  obtained  via
-  [2XSL2ModuleN[102X  ([14X5.2-1[114X),  and  subrepresentations  of  [23XN(p,\lambda)[123X  with  level
-  [23Xp^\lambda[123X may be constructed via [2XSL2IrrepN[102X ([14X5.2-2[114X).[133X
+  [33X[0;0YLet  [23Xp[123X be prime and [23X\lambda \geq 1[123X. If [23Xp \neq 2[123X, let [23Xu[123X be a positive integer
+  so  that  [23Xu  \equiv 3[123X mod 4 with [23X-u[123X a quadratic non-residue mod [23Xp[123X; if [23Xp = 2[123X,
+  let [23Xu=3[123X. Then the Weil representation arising from the quadratic module with[133X
   
-  [33X[0;0YHere we define[133X
+  
+  [24X[33X[0;6YM  =  \mathbb{Z}/p^\lambda\mathbb{Z}  \oplus  \mathbb{Z}/p^\lambda\mathbb{Z}
+  \qquad \text{and} \qquad Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}[133X
+  
+  [124X
+  
+  [33X[0;0Yis  said  to  be  of  type [23XN[123X and denoted [23XN(p,\lambda)[123X. Information on type [23XN[123X
+  quadratic   modules   may   be   obtained   via   [2XSL2ModuleN[102X   ([14X3.2-1[114X),  and
+  subrepresentations  of  [23XN(p,\lambda)[123X with level [23Xp^\lambda[123X may be constructed
+  via [2XSL2IrrepN[102X ([14X3.2-2[114X).[133X
+  
+  [33X[0;0YThe additive group [23XM[123X is a ring with multiplication given by[133X
+  
+  
+  [24X[33X[0;6Y(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - \frac{1+u}{4}y_1y_2, x_1y_2 + x_2y_1
+  + y_1y_2)[133X
+  
+  [124X
+  
+  [33X[0;0Yand  identity element [23X(1,0)[123X. We define a norm [23X\operatorname{Nm}(x,y) = x^2 +
+  xy + \frac{1+u}{4}y^2[123X on [23XM[123X; then the multiplicative subgroup[133X
   
   
   [24X[33X[0;6Y\mathfrak{A}       =       \{\varepsilon       \in       M^\times       \mid
@@ -181,130 +213,161 @@
   
   [124X
   
-  [33X[0;0Yacting  on  [23XM[123X by multiplication; see [NW76, Section 2.2]. This group has the
-  following  structure.  When  [23X\lambda  \geq  2[123X, it is generated by [23X\alpha[123X and
-  [23X\beta[123X:  for  [23Xp=2[123X, [23X|\alpha| = 2^{\lambda-2}[123X and [23X|\beta| = 6[123X, while for [23Xp \neq
-  2[123X,  [23X|\alpha|  =  p^{\lambda-1}[123X  and  [23X|\beta|  = p+1[123X. On the other hand, when
-  [23X\lambda  =  1[123X,  [23X\mathfrak{A}[123X  is cyclic; in this case, we choose a generator
-  [23X\beta[123X with [23X|\beta| = p+1[123X and (for simplicity) say [23X\alpha = 1[123X.[133X
+  [33X[0;0Yof [23XM^\times[123X acts on [23XM[123X by multiplication and is identified with a subgroup of
+  [23X\operatorname{Aut}(M,Q)[123X; see [NW76, Section 2.2].[133X
   
-  [33X[0;0YFor  type  [23XN[123X with [23Xp=2[123X, [23X\lambda=2[123X, a non-trivial character of [23X\mathfrak{A}[123X is
-  primitive  if  and  only  if  [23X\chi(-1)  =  -1[123X. For all other type [23XN[123X cases, a
-  character of [23X\mathfrak{A}[123X is primitive if and only if it is injective on the
-  subgroup  [23X\langle\alpha\rangle  \leq \mathfrak{A}[123X. Note that, when [23X\lambda =
-  1[123X, [23X\alpha = 1[123X, so all non-trivial characters are primitive.[133X
+  [33X[0;0YThe  group  [23X\mathfrak{A}[123X  has  order  [23Xp^{\lambda-1}(p+1)[123X  and [23X\mathfrak{A} =
+  \langle   \alpha   \rangle   \times  \langle  \beta  \rangle[123X.  The  relevant
+  information for type [23XN[123X quadratic modules is as follows:[133X
+  
+        [23Xp[123X    [23X\lambda[123X            [23X\alpha[123X                [23X\beta[123X           [23X\mathfrak{A}_0[123X       
+        ────   ─────────   ──────────────────────────   ───────────────   ────────────────────────  
+        [23X>2[123X      [23X1[123X               [23X(1,0)[123X             [23X|\beta| = p+1[123X   [23X\langle (1,0) \rangle[123X    
+        [23X>2[123X     [23X>1[123X      [23X|\alpha| = p^{\lambda-1}[123X   [23X|\beta| = p+1[123X   [23X\langle \alpha \rangle[123X   
+        [23X2[123X       [23X1[123X               [23X(1,0)[123X              [23X|\beta| = 3[123X    [23X\langle (1,0) \rangle[123X    
+        [23X2[123X       [23X2[123X               [23X(1,0)[123X              [23X|\beta| = 6[123X    [23X\langle (-1,0) \rangle[123X   
+        [23X2[123X      [23X>2[123X      [23X|\alpha| = p^{\lambda-2}[123X    [23X|\beta| = 6[123X    [23X\langle \alpha \rangle[123X   
+  
+  [33X[0;0YWhen  [23X\mathfrak{A}_0[123X  is  trivial,  every  non-trivial  character  [23X\chi  \in
+  \widehat{\mathfrak{A}}[123X is primitive.[133X
   
   
-  [1X2.2-3 [33X[0;0YType R[133X[101X
+  [1X2.2-3 [33X[0;0YType R, generic cases[133X[101X
   
-  [33X[0;0YThe  structure  of [23X(M,Q)[123X of type [23XR[123X depends upon three additional parameters:
-  [23X\sigma[123X,  [23Xr[123X,  and  [23Xt[123X.  The  relevant values thereof depend on whether [23Xp=2[123X, as
-  follows.[133X
+  [33X[0;0YThe  structure  of  the  quadratic module [23X(M,Q)[123X of type [23XR[123X depends upon three
+  additional parameters: [23X\sigma[123X, [23Xr[123X, and [23Xt[123X. Details are as follows:[133X
   
-  [33X[0;0YFirst,  if  [23Xp[123X  is  an  odd prime, let [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots,
-  \lambda\}[123X,  and  [23Xr,t  \in \{1,u\}[123X with [23Xu[123X a quadratic non-residue mod [23Xp[123X. Then
-  define        [23XM        =        \mathbb{Z}/p^\lambda\mathbb{Z}        \oplus
-  \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}[123X  and [23XQ(x,y) = \frac{r(x^2 + p^\sigma
-  t y^2)}{p^\lambda}[123X.[133X
+  [30X    [33X[0;6YIf [23Xp[123X is odd, let [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots, \lambda\}[123X, and
+        [23Xr,t \in \{1,u\}[123X with [23Xu[123X a quadratic non-residue mod [23Xp[123X. Then define[133X
   
-  [33X[0;0YOn  the  other  hand,  if  [23Xp=2[123X,  let  [23X\lambda \geq 2[123X, [23X\sigma \in \{0, \dots,
-  \lambda-2\}[123X    and    [23Xr,t    \in    \{1,3,5,7\}[123X.    Then    define    [23XM    =
-  \mathbb{Z}/2^{\lambda-1}\mathbb{Z}                                    \oplus
-  \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}[123X   and   [23XQ(x,y)   =  \frac{r(x^2  +
-  2^\sigma t y^2)}{2^\lambda}[123X.[133X
   
-  [33X[0;0YIn  either  case,  the  resulting representation is said to be of type [23XR[123X and
-  denoted  [23XR(p,\lambda,\sigma,r,t)[123X.  Information  on [23X(M,Q)[123X may be obtained via
-  [2XSL2ModuleR[102X  ([14X5.3-1[114X),  and subrepresentations of [23XR(p,\lambda,\sigma,r,t)[123X with
-  level [23Xp^\lambda[123X may be constructed via [2XSL2IrrepR[102X ([14X5.3-2[114X).[133X
+  [24X      [33X[0;6YM           =           \mathbb{Z}/p^\lambda\mathbb{Z}          \oplus
+        \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z}   \qquad   \text{and}   \qquad
+        Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.[133X
   
-  [33X[0;0YThere  are  two  special cases to consider. First, if [23X\sigma = \lambda[123X for [23Xp
-  \neq  2[123X, then the second factor of [23XM[123X is trivial (and hence [23Xt[123X is irrelevant);
-  this  special  case is handled by [2XSL2IrrepRUnary[102X ([14X5.3-3[114X) (which is called by
-  [2XSL2IrrepR[102X ([14X5.3-2[114X) when appropriate).[133X
+  [124X
   
-  [33X[0;0YSecond,  if  [23X\sigma = \lambda - 2[123X for [23Xp = 2[123X, [23X\lambda \geq 2[123X, then the second
-  factor of [23XM[123X is isomorphic to [23X\mathbb{Z}/2\mathbb{Z}[123X, and collapses in [23X2M[123X; we
-  call  this case the [13Xextremal[113X family. Here, [23X\operatorname{Aut}(M,Q)[123X is itself
-  abelian,  so  we  let [23X\mathfrak{A} = \operatorname{Aut}(M,Q)[123X. This group has
-  the following structure:[133X
+        [33X[0;6YWhen [23X\sigma = \lambda[123X, the second factor is trivial, and [23X(M,Q)[123X is said
+        to be in the [13Xunary[113X family; otherwise, it is called [13Xgeneric[113X.[133X
   
-  [30X    [33X[0;6YFor [23X\lambda = 2[123X, [23Xt=1[123X, [23X\mathfrak{A} = \langle \tau \rangle[123X where [23X\tau :
-        (x,y) \mapsto (y,x)[123X; a character [23X\chi[123X is primitive if [23X\chi(\tau) = -1[123X.[133X
+  [30X    [33X[0;6YIf [23Xp=2[123X, let [23X\lambda \geq 2[123X, [23X\sigma \in \{0, \dots, \lambda-2\}[123X and [23Xr,t
+        \in \{1,3,5,7\}[123X. Then define[133X
   
-  [30X    [33X[0;6YFor  [23X\lambda  =  2[123X,  [23Xt  =  3[123X,  [23X\mathfrak{A}[123X  is  trivial; there are no
+  
+  [24X      [33X[0;6YM          =         \mathbb{Z}/2^{\lambda-1}\mathbb{Z}         \oplus
+        \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z}   \qquad  \text{and}  \qquad
+        Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.[133X
+  
+  [124X
+  
+        [33X[0;6YWhen  [23X\sigma  =  \lambda  -  2[123X,  the  second  factor  is isomorphic to
+        [23X\mathbb{Z}/2\mathbb{Z}[123X,  and  [23X(M,Q)[123X  is  said  to  be  in the [13Xextremal[113X
+        family; otherwise, it is called [13Xgeneric[113X.[133X
+  
+  [33X[0;0YIn  all  cases,  the  resulting  representation  is said to be of type [23XR[123X and
+  denoted   [23XR(p,\lambda,\sigma,r,t)[123X.  The  additive  group  [23XM[123X  admits  a  ring
+  structure with multiplication[133X
+  
+  
+  [24X[33X[0;6Y(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)[133X
+  
+  [124X
+  
+  [33X[0;0Yand  identity element [23X(1,0)[123X. We define a norm [23X\operatorname{Nm}(x,y) = x^2 +
+  xy + p^\sigma t y^2[123X on [23XM[123X.[133X
+  
+  [33X[0;0YIn  this section, we detail generic type [23XR[123X quadratic modules. Information on
+  the unary and extremal cases is covered in Section [14X2.2-4[114X.[133X
+  
+  [33X[0;0YLet [23X(M,Q)[123X be a generic type [23XR[123X quadratic modules. Information on [23X(M,Q)[123X can be
+  obtained    via    [2XSL2ModuleR[102X    ([14X3.3-1[114X),    and    subrepresentations    of
+  [23XR(p,\lambda,\sigma,r,t)[123X   with   level  [23Xp^\lambda[123X  may  be  constructed  via
+  [2XSL2IrrepR[102X ([14X3.3-2[114X).[133X
+  
+  [33X[0;0YThe multiplicative subgroup[133X
+  
+  
+  [24X[33X[0;6Y\mathfrak{A}       =       \{\varepsilon       \in       M^\times       \mid
+  \operatorname{Nm}(\varepsilon) = 1 \}[133X
+  
+  [124X
+  
+  [33X[0;0Yof [23XM^\times[123X acts on [23XM[123X by multiplication and is identified with a subgroup of
+  [23X\operatorname{Aut}(M,Q)[123X;  see  [NW76,  Section  2.3  -  2.4].  The  relevant
+  information is as follows:[133X
+  
+  [30X    [33X[0;6YIf    [23Xp[123X   is   odd,   [23X\mathfrak{A}   =   \langle\alpha\rangle   \times
+        \langle\beta\rangle[123X  with order [23X2p^{\lambda-\sigma}[123X. In this case, for
+        fixed  [23Xp[123X,  [23X\lambda[123X,  [23X\sigma[123X,  each pair [23X(r,t)[123X gives rise to a distinct
+        quadratic  module  [Nob76,  Satz  4].  The  following  table  covers a
+        complete  list  of  representatives  of  equivalence  classes  of such
+        modules.[133X
+  
+          [23Xp[123X      [23X\lambda[123X          [23X\sigma[123X                 [23X(r,t)[123X                       [23X\alpha[123X                   [23X\beta[123X          [23X\mathfrak{A}_0[123X       
+        ────────   ─────────   ──────────────────────   ──────────────────────   ─────────────────────────────────   ─────────────   ────────────────────────  
+          [23X3[123X         [23X2[123X               [23X1[123X               [23Xr,t \in \{1,2\}[123X               [23X|\alpha| = 3[123X               [23X(-1,0)[123X      [23X\langle \alpha \rangle[123X   
+          [23X3[123X      [23X\geq 3[123X             [23X1[123X             [23Xt=1[123X, [23Xr \in \{1,2\}[123X   [23X|\alpha| = 3^{\lambda-\sigma-1}[123X   [23X|\beta| = 6[123X   [23X\langle \alpha \rangle[123X   
+          [23X3[123X      [23X\geq 3[123X             [23X1[123X             [23Xt=2[123X, [23Xr \in \{1,2\}[123X    [23X|\alpha| = 3^{\lambda-\sigma}[123X      [23X(-1,0)[123X      [23X\langle \alpha \rangle[123X   
+          [23X3[123X      [23X\geq 3[123X     [23X2,\dots,\lambda-1[123X       [23Xr,t \in \{1,2\}[123X       [23X|\alpha| = 3^{\lambda-\sigma}[123X      [23X(-1,0)[123X      [23X\langle \alpha \rangle[123X   
+        [23X\geq 5[123X   [23X\geq 2[123X    [23X1, \dots,\lambda - 1[123X     [23Xr,t \in \{1,u\}[123X       [23X|\alpha| = p^{\lambda-\sigma}[123X      [23X(-1,0)[123X      [23X\langle \alpha \rangle[123X   
+  
+  [30X    [33X[0;6YIf  [23Xp=2[123X,  then  the generic case occurs when [23X\lambda \geq 3[123X and [23X\sigma
+        \in  \{0,\dots,\lambda-3\}[123X. Again, [23X\mathfrak{A} = \langle\alpha\rangle
+        \times  \langle\beta\rangle[123X;  the order is [23X2^{\lambda-\sigma-k}[123X with [23Xk
+        \in  \{0,1,2\}[123X  (as  specified  below).  In  this  case,  for fixed [23Xp[123X,
+        [23X\lambda[123X,  [23X\sigma[123X,  two  pairs [23X(r_1,t_1)[123X and [23X(r_2,t_2)[123X may give rise to
+        equivalent  quadratic  modules  [Nob76,  Satz  4]. The following table
+        covers  a  complete  list of representatives of equivalence classes of
+        such modules.[133X
+  
+        [23X\lambda[123X   [23X\sigma[123X      [23Xr[123X         [23Xt[123X                                 [23X\alpha = (x,y)[123X                                    [23X\beta[123X              [23X\mathfrak{A}_0[123X         
+        ─────────   ────────   ─────────   ─────────   ──────────────────────────────────────────────────────────────────────   ───────────────────   ───────────────────────────  
+           [23X3[123X        [23X0[123X        [23X1,3[123X       [23X1,5[123X                                    [23X(1,0)[123X                                   [23X(\frac{t-1}{2},1)[123X    [23X\langle (-1,0) \rangle[123X     
+           [23X3[123X        [23X0[123X         [23X1[123X        [23X3,7[123X                                    [23X(1,0)[123X                                        [23X(-1,0)[123X          [23X\langle (-1,0) \rangle[123X     
+           [23X4[123X        [23X0[123X        [23X1,3[123X        [23X5[123X         [23Xx=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}[123X           [23X(-1,0)[123X         [23X\langle -\alpha^2 \rangle[123X   
+        [23X\geq 4[123X      [23X0[123X        [23X1,3[123X        [23X1[123X        [23Xx \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}[123X           [23X(0,1)[123X          [23X\langle \alpha \rangle[123X     
+        [23X\geq 4[123X      [23X0[123X         [23X1[123X        [23X3,7[123X       [23Xx \equiv 1 \operatorname{mod} 4, y = 4, |\alpha| = 2^{\lambda-3}[123X          [23X(-1,0)[123X          [23X\langle \alpha \rangle[123X     
+        [23X\geq 5[123X      [23X0[123X        [23X1,3[123X        [23X5[123X         [23Xx=2, y \equiv 3 \operatorname{mod} 4, |\alpha| = 2^{\lambda-2}[123X           [23X(-1,0)[123X          [23X\langle \alpha \rangle[123X     
+        [23X\geq 3[123X     [23X1,2[123X     [23X1,3,5,7[123X   [23X1,3,5,7[123X   [23Xx\equiv 1 \operatorname{mod} 4, y=2, |\alpha| = 2^{\lambda-\sigma-2}[123X        [23X(-1,0)[123X          [23X\langle \alpha \rangle[123X     
+        [23X\geq 3[123X    [23X\geq 3[123X   [23X1,3,5,7[123X   [23X1,3,5,7[123X   [23Xx\equiv 1 \operatorname{mod} 4, y=1, |\alpha| = 2^{\lambda-\sigma-1}[123X        [23X(-1,0)[123X          [23X\langle \alpha \rangle[123X     
+  
+  
+  [1X2.2-4 [33X[0;0YType R, unary and extremal cases[133X[101X
+  
+  [33X[0;0YThis section covers the unary and extremal cases of type [23XR[123X.[133X
+  
+  [33X[0;0YFirst,  in  the  unary  family, we have [23Xp[123X odd and [23X\sigma = \lambda[123X. Then the
+  second  factor  of  [23XM[123X is trivial (and hence [23Xt[123X is irrelevant). We then denote
+  [23XR_{p^\lambda}(r)  =  R(p,\lambda,\lambda,r,t)[123X.  In  this  case,  we  do  not
+  decompose  [23XW(M,Q)[123X  using characters: instead, if [23X\lambda \leq 2[123X, then [23XW(M,Q)[123X
+  contains  two  distinct  irreducible  subrepresentations of level [23Xp^\lambda[123X,
+  denoted   [23XR_{p^\lambda}(r)_{\pm}[123X;  otherwise,  it  contains  a  single  such
+  subrepresentation,  denoted  [23XR_{p^\lambda}(r)_1[123X. The unary family is handled
+  by  [2XSL2IrrepRUnary[102X  ([14X3.3-3[114X)  (which  is  called  by  [2XSL2IrrepR[102X  ([14X3.3-2[114X) when
+  appropriate).[133X
+  
+  [33X[0;0YSecond,  in  the  extremal family, we have [23Xp=2[123X, [23X\lambda \geq 2[123X, and [23X\sigma =
+  \lambda   -   2[123X.   Then   the   second   factor   of   [23XM[123X  is  isomorphic  to
+  [23X\mathbb{Z}/2\mathbb{Z}[123X,  and  collapses in [23X2M[123X. Here, [23X\operatorname{Aut}(M,Q)[123X
+  is  itself  abelian,  so we let [23X\mathfrak{A} = \operatorname{Aut}(M,Q)[123X. This
+  group has order 1, 2, or 4, with the following structure:[133X
+  
+  [30X    [33X[0;6YFor  [23X\lambda  =  2[123X  and [23Xt=1[123X, [23X\mathfrak{A} = \langle \tau \rangle[123X where
+        [23X\tau  :  (x,y)  \mapsto  (y,x)[123X,  and  [23X\mathfrak{A}_0  = \mathfrak{A} =
+        \langle\tau\rangle[123X.[133X
+  
+  [30X    [33X[0;6YFor  [23X\lambda  =  2[123X  and  [23Xt  = 3[123X, [23X\mathfrak{A}[123X is trivial; there are no
         primitive characters.[133X
   
-  [30X    [33X[0;6YFor [23X\lambda = 3[123X or [23X4[123X, [23X\mathfrak{A} = \{\pm 1\}[123X; there are no primitive
-        characters.[133X
+  [30X    [33X[0;6YFor  [23X\lambda  =  3[123X  or  [23X4[123X,  [23X\mathfrak{A}  =  \{\pm  1\}[123X acting on [23XM[123X by
+        multiplication; there are no primitive characters.[133X
   
   [30X    [33X[0;6YFinally,  for  [23X\lambda  \geq  5[123X, [23X\mathfrak{A} = \langle \alpha \rangle
-        \times  \langle  -1  \rangle[123X  with  [23X\alpha  \neq  -1[123X of order 2, and a
-        character [23X\chi \in \widehat{\mathfrak{A}}[123X is primitive if [23X\chi(\alpha)
-        = -1[123X. Note that, for this special case, the usual test for primitivity
-        (described  in  Section  [14X2.1[114X)  fails,  as  there  are  no  elements of
-        [23X\mathfrak{A}[123X fixing [23X2M[123X pointwise.[133X
+        \times \langle -1 \rangle[123X with [23X\alpha[123X of order 2, and [23X\mathfrak{A}_0 =
+        \langle\alpha\rangle[123X. Note that, for this special case, the usual test
+        for  primitivity  (described  in  Section  [14X2.1[114X) fails, as there are no
+        elements of [23X\mathfrak{A}[123X fixing [23X2M[123X pointwise.[133X
   
-  [33X[0;0YOutside of the above two special cases, we define[133X
-  
-  
-  [24X[33X[0;6Y\mathfrak{A}       =       \{\varepsilon       \in       M^\times       \mid
-  \operatorname{Nm}(\varepsilon) = 1 \}[133X
-  
-  [124X
-  
-  [33X[0;0Yacting  on [23XM[123X by multiplication; see [NW76, Section 2.3 - 2.4]. The structure
-  of  [23X\mathfrak{A}[123X  is  as  follows,  and  a  character  is primitive if it is
-  injective  on  [23X\langle\omega\rangle  \leq \mathfrak{A}[123X, with [23X\omega = \alpha[123X
-  except when specified:[133X
-  
-  [30X    [33X[0;6YSuppose  [23Xp  \neq  2[123X,  [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots, \lambda -
-        1\}[123X.  As  a special case, if [23Xp=3[123X, [23X\lambda \geq 3[123X, and [23X\sigma=t=1[123X, then
-        [23X\mathfrak{A}  =  \langle\alpha\rangle  \times \langle\beta\rangle[123X with
-        [23X\alpha[123X  of  order  [23X3^{\lambda-2}[123X  and  [23X\beta[123X  of  order  6. Otherwise,
-        [23X\mathfrak{A}   =  \langle\alpha\rangle  \times  \langle-1\rangle[123X  with
-        [23X\alpha[123X of order [23Xp^{\lambda - \sigma}[123X.[133X
-  
-  [30X    [33X[0;6YSuppose  [23Xp=2[123X,  [23X\lambda  \geq  3[123X, [23X\sigma \in \{0, \dots, \lambda - 3\}[123X.
-        Then  the  structure  of  [23X(M,Q)[123X)  depends  on  [23Xr,t[123X,  but only up to an
-        equivalence class described in [Nob76, Satz 4]; we assume without loss
-        of   generality   that   [23Xr,t[123X   are  minimal  positive  representatives
-        thereunder. Then:[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X,  [23Xr  \in  \{1,3\}[123X,  [23Xt=1[123X,  and [23X\lambda = 3[123X, then
-              [23X\mathfrak{A}  =  \langle\beta\rangle[123X with [23X\beta = (0,1)[123X of order
-              4. Here [23X\omega = -1 = \beta^2[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X,  [23Xr  \in \{1,3\}[123X, [23Xt=1[123X, and [23X\lambda \geq 4[123X, then
-              [23X\mathfrak{A}  =  \langle\alpha\rangle \times \langle\beta\rangle[123X
-              with  [23X\alpha  = (1 \mod{4},4)[123X of order [23X2^{\lambda-3}[123X and [23X\beta =
-              (0,1)[123X of order 4.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X,  [23Xr  \in  \{1,3\}[123X,  [23Xt=5[123X,  and [23X\lambda = 3[123X, then
-              [23X\mathfrak{A}  =  \langle\beta\rangle[123X with [23X\beta = (2,1)[123X of order
-              4. Here [23X\omega = -1[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X,  [23Xr  \in \{1,3\}[123X, [23Xt=5[123X, and [23X\lambda \geq 4[123X, then
-              [23X\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle[123X with
-              [23X\alpha  =  (2,3  \mod{4})[123X  of order [23X2^{\lambda-2}[123X. Here [23X\omega =
-              -\alpha^2[123X when [23X\lambda = 4[123X and [23X\omega = \alpha[123X otherwise.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X,  [23Xr  =  1[123X, [23Xt \in \{3,7\}[123X, and [23X\lambda = 3[123X, then
-              [23X\mathfrak{A} = \langle-1\rangle[123X. Here [23X\omega = -1[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  =  0[123X, [23Xr = 1[123X, [23Xt \in \{3,7\}[123X, and [23X\lambda \geq 4[123X, then
-              [23X\mathfrak{A} = \langle\alpha\rangle \times \langle-1\rangle[123X with
-              [23X\alpha = (1 \mod{4},4)[123X of order [23X2^{\lambda-3}[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  = 1[123X, then [23X\mathfrak{A} = \langle\alpha\rangle \times
-              \langle-1\rangle[123X   with   [23X\alpha   =   (1  \mod{4},2)[123X  of  order
-              [23X2^{\lambda-3}[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  = 2[123X, then [23X\mathfrak{A} = \langle\alpha\rangle \times
-              \langle-1\rangle[123X   with   [23X\alpha   =   (1  \mod{4},2)[123X  of  order
-              [23X2^{\lambda-4}[123X.[133X
-  
-        [30X    [33X[0;12YIf  [23X\sigma  \geq  3[123X,  then  [23X\mathfrak{A}  = \langle\alpha\rangle
-              \times  \langle-1\rangle[123X  with  [23X\alpha  = (1 \mod{4},1)[123X of order
-              [23X2^{\lambda-\sigma-1}[123X.[133X
+  [33X[0;0YThe  extremal family is handled by [2XSL2ModuleR[102X ([14X3.3-1[114X) and [2XSL2IrrepR[102X ([14X3.3-2[114X),
+  just like the generic case.[133X
   
