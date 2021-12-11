@@ -8,7 +8,7 @@
 <Heading>Testing</Heading>
 
 <ManSection>
-  <Func Arg="p,ld" Name="SL2WithConjClasses" />
+  <Func Arg="p,lambda" Name="SL2WithConjClasses" />
  <Returns>the group <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> with conjugacy classes set to the format we use.
 </Returns>
  <Description>
@@ -18,8 +18,8 @@
 
 
 <ManSection>
-  <Func Arg="S,T,p,ld" Name="SL2ChiST" />
- <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>
+  <Func Arg="S,T,p,lambda" Name="SL2ChiST" />
+ <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>.
 </Returns>
  <Description>
 Converts the modular data <Math>(S,T)</Math>, which must have level dividing <Math>p^\lambda</Math>,
@@ -30,12 +30,12 @@ Converts the modular data <Math>(S,T)</Math>, which must have level dividing <Ma
 
 
 <ManSection>
-  <Func Arg="p, lambda" Name="SL2IrrepPositionTest" />
- <Returns>a boolean
+  <Func Arg="p,lambda" Name="SL2IrrepPositionTest" />
+ <Returns>a boolean.
 </Returns>
  <Description>
 Constructs and tests all irreps of level dividing <Math>p^\lambda</Math> by checking their
- positions in <Code>Irr(G)</Code>.
+ positions in <Code>Irr(G)</Code> (see [GAP documentation]).
  </Description>
 </ManSection>
 

@@ -18,14 +18,16 @@
   where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Code>[i,j]</Code>.
   Note that in some cases <Math>\alpha</Math> or <Math>\beta</Math> is trivial, and the corresponding index
   <Math>i</Math> or <Math>j</Math> is therefore irrelevant.
+<P/>
+  We write <Code>p=</Code><Math>p</Math>, <Code>lambda=</Code><Math>\lambda</Math>, <Code>sigma=</Code><Math>\sigma</Math>, and <Code>chi=</Code><Math>\chi</Math>.
 <Section Label="Chapter_Irreps_Section_Representations_of_type_D">
 <Heading>Representations of type D</Heading>
 
 <P/>
  See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_D"/>.
 <ManSection>
-  <Func Arg="p,ld" Name="SL2ModuleD" />
- <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim)</Code> describing <Math>(M,Q)</Math>
+  <Func Arg="p,lambda" Name="SL2ModuleD" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim)</Code> describing <Math>(M,Q)</Math>.
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>D</Math>, for
@@ -49,8 +51,8 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,chi_index" Name="SL2IrrepD" />
- <Returns>a list of lists of the form <Math>[S,T]</Math>
+  <Func Arg="p,lambda,chi_index" Name="SL2IrrepD" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
 </Returns>
  <Description>
   Constructs the modular data for the irreducible representation(s) of type <Math>D</Math> with
@@ -72,8 +74,8 @@
 <P/>
  See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_N"/>.
 <ManSection>
-  <Func Arg="p,ld" Name="SL2ModuleN" />
- <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Prod)</Code> describing <Math>(M,Q)</Math>
+  <Func Arg="p,lambda" Name="SL2ModuleN" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Prod)</Code> describing <Math>(M,Q)</Math>.
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>N</Math>, for
@@ -99,8 +101,8 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,chi_index" Name="SL2IrrepN" />
- <Returns>a list of lists of the form <Math>[S,T]</Math>
+  <Func Arg="p,lambda,chi_index" Name="SL2IrrepN" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
 </Returns>
  <Description>
   Constructs the modular data for the irreducible representation(s) of type <Math>N</Math> with
@@ -122,8 +124,8 @@
 <P/>
  See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>.
 <ManSection>
-  <Func Arg="p,ld,sigma,r,t" Name="SL2ModuleR" />
- <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)</Code> describing <Math>(M,Q)</Math>
+  <Func Arg="p,lambda,sigma,r,t" Name="SL2ModuleR" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)</Code> describing <Math>(M,Q)</Math>.
 </Returns>
  <Description>
   Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>R</Math>, for
@@ -163,8 +165,8 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,sigma,r,t,chi_index" Name="SL2IrrepR" />
- <Returns>a list of lists of the form <Math>[S,T]</Math>
+  <Func Arg="p,lambda,sigma,r,t,chi_index" Name="SL2IrrepR" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
 </Returns>
  <Description>
   Constructs the modular data for the irreducible representation(s) of type <Math>R</Math> with
@@ -181,8 +183,8 @@
 
 
 <ManSection>
-  <Func Arg="p,ld,r" Name="SL2IrrepRUnary" />
- <Returns>a list of lists of the form <Math>[S,T]</Math>
+  <Func Arg="p,lambda,r" Name="SL2IrrepRUnary" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
 </Returns>
  <Description>
   Constructs the modular data for the irreducible representation(s) of unary type <Math>R</Math>

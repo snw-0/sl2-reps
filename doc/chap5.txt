@@ -6,15 +6,15 @@
   
   [1X5.1-1 SL2WithConjClasses[101X
   
-  [33X[1;0Y[29X[2XSL2WithConjClasses[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2WithConjClasses[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ythe   group   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X   with
             conjugacy classes set to the format we use.[133X
   
   [1X5.1-2 SL2ChiST[101X
   
-  [33X[1;0Y[29X[2XSL2ChiST[102X( [3XS[103X, [3XT[103X, [3Xp[103X, [3Xld[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2ChiST[102X( [3XS[103X, [3XT[103X, [3Xp[103X, [3Xlambda[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya        list        representing       a       character       of
-            [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X[133X
+            [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X.[133X
   
   [33X[0;0YConverts  the  modular data [23X(S,T)[123X, which must have level dividing [23Xp^\lambda[123X,
   into a character of [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X, presented
@@ -23,8 +23,8 @@
   [1X5.1-3 SL2IrrepPositionTest[101X
   
   [33X[1;0Y[29X[2XSL2IrrepPositionTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean.[133X
   
   [33X[0;0YConstructs  and  tests  all  irreps  of level dividing [23Xp^\lambda[123X by checking
-  their positions in [10XIrr(G)[110X.[133X
+  their positions in [10XIrr(G)[110X (see [GAP documentation]).[133X
   

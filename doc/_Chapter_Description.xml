@@ -14,7 +14,7 @@ We therefore present representations in the form of a record <Code>rec(S, T, deg
 <P/>
 Note that our definition of <Math>\mathfrak{s}</Math> follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. <Math>\mathfrak{s}</Math> = <Code>[[0,-1],[1,0]]</Code> (under which convention the relations are <Math>\mathfrak{s}^4 = \mathrm{id}</Math>, <Math>(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2</Math>). When working with that convention, one must invert the <Math>S</Math> matrices output by this package.
 <P/>
-Throughout, we denote by <Math>\mathbf{e}</Math> the map <Math>k \mapsto e^{2 \pi i k}</Math> (an isomorphism from <Math>\mathbb{Q}/\mathbb{Z}</Math> to the group of finite roots of unity in <Math>\mathbb{C}</Math>).  For a group <Math>G</Math>, we denote by <Math>\widehat{G}</Math> the character group <Math>\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)</Math>.
+Throughout, we denote by <Math>\mathbf{e}</Math> the map <Math>k \mapsto e^{2 \pi i k}</Math> (an isomorphism from <Math>\mathbb{Q}/\mathbb{Z}</Math> to the group of finite roots of unity in <Math>\mathbb{C}</Math>).  For a group <Math>G</Math>, we denote by <Math>\widehat{G}</Math> the character group <Math>\operatorname{Hom}(G, \mathbb{C}^\times)</Math>.
 <P/>
 <Section Label="Chapter_Description_Section_Construction">
 <Heading>Construction</Heading>
@@ -49,7 +49,7 @@ which is a <Math>SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace 
 <P/>
 For the abelian groups <Math>\mathfrak{A} \leq \operatorname{Aut}(M,Q)</Math>, we will frequently refer to a character <Math>\chi \in \widehat{\mathfrak{A}}</Math> as being <Emph>primitive</Emph>.  With the exception of a single family of modules of type <Math>R</Math> (the <Emph>extremal</Emph> case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>), primitivity amounts to the following: there exists some <Math>\varepsilon \in \mathfrak{A}</Math> such that <Math>\chi(\varepsilon) \neq 1</Math> and <Math>\varepsilon</Math> fixes the submodule <Math>pM \subset M</Math> pointwise.  There exists a subgroup <Math>\mathfrak{A}_0 \leq \mathfrak{A}</Math> such that a non-trivial <Math>\chi \in \widehat{\mathfrak{A}}</Math> is primitive if and only if <Math>\chi</Math> is injective on <Math>\mathfrak{A}_0</Math> (or, equivalently, if <Math>\mathfrak{A}_0 \cap \operatorname{ker} \chi</Math> is trivial).
 <P/>
-Explicit descriptions of the group <Math>\mathfrak{A}_0</Math> and the primitive characters of <Math>\mathfrak{A}</Math> for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
+Explicit descriptions of the group <Math>\mathfrak{A}_0</Math> for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/> and may be used to determine the primitive characters.
 <P/>
 </Subsection>
 
@@ -200,16 +200,16 @@ The structure of the quadratic module <Math>(M,Q)</Math> of type <Math>R</Math> 
 <P/>
 <List>
     <Item>If <Math>p</Math> is odd, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{1, \dots, \lambda\}</Math>, and <Math>r,t \in \{1,u\}</Math> with <Math>u</Math> a quadratic non-residue mod <Math>p</Math>.  Then define <Display>M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.</Display>
-    When <Math>\sigma = \lambda</Math>, the second factor is trivial, and <Math>(M,Q)</Math> is said to be in the <Emph>unary</Emph> family; otherwise, it is called <Emph>generic</Emph>.</Item>
+    When <Math>\sigma = \lambda</Math>, the second factor of <Math>M</Math> is trivial, and <Math>(M,Q)</Math> is said to be in the <Emph>unary</Emph> family; otherwise, it is called <Emph>generic</Emph>.</Item>
     <Item>If <Math>p=2</Math>, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{0, \dots, \lambda-2\}</Math> and <Math>r,t \in \{1,3,5,7\}</Math>. Then define <Display>M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.</Display>
-    When <Math>\sigma = \lambda - 2</Math>, the second factor is isomorphic to <Math>\mathbb{Z}/2\mathbb{Z}</Math>, and <Math>(M,Q)</Math> is said to be in the <Emph>extremal</Emph> family; otherwise, it is called <Emph>generic</Emph>.</Item>
+    When <Math>\sigma = \lambda - 2</Math>, the second factor of <Math>M</Math> is isomorphic to <Math>\mathbb{Z}/2\mathbb{Z}</Math>, and <Math>(M,Q)</Math> is said to be in the <Emph>extremal</Emph> family; otherwise, it is called <Emph>generic</Emph>.</Item>
 </List>
 <P/>
 In all cases, the resulting representation is said to be of type <Math>R</Math> and denoted <Math>R(p,\lambda,\sigma,r,t)</Math>.  The additive group <Math>M</Math> admits a ring structure with multiplication
 <Display>(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)</Display>
 and identity element <Math>(1,0)</Math>. We define a norm <Math>\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2</Math> on <Math>M</Math>.
 <P/>
-In this section, we detail generic type <Math>R</Math> quadratic modules. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
+In this section, we detail generic type <Math>R</Math> quadratic module. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
 <P/>
 Let <Math>(M,Q)</Math> be a generic type <Math>R</Math> quadratic modules.  Information on <Math>(M,Q)</Math> can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of <Math>R(p,\lambda,\sigma,r,t)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepR"/>.
 <P/>
@@ -378,7 +378,7 @@ Second, in the extremal family, we have <Math>p=2</Math>, <Math>\lambda \geq 2</
     <Item>For <Math>\lambda = 2</Math> and <Math>t=1</Math>, <Math>\mathfrak{A} = \langle \tau \rangle</Math> where <Math>\tau : (x,y) \mapsto (y,x)</Math>, and <Math>\mathfrak{A}_0 = \mathfrak{A} = \langle\tau\rangle</Math>.</Item>
     <Item>For <Math>\lambda = 2</Math> and <Math>t = 3</Math>, <Math>\mathfrak{A}</Math> is trivial; there are no primitive characters.</Item>
     <Item>For <Math>\lambda = 3</Math> or <Math>4</Math>, <Math>\mathfrak{A} = \{\pm 1\}</Math> acting on <Math>M</Math> by multiplication; there are no primitive characters.</Item>
-    <Item>Finally, for <Math>\lambda \geq 5</Math>, <Math>\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle</Math> with <Math>\alpha</Math> of order 2, and <Math>\mathfrak{A}_0 = \langle\alpha\rangle</Math>. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of <Math>\mathfrak{A}</Math> fixing <Math>2M</Math> pointwise.</Item>
+    <Item>Finally, for <Math>\lambda \geq 5</Math>, <Math>\mathfrak{A} = \operatorname{Aut}(M,Q) = \langle \alpha \rangle \times \langle -1 \rangle</Math> with <Math>\alpha</Math> of order 2, and <Math>\mathfrak{A}_0 = \langle\alpha\rangle</Math>. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of <Math>\mathfrak{A}</Math> fixing <Math>2M</Math> pointwise.</Item>
 </List>
 The extremal family is handled by <Ref Func="SL2ModuleR"/> and <Ref Func="SL2IrrepR"/>, just like the generic case.
 <P/>

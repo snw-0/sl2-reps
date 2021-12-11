@@ -36,7 +36,7 @@ We therefore present representations in the form of a record `rec(S, T, degree, 
 
 Note that our definition of $\mathfrak{s}$ follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. $\mathfrak{s}$ = `[[0,-1],[1,0]]` (under which convention the relations are $\mathfrak{s}^4 = \mathrm{id}$, $(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2$). When working with that convention, one must invert the $S$ matrices output by this package.
 
-Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$).  For a group $G$, we denote by $\widehat{G}$ the character group $\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)$.
+Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$).  For a group $G$, we denote by $\widehat{G}$ the character group $\operatorname{Hom}(G, \mathbb{C}^\times)$.
 
 @Section Construction
 
@@ -62,7 +62,7 @@ which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$.  We
 
 For the abelian groups $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$, we will frequently refer to a character $\chi \in \widehat{\mathfrak{A}}$ as being **primitive**.  With the exception of a single family of modules of type $R$ (the **extremal** case, for which see Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>), primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM \subset M$ pointwise.  There exists a subgroup $\mathfrak{A}_0 \leq \mathfrak{A}$ such that a non-trivial $\chi \in \widehat{\mathfrak{A}}$ is primitive if and only if $\chi$ is injective on $\mathfrak{A}_0$ (or, equivalently, if $\mathfrak{A}_0 \cap \operatorname{ker} \chi$ is trivial).
 
-Explicit descriptions of the group $\mathfrak{A}_0$ and the primitive characters of $\mathfrak{A}$ for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/>.
+Explicit descriptions of the group $\mathfrak{A}_0$ for each type are given in Section <Ref Sect="Chapter_Description_Section_Weil"/> and may be used to determine the primitive characters.
 
 @Subsection Irrep types
 
@@ -199,7 +199,7 @@ In all cases, the resulting representation is said to be of type $R$ and denoted
 $$(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)$$
 and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2$ on $M$.
 
-In this section, we detail generic type $R$ quadratic modules. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
+In this section, we detail generic type $R$ quadratic module. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
 
 Let $(M,Q)$ be a generic type $R$ quadratic modules.  Information on $(M,Q)$ can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.
 
@@ -366,7 +366,7 @@ Second, in the extremal family, we have $p=2$, $\lambda \geq 2$, and $\sigma = \
     <Item>For $\lambda = 2$ and $t=1$, $\mathfrak{A} = \langle \tau \rangle$ where $\tau : (x,y) \mapsto (y,x)$, and $\mathfrak{A}_0 = \mathfrak{A} = \langle\tau\rangle$.</Item>
     <Item>For $\lambda = 2$ and $t = 3$, $\mathfrak{A}$ is trivial; there are no primitive characters.</Item>
     <Item>For $\lambda = 3$ or $4$, $\mathfrak{A} = \{\pm 1\}$ acting on $M$ by multiplication; there are no primitive characters.</Item>
-    <Item>Finally, for $\lambda \geq 5$, $\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle$ with $\alpha$ of order 2, and $\mathfrak{A}_0 = \langle\alpha\rangle$. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of $\mathfrak{A}$ fixing $2M$ pointwise.</Item>
+    <Item>Finally, for $\lambda \geq 5$, $\mathfrak{A} = \operatorname{Aut}(M,Q) = \langle \alpha \rangle \times \langle -1 \rangle$ with $\alpha$ of order 2, and $\mathfrak{A}_0 = \langle\alpha\rangle$. Note that, for this special case, the usual test for primitivity (described in Section <Ref Sect="Chapter_Description_Section_Construction"/>) fails, as there are no elements of $\mathfrak{A}$ fixing $2M$ pointwise.</Item>
 </List>
 The extremal family is handled by <Ref Func="SL2ModuleR"/> and <Ref Func="SL2IrrepR"/>, just like the generic case.
 

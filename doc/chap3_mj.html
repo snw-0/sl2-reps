@@ -58,6 +58,8 @@
 
 <p>where <span class="SimpleMath">\(i\)</span> and <span class="SimpleMath">\(j\)</span> are integers. We therefore represent each character by a list <code class="code">[i,j]</code>. Note that in some cases <span class="SimpleMath">\(\alpha\)</span> or <span class="SimpleMath">\(\beta\)</span> is trivial, and the corresponding index <span class="SimpleMath">\(i\)</span> or <span class="SimpleMath">\(j\)</span> is therefore irrelevant.</p>
 
+<p>We write <code class="code">p=</code><span class="SimpleMath">\(p\)</span>, <code class="code">lambda=</code><span class="SimpleMath">\(\lambda\)</span>, <code class="code">sigma=</code><span class="SimpleMath">\(\sigma\)</span>, and <code class="code">chi=</code><span class="SimpleMath">\(\chi\)</span>.</p>
+
 <p><a id="X82DA126D7F755B1C" name="X82DA126D7F755B1C"></a></p>
 
 <h4>3.1 <span class="Heading">Representations of type D</span></h4>
@@ -68,8 +70,8 @@
 
 <h5>3.1-1 SL2ModuleD</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim)</code> describing <span class="SimpleMath">\((M,Q)\)</span>.</p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(D\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>.</p>
 
@@ -85,8 +87,8 @@
 
 <h5>3.1-2 SL2IrrepD</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepD</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepD</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(D\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussion of <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleD</code> (<a href="chap3_mj.html#X845D92CB7841CB0B"><span class="RefLink">3.1-1</span></a>)).</p>
 
@@ -102,8 +104,8 @@
 
 <h5>3.2-1 SL2ModuleN</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim, Nm, Prod)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim, Nm, Prod)</code> describing <span class="SimpleMath">\((M,Q)\)</span>.</p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(N\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>.</p>
 
@@ -121,8 +123,8 @@
 
 <h5>3.2-2 SL2IrrepN</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepN</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepN</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(N\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussion of <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleN</code> (<a href="chap3_mj.html#X7A50CC5A7933E207"><span class="RefLink">3.2-1</span></a>)).</p>
 
@@ -138,8 +140,8 @@
 
 <h5>3.3-1 SL2ModuleR</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)</code> describing <span class="SimpleMath">\((M,Q)\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2ModuleR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record <code class="code">rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)</code> describing <span class="SimpleMath">\((M,Q)\)</span>.</p>
 
 <p>Constructs information about the underlying quadratic module <span class="SimpleMath">\((M,Q)\)</span> of type <span class="SimpleMath">\(R\)</span>, for <span class="SimpleMath">\(p\)</span> a prime. The additional parameters <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span> should be integers chosen as follows.</p>
 
@@ -165,8 +167,8 @@
 
 <h5>3.3-2 SL2IrrepR</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepR</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(R\)</span> with parameters <span class="SimpleMath">\(p\)</span>, <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussions of <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, <span class="SimpleMath">\(t\)</span>, and <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleN</code> (<a href="chap3_mj.html#X7A50CC5A7933E207"><span class="RefLink">3.2-1</span></a>)).</p>
 
@@ -178,8 +180,8 @@
 
 <h5>3.3-3 SL2IrrepRUnary</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">ld</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepRUnary</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of unary type <span class="SimpleMath">\(R\)</span> (that is, the special case where <span class="SimpleMath">\(\sigma = \lambda\)</span>) with <span class="SimpleMath">\(p\)</span> an odd prime, <span class="SimpleMath">\(\lambda\)</span> a positive integer, and <span class="SimpleMath">\(r \in \{1,u\}\)</span> with <span class="SimpleMath">\(u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>.</p>
 

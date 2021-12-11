@@ -56,7 +56,7 @@
 
 <p>Note that our definition of <span class="Math">\mathfrak{s}</span> follows that of <a href="chapBib.html#biBNobs1">[Nob76]</a>; other authors prefer the inverse, i.e. <span class="Math">\mathfrak{s}</span> = <code class="code">[[0,-1],[1,0]]</code> (under which convention the relations are <span class="Math">\mathfrak{s}^4 = \mathrm{id}</span>, <span class="Math">(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2</span>). When working with that convention, one must invert the <span class="Math">S</span> matrices output by this package.</p>
 
-<p>Throughout, we denote by <span class="Math">\mathbf{e}</span> the map <span class="Math">k \mapsto e^{2 \pi i k}</span> (an isomorphism from <span class="Math">\mathbb{Q}/\mathbb{Z}</span> to the group of finite roots of unity in <span class="Math">\mathbb{C}</span>). For a group <span class="Math">G</span>, we denote by <span class="Math">\widehat{G}</span> the character group <span class="Math">\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)</span>.</p>
+<p>Throughout, we denote by <span class="Math">\mathbf{e}</span> the map <span class="Math">k \mapsto e^{2 \pi i k}</span> (an isomorphism from <span class="Math">\mathbb{Q}/\mathbb{Z}</span> to the group of finite roots of unity in <span class="Math">\mathbb{C}</span>). For a group <span class="Math">G</span>, we denote by <span class="Math">\widehat{G}</span> the character group <span class="Math">\operatorname{Hom}(G, \mathbb{C}^\times)</span>.</p>
 
 <p><a id="X7F6278CD87400D49" name="X7F6278CD87400D49"></a></p>
 
@@ -97,7 +97,7 @@
 
 <p>For the abelian groups <span class="Math">\mathfrak{A} \leq \operatorname{Aut}(M,Q)</span>, we will frequently refer to a character <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> as being <em>primitive</em>. With the exception of a single family of modules of type <span class="Math">R</span> (the <em>extremal</em> case, for which see Section <a href="chap2.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>), primitivity amounts to the following: there exists some <span class="Math">\varepsilon \in \mathfrak{A}</span> such that <span class="Math">\chi(\varepsilon) \neq 1</span> and <span class="Math">\varepsilon</span> fixes the submodule <span class="Math">pM \subset M</span> pointwise. There exists a subgroup <span class="Math">\mathfrak{A}_0 \leq \mathfrak{A}</span> such that a non-trivial <span class="Math">\chi \in \widehat{\mathfrak{A}}</span> is primitive if and only if <span class="Math">\chi</span> is injective on <span class="Math">\mathfrak{A}_0</span> (or, equivalently, if <span class="Math">\mathfrak{A}_0 \cap \operatorname{ker} \chi</span> is trivial).</p>
 
-<p>Explicit descriptions of the group <span class="Math">\mathfrak{A}_0</span> and the primitive characters of <span class="Math">\mathfrak{A}</span> for each type are given in Section <a href="chap2.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a>.</p>
+<p>Explicit descriptions of the group <span class="Math">\mathfrak{A}_0</span> for each type are given in Section <a href="chap2.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a> and may be used to determine the primitive characters.</p>
 
 <p><a id="X85605F1983AA938D" name="X85605F1983AA938D"></a></p>
 
@@ -262,14 +262,14 @@
 
 <p class="pcenter">M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.</p>
 
-<p>When <span class="Math">\sigma = \lambda</span>, the second factor is trivial, and <span class="Math">(M,Q)</span> is said to be in the <em>unary</em> family; otherwise, it is called <em>generic</em>.</p>
+<p>When <span class="Math">\sigma = \lambda</span>, the second factor of <span class="Math">M</span> is trivial, and <span class="Math">(M,Q)</span> is said to be in the <em>unary</em> family; otherwise, it is called <em>generic</em>.</p>
 
 </li>
 <li><p>If <span class="Math">p=2</span>, let <span class="Math">\lambda \geq 2</span>, <span class="Math">\sigma \in \{0, \dots, \lambda-2\}</span> and <span class="Math">r,t \in \{1,3,5,7\}</span>. Then define</p>
 
 <p class="pcenter">M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) = \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.</p>
 
-<p>When <span class="Math">\sigma = \lambda - 2</span>, the second factor is isomorphic to <span class="Math">\mathbb{Z}/2\mathbb{Z}</span>, and <span class="Math">(M,Q)</span> is said to be in the <em>extremal</em> family; otherwise, it is called <em>generic</em>.</p>
+<p>When <span class="Math">\sigma = \lambda - 2</span>, the second factor of <span class="Math">M</span> is isomorphic to <span class="Math">\mathbb{Z}/2\mathbb{Z}</span>, and <span class="Math">(M,Q)</span> is said to be in the <em>extremal</em> family; otherwise, it is called <em>generic</em>.</p>
 
 </li>
 </ul>
@@ -279,7 +279,7 @@
 
 <p>and identity element <span class="Math">(1,0)</span>. We define a norm <span class="Math">\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2</span> on <span class="Math">M</span>.</p>
 
-<p>In this section, we detail generic type <span class="Math">R</span> quadratic modules. Information on the unary and extremal cases is covered in Section <a href="chap2.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>.</p>
+<p>In this section, we detail generic type <span class="Math">R</span> quadratic module. Information on the unary and extremal cases is covered in Section <a href="chap2.html#X7B1E74AC85CBD40B"><span class="RefLink">2.2-4</span></a>.</p>
 
 <p>Let <span class="Math">(M,Q)</span> be a generic type <span class="Math">R</span> quadratic modules. Information on <span class="Math">(M,Q)</span> can be obtained via <code class="func">SL2ModuleR</code> (<a href="chap3.html#X7B10D99E7AEAC411"><span class="RefLink">3.3-1</span></a>), and subrepresentations of <span class="Math">R(p,\lambda,\sigma,r,t)</span> with level <span class="Math">p^\lambda</span> may be constructed via <code class="func">SL2IrrepR</code> (<a href="chap3.html#X80961A2C7C5F632E"><span class="RefLink">3.3-2</span></a>).</p>
 
@@ -462,7 +462,7 @@
 <li><p>For <span class="Math">\lambda = 3</span> or <span class="Math">4</span>, <span class="Math">\mathfrak{A} = \{\pm 1\}</span> acting on <span class="Math">M</span> by multiplication; there are no primitive characters.</p>
 
 </li>
-<li><p>Finally, for <span class="Math">\lambda \geq 5</span>, <span class="Math">\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle</span> with <span class="Math">\alpha</span> of order 2, and <span class="Math">\mathfrak{A}_0 = \langle\alpha\rangle</span>. Note that, for this special case, the usual test for primitivity (described in Section <a href="chap2.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails, as there are no elements of <span class="Math">\mathfrak{A}</span> fixing <span class="Math">2M</span> pointwise.</p>
+<li><p>Finally, for <span class="Math">\lambda \geq 5</span>, <span class="Math">\mathfrak{A} = \operatorname{Aut}(M,Q) = \langle \alpha \rangle \times \langle -1 \rangle</span> with <span class="Math">\alpha</span> of order 2, and <span class="Math">\mathfrak{A}_0 = \langle\alpha\rangle</span>. Note that, for this special case, the usual test for primitivity (described in Section <a href="chap2.html#X7F6278CD87400D49"><span class="RefLink">2.1</span></a>) fails, as there are no elements of <span class="Math">\mathfrak{A}</span> fixing <span class="Math">2M</span> pointwise.</p>
 
 </li>
 </ul>

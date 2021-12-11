@@ -29,7 +29,7 @@
   [33X[0;0YThroughout,  we  denote  by  [23X\mathbf{e}[123X  the map [23Xk \mapsto e^{2 \pi i k}[123X (an
   isomorphism from [23X\mathbb{Q}/\mathbb{Z}[123X to the group of finite roots of unity
   in  [23X\mathbb{C}[123X). For a group [23XG[123X, we denote by [23X\widehat{G}[123X the character group
-  [23X\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)[123X.[133X
+  [23X\operatorname{Hom}(G, \mathbb{C}^\times)[123X.[133X
   
   
   [1X2.1 [33X[0;0YConstruction[133X[101X
@@ -107,8 +107,8 @@
   if  [23X\chi[123X is injective on [23X\mathfrak{A}_0[123X (or, equivalently, if [23X\mathfrak{A}_0
   \cap \operatorname{ker} \chi[123X is trivial).[133X
   
-  [33X[0;0YExplicit   descriptions  of  the  group  [23X\mathfrak{A}_0[123X  and  the  primitive
-  characters of [23X\mathfrak{A}[123X for each type are given in Section [14X2.2[114X.[133X
+  [33X[0;0YExplicit descriptions of the group [23X\mathfrak{A}_0[123X for each type are given in
+  Section [14X2.2[114X and may be used to determine the primitive characters.[133X
   
   
   [1X2.1-3 [33X[0;0YIrrep types[133X[101X
@@ -247,8 +247,8 @@
   
   [124X
   
-        [33X[0;6YWhen [23X\sigma = \lambda[123X, the second factor is trivial, and [23X(M,Q)[123X is said
-        to be in the [13Xunary[113X family; otherwise, it is called [13Xgeneric[113X.[133X
+        [33X[0;6YWhen [23X\sigma = \lambda[123X, the second factor of [23XM[123X is trivial, and [23X(M,Q)[123X is
+        said to be in the [13Xunary[113X family; otherwise, it is called [13Xgeneric[113X.[133X
   
   [30X    [33X[0;6YIf [23Xp=2[123X, let [23X\lambda \geq 2[123X, [23X\sigma \in \{0, \dots, \lambda-2\}[123X and [23Xr,t
         \in \{1,3,5,7\}[123X. Then define[133X
@@ -260,7 +260,7 @@
   
   [124X
   
-        [33X[0;6YWhen  [23X\sigma  =  \lambda  -  2[123X,  the  second  factor  is isomorphic to
+        [33X[0;6YWhen  [23X\sigma  =  \lambda  - 2[123X, the second factor of [23XM[123X is isomorphic to
         [23X\mathbb{Z}/2\mathbb{Z}[123X,  and  [23X(M,Q)[123X  is  said  to  be  in the [13Xextremal[113X
         family; otherwise, it is called [13Xgeneric[113X.[133X
   
@@ -276,7 +276,7 @@
   [33X[0;0Yand  identity element [23X(1,0)[123X. We define a norm [23X\operatorname{Nm}(x,y) = x^2 +
   xy + p^\sigma t y^2[123X on [23XM[123X.[133X
   
-  [33X[0;0YIn  this section, we detail generic type [23XR[123X quadratic modules. Information on
+  [33X[0;0YIn  this  section, we detail generic type [23XR[123X quadratic module. Information on
   the unary and extremal cases is covered in Section [14X2.2-4[114X.[133X
   
   [33X[0;0YLet [23X(M,Q)[123X be a generic type [23XR[123X quadratic modules. Information on [23X(M,Q)[123X can be
@@ -362,11 +362,12 @@
   [30X    [33X[0;6YFor  [23X\lambda  =  3[123X  or  [23X4[123X,  [23X\mathfrak{A}  =  \{\pm  1\}[123X acting on [23XM[123X by
         multiplication; there are no primitive characters.[133X
   
-  [30X    [33X[0;6YFinally,  for  [23X\lambda  \geq  5[123X, [23X\mathfrak{A} = \langle \alpha \rangle
-        \times \langle -1 \rangle[123X with [23X\alpha[123X of order 2, and [23X\mathfrak{A}_0 =
-        \langle\alpha\rangle[123X. Note that, for this special case, the usual test
-        for  primitivity  (described  in  Section  [14X2.1[114X) fails, as there are no
-        elements of [23X\mathfrak{A}[123X fixing [23X2M[123X pointwise.[133X
+  [30X    [33X[0;6YFinally,  for [23X\lambda \geq 5[123X, [23X\mathfrak{A} = \operatorname{Aut}(M,Q) =
+        \langle  \alpha \rangle \times \langle -1 \rangle[123X with [23X\alpha[123X of order
+        2,  and  [23X\mathfrak{A}_0  =  \langle\alpha\rangle[123X.  Note that, for this
+        special  case,  the  usual  test for primitivity (described in Section
+        [14X2.1[114X)  fails,  as  there  are  no  elements  of  [23X\mathfrak{A}[123X fixing [23X2M[123X
+        pointwise.[133X
   
   [33X[0;0YThe  extremal family is handled by [2XSL2ModuleR[102X ([14X3.3-1[114X) and [2XSL2IrrepR[102X ([14X3.3-2[114X),
   just like the generic case.[133X

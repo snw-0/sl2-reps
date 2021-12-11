@@ -2,6 +2,7 @@
   
   [1XIndex[101X
   
+  License .-1 
   [2XSL2ChiST[102X 5.1-2 
   [2XSL2ExceptionalIrreps[102X 4.3-1 
   [2XSL2IrrepD[102X 3.1-2 

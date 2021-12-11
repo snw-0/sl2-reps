@@ -11,8 +11,8 @@
 #! See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>.
 
 
-#! @Arguments p,ld,sigma,r,t
-#! @Returns a record `rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)` describing $(M,Q)$
+#! @Arguments p,lambda,sigma,r,t
+#! @Returns a record `rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)` describing $(M,Q)$.
 #! @Description
 #!  Constructs information about the underlying quadratic module $(M,Q)$ of type $R$, for
 #!  $p$ a prime. The additional parameters $\lambda$, $\sigma$, $r$, and $t$ should
@@ -48,8 +48,8 @@
 #!  `tM` is a list describing the elements of the group $M - pM$.
 DeclareGlobalFunction( "SL2ModuleR" );
 
-#! @Arguments p,ld,sigma,r,t,chi_index
-#! @Returns a list of lists of the form $[S,T]$
+#! @Arguments p,lambda,sigma,r,t,chi_index
+#! @Returns a list of lists of the form $[S,T]$.
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of type $R$ with
 #!  parameters $p$, $\lambda$, $\sigma$, $r$, and $t$,
@@ -62,8 +62,8 @@ DeclareGlobalFunction( "SL2ModuleR" );
 #!  (and hence $t$ is irrelevant), so this falls through to <Ref Func="SL2IrrepRUnary"/>.
 DeclareGlobalFunction( "SL2IrrepR" );
 
-#! @Arguments p,ld,r
-#! @Returns a list of lists of the form $[S,T]$
+#! @Arguments p,lambda,r
+#! @Returns a list of lists of the form $[S,T]$.
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of unary type $R$
 #!  (that is, the special case where $\sigma = \lambda$) with $p$ an odd prime,

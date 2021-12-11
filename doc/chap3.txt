@@ -22,6 +22,8 @@
   [10X[i,j][110X.  Note  that  in  some  cases  [23X\alpha[123X  or  [23X\beta[123X  is  trivial, and the
   corresponding index [23Xi[123X or [23Xj[123X is therefore irrelevant.[133X
   
+  [33X[0;0YWe write [10Xp=[110X[23Xp[123X, [10Xlambda=[110X[23X\lambda[123X, [10Xsigma=[110X[23X\sigma[123X, and [10Xchi=[110X[23X\chi[123X.[133X
+  
   
   [1X3.1 [33X[0;0YRepresentations of type D[133X[101X
   
@@ -29,8 +31,8 @@
   
   [1X3.1-1 SL2ModuleD[101X
   
-  [33X[1;0Y[29X[2XSL2ModuleD[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim)[110X describing [23X(M,Q)[123X[133X
+  [33X[1;0Y[29X[2XSL2ModuleD[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim)[110X describing [23X(M,Q)[123X.[133X
   
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
   [23XD[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X.[133X
@@ -55,8 +57,8 @@
   
   [1X3.1-2 SL2IrrepD[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepD[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  [33X[1;0Y[29X[2XSL2IrrepD[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XD[123X
   with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
@@ -72,8 +74,8 @@
   
   [1X3.2-1 SL2ModuleN[101X
   
-  [33X[1;0Y[29X[2XSL2ModuleN[102X( [3Xp[103X, [3Xld[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim, Nm, Prod)[110X describing [23X(M,Q)[123X[133X
+  [33X[1;0Y[29X[2XSL2ModuleN[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim, Nm, Prod)[110X describing [23X(M,Q)[123X.[133X
   
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
   [23XN[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X.[133X
@@ -101,8 +103,8 @@
   
   [1X3.2-2 SL2IrrepN[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepN[102X( [3Xp[103X, [3Xld[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  [33X[1;0Y[29X[2XSL2IrrepN[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XN[123X
   with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
@@ -118,9 +120,9 @@
   
   [1X3.3-1 SL2ModuleR[101X
   
-  [33X[1;0Y[29X[2XSL2ModuleR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2ModuleR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya  record  [10Xrec(Agrp,  Bp,  Char,  IsPrim,  Nm,  Ord,  Prod, c, tM)[110X
-            describing [23X(M,Q)[123X[133X
+            describing [23X(M,Q)[123X.[133X
   
   [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
   [23XR[123X, for [23Xp[123X a prime. The additional parameters [23X\lambda[123X, [23X\sigma[123X, [23Xr[123X, and [23Xt[123X should
@@ -163,8 +165,8 @@
   
   [1X3.3-2 SL2IrrepR[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepR[102X( [3Xp[103X, [3Xld[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  [33X[1;0Y[29X[2XSL2IrrepR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
   
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XR[123X
   with parameters [23Xp[123X, [23X\lambda[123X, [23X\sigma[123X, [23Xr[123X, and [23Xt[123X, corresponding to the character
@@ -179,8 +181,8 @@
   
   [1X3.3-3 SL2IrrepRUnary[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepRUnary[102X( [3Xp[103X, [3Xld[103X, [3Xr[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X[133X
+  [33X[1;0Y[29X[2XSL2IrrepRUnary[102X( [3Xp[103X, [3Xlambda[103X, [3Xr[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
   
   [33X[0;0YConstructs  the  modular data for the irreducible representation(s) of unary
   type  [23XR[123X  (that  is,  the  special case where [23X\sigma = \lambda[123X) with [23Xp[123X an odd

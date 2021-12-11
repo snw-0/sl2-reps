@@ -9,16 +9,16 @@
 SetPackageInfo( rec(
 
 PackageName := "SL2Reps",
-Subtitle := "Constructs representations of SL2(Z).",
+Subtitle := "Constructs congruent representations of SL(2,Z).",
 Version := "0.1",
-Date := "24/09/2021", # dd/mm/yyyy format
-License := "GPL-2.0-or-later",
+Date := "12/11/2021", # dd/mm/yyyy format
+License := "GPL-2.0",
 
 Persons := [
   rec(
     FirstNames := "Siu-Hung",
     LastName := "Ng",
-    #WWWHome := TODO,
+    WWWHome := "https://www.math.lsu.edu/~rng/",
     Email := "rng@math.lsu.edu",
     IsAuthor := true,
     IsMaintainer := false,
@@ -29,13 +29,13 @@ Persons := [
   rec(
     FirstNames := "Yilong",
     LastName := "Wang",
-    #WWWHome := TODO,
+    WWWHome := "https://yilongwang11.github.io",
     Email := "wyl@bimsa.cn",
     IsAuthor := true,
     IsMaintainer := false,
     #PostalAddress := TODO,
     #Place := TODO,
-    Institution := "Yanqi Lake Beijing Institute of Mathematical Sciences and Applications",
+    Institution := "Louisiana State University; currently Beijing Institute of Mathematical Sciences and Applications (BIMSA)",
   ),
   rec(
     FirstNames := "Samuel",
@@ -93,6 +93,23 @@ AvailabilityTest := ReturnTrue,
 TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
+
+AutoDoc := rec(
+  TitlePage := rec(
+    Copyright := """
+      <Index>License</Index>
+      &copyright; 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
+      This package is free software;
+      you can redistribute it and/or modify it under the terms of the
+      <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+      as published by the Free Software Foundation; either version 2 of the License,
+      or (at your option) any later version.
+      """,
+    Acknowledgements := """
+      This project is partially supported by NSF grant DMS 1664418.
+      """,
+  ),
+),
 
 ));
 

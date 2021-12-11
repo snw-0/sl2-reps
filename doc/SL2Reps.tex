@@ -4,7 +4,7 @@
 \usepackage[top=37mm,bottom=37mm,left=27mm,right=27mm]{geometry}
 \sloppy
 \pagestyle{myheadings}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{makeidx}
 \makeindex
@@ -95,40 +95,54 @@
 
 \hypersetup{pdftitle= SL2Reps }
 \markright{\scriptsize \mbox{}\hfill  SL2Reps  \hfill\mbox{}}
-{\Huge \textbf{ Constructs representations of SL2(Z). \mbox{}}}\\
+{\Huge \textbf{ Constructs congruent representations of SL(2,Z). \mbox{}}}\\
 \vfill
 
 {\Huge  0.1 \mbox{}}\\[1cm]
-{ 24 September 2021 \mbox{}}\\[1cm]
+{ 12 November 2021 \mbox{}}\\[1cm]
 \mbox{}\\[2cm]
 {\Large \textbf{ Siu-Hung Ng\\
-  \mbox{}}}\\
+   \mbox{}}}\\
 {\Large \textbf{ Yilong Wang\\
-  \mbox{}}}\\
+   \mbox{}}}\\
 {\Large \textbf{ Samuel Wilson\\
   \mbox{}}}\\
 \hypersetup{pdfauthor= Siu-Hung Ng\\
-  ;  Yilong Wang\\
-  ;  Samuel Wilson\\
+   ;  Yilong Wang\\
+   ;  Samuel Wilson\\
   }
 \end{center}\vfill
 
 \mbox{}\\
 {\mbox{}\\
 \small \noindent \textbf{ Siu-Hung Ng\\
-  }  Email: \href{mailto://rng@math.lsu.edu} {\texttt{rng@math.lsu.edu}}}\\
+   }  Email: \href{mailto://rng@math.lsu.edu} {\texttt{rng@math.lsu.edu}}\\
+  Homepage: \href{https://www.math.lsu.edu/~rng/} {\texttt{https://www.math.lsu.edu/\texttt{\symbol{126}}rng/}}}\\
 {\mbox{}\\
 \small \noindent \textbf{ Yilong Wang\\
-  }  Email: \href{mailto://wyl@bimsa.cn} {\texttt{wyl@bimsa.cn}}}\\
+   }  Email: \href{mailto://wyl@bimsa.cn} {\texttt{wyl@bimsa.cn}}\\
+  Homepage: \href{https://yilongwang11.github.io} {\texttt{https://yilongwang11.github.io}}}\\
 {\mbox{}\\
 \small \noindent \textbf{ Samuel Wilson\\
   }  Email: \href{mailto://swil311@lsu.edu} {\texttt{swil311@lsu.edu}}}\\
 \end{titlepage}
 
 \newpage\setcounter{page}{2}
+{\small 
+\section*{Copyright}
+\logpage{[ 0, 0, 1 ]}
+ \index{License} {\copyright} 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson
+
+ This package is free software; you can redistribute it and/or modify it under
+the terms of the \href{http://www.fsf.org/licenses/gpl.html} {GNU General Public License} as published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version. \mbox{}}\\[1cm]
+{\small 
+\section*{Acknowledgements}
+\logpage{[ 0, 0, 2 ]}
+ This project is partially supported by NSF grant DMS 1664418. \mbox{}}\\[1cm]
 \newpage
 
-\def\contentsname{Contents\logpage{[ 0, 0, 1 ]}}
+\def\contentsname{Contents\logpage{[ 0, 0, 3 ]}}
 
 \tableofcontents
 \newpage
@@ -176,7 +190,7 @@ be constructed with those in Chapter \ref{Chapter_Lists}.
 
  This package uses an \texttt{InfoClass}, \texttt{InfoSL2Reps}. It may be set to \texttt{0} (silent), \texttt{1} (info), or \texttt{2} (verbose). To change it, use 
 
- \texttt{gap{\textgreater} SetInfoLevel( InfoSL2Reps, k );}
+ \texttt{gap{\textgreater} SetInfoLevel( InfoSL2Reps, k );} 
 
  }
 
@@ -199,7 +213,7 @@ representation of $\mathrm{SL}_2(\mathbb{Z})$ arising from a modular tensor cate
 
  Note that our definition of $\mathfrak{s}$ follows that of \cite{Nobs1}; other authors prefer the inverse, i.e. $\mathfrak{s}$ = \texttt{[[0,-1],[1,0]]} (under which convention the relations are $\mathfrak{s}^4 = \mathrm{id}$, $(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2$). When working with that convention, one must invert the $S$ matrices output by this package. 
 
- Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$). For a group $G$, we denote by $\widehat{G}$ the character group $\operatorname{Hom}_\mathbb{C}(G, \mathbb{C}^\times)$.
+ Throughout, we denote by $\mathbf{e}$ the map $k \mapsto e^{2 \pi i k}$ (an isomorphism from $\mathbb{Q}/\mathbb{Z}$ to the group of finite roots of unity in $\mathbb{C}$). For a group $G$, we denote by $\widehat{G}$ the character group $\operatorname{Hom}(G, \mathbb{C}^\times)$. 
 
  
 \section{\textcolor{Chapter }{Construction}}\label{Chapter_Description_Section_Construction}
@@ -221,24 +235,24 @@ theorem). Therefore, to characterize all finite-dimensional representations of $
   
 
  Such representations may be constructed using Weil representations as
-described in \cite[Section 1]{Nobs1}. We give a brief summary of the process here. First, if $M$ is any additive abelian group, a \emph{quadratic form} on $M$ is a map $Q : M \to \mathbb{Q}/\mathbb{Z}$ such that
+described in \cite[Section 1]{Nobs1}. We give a brief summary of the process here. First, if $M$ is any additive abelian group, a \emph{quadratic form} on $M$ is a map $Q : M \to \mathbb{Q}/\mathbb{Z}$ such that 
 \begin{itemize}
 \item $Q(-x) = Q(x)$ for all $x \in M$, and
 \item $B(x,y) = Q(x+y) - Q(x) - Q(y)$ defines a $\mathbb{Z}$-bilinear map $M \times M \to \mathbb{Q}/\mathbb{Z}$.
 \end{itemize}
-
+ 
 
  Now let $p$ be a prime number and $\lambda \in \mathbb{Z}^+$. Choose a $\mathbb{Z}/p^\lambda\mathbb{Z}$-module $M$ and a quadratic form $Q$ on $M$ such that the pair $(M,Q)$ is of one of the three types described in Section \ref{Chapter_Description_Section_Weil}. Each such $M$ is a ring, and has at most 2 cyclic factors as an additive group. Those with 2
 cyclic factors may be identified with a quotient of the quadratic integers,
-giving a norm on $M$. Then the \emph{quadratic module} $(M,Q)$ gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$. This representation is denoted $W(M,Q)$. Note that the \emph{central charge} of $(M,Q)$ is given by $S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))$.
+giving a norm on $M$. Then the \emph{quadratic module} $(M,Q)$ gives rise to a representation of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ on the vector space $V = \mathbb{C}^M$ of complex-valued functions on $M$. This representation is denoted $W(M,Q)$. Note that the \emph{central charge} of $(M,Q)$ is given by $S_Q(-1) = \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))$. 
 
- We may construct subrepresentations $W(M,Q,\chi)$ of $W(M,Q)$ as follows. Denote
+ We may construct subrepresentations $W(M,Q,\chi)$ of $W(M,Q)$ as follows. Denote 
 \[\operatorname{Aut}(M,Q) = \{ \varepsilon \in \operatorname{Aut}(M) \mid
 Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}~.\]
- We then associate to $(M,Q)$ an abelian subgroup $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$; the structure of this group depends on $(M,Q)$ and is described in Section \ref{Chapter_Description_Section_Weil}. Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$. Now, let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (\emph{character}) of $\mathfrak{A}$, and define
+ We then associate to $(M,Q)$ an abelian subgroup $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$; the structure of this group depends on $(M,Q)$ and is described in Section \ref{Chapter_Description_Section_Weil}. Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$. Now, let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (\emph{character}) of $\mathfrak{A}$, and define 
 \[V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for
 all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
- which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$. We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. Note that $W(M,Q,\chi) \cong W(M,Q,\overline{\chi})$.
+ which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$. We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. Note that $W(M,Q,\chi) \cong W(M,Q,\overline{\chi})$. 
 
  }
 
@@ -249,9 +263,9 @@ all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
 {
   
 
- For the abelian groups $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$, we will frequently refer to a character $\chi \in \widehat{\mathfrak{A}}$ as being \emph{primitive}. With the exception of a single family of modules of type $R$ (the \emph{extremal} case, for which see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R_Special}), primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM \subset M$ pointwise. There exists a subgroup $\mathfrak{A}_0 \leq \mathfrak{A}$ such that a non-trivial $\chi \in \widehat{\mathfrak{A}}$ is primitive if and only if $\chi$ is injective on $\mathfrak{A}_0$ (or, equivalently, if $\mathfrak{A}_0 \cap \operatorname{ker} \chi$ is trivial).
+ For the abelian groups $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$, we will frequently refer to a character $\chi \in \widehat{\mathfrak{A}}$ as being \emph{primitive}. With the exception of a single family of modules of type $R$ (the \emph{extremal} case, for which see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R_Special}), primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM \subset M$ pointwise. There exists a subgroup $\mathfrak{A}_0 \leq \mathfrak{A}$ such that a non-trivial $\chi \in \widehat{\mathfrak{A}}$ is primitive if and only if $\chi$ is injective on $\mathfrak{A}_0$ (or, equivalently, if $\mathfrak{A}_0 \cap \operatorname{ker} \chi$ is trivial). 
 
- Explicit descriptions of the group $\mathfrak{A}_0$ and the primitive characters of $\mathfrak{A}$ for each type are given in Section \ref{Chapter_Description_Section_Weil}.
+ Explicit descriptions of the group $\mathfrak{A}_0$ for each type are given in Section \ref{Chapter_Description_Section_Weil} and may be used to determine the primitive characters. 
 
  }
 
@@ -274,7 +288,7 @@ cases.
  
 
  All the finite-dimensional irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can now be constructed by taking tensor products of these
-prime-power irreps. Note that, if two representations are determined by pairs \texttt{[S1,T1]} and \texttt{[S2,T2]}, then the pair for their tensor product may be calculated via the GAP command \texttt{KroneckerProduct}, namely as \texttt{[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]}.
+prime-power irreps. Note that, if two representations are determined by pairs \texttt{[S1,T1]} and \texttt{[S2,T2]}, then the pair for their tensor product may be calculated via the GAP command \texttt{KroneckerProduct}, namely as \texttt{[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]}. 
 
  }
 
@@ -294,12 +308,12 @@ prime-power irreps. Note that, if two representations are determined by pairs \t
 {
   
 
- Let $p$ be prime. If $p=2$ or $p=3$, let $\lambda \geq 2$; otherwise, let $\lambda \geq 1$. Then the Weil representation arising from the quadratic module with
+ Let $p$ be prime. If $p=2$ or $p=3$, let $\lambda \geq 2$; otherwise, let $\lambda \geq 1$. Then the Weil representation arising from the quadratic module with 
 \[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}
 \qquad \text{and} \qquad Q(x,y) = \frac{xy}{p^\lambda}\]
- is said to be of type $D$ and denoted $D(p,\lambda)$. Information on type $D$ quadratic modules may be obtained via \texttt{SL2ModuleD} (\ref{SL2ModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepD} (\ref{SL2IrrepD}).
+ is said to be of type $D$ and denoted $D(p,\lambda)$. Information on type $D$ quadratic modules may be obtained via \texttt{SL2ModuleD} (\ref{SL2ModuleD}), and subrepresentations of $D(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepD} (\ref{SL2IrrepD}). 
 
- The group
+ The group 
 \[\mathfrak{A} \cong (\mathbb{Z}/p^\lambda\mathbb{Z})^\times\]
  acts on $M$ by $a(x,y) = (a^{-1}x, ay)$ and is thus identified with a subgroup of $\operatorname{Aut}(M,Q)$; see \cite[Section 2.1]{NW76}. The group $\mathfrak{A}$ has order $p^{\lambda-1}(p-1)$ and $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$. The relevant information for type $D$ quadratic modules is as follows: \begin{center}
 \begin{tabular}{ccccc}$p$&
@@ -331,7 +345,7 @@ $\langle \alpha \rangle$\\
 \end{tabular}\\[2mm]
 \end{center}
 
- When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive.
+ When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive. 
 
  }
 
@@ -342,18 +356,18 @@ $\langle \alpha \rangle$\\
 {
   
 
- Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, let $u$ be a positive integer so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, let $u=3$. Then the Weil representation arising from the quadratic module with
+ Let $p$ be prime and $\lambda \geq 1$. If $p \neq 2$, let $u$ be a positive integer so that $u \equiv 3$ mod 4 with $-u$ a quadratic non-residue mod $p$; if $p = 2$, let $u=3$. Then the Weil representation arising from the quadratic module with 
 \[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus \mathbb{Z}/p^\lambda\mathbb{Z}
 \qquad \text{and} \qquad Q(x,y) = \frac{x^2 +xy+\frac{1+u}{4}y^2}{p^\lambda}\]
- is said to be of type $N$ and denoted $N(p,\lambda)$. Information on type $N$ quadratic modules may be obtained via \texttt{SL2ModuleN} (\ref{SL2ModuleN}), and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepN} (\ref{SL2IrrepN}).
+ is said to be of type $N$ and denoted $N(p,\lambda)$. Information on type $N$ quadratic modules may be obtained via \texttt{SL2ModuleN} (\ref{SL2ModuleN}), and subrepresentations of $N(p,\lambda)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepN} (\ref{SL2IrrepN}). 
 
- The additive group $M$ is a ring with multiplication given by
+ The additive group $M$ is a ring with multiplication given by 
 \[(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - \frac{1+u}{4}y_1y_2, x_1y_2 + x_2y_1 +
 y_1y_2)\]
- and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + \frac{1+u}{4}y^2$ on $M$; then the multiplicative subgroup
+ and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + \frac{1+u}{4}y^2$ on $M$; then the multiplicative subgroup 
 \[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon)
 = 1 \}\]
- of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see \cite[Section 2.2]{NW76}.
+ of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see \cite[Section 2.2]{NW76}. 
 
  The group $\mathfrak{A}$ has order $p^{\lambda-1}(p+1)$ and $\mathfrak{A} = \langle \alpha \rangle \times \langle \beta \rangle$. The relevant information for type $N$ quadratic modules is as follows: \begin{center}
 \begin{tabular}{ccccc}$p$&
@@ -390,7 +404,7 @@ $\langle \alpha \rangle$\\
 \end{tabular}\\[2mm]
 \end{center}
 
- When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive.
+ When $\mathfrak{A}_0$ is trivial, every non-trivial character $\chi \in \widehat{\mathfrak{A}}$ is primitive. 
 
  }
 
@@ -401,36 +415,36 @@ $\langle \alpha \rangle$\\
 {
   
 
- The structure of the quadratic module $(M,Q)$ of type $R$ depends upon three additional parameters: $\sigma$, $r$, and $t$. Details are as follows:
+ The structure of the quadratic module $(M,Q)$ of type $R$ depends upon three additional parameters: $\sigma$, $r$, and $t$. Details are as follows: 
 
-
+ 
 \begin{itemize}
-\item If $p$ is odd, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda\}$, and $r,t \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$. Then define
+\item If $p$ is odd, let $\lambda \geq 2$, $\sigma \in \{1, \dots, \lambda\}$, and $r,t \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$. Then define 
 \[M = \mathbb{Z}/p^\lambda\mathbb{Z} \oplus
 \mathbb{Z}/p^{\lambda-\sigma}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) =
 \frac{r(x^2 + p^\sigma t y^2)}{p^\lambda}~.\]
- When $\sigma = \lambda$, the second factor is trivial, and $(M,Q)$ is said to be in the \emph{unary} family; otherwise, it is called \emph{generic}.
-\item If $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define
+ When $\sigma = \lambda$, the second factor of $M$ is trivial, and $(M,Q)$ is said to be in the \emph{unary} family; otherwise, it is called \emph{generic}.
+\item If $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. Then define 
 \[M = \mathbb{Z}/2^{\lambda-1}\mathbb{Z} \oplus
 \mathbb{Z}/2^{\lambda-\sigma-1}\mathbb{Z} \qquad \text{and} \qquad Q(x,y) =
 \frac{r(x^2 + 2^\sigma t y^2)}{2^\lambda}~.\]
- When $\sigma = \lambda - 2$, the second factor is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and $(M,Q)$ is said to be in the \emph{extremal} family; otherwise, it is called \emph{generic}.
+ When $\sigma = \lambda - 2$, the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and $(M,Q)$ is said to be in the \emph{extremal} family; otherwise, it is called \emph{generic}.
 \end{itemize}
  
 
- In all cases, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$. The additive group $M$ admits a ring structure with multiplication
+ In all cases, the resulting representation is said to be of type $R$ and denoted $R(p,\lambda,\sigma,r,t)$. The additive group $M$ admits a ring structure with multiplication 
 \[(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)\]
- and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2$ on $M$.
+ and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2$ on $M$. 
 
- In this section, we detail generic type $R$ quadratic modules. Information on the unary and extremal cases is covered in
-Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R_Special}.
+ In this section, we detail generic type $R$ quadratic module. Information on the unary and extremal cases is covered in
+Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R_Special}. 
 
- Let $(M,Q)$ be a generic type $R$ quadratic modules. Information on $(M,Q)$ can be obtained via \texttt{SL2ModuleR} (\ref{SL2ModuleR}), and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepR} (\ref{SL2IrrepR}).
+ Let $(M,Q)$ be a generic type $R$ quadratic modules. Information on $(M,Q)$ can be obtained via \texttt{SL2ModuleR} (\ref{SL2ModuleR}), and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via \texttt{SL2IrrepR} (\ref{SL2IrrepR}). 
 
- The multiplicative subgroup
+ The multiplicative subgroup 
 \[\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon)
 = 1 \}\]
- of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see \cite[Section 2.3 - 2.4]{NW76}. The relevant information is as follows:
+ of $M^\times$ acts on $M$ by multiplication and is identified with a subgroup of $\operatorname{Aut}(M,Q)$; see \cite[Section 2.3 - 2.4]{NW76}. The relevant information is as follows: 
 \begin{itemize}
 \item If $p$ is odd, $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$ with order $2p^{\lambda-\sigma}$. In this case, for fixed $p$, $\lambda$, $\sigma$, each pair $(r,t)$ gives rise to a distinct quadratic module \cite[Satz 4]{Nobs1}. The following table covers a complete list of representatives of equivalence
 classes of such modules. \begin{center}
@@ -563,19 +577,20 @@ $\langle \alpha \rangle$\\
 {
   
 
- This section covers the unary and extremal cases of type $R$.
+ This section covers the unary and extremal cases of type $R$. 
 
- First, in the unary family, we have $p$ odd and $\sigma = \lambda$. Then the second factor of $M$ is trivial (and hence $t$ is irrelevant). We then denote $R_{p^\lambda}(r) = R(p,\lambda,\lambda,r,t)$. In this case, we do not decompose $W(M,Q)$ using characters: instead, if $\lambda \leq 2$, then $W(M,Q)$ contains two distinct irreducible subrepresentations of level $p^\lambda$, denoted $R_{p^\lambda}(r)_{\pm}$; otherwise, it contains a single such subrepresentation, denoted $R_{p^\lambda}(r)_1$. The unary family is handled by \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary}) (which is called by \texttt{SL2IrrepR} (\ref{SL2IrrepR}) when appropriate).
+ First, in the unary family, we have $p$ odd and $\sigma = \lambda$. Then the second factor of $M$ is trivial (and hence $t$ is irrelevant). We then denote $R_{p^\lambda}(r) = R(p,\lambda,\lambda,r,t)$. In this case, we do not decompose $W(M,Q)$ using characters: instead, if $\lambda \leq 2$, then $W(M,Q)$ contains two distinct irreducible subrepresentations of level $p^\lambda$, denoted $R_{p^\lambda}(r)_{\pm}$; otherwise, it contains a single such subrepresentation, denoted $R_{p^\lambda}(r)_1$. The unary family is handled by \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary}) (which is called by \texttt{SL2IrrepR} (\ref{SL2IrrepR}) when appropriate). 
 
- Second, in the extremal family, we have $p=2$, $\lambda \geq 2$, and $\sigma = \lambda - 2$. Then the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and collapses in $2M$. Here, $\operatorname{Aut}(M,Q)$ is itself abelian, so we let $\mathfrak{A} = \operatorname{Aut}(M,Q)$. This group has order 1, 2, or 4, with the following structure:
+ Second, in the extremal family, we have $p=2$, $\lambda \geq 2$, and $\sigma = \lambda - 2$. Then the second factor of $M$ is isomorphic to $\mathbb{Z}/2\mathbb{Z}$, and collapses in $2M$. Here, $\operatorname{Aut}(M,Q)$ is itself abelian, so we let $\mathfrak{A} = \operatorname{Aut}(M,Q)$. This group has order 1, 2, or 4, with the following structure: 
 \begin{itemize}
 \item For $\lambda = 2$ and $t=1$, $\mathfrak{A} = \langle \tau \rangle$ where $\tau : (x,y) \mapsto (y,x)$, and $\mathfrak{A}_0 = \mathfrak{A} = \langle\tau\rangle$.
 \item For $\lambda = 2$ and $t = 3$, $\mathfrak{A}$ is trivial; there are no primitive characters.
 \item For $\lambda = 3$ or $4$, $\mathfrak{A} = \{\pm 1\}$ acting on $M$ by multiplication; there are no primitive characters.
-\item Finally, for $\lambda \geq 5$, $\mathfrak{A} = \langle \alpha \rangle \times \langle -1 \rangle$ with $\alpha$ of order 2, and $\mathfrak{A}_0 = \langle\alpha\rangle$. Note that, for this special case, the usual test for primitivity (described
+\item Finally, for $\lambda \geq 5$, $\mathfrak{A} = \operatorname{Aut}(M,Q) = \langle \alpha \rangle \times \langle
+-1 \rangle$ with $\alpha$ of order 2, and $\mathfrak{A}_0 = \langle\alpha\rangle$. Note that, for this special case, the usual test for primitivity (described
 in Section \ref{Chapter_Description_Section_Construction}) fails, as there are no elements of $\mathfrak{A}$ fixing $2M$ pointwise.
 \end{itemize}
- The extremal family is handled by \texttt{SL2ModuleR} (\ref{SL2ModuleR}) and \texttt{SL2IrrepR} (\ref{SL2IrrepR}), just like the generic case.
+ The extremal family is handled by \texttt{SL2ModuleR} (\ref{SL2ModuleR}) and \texttt{SL2IrrepR} (\ref{SL2IrrepR}), just like the generic case. 
 
  }
 
@@ -588,17 +603,19 @@ in Section \ref{Chapter_Description_Section_Construction}) fails, as there are n
 \logpage{[ 3, 0, 0 ]}
 \hyperdef{L}{X7C4165447B8AB223}{}
 {
+  
 
+ Methods for generating individual irreducible representations of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ for a given level $p^\lambda$. 
 
- Methods for generating individual irreducible representations of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ for a given level $p^\lambda$.
+ In each case (except the unary type $R$, for which see \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary})), the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$ and are thus represented by lists \texttt{[x,y]}. 
 
- In each case (except the unary type $R$, for which see \texttt{SL2IrrepRUnary} (\ref{SL2IrrepRUnary})), the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$ and are thus represented by lists \texttt{[x,y]}.
-
- Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$, have the form $\chi_{i,j}$, given by
+ Characters of the abelian group $\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle$, have the form $\chi_{i,j}$, given by 
 \[\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto
 \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
 \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,\]
- where $i$ and $j$ are integers. We therefore represent each character by a list \texttt{[i,j]}. Note that in some cases $\alpha$ or $\beta$ is trivial, and the corresponding index $i$ or $j$ is therefore irrelevant.
+ where $i$ and $j$ are integers. We therefore represent each character by a list \texttt{[i,j]}. Note that in some cases $\alpha$ or $\beta$ is trivial, and the corresponding index $i$ or $j$ is therefore irrelevant. 
+
+ We write \texttt{p=}$p$, \texttt{lambda=}$\lambda$, \texttt{sigma=}$\sigma$, and \texttt{chi=}$\chi$. 
 \section{\textcolor{Chapter }{Representations of type D}}\label{Chapter_Irreps_Section_Representations_of_type_D}
 \logpage{[ 3, 1, 0 ]}
 \hyperdef{L}{X82DA126D7F755B1C}{}
@@ -610,22 +627,22 @@ in Section \ref{Chapter_Description_Section_Construction}) fails, as there are n
 \subsection{\textcolor{Chapter }{SL2ModuleD}}
 \logpage{[ 3, 1, 1 ]}\nobreak
 \hyperdef{L}{X845D92CB7841CB0B}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleD({\mdseries\slshape p, ld})\index{SL2ModuleD@\texttt{SL2ModuleD}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleD({\mdseries\slshape p, lambda})\index{SL2ModuleD@\texttt{SL2ModuleD}}
 \label{SL2ModuleD}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a record \texttt{rec(Agrp, Bp, Char, IsPrim)} describing $(M,Q)$ 
+a record \texttt{rec(Agrp, Bp, Char, IsPrim)} describing $(M,Q)$. 
 
 
 
  Constructs information about the underlying quadratic module $(M,Q)$ of type $D$, for $p$ a prime and $\lambda \geq 1$. 
 
- \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a \in \mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a, a{\textunderscore}inv]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$. Note that $\beta$ is trivial, and hence \texttt{v[2]} is irrelevant, when $\mathfrak{A}$ is cyclic.
+ \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a \in \mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a, a{\textunderscore}inv]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$. Note that $\beta$ is trivial, and hence \texttt{v[2]} is irrelevant, when $\mathfrak{A}$ is cyclic. 
 
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$. 
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. }
 
@@ -634,11 +651,11 @@ each case.
 \subsection{\textcolor{Chapter }{SL2IrrepD}}
 \logpage{[ 3, 1, 2 ]}\nobreak
 \hyperdef{L}{X7FDB517981A2C091}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepD({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2IrrepD@\texttt{SL2IrrepD}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepD({\mdseries\slshape p, lambda, chi{\textunderscore}index})\index{SL2IrrepD@\texttt{SL2IrrepD}}
 \label{SL2IrrepD}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of lists of the form $[S,T]$ 
+a list of lists of the form $[S,T]$. 
 
 
 
@@ -660,22 +677,22 @@ a list of lists of the form $[S,T]$
 \subsection{\textcolor{Chapter }{SL2ModuleN}}
 \logpage{[ 3, 2, 1 ]}\nobreak
 \hyperdef{L}{X7A50CC5A7933E207}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleN({\mdseries\slshape p, ld})\index{SL2ModuleN@\texttt{SL2ModuleN}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleN({\mdseries\slshape p, lambda})\index{SL2ModuleN@\texttt{SL2ModuleN}}
 \label{SL2ModuleN}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a record \texttt{rec(Agrp, Bp, Char, IsPrim, Nm, Prod)} describing $(M,Q)$ 
+a record \texttt{rec(Agrp, Bp, Char, IsPrim, Nm, Prod)} describing $(M,Q)$. 
 
 
 
  Constructs information about the underlying quadratic module $(M,Q)$ of type $N$, for $p$ a prime and $\lambda \geq 1$. 
 
- \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a \in \mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$. Note that $\alpha$ is trivial, and hence \texttt{v[1]} is irrelevant, when $\mathfrak{A}$ is cyclic.
+ \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a \in \mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$. Note that $\alpha$ is trivial, and hence \texttt{v[1]} is irrelevant, when $\mathfrak{A}$ is cyclic. 
 
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$. 
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. 
 
@@ -686,11 +703,11 @@ each case.
 \subsection{\textcolor{Chapter }{SL2IrrepN}}
 \logpage{[ 3, 2, 2 ]}\nobreak
 \hyperdef{L}{X81D60FE878F02838}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepN({\mdseries\slshape p, ld, chi{\textunderscore}index})\index{SL2IrrepN@\texttt{SL2IrrepN}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepN({\mdseries\slshape p, lambda, chi{\textunderscore}index})\index{SL2IrrepN@\texttt{SL2IrrepN}}
 \label{SL2IrrepN}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of lists of the form $[S,T]$ 
+a list of lists of the form $[S,T]$. 
 
 
 
@@ -712,11 +729,11 @@ a list of lists of the form $[S,T]$
 \subsection{\textcolor{Chapter }{SL2ModuleR}}
 \logpage{[ 3, 3, 1 ]}\nobreak
 \hyperdef{L}{X7B10D99E7AEAC411}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleR({\mdseries\slshape p, ld, sigma, r, t})\index{SL2ModuleR@\texttt{SL2ModuleR}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ModuleR({\mdseries\slshape p, lambda, sigma, r, t})\index{SL2ModuleR@\texttt{SL2ModuleR}}
 \label{SL2ModuleR}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a record \texttt{rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)} describing $(M,Q)$ 
+a record \texttt{rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)} describing $(M,Q)$. 
 
 
 
@@ -727,18 +744,18 @@ as it is decomposed in a different way; for this case, use \texttt{SL2IrrepRUnar
 
  If $p=2$, let $\lambda \geq 2$, $\sigma \in \{0, \dots, \lambda-2\}$ and $r,t \in \{1,3,5,7\}$. 
 
- \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a$ of $\mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$.
+ \texttt{Agrp} is a list describing the elements of $\mathfrak{A}$. Each element $a$ of $\mathfrak{A}$ is represented in \texttt{Agrp} by a list \texttt{[v, a]}, where \texttt{v} is a list defined by $a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}$. 
 
  \texttt{Bp} is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$. For other characters, we must use different bases which are particular to
 each case. 
 
- \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
+ \texttt{Char(i,j)} converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$. 
 
  \texttt{IsPrim(chi)} tests whether the output of \texttt{Char(i,j)} represents a primitive character. 
 
  \texttt{Nm(a)}, \texttt{Ord(a)}, and \texttt{Prod(a,b)} are the norm, order, and product functions on $M$, respectively. 
 
- \texttt{c} is a scalar used in calculating the $S$-matrix; namely $c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))$. Note that this is equal to $S_Q(-1) / \sqrt{|M|}$, where $S_Q(-1)$ is the central charge (see Section \ref{Chapter_Description_Section_Construction_Subsection_Weil_representations}).
+ \texttt{c} is a scalar used in calculating the $S$-matrix; namely $c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))$. Note that this is equal to $S_Q(-1) / \sqrt{|M|}$, where $S_Q(-1)$ is the central charge (see Section \ref{Chapter_Description_Section_Construction_Subsection_Weil_representations}). 
 
  \texttt{tM} is a list describing the elements of the group $M - pM$. }
 
@@ -747,11 +764,11 @@ each case.
 \subsection{\textcolor{Chapter }{SL2IrrepR}}
 \logpage{[ 3, 3, 2 ]}\nobreak
 \hyperdef{L}{X80961A2C7C5F632E}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepR({\mdseries\slshape p, ld, sigma, r, t, chi{\textunderscore}index})\index{SL2IrrepR@\texttt{SL2IrrepR}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepR({\mdseries\slshape p, lambda, sigma, r, t, chi{\textunderscore}index})\index{SL2IrrepR@\texttt{SL2IrrepR}}
 \label{SL2IrrepR}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of lists of the form $[S,T]$ 
+a list of lists of the form $[S,T]$. 
 
 
 
@@ -766,11 +783,11 @@ a list of lists of the form $[S,T]$
 \subsection{\textcolor{Chapter }{SL2IrrepRUnary}}
 \logpage{[ 3, 3, 3 ]}\nobreak
 \hyperdef{L}{X7C94E3007A1BEE85}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepRUnary({\mdseries\slshape p, ld, r})\index{SL2IrrepRUnary@\texttt{SL2IrrepRUnary}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepRUnary({\mdseries\slshape p, lambda, r})\index{SL2IrrepRUnary@\texttt{SL2IrrepRUnary}}
 \label{SL2IrrepRUnary}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of lists of the form $[S,T]$ 
+a list of lists of the form $[S,T]$. 
 
 
 
@@ -783,19 +800,21 @@ type $R$ (that is, the special case where $\sigma = \lambda$) with $p$ an odd pr
 
  }
 
-
+   
 \chapter{\textcolor{Chapter }{Lists of representations}}\label{Chapter_Lists}
 \logpage{[ 4, 0, 0 ]}
 \hyperdef{L}{X8168FF017B2C0BB2}{}
 {
+  
 
+ The \emph{degree} of a representation is also known as the \emph{dimension}. The \emph{level} of the congruent representation determined by the pair $(S,T)$ is equal to the order of $T$. 
 
-
+ We assign to each representation a \emph{name} according to the conventions of \cite{NW76}. 
 \section{\textcolor{Chapter }{Lists by degree}}\label{Chapter_Lists_Section_Degree}
 \logpage{[ 4, 1, 0 ]}
 \hyperdef{L}{X80406B597E11D7C6}{}
 {
-
+  
 
 \subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfDegree}}
 \logpage{[ 4, 1, 1 ]}\nobreak
@@ -804,28 +823,28 @@ type $R$ (that is, the special case where $\sigma = \lambda$) with $p$ an odd pr
 \label{SL2PrimePowerIrrepsOfDegree}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
- Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that are exactly the given degree and have prime power level. }
+ Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that have the given degree and prime power level. }
 
-
+ 
 
 \subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfDegreeAtMost}}
 \logpage{[ 4, 1, 2 ]}\nobreak
 \hyperdef{L}{X7CF672A47E035702}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2PrimePowerIrrepsOfDegreeAtMost({\mdseries\slshape max{\textunderscore}degree})\index{SL2PrimePowerIrrepsOfDegreeAtMost@\texttt{SL2PrimePowerIrrepsOfDegreeAtMost}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2PrimePowerIrrepsOfDegreeAtMost({\mdseries\slshape maximum{\textunderscore}degree})\index{SL2PrimePowerIrrepsOfDegreeAtMost@\texttt{SL2PrimePowerIrrepsOfDegreeAtMost}}
 \label{SL2PrimePowerIrrepsOfDegreeAtMost}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
- Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that are at most the given degree and have prime power level. }
+ Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that have at most the given maximum degree and prime power level. }
 
-
+ 
 
 \subsection{\textcolor{Chapter }{SL2IrrepsOfDegree}}
 \logpage{[ 4, 1, 3 ]}\nobreak
@@ -834,35 +853,35 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 \label{SL2IrrepsOfDegree}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
- Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that are exactly the given degree. }
+ Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that have the given degree. }
 
-
+ 
 
 \subsection{\textcolor{Chapter }{SL2IrrepsOfDegreeAtMost}}
 \logpage{[ 4, 1, 4 ]}\nobreak
 \hyperdef{L}{X78044A4683369ADC}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepsOfDegreeAtMost({\mdseries\slshape degree})\index{SL2IrrepsOfDegreeAtMost@\texttt{SL2IrrepsOfDegreeAtMost}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepsOfDegreeAtMost({\mdseries\slshape maximum{\textunderscore}degree})\index{SL2IrrepsOfDegreeAtMost@\texttt{SL2IrrepsOfDegreeAtMost}}
 \label{SL2IrrepsOfDegreeAtMost}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
- Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that are at most the given degree. }
+ Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$ that have at most the given maximum degree. }
 
  }
 
-
+ 
 \section{\textcolor{Chapter }{Lists by level}}\label{Chapter_Lists_Section_Level}
 \logpage{[ 4, 2, 0 ]}
 \hyperdef{L}{X78C583957D3FF6ED}{}
 {
-
+  
 
 \subsection{\textcolor{Chapter }{SL2PrimePowerIrrepsOfLevel}}
 \logpage{[ 4, 2, 1 ]}\nobreak
@@ -871,7 +890,7 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 \label{SL2PrimePowerIrrepsOfLevel}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
@@ -879,12 +898,12 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 
  }
 
-
+ 
 \section{\textcolor{Chapter }{Lists of exceptional representations}}\label{Chapter_Lists_Section_Exceptions}
 \logpage{[ 4, 3, 0 ]}
 \hyperdef{L}{X80400C6D79D4D0D6}{}
 {
-
+  
 
 \subsection{\textcolor{Chapter }{SL2ExceptionalIrreps}}
 \logpage{[ 4, 3, 1 ]}\nobreak
@@ -893,7 +912,7 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 \label{SL2ExceptionalIrreps}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list of records of the form \texttt{rec(S, T, degree, level, name)}
+a list of records of the form \texttt{rec(S, T, degree, level, name)}. 
 
 
 
@@ -903,49 +922,49 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}
 
  }
 
-
+   
 \chapter{\textcolor{Chapter }{Methods for testing}}\label{Chapter_Testing}
 \logpage{[ 5, 0, 0 ]}
 \hyperdef{L}{X794C1A137F8FA14D}{}
 {
-
+  
 \section{\textcolor{Chapter }{Testing}}\label{Chapter_Testing_Section_Testing}
 \logpage{[ 5, 1, 0 ]}
 \hyperdef{L}{X7DE7E7187BE24368}{}
 {
-
+  
 
 \subsection{\textcolor{Chapter }{SL2WithConjClasses}}
 \logpage{[ 5, 1, 1 ]}\nobreak
 \hyperdef{L}{X801680187A8CA462}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2WithConjClasses({\mdseries\slshape p, ld})\index{SL2WithConjClasses@\texttt{SL2WithConjClasses}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2WithConjClasses({\mdseries\slshape p, lambda})\index{SL2WithConjClasses@\texttt{SL2WithConjClasses}}
 \label{SL2WithConjClasses}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-the group $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ with conjugacy classes set to the format we use.
+the group $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ with conjugacy classes set to the format we use. 
 
 
 
-
+ 
 
  }
 
-
+ 
 
 \subsection{\textcolor{Chapter }{SL2ChiST}}
 \logpage{[ 5, 1, 2 ]}\nobreak
 \hyperdef{L}{X7A97C7C77C7608D0}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ChiST({\mdseries\slshape S, T, p, ld})\index{SL2ChiST@\texttt{SL2ChiST}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2ChiST({\mdseries\slshape S, T, p, lambda})\index{SL2ChiST@\texttt{SL2ChiST}}
 \label{SL2ChiST}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$
+a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$. 
 
 
 
  Converts the modular data $(S,T)$, which must have level dividing $p^\lambda$, into a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$, presented in a form matching the conjugacy classes used in \texttt{SL2WithConjClasses}. }
 
-
+ 
 
 \subsection{\textcolor{Chapter }{SL2IrrepPositionTest}}
 \logpage{[ 5, 1, 3 ]}\nobreak
@@ -954,11 +973,11 @@ a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z}
 \label{SL2IrrepPositionTest}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
-a boolean
+a boolean. 
 
 
 
- Constructs and tests all irreps of level dividing $p^\lambda$ by checking their positions in \texttt{Irr(G)}. }
+ Constructs and tests all irreps of level dividing $p^\lambda$ by checking their positions in \texttt{Irr(G)} (see [GAP documentation]). }
 
  }
 
@@ -984,6 +1003,17 @@ a boolean
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage

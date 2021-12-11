@@ -19,14 +19,16 @@
 #!  where $i$ and $j$ are integers.  We therefore represent each character by a list `[i,j]`.
 #!  Note that in some cases $\alpha$ or $\beta$ is trivial, and the corresponding index
 #!  $i$ or $j$ is therefore irrelevant.
+#!
+#!  We write `p=`$p$, `lambda=`$\lambda$, `sigma=`$\sigma$, and `chi=`$\chi$.
 
 #! @Section Representations of type D
 #!
 #! See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_D"/>.
 
 
-#! @Arguments p,ld
-#! @Returns a record `rec(Agrp, Bp, Char, IsPrim)` describing $(M,Q)$
+#! @Arguments p,lambda
+#! @Returns a record `rec(Agrp, Bp, Char, IsPrim)` describing $(M,Q)$.
 #! @Description
 #!  Constructs information about the underlying quadratic module $(M,Q)$ of type $D$, for
 #!  $p$ a prime and $\lambda \geq 1$.
@@ -46,8 +48,8 @@
 #!  `IsPrim(chi)` tests whether the output of `Char(i,j)` represents a primitive character.
 DeclareGlobalFunction( "SL2ModuleD" );
 
-#! @Arguments p,ld,chi_index
-#! @Returns a list of lists of the form $[S,T]$
+#! @Arguments p,lambda,chi_index
+#! @Returns a list of lists of the form $[S,T]$.
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of type $D$ with
 #!  level $p^\lambda$, for $p$ a prime and $\lambda \geq 1$, corresponding to the

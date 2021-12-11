@@ -11,8 +11,8 @@
 #! See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_N"/>.
 
 
-#! @Arguments p,ld
-#! @Returns a record `rec(Agrp, Bp, Char, IsPrim, Nm, Prod)` describing $(M,Q)$
+#! @Arguments p,lambda
+#! @Returns a record `rec(Agrp, Bp, Char, IsPrim, Nm, Prod)` describing $(M,Q)$.
 #! @Description
 #!  Constructs information about the underlying quadratic module $(M,Q)$ of type $N$, for
 #!  $p$ a prime and $\lambda \geq 1$.
@@ -34,8 +34,8 @@
 #!  `Nm(a)` and `Prod(a,b)` are the norm and product functions on $M$, respectively.
 DeclareGlobalFunction( "SL2ModuleN" );
 
-#! @Arguments p,ld,chi_index
-#! @Returns a list of lists of the form $[S,T]$
+#! @Arguments p,lambda,chi_index
+#! @Returns a list of lists of the form $[S,T]$.
 #! @Description
 #!  Constructs the modular data for the irreducible representation(s) of type $N$ with
 #!  level $p^\lambda$, for $p$ a prime and $\lambda \geq 1$, corresponding to the

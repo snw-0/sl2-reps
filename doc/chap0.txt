@@ -3,13 +3,13 @@
                                    [1X SL2Reps [101X
   
   
-                    [1X Constructs representations of SL2(Z). [101X
+               [1X Constructs congruent representations of SL(2,Z). [101X
   
   
                                       0.1
   
   
-                               24 September 2021
+                                12 November 2021
   
   
                                   Siu-Hung Ng
@@ -22,10 +22,28 @@
   
   Siu-Hung Ng
       Email:    [7Xmailto:rng@math.lsu.edu[107X
+      Homepage: [7Xhttps://www.math.lsu.edu/~rng/[107X
   Yilong Wang
       Email:    [7Xmailto:wyl@bimsa.cn[107X
+      Homepage: [7Xhttps://yilongwang11.github.io[107X
   Samuel Wilson
       Email:    [7Xmailto:swil311@lsu.edu[107X
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson[133X
+  
+  [33X[0;0YThis  package  is  free  software;  you can redistribute it and/or modify it
+  under     the     terms     of    the    GNU    General    Public    License
+  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
+  Foundation;  either  version 2 of the License, or (at your option) any later
+  version.[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YThis project is partially supported by NSF grant DMS 1664418.[133X
+  
   
   -------------------------------------------------------
   
