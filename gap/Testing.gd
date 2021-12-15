@@ -5,6 +5,8 @@
 
 #! @Chapter Testing
 #! @ChapterTitle Methods for testing
+#! By the Chinese Remainder Theorem, it suffices to test irreps of prime power level,
+#! so those are the irreps handled by the functions in this section.
 
 #! @Section Testing
 
