@@ -276,10 +276,10 @@
   [33X[0;0Yand  identity element [23X(1,0)[123X. We define a norm [23X\operatorname{Nm}(x,y) = x^2 +
   xy + p^\sigma t y^2[123X on [23XM[123X.[133X
   
-  [33X[0;0YIn  this  section, we detail generic type [23XR[123X quadratic module. Information on
+  [33X[0;0YIn  this section, we detail generic type [23XR[123X quadratic modules. Information on
   the unary and extremal cases is covered in Section [14X2.2-4[114X.[133X
   
-  [33X[0;0YLet [23X(M,Q)[123X be a generic type [23XR[123X quadratic modules. Information on [23X(M,Q)[123X can be
+  [33X[0;0YLet  [23X(M,Q)[123X be a generic type [23XR[123X quadratic module. Information on [23X(M,Q)[123X can be
   obtained    via    [2XSL2ModuleR[102X    ([14X3.3-1[114X),    and    subrepresentations    of
   [23XR(p,\lambda,\sigma,r,t)[123X   with   level  [23Xp^\lambda[123X  may  be  constructed  via
   [2XSL2IrrepR[102X ([14X3.3-2[114X).[133X

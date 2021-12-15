@@ -25,7 +25,9 @@
   [33X[1;0Y[29X[2XSL2IrrepPositionTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean.[133X
   
-  [33X[0;0YConstructs  and  tests  all  irreps  of level dividing [23Xp^\lambda[123X by checking
-  their   positions   in   [10XIrr(G)[110X  (see  Section  71.8-2  of  the  GAP  Manual
-  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap71.html#X873B3CC57E9A5492[107X)).[133X
+  [33X[0;0YConstructs  and  tests all non-trivial irreps of level dividing [23Xp^\lambda[123X by
+  checking  their  positions  in  [10XIrr(G)[110X (see Section 71.8-2 of the GAP Manual
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap71.html#X873B3CC57E9A5492[107X)).
+  Note  that  this  function  will print information on the irreps involved if
+  [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
   

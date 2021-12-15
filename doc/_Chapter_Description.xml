@@ -209,9 +209,9 @@ In all cases, the resulting representation is said to be of type <Math>R</Math> 
 <Display>(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)</Display>
 and identity element <Math>(1,0)</Math>. We define a norm <Math>\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2</Math> on <Math>M</Math>.
 <P/>
-In this section, we detail generic type <Math>R</Math> quadratic module. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
+In this section, we detail generic type <Math>R</Math> quadratic modules. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
 <P/>
-Let <Math>(M,Q)</Math> be a generic type <Math>R</Math> quadratic modules.  Information on <Math>(M,Q)</Math> can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of <Math>R(p,\lambda,\sigma,r,t)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepR"/>.
+Let <Math>(M,Q)</Math> be a generic type <Math>R</Math> quadratic module.  Information on <Math>(M,Q)</Math> can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of <Math>R(p,\lambda,\sigma,r,t)</Math> with level <Math>p^\lambda</Math> may be constructed via <Ref Func="SL2IrrepR"/>.
 <P/>
 The multiplicative subgroup
 <Display>\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}</Display>
