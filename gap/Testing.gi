@@ -158,7 +158,7 @@ function(p, ld)
         Error("ld must be a positive integer.");
     fi;
 
-    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps via Nobs-Wolfart.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z) via Nobs-Wolfart.");
     irrep_list := [];
     count := 0;
     for i in [1 .. ld] do
@@ -168,7 +168,7 @@ function(p, ld)
     od;
     Info(InfoSL2Reps, 1, "SL2Reps : In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");
 
-    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps via conjugacy classes.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z) with corresponding conjugacy classes by using Irr(G).");
     G := SL2WithConjClasses(p, ld);
     irreps := Irr(G);
     # This always includes the trivial irrep, so we ignore it.
