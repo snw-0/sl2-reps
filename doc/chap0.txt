@@ -76,14 +76,12 @@
       3.3-3 SL2IrrepRUnary
   4 [33X[0;0YLists of representations[133X
     4.1 [33X[0;0YLists by degree[133X
-      4.1-1 SL2PrimePowerIrrepsOfDegree
-      4.1-2 SL2PrimePowerIrrepsOfDegreeAtMost
-      4.1-3 SL2IrrepsOfDegree
-      4.1-4 SL2IrrepsOfDegreeAtMost
+      4.1-1 SL2IrrepsOfDegree
+      4.1-2 SL2IrrepsOfMaxDegree
     4.2 [33X[0;0YLists by level[133X
-      4.2-1 SL2PrimePowerIrrepsOfLevel
+      4.2-1 SL2IrrepsOfLevel
     4.3 [33X[0;0YLists of exceptional representations[133X
-      4.3-1 SL2ExceptionalIrreps
+      4.3-1 SL2IrrepsExceptional
   5 [33X[0;0YMethods for testing[133X
     5.1 [33X[0;0YTesting[133X
       5.1-1 SL2WithConjClasses

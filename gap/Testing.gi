@@ -163,7 +163,7 @@ function(p, ld)
     count := 0;
     for i in [1 .. ld] do
         Info(InfoSL2Reps, 1, "SL2Reps : Level ", p^i, ":");
-        irrep_list[i] := SL2PrimePowerIrrepsOfLevel(p, i);
+        irrep_list[i] := _SL2IrrepsPPLOfLevel(p, i);
         count := count + Length(irrep_list[i]);
     od;
     Info(InfoSL2Reps, 1, "SL2Reps : In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");

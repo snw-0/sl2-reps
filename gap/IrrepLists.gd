@@ -4,6 +4,12 @@
 
 # Lists of Representations.
 
+DeclareGlobalFunction( "_SL2IrrepsPPLOfDegree" );
+DeclareGlobalFunction( "_SL2IrrepsPPLOfMaxDegree" );
+DeclareGlobalFunction( "_SL2IrrepsPPLOfLevel" );
+
+
+
 #! @Chapter Lists
 #! @ChapterTitle Lists of representations
 
@@ -19,20 +25,6 @@
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`.
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
-#!  that have the given degree and prime power level.
-DeclareGlobalFunction( "SL2PrimePowerIrrepsOfDegree" );
-
-#! @Arguments maximum_degree
-#! @Returns a list of records of the form `rec(S, T, degree, level, name)`.
-#! @Description
-#!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
-#!  that have at most the given maximum degree and prime power level.
-DeclareGlobalFunction( "SL2PrimePowerIrrepsOfDegreeAtMost" );
-
-#! @Arguments degree
-#! @Returns a list of records of the form `rec(S, T, degree, level, name)`.
-#! @Description
-#!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that have the given degree.
 DeclareGlobalFunction( "SL2IrrepsOfDegree" );
 
@@ -41,17 +33,17 @@ DeclareGlobalFunction( "SL2IrrepsOfDegree" );
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
 #!  that have at most the given maximum degree.
-DeclareGlobalFunction( "SL2IrrepsOfDegreeAtMost" );
+DeclareGlobalFunction( "SL2IrrepsOfMaxDegree" );
 
 #! @Section Level
 #! @SectionTitle Lists by level
 
-#! @Arguments p, lambda
+#! @Arguments level
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`.
 #! @Description
 #!  Constructs a list of all irreps of $\mathrm{SL}_2(\mathbb{Z})$
-#!  with level exactly $p^\lambda$.
-DeclareGlobalFunction( "SL2PrimePowerIrrepsOfLevel" );
+#!  with the given level.
+DeclareGlobalFunction( "SL2IrrepsOfLevel" );
 
 #! @Section Exceptions
 #! @SectionTitle Lists of exceptional representations
@@ -59,4 +51,4 @@ DeclareGlobalFunction( "SL2PrimePowerIrrepsOfLevel" );
 #! @Returns a list of records of the form `rec(S, T, degree, level, name)`.
 #! @Description
 #!  Constructs a list of the 18 exceptional irreps of $\mathrm{SL}_2(\mathbb{Z})$.
-DeclareGlobalFunction( "SL2ExceptionalIrreps" );
+DeclareGlobalFunction( "SL2IrrepsExceptional" );

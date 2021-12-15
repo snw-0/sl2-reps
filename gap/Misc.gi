@@ -110,6 +110,20 @@ function(irrep_list, name, rho, l)
 end );
 
 #----------------------------------------
+# Constructs a name for a tensor product.
+#---------------------------------------
+InstallGlobalFunction( _SL2ConcatNames,
+function(a,b)
+    if a = "Xi_0" then
+        return b;
+    elif b = "Xi_0" then
+        return a;
+    else
+        return Concatenation(a, " tensor ", b);
+    fi;
+end );
+
+#----------------------------------------
 # Returns conj class representative information of SL(2, Z/p^ld Z) for p (odd prime) and ld (>= 1).
 # Each conj class representative is represented by a list of length 2. To rewrite the conj class rep as products of s and t (NW notation) corresponding to a, we can compute
 # Prod(a[1], n -> t^n*s) * s^(2*a[2]).

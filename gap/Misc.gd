@@ -9,6 +9,7 @@ DeclareGlobalFunction( "_SL2SqrtOfRootOfUnity" );
 DeclareGlobalFunction( "_SL2QuadNonRes" );
 DeclareGlobalFunction( "_SL2Factorizations" );
 DeclareGlobalFunction( "_SL2RecordIrrep" );
+DeclareGlobalFunction( "_SL2ConcatNames");
 DeclareGlobalFunction( "_SL2ConjClassesOdd" );
 DeclareGlobalFunction( "_SL2ConjClassesEven" );
 DeclareGlobalFunction( "_SL2ConjClasses" );

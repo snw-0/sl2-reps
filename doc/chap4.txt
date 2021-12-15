@@ -11,23 +11,7 @@
   
   [1X4.1 [33X[0;0YLists by degree[133X[101X
   
-  [1X4.1-1 SL2PrimePowerIrrepsOfDegree[101X
-  
-  [33X[1;0Y[29X[2XSL2PrimePowerIrrepsOfDegree[102X( [3Xdegree[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
-  
-  [33X[0;0YConstructs  a  list of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have the
-  given degree and prime power level.[133X
-  
-  [1X4.1-2 SL2PrimePowerIrrepsOfDegreeAtMost[101X
-  
-  [33X[1;0Y[29X[2XSL2PrimePowerIrrepsOfDegreeAtMost[102X( [3Xmaximum_degree[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
-  
-  [33X[0;0YConstructs  a  list  of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have at
-  most the given maximum degree and prime power level.[133X
-  
-  [1X4.1-3 SL2IrrepsOfDegree[101X
+  [1X4.1-1 SL2IrrepsOfDegree[101X
   
   [33X[1;0Y[29X[2XSL2IrrepsOfDegree[102X( [3Xdegree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
@@ -35,9 +19,9 @@
   [33X[0;0YConstructs  a  list of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have the
   given degree.[133X
   
-  [1X4.1-4 SL2IrrepsOfDegreeAtMost[101X
+  [1X4.1-2 SL2IrrepsOfMaxDegree[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepsOfDegreeAtMost[102X( [3Xmaximum_degree[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepsOfMaxDegree[102X( [3Xmaximum_degree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
   
   [33X[0;0YConstructs  a  list  of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have at
@@ -46,20 +30,20 @@
   
   [1X4.2 [33X[0;0YLists by level[133X[101X
   
-  [1X4.2-1 SL2PrimePowerIrrepsOfLevel[101X
+  [1X4.2-1 SL2IrrepsOfLevel[101X
   
-  [33X[1;0Y[29X[2XSL2PrimePowerIrrepsOfLevel[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepsOfLevel[102X( [3Xlevel[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
   
-  [33X[0;0YConstructs  a  list  of  all  irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X with level
-  exactly [23Xp^\lambda[123X.[133X
+  [33X[0;0YConstructs  a list of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X with the given
+  level.[133X
   
   
   [1X4.3 [33X[0;0YLists of exceptional representations[133X[101X
   
-  [1X4.3-1 SL2ExceptionalIrreps[101X
+  [1X4.3-1 SL2IrrepsExceptional[101X
   
-  [33X[1;0Y[29X[2XSL2ExceptionalIrreps[102X( [3Xarg[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2IrrepsExceptional[102X( [3Xarg[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
   
   [33X[0;0YConstructs a list of the 18 exceptional irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X.[133X

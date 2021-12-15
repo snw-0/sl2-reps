@@ -125,7 +125,8 @@
         We call these [13Xnon-standard[113X.[133X
   
   [30X    [33X[0;6YFinally,  18  [13Xexceptional[113X irreps are constructed as tensor products of
-        two irreps from the other two cases.[133X
+        two  irreps  from  the  other  two  cases. A full list of these may be
+        constructed by [2XSL2IrrepsExceptional[102X ([14X4.3-1[114X).[133X
   
   [33X[0;0YAll     the     finite-dimensional     irreducible     representations    of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X  of  finite level can now be constructed by taking

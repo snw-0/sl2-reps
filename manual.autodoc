@@ -70,7 +70,7 @@ The prime-power irreps then fall into three cases.
 <List>
     <Item>The overwhelming majority are of the form $W(M,Q,\chi)$ for $\chi$ primitive and $\chi^2 \neq 1$; we call these **standard**. This includes the primitive characters from the extremal case.</Item>
     <Item>A finite number, and a single infinite family arising from the extremal case (Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>), are instead constructed by using non-primitive characters or primitive characters $\chi$ with $\chi^2 = 1$.  We call these **non-standard**.</Item>
-    <Item>Finally, 18 **exceptional** irreps are constructed as tensor products of two irreps from the other two cases.</Item>
+    <Item>Finally, 18 **exceptional** irreps are constructed as tensor products of two irreps from the other two cases. A full list of these may be constructed by <Ref Func="SL2IrrepsExceptional"/>.</Item>
 </List>
 
 All the finite-dimensional irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can now be constructed by taking tensor products of these prime-power irreps.  Note that, if two representations are determined by pairs `[S1,T1]` and `[S2,T2]`, then the pair for their tensor product may be calculated via the GAP command `KroneckerProduct`, namely as `[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]`.

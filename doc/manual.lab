@@ -37,12 +37,10 @@
 \makelabel{sl2reps:SL2ModuleR}{3.3.1}{X7B10D99E7AEAC411}
 \makelabel{sl2reps:SL2IrrepR}{3.3.2}{X80961A2C7C5F632E}
 \makelabel{sl2reps:SL2IrrepRUnary}{3.3.3}{X7C94E3007A1BEE85}
-\makelabel{sl2reps:SL2PrimePowerIrrepsOfDegree}{4.1.1}{X7AFFB022821949A7}
-\makelabel{sl2reps:SL2PrimePowerIrrepsOfDegreeAtMost}{4.1.2}{X7CF672A47E035702}
-\makelabel{sl2reps:SL2IrrepsOfDegree}{4.1.3}{X7CC7D26D7E37A1B9}
-\makelabel{sl2reps:SL2IrrepsOfDegreeAtMost}{4.1.4}{X78044A4683369ADC}
-\makelabel{sl2reps:SL2PrimePowerIrrepsOfLevel}{4.2.1}{X7A0D2DB780D99B11}
-\makelabel{sl2reps:SL2ExceptionalIrreps}{4.3.1}{X85078197803C9848}
+\makelabel{sl2reps:SL2IrrepsOfDegree}{4.1.1}{X7CC7D26D7E37A1B9}
+\makelabel{sl2reps:SL2IrrepsOfMaxDegree}{4.1.2}{X7D5FF1AE85318A70}
+\makelabel{sl2reps:SL2IrrepsOfLevel}{4.2.1}{X8209AFA6825C44DC}
+\makelabel{sl2reps:SL2IrrepsExceptional}{4.3.1}{X87A4E88F784B5B9A}
 \makelabel{sl2reps:SL2WithConjClasses}{5.1.1}{X801680187A8CA462}
 \makelabel{sl2reps:SL2ChiST}{5.1.2}{X7A97C7C77C7608D0}
 \makelabel{sl2reps:SL2IrrepPositionTest}{5.1.3}{X7FB0262F7E0F1B95}

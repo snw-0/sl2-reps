@@ -6,7 +6,7 @@
 # Implementations
 #
 
-InstallGlobalFunction( SL2PrimePowerIrrepsOfDegree,
+InstallGlobalFunction( _SL2IrrepsPPLOfDegree,
 function(degree)
     local irrep_list, p, ld, pmax, ldmax, pset, ldset, name, rho, l,
             i, j, u, w, si, r, t, x;
@@ -880,7 +880,7 @@ function(degree)
     return irrep_list;
 end );
 
-InstallGlobalFunction( SL2PrimePowerIrrepsOfDegreeAtMost,
+InstallGlobalFunction( _SL2IrrepsPPLOfMaxDegree,
 function(max_degree)
     local output, degree, count;
 
@@ -893,7 +893,7 @@ function(max_degree)
 
     for degree in [1..max_degree] do
         Info(InfoSL2Reps, 1, "SL2Reps : Degree ", degree, ":");
-        output[degree] := SL2PrimePowerIrrepsOfDegree(degree);
+        output[degree] := _SL2IrrepsPPLOfDegree(degree);
         count := count + Length(output[degree]);
     od;
 
@@ -901,145 +901,7 @@ function(max_degree)
     return output;
 end );
 
-InstallGlobalFunction( SL2IrrepsOfDegree,
-function(degree)
-    local linears, prime_power_reps, i, ConstructIrreps, triv, factorizations, output, f;
-
-    if not degree in PositiveIntegers then
-        Error("degree must be a positive integer.");
-    fi;
-
-    prime_power_reps := [];
-
-    # collect prime-power-level irreps of degree dividing the given degree
-    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of prime-power level.");
-
-    Info(InfoSL2Reps, 1, "SL2Reps : Degree 1:");
-
-    # The linear reps are denoted Xi_n, n in Z/12Z, with T = [zeta_12^n] and S = [i^n].
-    # We handle these separately just for brevity in the output.
-    prime_power_reps[1] := [];
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_0", [[[1]], [[1]]], 1); # Xi_0 = C_1
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_6", [[[-1]], [[-1]]], 2); # Xi_6 = C_2
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_4", [[[1]], [[E(3)]]], 3); # Xi_4 = R_1(1)- with p=3
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_8", [[[1]], [[E(3)^2]]], 3); # Xi_8 = R_1(2)- with p=3
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_3", [[[-E(4)]], [[E(4)]]], 4); # Xi_3 = C_4
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_9", [[[E(4)]], [[-E(4)]]], 4); # Xi_9 = C_3
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_2", [[[-1]], [[-E(3)^2]]], 6); # = Xi_6 * Xi_8
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_10", [[[-1]], [[-E(3)]]], 6); # = Xi_6 * Xi_4
-
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_1", [[[E(4)]], [[E(12)]]], 12); # = Xi_9 * Xi_4
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_5", [[[E(4)]], [[E(12)^5]]], 12); # = Xi_9 * Xi_8
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_7", [[[-E(4)]], [[E(12)^7]]], 12); # = Xi_3 * Xi_4
-    _SL2RecordIrrep(prime_power_reps[1], "Xi_11", [[[-E(4)]], [[E(12)^11]]], 12); # = Xi_3 * Xi_8
-
-    for i in DivisorsInt(degree) do
-        if i = 1 then
-            continue;
-        fi;
-        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", i, ":");
-        prime_power_reps[i] := SL2PrimePowerIrrepsOfDegree(i);
-    od;
-
-    Info(InfoSL2Reps, 1, "SL2Reps : Constructing tensor products.");
-
-    ConstructIrreps := function(rho, factors, start)
-        local i, eta, output, name, new_start;
-
-        if Length(factors) = 0 then
-            # Nothing left to do.
-            return [rho];
-        fi;
-
-        output := [];
-
-        # Tensor the given rep., rho, with all coprime irreps of degree (factors[1])
-        # and recurse.
-        for i in [start .. Length(prime_power_reps[factors[1]])] do
-            eta := prime_power_reps[factors[1]][i];
-
-            if Gcd(eta[4], rho[4]) = 1 then
-                # No point listing Xi_0 = 1.
-                if rho[5] = "Xi_0" then
-                    name := Concatenation(eta[5], " [d:", String(eta[3]), ", l:", String(eta[4]), "]");
-                elif eta[5] = "Xi_0" then
-                    name := rho[5];
-                else
-                    name := Concatenation(rho[5], " (tensor) ", eta[5], " [d:", String(eta[3]), ", l:", String(eta[4]), "]");
-                fi;
-
-                if Length(factors) > 1 and factors[2] = factors[1] then
-                    # Next degree is same as current. Need to keep irreps in order.
-                    new_start := i+1;
-                else
-                    new_start := 1;
-                fi;
-
-                output := Concatenation(
-                    output,
-                    ConstructIrreps(
-                        [
-                            KroneckerProduct(rho[1], eta[1]),
-                            KroneckerProduct(rho[2], eta[2]),
-                            rho[3] * eta[3],
-                            rho[4] * eta[4], # level is Lcm(level(rho), level(eta)), but they're coprime.
-                            name
-                        ],
-                        factors{[2..Length(factors)]},
-                        new_start
-                    )
-                );
-            fi;
-        od;
-
-        return output;
-    end;
-
-    triv := [[[1]], [[1]], 1, 1, "Xi_0"];
-
-    factorizations := _SL2Factorizations(degree);
-    output := [];
-    for f in factorizations do
-        Append(output, ConstructIrreps(triv, f, 1));
-    od;
-
-    # Sort by level.
-    SortBy(output, x -> x[4]);
-
-    for i in [1 .. Length(output)] do
-        Info(InfoSL2Reps, 1, "SL2Reps : ", i, ": ( ", output[i][5], " ) [d: ", output[i][3], ", l: ", output[i][4] ,"]");
-    od;
-    Info(InfoSL2Reps, 1, "SL2Reps : Total count: ", Length(output));
-    return output;
-end );
-
-InstallGlobalFunction( SL2IrrepsOfDegreeAtMost,
-function(max_degree)
-    local output, degree, count;
-
-    if not max_degree in PositiveIntegers then
-        Error("max_degree must be a positive integer.");
-    fi;
-
-    output := [];
-    count := 0;
-
-    for degree in [1..max_degree] do
-        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", degree, ":");
-        output[degree] := SL2IrrepsOfDegree(degree);
-        count := count + Length(output[degree]);
-    od;
-
-    Info(InfoSL2Reps, 1, "SL2Reps : ", count, " total irreps found.");
-    return output;
-end );
-
-InstallGlobalFunction( SL2PrimePowerIrrepsOfLevel,
+InstallGlobalFunction( _SL2IrrepsPPLOfLevel,
 function(p, ld)
     local irrep_list, l, si, r, t, u, w, x, i, j, name, rho;
 
@@ -1837,7 +1699,222 @@ function(p, ld)
     return irrep_list;
 end );
 
-InstallGlobalFunction( SL2ExceptionalIrreps,
+#
+
+InstallGlobalFunction( SL2IrrepsOfDegree,
+function(degree)
+    local linears, prime_power_reps, i, ConstructIrreps, triv, factorizations, output, f;
+
+    if not degree in PositiveIntegers then
+        Error("degree must be a positive integer.");
+    fi;
+
+    prime_power_reps := [];
+
+    # collect prime-power-level irreps of degree dividing the given degree
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of prime-power level.");
+
+    Info(InfoSL2Reps, 1, "SL2Reps : Degree 1:");
+
+    # The linear reps are denoted Xi_n, n in Z/12Z, with T = [zeta_12^n] and S = [i^n].
+    # We handle these separately just for brevity in the output.
+    prime_power_reps[1] := [];
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_0", [[[1]], [[1]]], 1); # Xi_0 = C_1
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_6", [[[-1]], [[-1]]], 2); # Xi_6 = C_2
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_4", [[[1]], [[E(3)]]], 3); # Xi_4 = R_1(1)- with p=3
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_8", [[[1]], [[E(3)^2]]], 3); # Xi_8 = R_1(2)- with p=3
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_3", [[[-E(4)]], [[E(4)]]], 4); # Xi_3 = C_4
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_9", [[[E(4)]], [[-E(4)]]], 4); # Xi_9 = C_3
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_2", [[[-1]], [[-E(3)^2]]], 6); # = Xi_6 * Xi_8
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_10", [[[-1]], [[-E(3)]]], 6); # = Xi_6 * Xi_4
+
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_1", [[[E(4)]], [[E(12)]]], 12); # = Xi_9 * Xi_4
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_5", [[[E(4)]], [[E(12)^5]]], 12); # = Xi_9 * Xi_8
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_7", [[[-E(4)]], [[E(12)^7]]], 12); # = Xi_3 * Xi_4
+    _SL2RecordIrrep(prime_power_reps[1], "Xi_11", [[[-E(4)]], [[E(12)^11]]], 12); # = Xi_3 * Xi_8
+
+    Info(InfoSL2Reps, 1, "SL2Reps : 12 irreps of degree 1 found.");
+
+    for i in DivisorsInt(degree) do
+        if i = 1 then
+            continue;
+        fi;
+        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", i, ":");
+        prime_power_reps[i] := _SL2IrrepsPPLOfDegree(i);
+    od;
+
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing tensor products.");
+
+    ConstructIrreps := function(rho, factors, start)
+        local i, eta, output, name, new_start;
+
+        if Length(factors) = 0 then
+            # Nothing left to do.
+            return [rho];
+        fi;
+
+        output := [];
+
+        # Tensor the given rep., rho, with all coprime irreps of degree (factors[1])
+        # and recurse.
+        for i in [start .. Length(prime_power_reps[factors[1]])] do
+            eta := prime_power_reps[factors[1]][i];
+
+            if Gcd(eta.level, rho.level) = 1 then
+                if Length(factors) > 1 and factors[2] = factors[1] then
+                    # Next degree is same as current. Need to keep irreps in order.
+                    new_start := i+1;
+                else
+                    new_start := 1;
+                fi;
+
+                output := Concatenation(
+                    output,
+                    ConstructIrreps(
+                        rec(
+                            S := KroneckerProduct(rho.S, eta.S),
+                            T := KroneckerProduct(rho.T, eta.T),
+                            degree := rho.degree * eta.degree,
+                            level := rho.level * eta.level, # level is Lcm(level(rho), level(eta)), but they're coprime.
+                            name := _SL2ConcatNames(rho.name, eta.name)
+                        ),
+                        factors{[2..Length(factors)]},
+                        new_start
+                    )
+                );
+            fi;
+        od;
+
+        return output;
+    end;
+
+    triv := rec(
+        S := [[1]],
+        T := [[1]],
+        degree := 1,
+        level := 1,
+        name := "Xi_0"
+    );
+
+    factorizations := _SL2Factorizations(degree);
+    output := [];
+    for f in factorizations do
+        Append(output, ConstructIrreps(triv, f, 1));
+    od;
+
+    # Sort by level.
+    SortBy(output, x -> x.level);
+
+    for i in [1 .. Length(output)] do
+        Info(InfoSL2Reps, 1, "SL2Reps : ", i, ": ( ", output[i].name, " ) [d: ", output[i].degree, ", l: ", output[i].level ,"]");
+    od;
+    Info(InfoSL2Reps, 1, "SL2Reps : Total count: ", Length(output));
+    return output;
+end );
+
+InstallGlobalFunction( SL2IrrepsOfMaxDegree,
+function(max_degree)
+    local output, degree;
+
+    if not max_degree in PositiveIntegers then
+        Error("max_degree must be a positive integer.");
+    fi;
+
+    output := [];
+
+    for degree in [1..max_degree] do
+        Info(InfoSL2Reps, 1, "SL2Reps : Degree ", degree, ":");
+        Append(output, SL2IrrepsOfDegree(degree));
+    od;
+
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(output), " total irreps found.");
+    return output;
+end );
+
+InstallGlobalFunction( SL2IrrepsOfLevel,
+function(l)
+    local output, pp_lists, factors, i, rho, eta;
+
+    if (not l in Integers) or (l <= 0) then
+        Error("level must be a positive integer.");
+    fi;
+
+    if l = 1 then
+        output := [];
+
+        Info(InfoSL2Reps, 1, "SL2Reps : At level 1, there is only the trivial irrep.");
+        return [
+            rec(
+                S := [[1]],
+                T := [[1]],
+                degree := 1,
+                level := 1,
+                name := "Xi_0"
+            )
+        ];
+    else
+        factors := PrimePowersInt(l);
+
+        if Length(factors) = 2 then
+            # level is a prime power
+            Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of level ", l, ", which is a prime power.");
+            return _SL2IrrepsPPLOfLevel(factors[1], factors[2]);
+        else
+            # tensor irreps of the prime power factors
+            Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of prime-power level.");
+            pp_lists := [];
+            for i in [1..(Length(factors) / 2)] do
+                Info(InfoSL2Reps, 1, "SL2Reps : Level ", (factors[2*i-1])^(factors[2*i]), ":");
+                pp_lists[i] := _SL2IrrepsPPLOfLevel(factors[2*i-1], factors[2*i]);
+            od;
+
+            # Possible alternate approach: make lists of the indices and take the Cartesian
+            # thereof instead.
+            Info(InfoSL2Reps, 1, "SL2Reps : Constructing tensor products.");
+            pp_lists := Cartesian(pp_lists);
+
+            output := [];
+
+            for i in pp_lists do
+                rho := rec(
+                    S := [[1]],
+                    T := [[1]],
+                    degree := 1,
+                    level := 1,
+                    name := "Xi_0"
+                );
+
+                for eta in i do
+                    rho := rec(
+                        S := KroneckerProduct(rho.S, eta.S),
+                        T := KroneckerProduct(rho.T, eta.T),
+                        degree := rho.degree * eta.degree,
+                        level := rho.level * eta.level, # level is Lcm(level(rho), level(eta)), but they're coprime.
+                        name := _SL2ConcatNames(rho.name,eta.name)
+                    );
+                od;
+
+                Add(output, rho);
+            od;
+
+            # Sort by degree.
+            SortBy(output, x -> x.degree);
+
+            for i in [1 .. Length(output)] do
+                Info(InfoSL2Reps, 1, "SL2Reps : ", i, ": ( ", output[i].name, " ) [d: ", output[i].degree, ", l: ", output[i].level ,"]");
+            od;
+            Info(InfoSL2Reps, 1, "SL2Reps : Total count: ", Length(output));
+            return output;
+        fi;
+    fi;
+end );
+
+InstallGlobalFunction( SL2IrrepsExceptional,
 function()
     local irrep_list, rho, name, w, x, j, r, t;
 
