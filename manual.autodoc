@@ -199,9 +199,9 @@ In all cases, the resulting representation is said to be of type $R$ and denoted
 $$(x_1, y_1) \cdot (x_2, y_2) = (x_1x_2 - p^\sigma ty_1y_2, x_1y_2 + x_2y_1)$$
 and identity element $(1,0)$. We define a norm $\operatorname{Nm}(x,y) = x^2 + xy + p^\sigma t y^2$ on $M$.
 
-In this section, we detail generic type $R$ quadratic module. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
+In this section, we detail generic type $R$ quadratic modules. Information on the unary and extremal cases is covered in Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R_Special"/>.
 
-Let $(M,Q)$ be a generic type $R$ quadratic modules.  Information on $(M,Q)$ can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.
+Let $(M,Q)$ be a generic type $R$ quadratic module.  Information on $(M,Q)$ can be obtained via <Ref Func="SL2ModuleR"/>, and subrepresentations of $R(p,\lambda,\sigma,r,t)$ with level $p^\lambda$ may be constructed via <Ref Func="SL2IrrepR"/>.
 
 The multiplicative subgroup
 $$\mathfrak{A} = \{\varepsilon \in M^\times \mid \operatorname{Nm}(\varepsilon) = 1 \}$$
