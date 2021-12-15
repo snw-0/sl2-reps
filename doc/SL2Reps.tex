@@ -4,7 +4,7 @@
 \usepackage[top=37mm,bottom=37mm,left=27mm,right=27mm]{geometry}
 \sloppy
 \pagestyle{myheadings}
-\usepackage{amssymb}
+\usepackage{amssymb,amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{makeidx}
 \makeindex
@@ -927,7 +927,8 @@ a list of records of the form \texttt{rec(S, T, degree, level, name)}.
 \logpage{[ 5, 0, 0 ]}
 \hyperdef{L}{X794C1A137F8FA14D}{}
 {
-  
+  By the Chinese Remainder Theorem, it suffices to test irreps of prime power
+level, so those are the irreps handled by the functions in this section.
 \section{\textcolor{Chapter }{Testing}}\label{Chapter_Testing_Section_Testing}
 \logpage{[ 5, 1, 0 ]}
 \hyperdef{L}{X7DE7E7187BE24368}{}
@@ -1003,6 +1004,7 @@ a boolean.
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage

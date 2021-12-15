@@ -4,6 +4,8 @@
 <Chapter Label="Chapter_Testing">
 <Heading>Methods for testing</Heading>
 
+ By the Chinese Remainder Theorem, it suffices to test irreps of prime power level,
+ so those are the irreps handled by the functions in this section.
 <Section Label="Chapter_Testing_Section_Testing">
 <Heading>Testing</Heading>
 

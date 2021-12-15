@@ -1,6 +1,9 @@
   
   [1X5 [33X[0;0YMethods for testing[133X[101X
   
+  [33X[0;0YBy  the Chinese Remainder Theorem, it suffices to test irreps of prime power
+  level, so those are the irreps handled by the functions in this section.[133X
+  
   
   [1X5.1 [33X[0;0YTesting[133X[101X
   
