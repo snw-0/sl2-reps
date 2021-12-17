@@ -17,7 +17,7 @@ function(p, ld)
     fi;
 
     l := p^ld;
-    CC := _SL2ConjClasses(p, ld);
+    CC := _SL2ConjClasses(l);
     o := ZmodnZObj(1, l);
     s := [[0,1],[-1,0]] * o;
     t := [[1,1],[0,1]] * o;
@@ -60,7 +60,7 @@ end );
 
 InstallGlobalFunction( SL2ChiST,
 function(S, T, p, ld)
-    local l, ordT, dim, CC, s2, TS, i, ProdTrace,
+    local l, ordT, dim, CC, Ssq, TS, i, ProdTrace,
             C1, Du, c,
             Dh, h, e1, e1inv, e2, e2inv, j, jinv, Dhmap;
 
@@ -79,10 +79,10 @@ function(S, T, p, ld)
 
     l := p^ld;
 
-    CC := _SL2ConjClasses(p, ld);
+    CC := _SL2ConjClasses(l);
 
-    s2 := S^2;
-    s2 := s2[1][1]; # assuming S^2 = +-1
+    Ssq := S^2;
+    Ssq := Ssq[1][1]; # assuming S^2 = +-1
     TS := [S];
     for i in [1 .. l-1] do
         Add(TS, T * TS[i]);
@@ -98,11 +98,11 @@ function(S, T, p, ld)
         Du := TS[CC[2]+1] * TS[CC[3]+1] * TS[CC[2]+1];
         for c in CC[1] do
             if Length(c[1]) = 1 then
-                Add(C1, Trace(TS[(c[1][1] mod l) +1] * s2^(c[2])));
+                Add(C1, Trace(TS[(c[1][1] mod l) +1] * Ssq^(c[2])));
             elif Length(c[1]) = 4 and c[1][1]<>1 then
-                Add(C1, ProdTrace(Du,TS[(c[1][4] mod l) +1]) * s2^(c[2]));
+                Add(C1, ProdTrace(Du,TS[(c[1][4] mod l) +1]) * Ssq^(c[2]));
             elif Length(c[1]) = 2 then
-                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * s2^(c[2]));
+                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * Ssq^(c[2]));
             fi;
         od;
     else
@@ -132,15 +132,15 @@ function(S, T, p, ld)
 
         for c in CC[1] do
             if Length(c[1])=4 and c[1][1]<>1 then
-                Add(C1, ProdTrace(Dhmap(c[1][1]), TS[(c[1][4] mod l) +1]) * s2^(c[2]));
+                Add(C1, ProdTrace(Dhmap(c[1][1]), TS[(c[1][4] mod l) +1]) * Ssq^(c[2]));
             elif Length(c[1])=2 then
-                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * s2^(c[2]));
+                Add(C1, ProdTrace(TS[(c[1][1] mod l)+1], TS[(c[1][2] mod l)+1]) * Ssq^(c[2]));
             elif Length(c[1])=3 then
-                Add(C1, Trace(Dhmap(c[1][1] mod l)) * s2^(c[2]));
+                Add(C1, Trace(Dhmap(c[1][1] mod l)) * Ssq^(c[2]));
             elif Length(c[1])=5 then
-                Add(C1, ProdTrace((TS[(c[1][1] mod l)+1] * Dhmap(c[1][2] mod l)), TS[(c[1][5] mod l)+1]) * s2^(c[2]));
+                Add(C1, ProdTrace((TS[(c[1][1] mod l)+1] * Dhmap(c[1][2] mod l)), TS[(c[1][5] mod l)+1]) * Ssq^(c[2]));
             elif Length(c[1])=1 then
-                Add(C1, Trace(TS[(c[1][1] mod l)+1]) * s2^(c[2]));
+                Add(C1, Trace(TS[(c[1][1] mod l)+1]) * Ssq^(c[2]));
             fi;
         od;
     fi;
@@ -150,7 +150,7 @@ end );
 
 InstallGlobalFunction( SL2IrrepPositionTest,
 function(p, ld)
-    local irrep_list, count, i, G, irreps, PositionTest, pos_list, rho;
+    local NW_irreps, i, G, GAP_irreps, PositionTest, pos_list, rho;
 
     if not IsPrime(p) then
         Error("p must be a prime.");
@@ -159,25 +159,23 @@ function(p, ld)
     fi;
 
     Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z/", p^ld, "Z) via Nobs-Wolfart.");
-    irrep_list := [];
-    count := 0;
+    NW_irreps := [];
     for i in [1 .. ld] do
         Info(InfoSL2Reps, 1, "SL2Reps : Level ", p^i, ":");
-        irrep_list[i] := _SL2IrrepsPPLOfLevel(p, i);
-        count := count + Length(irrep_list[i]);
+        Append(NW_irreps, _SL2IrrepsPPLOfLevel(p, i));
     od;
-    Info(InfoSL2Reps, 1, "SL2Reps : In total, ", count, " non-trivial irreps of level dividing ", p^ld, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : In total, ", Length(NW_irreps), " non-trivial irreps of level dividing ", p^ld, " found.");
 
     Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of G=SL2WithConjClasses(", p, ",", ld, ") by using Irr(G).");
     G := SL2WithConjClasses(p, ld);
-    irreps := Irr(G);
+    GAP_irreps := Irr(G);
     # This always includes the trivial irrep, so we ignore it.
-    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
+    Info(InfoSL2Reps, 1, "SL2Reps : ", Length(GAP_irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
 
-    PositionTest := function(irreps, rho, pos_list)
+    PositionTest := function(rho, pos_list)
         local pos;
 
-        pos := Position(irreps, SL2ChiST(rho.S, rho.T, p, ld));
+        pos := Position(GAP_irreps, SL2ChiST(rho.S, rho.T, p, ld));
         if pos = fail then
             Info(InfoSL2Reps, 1, "SL2Reps : ", rho.name, " not found!");
         else
@@ -189,16 +187,14 @@ function(p, ld)
     pos_list := [];
 
     Info(InfoSL2Reps, 1, "SL2Reps : Performing position test:");
-    for i in [1 .. ld] do
-        for rho in irrep_list[i] do
-            PositionTest(irreps, rho, pos_list);
-        od;
+    for rho in NW_irreps do
+        PositionTest(rho, pos_list);
     od;
 
     if Length(pos_list) <> Length(AsSet(pos_list)) then
         Info(InfoSL2Reps, 1, "SL2Reps : WARNING: duplicates found:\n", pos_list);
         return false;
-    elif Length(pos_list) <> Length(irreps)-1 then
+    elif Length(pos_list) <> Length(GAP_irreps)-1 then
         Info(InfoSL2Reps, 1, "SL2Reps : WARNING: mismatched number of irreps:\n", pos_list);
         return false;
     else

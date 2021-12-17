@@ -303,14 +303,21 @@ end );
 #----------------------------------------
 # Returns conj class representative information of SL(2, Z/p^ld Z) for ld (>= 1) using ConjClassesOdd or ConjClassesEven.
 #---------------------------------------
-InstallGlobalFunction( _SL2ConjClasses,
-function (p, ld)
-    if p = 2 then
-        return _SL2ConjClassesEven(ld);
-    elif p > 2 then
-        return _SL2ConjClassesOdd(p,ld);
+f := MemoizePosIntFunction(function(l)
+    local v;
+    v := PrimePowersInt(l);
+    if not Length(v) = 2 then
+        Error("level must be a prime power.");
+    else
+        if v[1] = 2 then
+            return _SL2ConjClassesEven(v[2]);
+        elif v[1] > 2 then
+            return _SL2ConjClassesOdd(v[1], v[2]);
+        fi;
     fi;
-end );
+end);
+
+InstallGlobalFunction( _SL2ConjClasses, f );
 
 #-----------------------------------------------
 # Irreducibility check
