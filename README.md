@@ -15,7 +15,9 @@ root directory, for example one added with the `-l` argument).
 
 ## Contact
 
-Siu-Hung Ng (`rng@math.lsu.edu`), Yilong Wang (`wyl@bimsa.cn`), and Samuel Wilson (`swil311@lsu.edu`).
+Siu-Hung Ng, Louisiana State University (`rng@math.lsu.edu`)
+<br> Yilong Wang, Louisiana State University; currently Beijing Institute of Mathematical Sciences and Applications  (`wyl@bimsa.cn`)
+<br> Samuel Wilson, Louisiana State University (`swil311@lsu.edu`)
 
 ## Acknowledgements
 
