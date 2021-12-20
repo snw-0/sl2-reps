@@ -203,7 +203,7 @@ function(p, ld)
     fi;
 end );
 
-InstallGlobalFunction( SL2IrrepSymmetryTest,
+InstallGlobalFunction( SL2TestSymmetry,
 function(p, ld)
     local NW_irreps, rho, output;
 
