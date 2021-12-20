@@ -148,7 +148,7 @@ function(S, T, p, ld)
     return C1;
 end );
 
-InstallGlobalFunction( SL2IrrepPositionTest,
+InstallGlobalFunction( SL2TestPositions,
 function(p, ld)
     local NW_irreps, i, G, GAP_irreps, PositionTest, pos_list, rho;
 
