@@ -5,8 +5,8 @@
   [10X[[0,1],[-1,0]][110X and [23X\mathfrak{t}[123X = [10X[[1,1],[0,1]][110X (which satisfy the relations
   [23X\mathfrak{s}^4   =  (\mathfrak{st})^3  =  \mathrm{id}[123X).  Thus,  any  complex
   representation  [23X\rho[123X  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X on [23X\mathbb{C}^n[123X (where [23Xn
-  \in \mathbb{Z}^+[123X is called the [13Xdegree[113X of [23X\rho[123X) is determined by the [23Xn \times
-  n[123X matrices [23XS = \rho(\mathfrak{s})[123X and [23XT = \rho(\mathfrak{t})[123X.[133X
+  \in \mathbb{Z}^+[123X is called the [13Xdegree[113X or [13Xdimension[113X of [23X\rho[123X) is determined by
+  the [23Xn \times n[123X matrices [23XS = \rho(\mathfrak{s})[123X and [23XT = \rho(\mathfrak{t})[123X.[133X
   
   [33X[0;0YThis      package      constructs     irreducible     representations     of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X           which           factor           through
@@ -18,7 +18,8 @@
   property [DLN15].[133X
   
   [33X[0;0YWe  therefore  present  representations  in  the  form of a record [10Xrec(S, T,
-  degree, level, name)[110X, where the name follows the conventions of [NW76].[133X
+  degree, level, name)[110X, where the name follows the conventions of [NW76]. Here
+  [23XS[123X is a symmetric matrix and [23XT[123X a diagonal matrix (see [14X2.1-3[114X).[133X
   
   [33X[0;0YNote  that  our  definition  of  [23X\mathfrak{s}[123X follows that of [Nob76]; other
   authors  prefer the inverse, i.e. [23X\mathfrak{s}[123X = [10X[[0,-1],[1,0]][110X (under which
@@ -68,7 +69,16 @@
   denoted  [23XW(M,Q)[123X. Note that the [13Xcentral charge[113X of [23X(M,Q)[123X is given by [23XS_Q(-1) =
   \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))[123X.[133X
   
-  [33X[0;0YWe may construct subrepresentations [23XW(M,Q,\chi)[123X of [23XW(M,Q)[123X as follows. Denote[133X
+  [33X[0;0YThe  images  [23XW(M,Q)(\mathfrak{s})(f)[123X and [23XW(M,Q)(\mathfrak{t})(f)[123X may then be
+  calculated for any [23Xf \in V[123X (see [Nob76, Satz 2]). Thus, to construct [23XS[123X and [23XT[123X
+  matrices  for  the  irreducible subrepresentations of [23XW(M,Q)[123X, it suffices to
+  find bases for the [23XW(M,Q)[123X-invariant subspaces of [23XV[123X.[133X
+  
+  
+  [1X2.1-2 [33X[0;0YCharacter subspaces and primitive characters[133X[101X
+  
+  [33X[0;0YA  family  of subrepresentations [23XW(M,Q,\chi)[123X of [23XW(M,Q)[123X may be constructed as
+  follows. Denote[133X
   
   
   [24X[33X[0;6Y\operatorname{Aut}(M,Q)  =  \{  \varepsilon  \in  \operatorname{Aut}(M) \mid
@@ -93,9 +103,6 @@
   then  denote  by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on [23XV_\chi[123X. Note
   that [23XW(M,Q,\chi) \cong W(M,Q,\overline{\chi})[123X.[133X
   
-  
-  [1X2.1-2 [33X[0;0YPrimitive characters[133X[101X
-  
   [33X[0;0YFor  the  abelian  groups [23X\mathfrak{A} \leq \operatorname{Aut}(M,Q)[123X, we will
   frequently  refer  to  a  character [23X\chi \in \widehat{\mathfrak{A}}[123X as being
   [13Xprimitive[113X.  With  the exception of a single family of modules of type [23XR[123X (the
@@ -111,9 +118,10 @@
   Section [14X2.2[114X and may be used to determine the primitive characters.[133X
   
   
-  [1X2.1-3 [33X[0;0YIrrep types[133X[101X
+  [1X2.1-3 [33X[0;0YIrreps[133X[101X
   
-  [33X[0;0YThe prime-power irreps then fall into three cases.[133X
+  [33X[0;0YAll irreps of prime-power level and finite degree may then be constructed in
+  one of three ways ([NW76, Hauptsatz 2]):[133X
   
   [30X    [33X[0;6YThe  overwhelming  majority  are  of  the  form  [23XW(M,Q,\chi)[123X  for [23X\chi[123X
         primitive and [23X\chi^2 \neq 1[123X; we call these [13Xstandard[113X. This includes the
@@ -127,6 +135,12 @@
   [30X    [33X[0;6YFinally,  18  [13Xexceptional[113X irreps are constructed as tensor products of
         two  irreps  from  the  other  two  cases. A full list of these may be
         constructed by [2XSL2IrrepsExceptional[102X ([14X4.3-1[114X).[133X
+  
+  [33X[0;0YThe  authors  of  this  package  showed that, for the first two types, there
+  exists  a basis for the corresponding subspace of [23XV[123X such that [23XS[123X is symmetric
+  and [23XT[123X is diagonal; it follows that this property holds for the third type as
+  well.  The  matrices  output  by  this  package are always of this form. The
+  function [2XSL2IrrepSymmetryTest[102X ([14X5.1-4[114X) can be used to confirm this.[133X
   
   [33X[0;0YAll     the     finite-dimensional     irreducible     representations    of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X  of  finite level can now be constructed by taking

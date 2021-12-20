@@ -13,6 +13,7 @@
   [2XSL2IrrepsOfDegree[102X 4.1-1 
   [2XSL2IrrepsOfLevel[102X 4.2-1 
   [2XSL2IrrepsOfMaxDegree[102X 4.1-2 
+  [2XSL2IrrepSymmetryTest[102X 5.1-4 
   [2XSL2ModuleD[102X 3.1-1 
   [2XSL2ModuleN[102X 3.2-1 
   [2XSL2ModuleR[102X 3.3-1 

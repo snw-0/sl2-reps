@@ -43,6 +43,17 @@ Constructs and tests all non-trivial irreps of level dividing <Math>p^\lambda</M
 </ManSection>
 
 
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2IrrepSymmetryTest" />
+ <Returns>a boolean.
+</Returns>
+ <Description>
+Constructs and tests all irreps of level <Math>p^\lambda</Math> for symmetry of the <Math>S</Math>-matrix.
+ Note that this function will print information on the irreps involved if <Code>InfoSL2Reps</Code> is set to level 1 or higher; see Section <Ref Sect="Chapter_Introduction_Section_Usage"/>.
+ </Description>
+</ManSection>
+
+
 </Section>
 
 

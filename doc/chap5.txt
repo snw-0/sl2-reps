@@ -34,3 +34,12 @@
   Note  that  this  function  will print information on the irreps involved if
   [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
   
+  [1X5.1-4 SL2IrrepSymmetryTest[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepSymmetryTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean.[133X
+  
+  [33X[0;0YConstructs  and  tests  all  irreps  of  level [23Xp^\lambda[123X for symmetry of the
+  [23XS[123X-matrix.  Note  that  this  function  will  print information on the irreps
+  involved if [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
+  

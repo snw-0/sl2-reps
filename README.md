@@ -1,7 +1,8 @@
 This package, `SL2Reps`, provides methods for constructing and testing matrix
 presentations of the representations of SL(2,Z) whose kernels are congruence subgroups of SL(2,Z).
 
-Irreducible representations of prime-power level are constructed individually by using the Weil representations of quadratic modules, and from these a list of all representations of a given degree or level can be produced. The format is designed for the study of modular tensor categories in particular.
+Irreducible representations of prime-power level are constructed individually by using the Weil representations of quadratic modules, and from these a list of all representations of a given degree or level can be produced. The format is designed for the study of modular tensor categories in particular, providing
+symmetric matrix presentations of each representation.
 
 ## Installation
 

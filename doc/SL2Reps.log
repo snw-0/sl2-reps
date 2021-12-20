@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  15 DEC 2021 01:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.28)  20 DEC 2021 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -543,39 +543,39 @@ Chapter 1.
 Chapter 2.
 [5
 
-]
-Underfull \hbox (badness 1810) in paragraph at lines 290--292
+] [6]
+Underfull \hbox (badness 1810) in paragraph at lines 298--300
 []\T1/ptm/m/n/10.95 All the finite-dimensional ir-re-ducible rep-re-sen-ta-tion
 s of $[][]\OT1/ztmcm/m/n/10.95 (\U/msb/m/n/10.95 Z\OT1/ztmcm/m/n/10.95 )$ \T1/p
 tm/m/n/10.95 of fi-nite level can now
  []
 
 
-Underfull \hbox (badness 1742) in paragraph at lines 290--292
+Underfull \hbox (badness 1742) in paragraph at lines 298--300
 \T1/ptm/m/n/10.95 be con-structed by tak-ing ten-sor prod-ucts of these prime-p
 ower ir-reps. Note that, if two
  []
 
 
-Underfull \hbox (badness 4205) in paragraph at lines 290--292
+Underfull \hbox (badness 4205) in paragraph at lines 298--300
 \T1/ptm/m/n/10.95 rep-re-sen-ta-tions are de-ter-mined by pairs \T1/cmtt/m/n/10
 .95 [S1,T1] \T1/ptm/m/n/10.95 and \T1/cmtt/m/n/10.95 [S2,T2]\T1/ptm/m/n/10.95 ,
  then the pair for their
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 290--292
+Underfull \hbox (badness 2418) in paragraph at lines 298--300
 \T1/ptm/m/n/10.95 ten-sor prod-uct may be cal-cu-lated via the GAP com-mand \T1
 /cmtt/m/n/10.95 KroneckerProduct\T1/ptm/m/n/10.95 , namely as
  []
 
-[6] [7] [8] [9]
+[7] [8] [9] [10]
 Chapter 3.
-[10
+[11
 
-] [11] [12]
+] [12] [13]
 Chapter 4.
-[13
+[14
 
 ]
 Chapter 5.
@@ -583,11 +583,11 @@ Chapter 5.
 \tf@brf=\write8
 \openout8 = `SL2Reps.brf'.
 
- [14
+ [15
 
-]) [15
+]) [16
 
-] (./SL2Reps.ind [16
+] (./SL2Reps.ind [17
 
 
 
@@ -595,16 +595,16 @@ Chapter 5.
 Package rerunfilecheck Info: File `SL2Reps.out' has not changed.
 (rerunfilecheck)             Checksum: 5665A9A79A6124BC8BA3BC3535A2FCB1;2634.
 Package rerunfilecheck Info: File `SL2Reps.brf' has not changed.
-(rerunfilecheck)             Checksum: B11968CB92EBF5EE7F12F18F0420BF37;432.
+(rerunfilecheck)             Checksum: 8671E26ABEFCAE016B490B0C3A343E9D;527.
  ) 
 Here is how much of TeX's memory you used:
- 10768 strings out of 478519
- 157774 string characters out of 5849437
- 490100 words of memory out of 5000000
- 28435 multiletter control sequences out of 15000+600000
+ 10772 strings out of 478519
+ 157857 string characters out of 5849437
+ 490187 words of memory out of 5000000
+ 28436 multiletter control sequences out of 15000+600000
  468943 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,8n,94p,875b,633s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,8n,94p,875b,554s stack positions out of 5000i,500n,10000p,200000b,80000s
 {z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 }{z:/Programs/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<z:/Programs/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><z:/Programs/
@@ -623,10 +623,10 @@ f-dist/fonts/type1/urw/times/utmb8a.pfb><z:/Programs/texlive/2021/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb><z:/Programs/texlive/2021/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on SL2Reps.pdf (16 pages, 247846 bytes).
+Output written on SL2Reps.pdf (17 pages, 249936 bytes).
 PDF statistics:
- 410 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 101 named destinations out of 1000 (max. 500000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
+ 104 named destinations out of 1000 (max. 500000)
  145 words of extra memory for PDF output out of 10000 (max. 10000000)
 
