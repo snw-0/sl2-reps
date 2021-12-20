@@ -229,29 +229,29 @@ function(p, ld, chi_index)
 
             Info(InfoSL2Reps, 2, "SL2Reps : chi has order greater than 2, so the representation is irreducible. The dimension of the representation is ", deg, ".");
 
-            # # Construct change of basis to make S symmetric.
-            # U := IdentityMat(Length(Bp));
-            # k := 1;
-            # repeat
-            #     b := Bp[k];
-            #     a := First(Agrp, x -> x[2] = b[1]);
-            #     if a = fail then
-            #         # b[1] is not invertible, which means we have two basis elements,
-            #         # [b[1],1] and [1,b[1]]; they should be paired up.
-            #         U{[k,k+1]}{[k,k+1]} := (1 / Sqrt(2)) * [
-            #             [1, E(4)],
-            #             [1, -E(4)],
-            #         ];
-            #         k := k + 2;
-            #     else
-            #         # b[1] is invertible, so we scale by Sqrt(Chi(a)).
-            #         U[k][k] := 1 / _SL2SqrtOfRootOfUnity(Chi(a[1]));
-            #         k := k + 1;
-            #     fi;
-            # until k > Length(Bp);
+            # Construct change of basis to make S symmetric.
+            U := IdentityMat(Length(Bp));
+            k := 1;
+            repeat
+                b := Bp[k];
+                a := First(Agrp, x -> x[2] = b[1]);
+                if a = fail then
+                    # b[1] is not invertible, which means we have two basis elements,
+                    # [b[1],1] and [1,b[1]]; they should be paired up.
+                    U{[k,k+1]}{[k,k+1]} := (1 / Sqrt(2)) * [
+                        [1, E(4)],
+                        [1, -E(4)],
+                    ];
+                    k := k + 2;
+                else
+                    # b[1] is invertible, so we scale by Sqrt(Chi(a)).
+                    U[k][k] := 1 / _SL2SqrtOfRootOfUnity(Chi(a[1]));
+                    k := k + 1;
+                fi;
+            until k > Length(Bp);
 
-            # S := S ^ U;
-            # T := T ^ U;
+            S := S ^ U;
+            T := T ^ U;
 
             return [[S, T]];
         fi;

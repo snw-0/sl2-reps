@@ -202,3 +202,34 @@ function(p, ld)
         return true;
     fi;
 end );
+
+InstallGlobalFunction( SL2IrrepSymmetryTest,
+function(p, ld)
+    local NW_irreps, rho, output;
+
+    if not IsPrime(p) then
+        Error("p must be a prime.");
+    elif not ld in PositiveIntegers then
+        Error("ld must be a positive integer.");
+    fi;
+
+    Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z/", p^ld, "Z) with level ", p^ld, " via Nobs-Wolfart.");
+    NW_irreps := _SL2IrrepsPPLOfLevel(p, ld);
+
+    Info(InfoSL2Reps, 1, "SL2Reps : Testing symmetry of S-matrices.");
+
+    output := true;
+
+    for rho in NW_irreps do
+        if rho.S - TransposedMat(rho.S) <> NullMat(Length(rho.S), Length(rho.S)) then
+            Info(InfoSL2Reps, 1, "SL2Reps : Warning: S-matrix of ", rho.name, " is not symmetric.");
+            output := false;
+        fi;
+    od;
+
+    if output = true then
+        Info(InfoSL2Reps, 1, "SL2Reps : All S-matrices were symmetric.");
+    fi;
+
+    return output;
+end );
