@@ -29,7 +29,9 @@
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A8505DA8318656E">2.1-2 <span class="Heading">Character subspaces and primitive characters</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F53978B836474B0">2.1-3 <span class="Heading">Irreps</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85605F1983AA938D">2.1-3 <span class="Heading">Irrep Types</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X785B74657C952121">2.1-4 <span class="Heading">S and T matrices</span></a>
 </span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X861BA4A8800E1A08">2.2 <span class="Heading">Weil representation types</span></a>
@@ -52,7 +54,7 @@
 
 <p>This package constructs irreducible representations of <span class="Math">\mathrm{SL}_2(\mathbb{Z})</span> which factor through <span class="Math">\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})</span> for some <span class="Math">\ell \in \mathbb{Z}^+</span>; the smallest such <span class="Math">\ell</span> is called the <em>level</em> of the representation. One may equivalently say that the kernel of the representation is a congruence subgroup. It has been shown that any representation of <span class="Math">\mathrm{SL}_2(\mathbb{Z})</span> arising from a modular tensor category has this property <a href="chapBib.html#biBDLN15">[DLN15]</a>.</p>
 
-<p>We therefore present representations in the form of a record <code class="code">rec(S, T, degree, level, name)</code>, where the name follows the conventions of <a href="chapBib.html#biBNW76">[NW76]</a>. Here <span class="Math">S</span> is a symmetric matrix and <span class="Math">T</span> a diagonal matrix (see <a href="chap2.html#X7F53978B836474B0"><span class="RefLink">2.1-3</span></a>).</p>
+<p>We therefore present representations in the form of a record <code class="code">rec(S, T, degree, level, name)</code>, where the name follows the conventions of <a href="chapBib.html#biBNW76">[NW76]</a>. The basis is chosen such that <span class="Math">S</span> is a symmetric, unitary matrix and <span class="Math">T</span> a diagonal matrix (see <a href="chap2.html#X785B74657C952121"><span class="RefLink">2.1-4</span></a>).</p>
 
 <p>Note that our definition of <span class="Math">\mathfrak{s}</span> follows that of <a href="chapBib.html#biBNobs1">[Nob76]</a>; other authors prefer the inverse, i.e. <span class="Math">\mathfrak{s}</span> = <code class="code">[[0,-1],[1,0]]</code> (under which convention the relations are <span class="Math">\mathfrak{s}^4 = \mathrm{id}</span>, <span class="Math">(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2</span>). When working with that convention, one must invert the <span class="Math">S</span> matrices output by this package.</p>
 
@@ -101,9 +103,9 @@
 
 <p>Explicit descriptions of the group <span class="Math">\mathfrak{A}_0</span> for each type are given in Section <a href="chap2.html#X861BA4A8800E1A08"><span class="RefLink">2.2</span></a> and may be used to determine the primitive characters.</p>
 
-<p><a id="X7F53978B836474B0" name="X7F53978B836474B0"></a></p>
+<p><a id="X85605F1983AA938D" name="X85605F1983AA938D"></a></p>
 
-<h5>2.1-3 <span class="Heading">Irreps</span></h5>
+<h5>2.1-3 <span class="Heading">Irrep Types</span></h5>
 
 <p>All irreps of prime-power level and finite degree may then be constructed in one of three ways (<a href="chapBib.html#biBNW76">[NW76, Hauptsatz 2]</a>):</p>
 
@@ -119,7 +121,11 @@
 
 </li>
 </ul>
-<p>The authors of this package showed that, for the first two types, there exists a basis for the corresponding subspace of <span class="Math">V</span> such that <span class="Math">S</span> is symmetric and <span class="Math">T</span> is diagonal; it follows that this property holds for the third type as well. The matrices output by this package are always of this form. The function <code class="func">SL2IrrepSymmetryTest</code> (<a href="chap5.html#X875C4C8B81721B84"><span class="RefLink">5.1-4</span></a>) can be used to confirm this.</p>
+<p><a id="X785B74657C952121" name="X785B74657C952121"></a></p>
+
+<h5>2.1-4 <span class="Heading">S and T matrices</span></h5>
+
+<p>The authors of this package showed that, for all standard and non-standard irreps, there exists a basis for the corresponding subspace of <span class="Math">V</span> such that <span class="Math">S</span> is symmetric and unitary and <span class="Math">T</span> is diagonal. In particular, <span class="Math">S</span> is always either a real matrix or <span class="Math">i</span> times a real matrix. It follows that these properties hold for the exceptional irreps as well. This package therefore produces matrices with these properties.</p>
 
 <p>All the finite-dimensional irreducible representations of <span class="Math">\mathrm{SL}_2(\mathbb{Z})</span> of finite level can now be constructed by taking tensor products of these prime-power irreps. Note that, if two representations are determined by pairs <code class="code">[S1,T1]</code> and <code class="code">[S2,T2]</code>, then the pair for their tensor product may be calculated via the GAP command <code class="code">KroneckerProduct</code>, namely as <code class="code">[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</code>.</p>
 

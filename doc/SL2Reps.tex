@@ -159,9 +159,9 @@ representations of $\mathrm{SL}_2(\mathbb{Z})$ whose kernels are congruence subg
 
  Irreducible representations of prime-power level are constructed individually
 by using the Weil representations of quadratic modules, and from these a list
-of all representations of a given degree or level can be produced. The format
-is designed for the study of modular tensor categories in particular,
-providing symmetric matrix presentations of each representation.
+of all representations of a given degree or level can be produced. Each
+representation is represented by a pair of symmetric, unitary matrices; this
+format is designed for the study of modular tensor categories in particular.
 
  
 \section{\textcolor{Chapter }{Installation}}\label{Chapter_Introduction_Section_Installation}
@@ -210,7 +210,7 @@ be constructed with those in Chapter \ref{Chapter_Lists}.
 representation is a congruence subgroup. It has been shown that any
 representation of $\mathrm{SL}_2(\mathbb{Z})$ arising from a modular tensor category has this property \cite{DLN15}. 
 
- We therefore present representations in the form of a record \texttt{rec(S, T, degree, level, name)}, where the name follows the conventions of \cite{NW76}. Here $S$ is a symmetric matrix and $T$ a diagonal matrix (see \ref{Chapter_Description_Section_Construction_Subsection_Irreps}).
+ We therefore present representations in the form of a record \texttt{rec(S, T, degree, level, name)}, where the name follows the conventions of \cite{NW76}. The basis is chosen such that $S$ is a symmetric, unitary matrix and $T$ a diagonal matrix (see \ref{Chapter_Description_Section_Construction_Subsection_S_and_T_matrices}).
 
  Note that our definition of $\mathfrak{s}$ follows that of \cite{Nobs1}; other authors prefer the inverse, i.e. $\mathfrak{s}$ = \texttt{[[0,-1],[1,0]]} (under which convention the relations are $\mathfrak{s}^4 = \mathrm{id}$, $(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2$). When working with that convention, one must invert the $S$ matrices output by this package. 
 
@@ -273,9 +273,9 @@ all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
  }
 
  
-\subsection{\textcolor{Chapter }{Irreps}}\label{Chapter_Description_Section_Construction_Subsection_Irreps}
+\subsection{\textcolor{Chapter }{Irrep Types}}\label{Chapter_Description_Section_Construction_Subsection_Irrep_Types}
 \logpage{[ 2, 1, 3 ]}
-\hyperdef{L}{X7F53978B836474B0}{}
+\hyperdef{L}{X85605F1983AA938D}{}
 {
   
 
@@ -291,9 +291,19 @@ cases. A full list of these may be constructed by \texttt{SL2IrrepsExceptional} 
 \end{itemize}
  
 
- The authors of this package showed that, for the first two types, there exists
-a basis for the corresponding subspace of $V$ such that $S$ is symmetric and $T$ is diagonal; it follows that this property holds for the third type as well.
-The matrices output by this package are always of this form. The function \texttt{SL2IrrepSymmetryTest} (\ref{SL2IrrepSymmetryTest}) can be used to confirm this.
+ }
+
+
+\subsection{\textcolor{Chapter }{S and T matrices}}\label{Chapter_Description_Section_Construction_Subsection_S_and_T_matrices}
+\logpage{[ 2, 1, 4 ]}
+\hyperdef{L}{X785B74657C952121}{}
+{
+
+
+ The authors of this package showed that, for all standard and non-standard
+irreps, there exists a basis for the corresponding subspace of $V$ such that $S$ is symmetric and unitary and $T$ is diagonal. In particular, $S$ is always either a real matrix or $i$ times a real matrix. It follows that these properties hold for the exceptional
+irreps as well. This package therefore produces matrices with these
+properties.
 
  All the finite-dimensional irreducible representations of $\mathrm{SL}_2(\mathbb{Z})$ of finite level can now be constructed by taking tensor products of these
 prime-power irreps. Note that, if two representations are determined by pairs \texttt{[S1,T1]} and \texttt{[S2,T2]}, then the pair for their tensor product may be calculated via the GAP command \texttt{KroneckerProduct}, namely as \texttt{[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]}. 
@@ -945,11 +955,11 @@ a list representing a character of $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z}
 
  
 
-\subsection{\textcolor{Chapter }{SL2IrrepPositionTest}}
+\subsection{\textcolor{Chapter }{SL2TestPositions}}
 \logpage{[ 5, 1, 3 ]}\nobreak
-\hyperdef{L}{X7FB0262F7E0F1B95}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepPositionTest({\mdseries\slshape p, lambda})\index{SL2IrrepPositionTest@\texttt{SL2IrrepPositionTest}}
-\label{SL2IrrepPositionTest}
+\hyperdef{L}{X7BFA24298556FF78}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2TestPositions({\mdseries\slshape p, lambda})\index{SL2TestPositions@\texttt{SL2TestPositions}}
+\label{SL2TestPositions}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a boolean. 
@@ -960,19 +970,19 @@ a boolean.
 
 
 
-\subsection{\textcolor{Chapter }{SL2IrrepSymmetryTest}}
+\subsection{\textcolor{Chapter }{SL2TestSymmetry}}
 \logpage{[ 5, 1, 4 ]}\nobreak
-\hyperdef{L}{X875C4C8B81721B84}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2IrrepSymmetryTest({\mdseries\slshape p, lambda})\index{SL2IrrepSymmetryTest@\texttt{SL2IrrepSymmetryTest}}
-\label{SL2IrrepSymmetryTest}
+\hyperdef{L}{X7B41A0178465F138}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SL2TestSymmetry({\mdseries\slshape p, lambda})\index{SL2TestSymmetry@\texttt{SL2TestSymmetry}}
+\label{SL2TestSymmetry}
 }\hfill{\scriptsize (function)}}\\
 \textbf{\indent Returns:\ }
 a boolean.
 
 
 
- Constructs and tests all irreps of level $p^\lambda$ for symmetry of the $S$-matrix. Note that this function will print information on the irreps involved
-if \texttt{InfoSL2Reps} is set to level 1 or higher; see Section \ref{Chapter_Introduction_Section_Usage}. }
+ Constructs and tests all irreps of level $p^\lambda$, confirming that the $S$-matrix is symmetric and unitary and the $T$ matrix is diagonal. Note that this function will print information on the
+irreps involved if \texttt{InfoSL2Reps} is set to level 1 or higher; see Section \ref{Chapter_Introduction_Section_Usage}. }
 
  }
 
@@ -998,7 +1008,6 @@ if \texttt{InfoSL2Reps} is set to level 1 or higher; see Section \ref{Chapter_In
 
 \printindex
 
-\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
 \immediate\write\pagenrlog{["End"], \arabic{page}];}

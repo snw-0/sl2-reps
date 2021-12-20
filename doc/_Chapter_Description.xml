@@ -10,7 +10,7 @@ Thus, any complex representation <Math>\rho</Math> of <Math>\mathrm{SL}_2(\mathb
 <P/>
 This package constructs irreducible representations of <Math>\mathrm{SL}_2(\mathbb{Z})</Math> which factor through <Math>\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})</Math> for some <Math>\ell \in \mathbb{Z}^+</Math>; the smallest such <Math>\ell</Math> is called the <Emph>level</Emph> of the representation. One may equivalently say that the kernel of the representation is a congruence subgroup. It has been shown that any representation of <Math>\mathrm{SL}_2(\mathbb{Z})</Math> arising from a modular tensor category has this property <Cite Key="DLN15"/>.
 <P/>
-We therefore present representations in the form of a record <Code>rec(S, T, degree, level, name)</Code>, where the name follows the conventions of <Cite Key="NW76"/>. Here <Math>S</Math> is a symmetric matrix and <Math>T</Math> a diagonal matrix (see <Ref Sect="Chapter_Description_Section_Construction_Subsection_Irreps"/>).
+We therefore present representations in the form of a record <Code>rec(S, T, degree, level, name)</Code>, where the name follows the conventions of <Cite Key="NW76"/>. The basis is chosen such that <Math>S</Math> is a symmetric, unitary matrix and <Math>T</Math> a diagonal matrix (see <Ref Sect="Chapter_Description_Section_Construction_Subsection_S_and_T_matrices"/>).
 <P/>
 Note that our definition of <Math>\mathfrak{s}</Math> follows that of <Cite Key="Nobs1"/>; other authors prefer the inverse, i.e. <Math>\mathfrak{s}</Math> = <Code>[[0,-1],[1,0]]</Code> (under which convention the relations are <Math>\mathfrak{s}^4 = \mathrm{id}</Math>, <Math>(\mathfrak{s}\mathfrak{t})^3 = \mathfrak{s}^2</Math>). When working with that convention, one must invert the <Math>S</Math> matrices output by this package.
 <P/>
@@ -56,8 +56,8 @@ Explicit descriptions of the group <Math>\mathfrak{A}_0</Math> for each type are
 </Subsection>
 
 
-<Subsection Label="Chapter_Description_Section_Construction_Subsection_Irreps">
-<Heading>Irreps</Heading>
+<Subsection Label="Chapter_Description_Section_Construction_Subsection_Irrep_Types">
+<Heading>Irrep Types</Heading>
 
 <P/>
 All irreps of prime-power level and finite degree may then be constructed in one of three ways (<Cite Key="NW76" Where="Hauptsatz 2"/>):
@@ -67,7 +67,14 @@ All irreps of prime-power level and finite degree may then be constructed in one
     <Item>Finally, 18 <Emph>exceptional</Emph> irreps are constructed as tensor products of two irreps from the other two cases. A full list of these may be constructed by <Ref Func="SL2IrrepsExceptional"/>.</Item>
 </List>
 <P/>
-The authors of this package showed that, for the first two types, there exists a basis for the corresponding subspace of <Math>V</Math> such that <Math>S</Math> is symmetric and <Math>T</Math> is diagonal; it follows that this property holds for the third type as well.  The matrices output by this package are always of this form.  The function <Ref Func="SL2IrrepSymmetryTest"/> can be used to confirm this.
+</Subsection>
+
+
+<Subsection Label="Chapter_Description_Section_Construction_Subsection_S_and_T_matrices">
+<Heading>S and T matrices</Heading>
+
+<P/>
+The authors of this package showed that, for all standard and non-standard irreps, there exists a basis for the corresponding subspace of <Math>V</Math> such that <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.  In particular, <Math>S</Math> is always either a real matrix or <Math>i</Math> times a real matrix.  It follows that these properties hold for the exceptional irreps as well.  This package therefore produces matrices with these properties.
 <P/>
 All the finite-dimensional irreducible representations of <Math>\mathrm{SL}_2(\mathbb{Z})</Math> of finite level can now be constructed by taking tensor products of these prime-power irreps.  Note that, if two representations are determined by pairs <Code>[S1,T1]</Code> and <Code>[S2,T2]</Code>, then the pair for their tensor product may be calculated via the GAP command <Code>KroneckerProduct</Code>, namely as <Code>[KroneckerProduct(S1,S2),KroneckerProduct(T1,T2)]</Code>.
 <P/>

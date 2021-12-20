@@ -23,9 +23,9 @@
   into a character of [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X, presented
   in a form matching the conjugacy classes used in [10XSL2WithConjClasses[110X.[133X
   
-  [1X5.1-3 SL2IrrepPositionTest[101X
+  [1X5.1-3 SL2TestPositions[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepPositionTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2TestPositions[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean.[133X
   
   [33X[0;0YConstructs  and  tests all non-trivial irreps of level dividing [23Xp^\lambda[123X by
@@ -34,12 +34,13 @@
   Note  that  this  function  will print information on the irreps involved if
   [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
   
-  [1X5.1-4 SL2IrrepSymmetryTest[101X
+  [1X5.1-4 SL2TestSymmetry[101X
   
-  [33X[1;0Y[29X[2XSL2IrrepSymmetryTest[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSL2TestSymmetry[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean.[133X
   
-  [33X[0;0YConstructs  and  tests  all  irreps  of  level [23Xp^\lambda[123X for symmetry of the
-  [23XS[123X-matrix.  Note  that  this  function  will  print information on the irreps
-  involved if [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
+  [33X[0;0YConstructs  and  tests  all  irreps  of level [23Xp^\lambda[123X, confirming that the
+  [23XS[123X-matrix  is  symmetric  and unitary and the [23XT[123X matrix is diagonal. Note that
+  this  function  will print information on the irreps involved if [10XInfoSL2Reps[110X
+  is set to level 1 or higher; see Section [14X1.2[114X.[133X
   

@@ -216,7 +216,7 @@ function(p, ld)
     Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z/", p^ld, "Z) with level ", p^ld, " via Nobs-Wolfart.");
     NW_irreps := _SL2IrrepsPPLOfLevel(p, ld);
 
-    Info(InfoSL2Reps, 1, "SL2Reps : Testing symmetry of S-matrices.");
+    Info(InfoSL2Reps, 1, "SL2Reps : Testing that S-matrices are symmetrical and unitary and T-matrices are diagonal.");
 
     output := true;
 
@@ -225,10 +225,20 @@ function(p, ld)
             Info(InfoSL2Reps, 1, "SL2Reps : Warning: S-matrix of ", rho.name, " is not symmetric.");
             output := false;
         fi;
+
+        if (rho.S)^(-1) <> TransposedMat(ComplexConjugate(rho.S)) then
+            Info(InfoSL2Reps, 1, "SL2Reps : Warning: S-matrix of ", rho.name, " is not unitary.");
+            output := false;
+        fi;
+
+        if not IsDiagonalMat(rho.T) then
+            Info(InfoSL2Reps, 1, "SL2Reps : Warning: T-matrix of ", rho.name, " is not diagonal.");
+            output := false;
+        fi;
     od;
 
     if output = true then
-        Info(InfoSL2Reps, 1, "SL2Reps : All S-matrices were symmetric.");
+        Info(InfoSL2Reps, 1, "SL2Reps : All properties confirmed.");
     fi;
 
     return output;

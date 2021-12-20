@@ -5,7 +5,8 @@
 \contentsline {section}{\numberline {2.1}\textcolor {Chapter }{Construction}}{5}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}\textcolor {Chapter }{Weil representations}}{5}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}\textcolor {Chapter }{Character subspaces and primitive characters}}{6}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}\textcolor {Chapter }{Irreps}}{6}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.3}\textcolor {Chapter }{Irrep Types}}{6}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}\textcolor {Chapter }{S and T matrices}}{7}{subsection.2.1.4}%
 \contentsline {section}{\numberline {2.2}\textcolor {Chapter }{Weil representation types}}{7}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}\textcolor {Chapter }{Type D}}{7}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}\textcolor {Chapter }{Type N}}{7}{subsection.2.2.2}%
@@ -34,7 +35,7 @@
 \contentsline {section}{\numberline {5.1}\textcolor {Chapter }{Testing}}{15}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}\textcolor {Chapter }{SL2WithConjClasses}}{15}{subsection.5.1.1}%
 \contentsline {subsection}{\numberline {5.1.2}\textcolor {Chapter }{SL2ChiST}}{15}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}\textcolor {Chapter }{SL2IrrepPositionTest}}{15}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}\textcolor {Chapter }{SL2IrrepSymmetryTest}}{15}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.3}\textcolor {Chapter }{SL2TestPositions}}{15}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}\textcolor {Chapter }{SL2TestSymmetry}}{15}{subsection.5.1.4}%
 \contentsline {chapter}{References}{16}{chapter*.4}%
 \contentsline {chapter}{Index}{17}{section*.5}%
