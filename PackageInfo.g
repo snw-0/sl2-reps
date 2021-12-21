@@ -9,7 +9,7 @@
 SetPackageInfo( rec(
 
 PackageName := "SL2Reps",
-Subtitle := "Constructs congruent representations of SL(2,Z).",
+Subtitle := "Constructing symmetric representations of SL(2,Z).",
 Version := "0.1",
 Date := "12/11/2021", # dd/mm/yyyy format
 License := "GPL-2.0",
