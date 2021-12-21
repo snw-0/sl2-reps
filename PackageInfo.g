@@ -78,7 +78,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "Constructs representations of SL(2,Z).",
+  LongTitle := "Constructing symmetric representations of SL(2,Z).",
 ),
 
 Dependencies := rec(
