@@ -17,7 +17,7 @@ root directory, for example one added with the `-l` argument).
 ## Contact
 
 Siu-Hung Ng, Louisiana State University (`rng@math.lsu.edu`)
-<br> Yilong Wang[^1], Louisiana State University; currently Beijing Institute of Mathematical Sciences and Applications  (`wyl@bimsa.cn`)
+<br> Yilong Wang[^1], Louisiana State University (`wyl@bimsa.cn`)
 <br> Samuel Wilson, Louisiana State University (`swil311@lsu.edu`)
 
 [^1]: Currently at Beijing Institute of Mathematical Science and Applications (BIMSA).
