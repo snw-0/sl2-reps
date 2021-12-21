@@ -6,30 +6,39 @@
     SL2Reps
   </Title>
   <Subtitle>
-    Constructs congruent representations of SL(2,Z).
+    Constructing symmetric representations of SL(2,Z).
   </Subtitle>
   <Version>
-    0.1
+    1.0
   </Version>
   <Author>
     Siu-Hung Ng<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA<Br/>
+</Address>
 <Email>rng@math.lsu.edu</Email>
 <Homepage>https://www.math.lsu.edu/~rng/</Homepage>
 
   </Author>
   <Author>
     Yilong Wang<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA <Br/> Current: Beijing Institute of Mathematical Sciences and Applications (BIMSA), Huairou, Beijing, China<Br/>
+</Address>
 <Email>wyl@bimsa.cn</Email>
 <Homepage>https://yilongwang11.github.io</Homepage>
 
   </Author>
   <Author>
     Samuel Wilson<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA<Br/>
+</Address>
 <Email>swil311@lsu.edu</Email>
 
   </Author>
   <Date>
-    12 November 2021
+    20 December 2021
   </Date>
   <Copyright>
     

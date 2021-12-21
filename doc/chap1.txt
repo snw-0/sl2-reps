@@ -8,9 +8,9 @@
   [33X[0;0YIrreducible   representations   of   prime-power   level   are   constructed
   individually  by  using  the  Weil representations of quadratic modules, and
   from  these  a list of all representations of a given degree or level can be
-  produced. Each representation is represented by a pair of symmetric, unitary
-  matrices; this format is designed for the study of modular tensor categories
-  in particular.[133X
+  produced.  Each  representation is represented by a pair [23X(S,T)[123X, where [23XS[123X is a
+  symmetric,  unitary  matrix and [23XT[123X is a diagonal matrix of finite order; this
+  format is designed for the study of modular tensor categories in particular.[133X
   
   
   [1X1.1 [33X[0;0YInstallation[133X[101X

@@ -4,6 +4,10 @@
   [33X[0;0YMethods   for   generating   individual   irreducible   representations   of
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X for a given level [23Xp^\lambda[123X.[133X
   
+  [33X[0;0YAfter  generating  a representation [23X\rho[123X by means of the bases in [NW76], we
+  perform  a  change  of  basis  that  results  in  a symmetric representation
+  equivalent to [23X\rho[123X.[133X
+  
   [33X[0;0YIn  each  case  (except  the  unary  type  [23XR[123X,  for  which see [2XSL2IrrepRUnary[102X
   ([14X3.3-3[114X)),  the  underlying  module  [23XM[123X is of rank [23X2[123X, so its elements have the
   form [23X(x,y)[123X and are thus represented by lists [10X[x,y][110X.[133X
@@ -46,8 +50,10 @@
   which        correspond        to        a        basis        for       the
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
   to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
-  \not\equiv  1[123X.  For  other characters, we must use different bases which are
-  particular to each case.[133X
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
   
   [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
   character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
@@ -64,6 +70,8 @@
   with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
   character [23X\chi[123X indexed by [10Xchi_index = [i,j][110X (see the discussion of [10XChar(i,j)[110X
   in [2XSL2ModuleD[102X ([14X3.1-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
   
   [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
   
@@ -90,8 +98,10 @@
   which        correspond        to        a        basis        for       the
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
   to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
-  \not\equiv  1[123X.  For  other characters, we must use different bases which are
-  particular to each case.[133X
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
   
   [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
   character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
@@ -110,6 +120,8 @@
   with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
   character [23X\chi[123X indexed by [10Xchi_index = [i,j][110X (see the discussion of [10XChar(i,j)[110X
   in [2XSL2ModuleN[102X ([14X3.2-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
   
   [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
   
@@ -145,8 +157,10 @@
   which        correspond        to        a        basis        for       the
   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
   to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
-  \not\equiv  1[123X.  For  other characters, we must use different bases which are
-  particular to each case.[133X
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
   
   [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
   character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
@@ -171,7 +185,9 @@
   [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XR[123X
   with parameters [23Xp[123X, [23X\lambda[123X, [23X\sigma[123X, [23Xr[123X, and [23Xt[123X, corresponding to the character
   [23X\chi[123X  indexed by [10Xchi_index = [i,j][110X (see the discussions of [23X\sigma[123X, [23Xr[123X, [23Xt[123X, and
-  [10XChar(i,j)[110X in [2XSL2ModuleN[102X ([14X3.2-1[114X)).[133X
+  [10XChar(i,j)[110X in [2XSL2ModuleR[102X ([14X3.3-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
   
   [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
   
@@ -188,6 +204,8 @@
   type  [23XR[123X  (that  is,  the  special case where [23X\sigma = \lambda[123X) with [23Xp[123X an odd
   prime,  [23X\lambda[123X  a  positive  integer,  and [23Xr \in \{1,u\}[123X with [23Xu[123X a quadratic
   non-residue mod [23Xp[123X.[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
   
   [33X[0;0YIn this case, [23XW(M,Q)[123X always contains exactly 2 such irreps.[133X
   

@@ -1,4 +1,4 @@
-\begin{thebibliography}{DLN15}
+\begin{thebibliography}{NWW21}
 
 \bibitem[DLN15]{DLN15}
 Chongying Dong, Xingjun Lin, and Siu-Hung Ng.
@@ -16,5 +16,10 @@ Alexandre Nobs and J\"urgen Wolfart.
 \newblock Die irreduziblen {D}arstellungen der {G}ruppen {$SL_{2}(Z_{p})$},
   insbesondere {$SL_{2}(Z_{p})$}. {II}.
 \newblock {\em Comment. Math. Helv.}, 51(4):491--526, 1976.
+
+\bibitem[NWW21]{NWWi}
+Siu-Hung Ng, Yilong Wang, and Samuel Wilson.
+\newblock Symmetrization of congruent representations of sl(2,z).
+\newblock {\em In preparation}, 2021.
 
 \end{thebibliography}

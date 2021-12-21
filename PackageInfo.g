@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "SL2Reps",
 Subtitle := "Constructing symmetric representations of SL(2,Z).",
-Version := "0.1",
-Date := "12/11/2021", # dd/mm/yyyy format
+Version := "1.0",
+Date := "20/12/2021", # dd/mm/yyyy format
 License := "GPL-2.0",
 
 Persons := [
@@ -22,7 +22,7 @@ Persons := [
     Email := "rng@math.lsu.edu",
     IsAuthor := true,
     IsMaintainer := false,
-    #PostalAddress := TODO,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA",
     Place := "Baton Rouge, LA, USA",
     Institution := "Louisiana State University",
   ),
@@ -33,7 +33,7 @@ Persons := [
     Email := "wyl@bimsa.cn",
     IsAuthor := true,
     IsMaintainer := false,
-    #PostalAddress := TODO,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA <Br/> Current: Beijing Institute of Mathematical Sciences and Applications (BIMSA), Huairou, Beijing, China",
     #Place := TODO,
     Institution := "Louisiana State University; currently Beijing Institute of Mathematical Sciences and Applications (BIMSA)",
   ),
@@ -44,7 +44,7 @@ Persons := [
     Email := "swil311@lsu.edu",
     IsAuthor := true,
     IsMaintainer := true,
-    #PostalAddress := TODO,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA",
     Place := "Baton Rouge, LA, USA",
     Institution := "Louisiana State University",
   ),

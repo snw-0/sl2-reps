@@ -9,6 +9,9 @@
 #!  Methods for generating individual irreducible representations of
 #!  $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$ for a given level $p^\lambda$.
 #!
+#!  After generating a representation $\rho$ by means of the bases in <Cite Key="NW76"/>, we perform
+#!  a change of basis that results in a symmetric representation equivalent to $\rho$.
+#!
 #!  In each case (except the unary type $R$, for which see <Ref Func="SL2IrrepRUnary"/>),
 #!  the underlying module $M$ is of rank $2$, so its elements have the form $(x,y)$
 #!  and are thus represented by lists `[x,y]`.
@@ -41,7 +44,10 @@
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which
 #!  correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace
 #!  associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
-#!  For other characters, we must use different bases which are particular to each case.
+#!  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+#!  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+#!  representation.
+#!  For non-primitive characters, we must use different bases which are particular to each case.
 #!
 #!  `Char(i,j)` converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 #!
@@ -55,6 +61,8 @@ DeclareGlobalFunction( "SL2ModuleD" );
 #!  level $p^\lambda$, for $p$ a prime and $\lambda \geq 1$, corresponding to the
 #!  character $\chi$ indexed by `chi_index = [i,j]`
 #!  (see the discussion of `Char(i,j)` in <Ref Func="SL2ModuleD"/>).
+#!
+#!  Here $S$ is symmetric and unitary and $T$ is diagonal.
 #!
 #!  Depending on the parameters, $W(M,Q)$ will contain either 1 or 2 such irreps.
 DeclareGlobalFunction( "SL2IrrepD" );

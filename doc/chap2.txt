@@ -11,16 +11,18 @@
   [33X[0;0YThis      package      constructs     irreducible     representations     of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X           which           factor           through
   [23X\mathrm{SL}_2(\mathbb{Z}/\ell\mathbb{Z})[123X for some [23X\ell \in \mathbb{Z}^+[123X; the
-  smallest  such  [23X\ell[123X  is  called  the  [13Xlevel[113X  of the representation. One may
-  equivalently  say  that  the  kernel  of  the representation is a congruence
-  subgroup.    It    has    been    shown    that    any   representation   of
-  [23X\mathrm{SL}_2(\mathbb{Z})[123X  arising  from  a modular tensor category has this
-  property [DLN15].[133X
+  smallest  such  [23X\ell[123X is called the [13Xlevel[113X of the representation, and is equal
+  to  the  order  of  [23XT[123X.  One  may  equivalently  say  that  the kernel of the
+  representation  is  a  congruence  subgroup. Such representations are called
+  [13Xcongruent[113X   representations.  A  congruent  representation  [23X\rho[123X  is  called
+  [13Xsymmetric[113X  if  [23XS = \rho(\mathfrak{s})[123X is a symmetric, unitary matrix and [23XT =
+  \rho(\mathfrak{t})[123X  is  a diagonal matrix; it was proved by the authors that
+  every congruent representation is equivalent to a symmetric one (see [14X2.1-4[114X).
+  Any  representation  of  [23X\mathrm{SL}_2(\mathbb{Z})[123X  arising  from  a modular
+  tensor category is symmetric [DLN15].[133X
   
   [33X[0;0YWe  therefore  present  representations  in  the  form of a record [10Xrec(S, T,
-  degree,  level, name)[110X, where the name follows the conventions of [NW76]. The
-  basis  is chosen such that [23XS[123X is a symmetric, unitary matrix and [23XT[123X a diagonal
-  matrix (see [14X2.1-4[114X).[133X
+  degree, level, name)[110X, where the name follows the conventions of [NW76].[133X
   
   [33X[0;0YNote  that  our  definition  of  [23X\mathfrak{s}[123X follows that of [Nob76]; other
   authors  prefer the inverse, i.e. [23X\mathfrak{s}[123X = [10X[[0,-1],[1,0]][110X (under which
@@ -69,11 +71,6 @@
   \mathbb{C}^M[123X  of  complex-valued  functions  on  [23XM[123X.  This  representation is
   denoted  [23XW(M,Q)[123X. Note that the [13Xcentral charge[113X of [23X(M,Q)[123X is given by [23XS_Q(-1) =
   \frac{1}{\sqrt{|M|}} \sum_{x \in M} \mathbf{e}(Q(x))[123X.[133X
-  
-  [33X[0;0YThe  images  [23XW(M,Q)(\mathfrak{s})(f)[123X and [23XW(M,Q)(\mathfrak{t})(f)[123X may then be
-  calculated for any [23Xf \in V[123X (see [Nob76, Satz 2]). Thus, to construct [23XS[123X and [23XT[123X
-  matrices  for  the  irreducible subrepresentations of [23XW(M,Q)[123X, it suffices to
-  find bases for the [23XW(M,Q)[123X-invariant subspaces of [23XV[123X.[133X
   
   
   [1X2.1-2 [33X[0;0YCharacter subspaces and primitive characters[133X[101X
@@ -140,12 +137,18 @@
   
   [1X2.1-4 [33X[0;0YS and T matrices[133X[101X
   
-  [33X[0;0YThe  authors  of this package showed that, for all standard and non-standard
-  irreps, there exists a basis for the corresponding subspace of [23XV[123X such that [23XS[123X
-  is  symmetric  and  unitary  and  [23XT[123X  is diagonal. In particular, [23XS[123X is always
-  either  a  real  matrix  or  [23Xi[123X  times  a  real matrix. It follows that these
-  properties  hold  for the exceptional irreps as well. This package therefore
-  produces matrices with these properties.[133X
+  [33X[0;0YThe   images  [23XW(M,Q)(\mathfrak{s})(f)[123X  and  [23XW(M,Q)(\mathfrak{t})(f)[123X  may  be
+  calculated for any [23Xf \in V[123X (see [Nob76, Satz 2]). Thus, to construct [23XS[123X and [23XT[123X
+  matrices  for  the  irreducible subrepresentations of [23XW(M,Q)[123X, it suffices to
+  find  bases  for the [23XW(M,Q)[123X-invariant subspaces of [23XV[123X. Choices for such bases
+  are  given  by  [NW76];  however,  these  often  result  in  non-symmetric [23XS[123X
+  matrices.  It  has  been proven by the authors of this package that, for all
+  standard and non-standard irreps, there exists a basis for the corresponding
+  subspace  of  [23XV[123X  such  that  [23XS[123X  is  symmetric  and unitary and [23XT[123X is diagonal
+  ([NWW21],  in  preparation). In particular, [23XS[123X is always either a real matrix
+  or  [23Xi[123X  times  a  real  matrix. It follows that these properties hold for the
+  exceptional  irreps  as  well. This package therefore produces matrices with
+  these properties.[133X
   
   [33X[0;0YAll     the     finite-dimensional     irreducible     representations    of
   [23X\mathrm{SL}_2(\mathbb{Z})[123X  of  finite level can now be constructed by taking

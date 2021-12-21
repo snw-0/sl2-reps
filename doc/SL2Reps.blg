@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: SL2Reps.aux
 The style file: alpha.bst
 Database file #1: SL2Reps.bib
-You've used 3 entries,
+You've used 4 entries,
             2543 wiz_defined-function locations,
-            579 strings with 4899 characters,
-and the built_in function-call counts, 1272 in all, are:
-= -- 131
-> -- 52
+            585 strings with 5024 characters,
+and the built_in function-call counts, 1629 in all, are:
+= -- 166
+> -- 77
 < -- 1
-+ -- 17
-- -- 17
-* -- 103
-:= -- 218
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 18
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 43
-empty$ -- 93
-format.name$ -- 21
-if$ -- 250
++ -- 26
+- -- 26
+* -- 128
+:= -- 280
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 25
+chr.to.int$ -- 4
+cite$ -- 4
+duplicate$ -- 56
+empty$ -- 113
+format.name$ -- 31
+if$ -- 319
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 3
-newline$ -- 18
-num.names$ -- 9
-pop$ -- 10
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 16
 preamble$ -- 1
-purify$ -- 21
+purify$ -- 29
 quote$ -- 0
-skip$ -- 35
+skip$ -- 49
 stack$ -- 0
-substring$ -- 102
-swap$ -- 3
+substring$ -- 109
+swap$ -- 4
 text.length$ -- 1
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 24
+type$ -- 32
 warning$ -- 0
-while$ -- 14
-width$ -- 6
-write$ -- 41
+while$ -- 17
+width$ -- 5
+write$ -- 53

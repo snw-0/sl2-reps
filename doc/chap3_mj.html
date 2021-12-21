@@ -50,6 +50,8 @@
 
 <p>Methods for generating individual irreducible representations of <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span> for a given level <span class="SimpleMath">\(p^\lambda\)</span>.</p>
 
+<p>After generating a representation <span class="SimpleMath">\(\rho\)</span> by means of the bases in <a href="chapBib_mj.html#biBNW76">[NW76]</a>, we perform a change of basis that results in a symmetric representation equivalent to <span class="SimpleMath">\(\rho\)</span>.</p>
+
 <p>In each case (except the unary type <span class="SimpleMath">\(R\)</span>, for which see <code class="func">SL2IrrepRUnary</code> (<a href="chap3_mj.html#X7C94E3007A1BEE85"><span class="RefLink">3.3-3</span></a>)), the underlying module <span class="SimpleMath">\(M\)</span> is of rank <span class="SimpleMath">\(2\)</span>, so its elements have the form <span class="SimpleMath">\((x,y)\)</span> and are thus represented by lists <code class="code">[x,y]</code>.</p>
 
 <p>Characters of the abelian group <span class="SimpleMath">\(\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle\)</span> have the form <span class="SimpleMath">\(\chi_{i,j}\)</span>, given by</p>
@@ -77,7 +79,7 @@
 
 <p><code class="code">Agrp</code> is a list describing the elements of <span class="SimpleMath">\(\mathfrak{A}\)</span>. Each element <span class="SimpleMath">\(a \in \mathfrak{A}\)</span> is represented in <code class="code">Agrp</code> by a list <code class="code">[v, a, a_inv]</code>, where <code class="code">v</code> is a list defined by <span class="SimpleMath">\(a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}\)</span>. Note that <span class="SimpleMath">\(\beta\)</span> is trivial, and hence <code class="code">v[2]</code> is irrelevant, when <span class="SimpleMath">\(\mathfrak{A}\)</span> is cyclic.</p>
 
-<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. For other characters, we must use different bases which are particular to each case.</p>
+<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. This is the basis given by <a href="chapBib_mj.html#biBNW76">[NW76]</a>, which may result in a non-symmetric representation; if this occurs, we perform a change of basis in <code class="func">SL2IrrepD</code> (<a href="chap3_mj.html#X7FDB517981A2C091"><span class="RefLink">3.1-2</span></a>) to obtain a symmetric representation. For non-primitive characters, we must use different bases which are particular to each case.</p>
 
 <p><code class="code">Char(i,j)</code> converts two integers <span class="SimpleMath">\(i\)</span>, <span class="SimpleMath">\(j\)</span> to a function representing the character <span class="SimpleMath">\(\chi_{i,j} \in \widehat{\mathfrak{A}}\)</span>.</p>
 
@@ -91,6 +93,8 @@
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(D\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussion of <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleD</code> (<a href="chap3_mj.html#X845D92CB7841CB0B"><span class="RefLink">3.1-1</span></a>)).</p>
+
+<p>Here <span class="SimpleMath">\(S\)</span> is symmetric and unitary and <span class="SimpleMath">\(T\)</span> is diagonal.</p>
 
 <p>Depending on the parameters, <span class="SimpleMath">\(W(M,Q)\)</span> will contain either 1 or 2 such irreps.</p>
 
@@ -111,7 +115,7 @@
 
 <p><code class="code">Agrp</code> is a list describing the elements of <span class="SimpleMath">\(\mathfrak{A}\)</span>. Each element <span class="SimpleMath">\(a \in \mathfrak{A}\)</span> is represented in <code class="code">Agrp</code> by a list <code class="code">[v, a]</code>, where <code class="code">v</code> is a list defined by <span class="SimpleMath">\(a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}\)</span>. Note that <span class="SimpleMath">\(\alpha\)</span> is trivial, and hence <code class="code">v[1]</code> is irrelevant, when <span class="SimpleMath">\(\mathfrak{A}\)</span> is cyclic.</p>
 
-<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. For other characters, we must use different bases which are particular to each case.</p>
+<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. This is the basis given by <a href="chapBib_mj.html#biBNW76">[NW76]</a>, which may result in a non-symmetric representation; if this occurs, we perform a change of basis in <code class="func">SL2IrrepD</code> (<a href="chap3_mj.html#X7FDB517981A2C091"><span class="RefLink">3.1-2</span></a>) to obtain a symmetric representation. For non-primitive characters, we must use different bases which are particular to each case.</p>
 
 <p><code class="code">Char(i,j)</code> converts two integers <span class="SimpleMath">\(i\)</span>, <span class="SimpleMath">\(j\)</span> to a function representing the character <span class="SimpleMath">\(\chi_{i,j} \in \widehat{\mathfrak{A}}\)</span>.</p>
 
@@ -127,6 +131,8 @@
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(N\)</span> with level <span class="SimpleMath">\(p^\lambda\)</span>, for <span class="SimpleMath">\(p\)</span> a prime and <span class="SimpleMath">\(\lambda \geq 1\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussion of <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleN</code> (<a href="chap3_mj.html#X7A50CC5A7933E207"><span class="RefLink">3.2-1</span></a>)).</p>
+
+<p>Here <span class="SimpleMath">\(S\)</span> is symmetric and unitary and <span class="SimpleMath">\(T\)</span> is diagonal.</p>
 
 <p>Depending on the parameters, <span class="SimpleMath">\(W(M,Q)\)</span> will contain either 1 or 2 such irreps.</p>
 
@@ -151,7 +157,7 @@
 
 <p><code class="code">Agrp</code> is a list describing the elements of <span class="SimpleMath">\(\mathfrak{A}\)</span>. Each element <span class="SimpleMath">\(a\)</span> of <span class="SimpleMath">\(\mathfrak{A}\)</span> is represented in <code class="code">Agrp</code> by a list <code class="code">[v, a]</code>, where <code class="code">v</code> is a list defined by <span class="SimpleMath">\(a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}\)</span>.</p>
 
-<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. For other characters, we must use different bases which are particular to each case.</p>
+<p><code class="code">Bp</code> is a list of representatives for the <span class="SimpleMath">\(\mathfrak{A}\)</span>-orbits on <span class="SimpleMath">\(M^\times\)</span>, which correspond to a basis for the <span class="SimpleMath">\(\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})\)</span>-invariant subspace associated to any primitive character <span class="SimpleMath">\(\chi \in \widehat{\mathfrak{A}}\)</span> with <span class="SimpleMath">\(\chi^2 \not\equiv 1\)</span>. This is the basis given by <a href="chapBib_mj.html#biBNW76">[NW76]</a>, which may result in a non-symmetric representation; if this occurs, we perform a change of basis in <code class="func">SL2IrrepD</code> (<a href="chap3_mj.html#X7FDB517981A2C091"><span class="RefLink">3.1-2</span></a>) to obtain a symmetric representation. For non-primitive characters, we must use different bases which are particular to each case.</p>
 
 <p><code class="code">Char(i,j)</code> converts two integers <span class="SimpleMath">\(i\)</span>, <span class="SimpleMath">\(j\)</span> to a function representing the character <span class="SimpleMath">\(\chi_{i,j} \in \widehat{\mathfrak{A}}\)</span>.</p>
 
@@ -170,7 +176,9 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SL2IrrepR</code>( <var class="Arg">p</var>, <var class="Arg">lambda</var>, <var class="Arg">sigma</var>, <var class="Arg">r</var>, <var class="Arg">t</var>, <var class="Arg">chi_index</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
-<p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(R\)</span> with parameters <span class="SimpleMath">\(p\)</span>, <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussions of <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, <span class="SimpleMath">\(t\)</span>, and <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleN</code> (<a href="chap3_mj.html#X7A50CC5A7933E207"><span class="RefLink">3.2-1</span></a>)).</p>
+<p>Constructs the modular data for the irreducible representation(s) of type <span class="SimpleMath">\(R\)</span> with parameters <span class="SimpleMath">\(p\)</span>, <span class="SimpleMath">\(\lambda\)</span>, <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, and <span class="SimpleMath">\(t\)</span>, corresponding to the character <span class="SimpleMath">\(\chi\)</span> indexed by <code class="code">chi_index = [i,j]</code> (see the discussions of <span class="SimpleMath">\(\sigma\)</span>, <span class="SimpleMath">\(r\)</span>, <span class="SimpleMath">\(t\)</span>, and <code class="code">Char(i,j)</code> in <code class="func">SL2ModuleR</code> (<a href="chap3_mj.html#X7B10D99E7AEAC411"><span class="RefLink">3.3-1</span></a>)).</p>
+
+<p>Here <span class="SimpleMath">\(S\)</span> is symmetric and unitary and <span class="SimpleMath">\(T\)</span> is diagonal.</p>
 
 <p>Depending on the parameters, <span class="SimpleMath">\(W(M,Q)\)</span> will contain either 1 or 2 such irreps.</p>
 
@@ -184,6 +192,8 @@
 <p>Returns: a list of lists of the form <span class="SimpleMath">\([S,T]\)</span>.</p>
 
 <p>Constructs the modular data for the irreducible representation(s) of unary type <span class="SimpleMath">\(R\)</span> (that is, the special case where <span class="SimpleMath">\(\sigma = \lambda\)</span>) with <span class="SimpleMath">\(p\)</span> an odd prime, <span class="SimpleMath">\(\lambda\)</span> a positive integer, and <span class="SimpleMath">\(r \in \{1,u\}\)</span> with <span class="SimpleMath">\(u\)</span> a quadratic non-residue mod <span class="SimpleMath">\(p\)</span>.</p>
+
+<p>Here <span class="SimpleMath">\(S\)</span> is symmetric and unitary and <span class="SimpleMath">\(T\)</span> is diagonal.</p>
 
 <p>In this case, <span class="SimpleMath">\(W(M,Q)\)</span> always contains exactly 2 such irreps.</p>
 

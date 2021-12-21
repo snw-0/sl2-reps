@@ -3,13 +3,13 @@
                                    [1X SL2Reps [101X
   
   
-               [1X Constructs congruent representations of SL(2,Z). [101X
+              [1X Constructing symmetric representations of SL(2,Z). [101X
   
   
-                                      0.1
+                                      1.0
   
   
-                                12 November 2021
+                                20 December 2021
   
   
                                   Siu-Hung Ng
@@ -23,11 +23,22 @@
   Siu-Hung Ng
       Email:    [7Xmailto:rng@math.lsu.edu[107X
       Homepage: [7Xhttps://www.math.lsu.edu/~rng/[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+  
+  
   Yilong Wang
       Email:    [7Xmailto:wyl@bimsa.cn[107X
       Homepage: [7Xhttps://yilongwang11.github.io[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+                [33X[0;14YCurrent:   Beijing  Institute  of  Mathematical  Sciences  and
+                Applications (BIMSA), Huairou, Beijing, China[133X
+  
+  
   Samuel Wilson
       Email:    [7Xmailto:swil311@lsu.edu[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+  
+  
   
   -------------------------------------------------------
   [1XCopyright[101X

@@ -4,20 +4,20 @@
 
   \indexspace
 
-  \item \texttt  {SL2ChiST}, \hyperpage{15}
+  \item \texttt  {SL2ChiST}, \hyperpage{16}
   \item \texttt  {SL2IrrepD}, \hyperpage{12}
   \item \texttt  {SL2IrrepN}, \hyperpage{12}
   \item \texttt  {SL2IrrepR}, \hyperpage{13}
   \item \texttt  {SL2IrrepRUnary}, \hyperpage{13}
-  \item \texttt  {SL2IrrepsExceptional}, \hyperpage{14}
-  \item \texttt  {SL2IrrepsOfDegree}, \hyperpage{14}
-  \item \texttt  {SL2IrrepsOfLevel}, \hyperpage{14}
-  \item \texttt  {SL2IrrepsOfMaxDegree}, \hyperpage{14}
+  \item \texttt  {SL2IrrepsExceptional}, \hyperpage{15}
+  \item \texttt  {SL2IrrepsOfDegree}, \hyperpage{15}
+  \item \texttt  {SL2IrrepsOfLevel}, \hyperpage{15}
+  \item \texttt  {SL2IrrepsOfMaxDegree}, \hyperpage{15}
   \item \texttt  {SL2ModuleD}, \hyperpage{11}
   \item \texttt  {SL2ModuleN}, \hyperpage{12}
-  \item \texttt  {SL2ModuleR}, \hyperpage{12}
-  \item \texttt  {SL2TestPositions}, \hyperpage{15}
-  \item \texttt  {SL2TestSymmetry}, \hyperpage{15}
-  \item \texttt  {SL2WithConjClasses}, \hyperpage{15}
+  \item \texttt  {SL2ModuleR}, \hyperpage{13}
+  \item \texttt  {SL2TestPositions}, \hyperpage{16}
+  \item \texttt  {SL2TestSymmetry}, \hyperpage{16}
+  \item \texttt  {SL2WithConjClasses}, \hyperpage{16}
 
 \end{theindex}

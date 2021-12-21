@@ -32,7 +32,10 @@
 #!  `Bp` is a list of representatives for the $\mathfrak{A}$-orbits on $M^\times$, which
 #!  correspond to a basis for the $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace
 #!  associated to any primitive character $\chi \in \widehat{\mathfrak{A}}$ with $\chi^2 \not\equiv 1$.
-#!  For other characters, we must use different bases which are particular to each case.
+#!  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+#!  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+#!  representation.
+#!  For non-primitive characters, we must use different bases which are particular to each case.
 #!
 #!  `Char(i,j)` converts two integers $i$, $j$ to a function representing the character $\chi_{i,j} \in \widehat{\mathfrak{A}}$.
 #!
@@ -54,7 +57,9 @@ DeclareGlobalFunction( "SL2ModuleR" );
 #!  Constructs the modular data for the irreducible representation(s) of type $R$ with
 #!  parameters $p$, $\lambda$, $\sigma$, $r$, and $t$,
 #!  corresponding to the character $\chi$ indexed by `chi_index = [i,j]`
-#!  (see the discussions of $\sigma$, $r$, $t$, and `Char(i,j)` in <Ref Func="SL2ModuleN"/>).
+#!  (see the discussions of $\sigma$, $r$, $t$, and `Char(i,j)` in <Ref Func="SL2ModuleR"/>).
+#!
+#!  Here $S$ is symmetric and unitary and $T$ is diagonal.
 #!
 #!  Depending on the parameters, $W(M,Q)$ will contain either 1 or 2 such irreps.
 #!
@@ -68,6 +73,8 @@ DeclareGlobalFunction( "SL2IrrepR" );
 #!  Constructs the modular data for the irreducible representation(s) of unary type $R$
 #!  (that is, the special case where $\sigma = \lambda$) with $p$ an odd prime,
 #!  $\lambda$ a positive integer, and $r \in \{1,u\}$ with $u$ a quadratic non-residue mod $p$.
+#!
+#!  Here $S$ is symmetric and unitary and $T$ is diagonal.
 #!
 #!  In this case, $W(M,Q)$ always contains exactly 2 such irreps.
 DeclareGlobalFunction( "SL2IrrepRUnary" );

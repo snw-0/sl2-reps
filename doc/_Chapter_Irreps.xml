@@ -8,6 +8,9 @@
   Methods for generating individual irreducible representations of
   <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> for a given level <Math>p^\lambda</Math>.
 <P/>
+  After generating a representation <Math>\rho</Math> by means of the bases in <Cite Key="NW76"/>, we perform
+  a change of basis that results in a symmetric representation equivalent to <Math>\rho</Math>.
+<P/>
   In each case (except the unary type <Math>R</Math>, for which see <Ref Func="SL2IrrepRUnary"/>),
   the underlying module <Math>M</Math> is of rank <Math>2</Math>, so its elements have the form <Math>(x,y)</Math>
   and are thus represented by lists <Code>[x,y]</Code>.
@@ -41,7 +44,10 @@
   <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
   correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
-  For other characters, we must use different bases which are particular to each case.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
 <P/>
   <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
@@ -59,6 +65,8 @@
   level <Math>p^\lambda</Math>, for <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>, corresponding to the
   character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
   (see the discussion of <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleD"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
 <P/>
   Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
  </Description>
@@ -89,7 +97,10 @@
   <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
   correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
-  For other characters, we must use different bases which are particular to each case.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
 <P/>
   <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
@@ -109,6 +120,8 @@
   level <Math>p^\lambda</Math>, for <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>, corresponding to the
   character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
   (see the discussion of <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleN"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
 <P/>
   Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
  </Description>
@@ -146,7 +159,10 @@
   <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
   correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
   associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
-  For other characters, we must use different bases which are particular to each case.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
 <P/>
   <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
 <P/>
@@ -172,7 +188,9 @@
   Constructs the modular data for the irreducible representation(s) of type <Math>R</Math> with
   parameters <Math>p</Math>, <Math>\lambda</Math>, <Math>\sigma</Math>, <Math>r</Math>, and <Math>t</Math>,
   corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
-  (see the discussions of <Math>\sigma</Math>, <Math>r</Math>, <Math>t</Math>, and <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleN"/>).
+  (see the discussions of <Math>\sigma</Math>, <Math>r</Math>, <Math>t</Math>, and <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleR"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
 <P/>
   Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
 <P/>
@@ -190,6 +208,8 @@
   Constructs the modular data for the irreducible representation(s) of unary type <Math>R</Math>
   (that is, the special case where <Math>\sigma = \lambda</Math>) with <Math>p</Math> an odd prime,
   <Math>\lambda</Math> a positive integer, and <Math>r \in \{1,u\}</Math> with <Math>u</Math> a quadratic non-residue mod <Math>p</Math>.
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
 <P/>
   In this case, <Math>W(M,Q)</Math> always contains exactly 2 such irreps.
  </Description>
