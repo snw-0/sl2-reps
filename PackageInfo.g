@@ -1,18 +1,15 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
 #
-# This file contains package meta data. For additional information on
-# the meaning and correct usage of these fields, please consult the
-# manual of the "Example" package as well as the comments in its
-# PackageInfo.g file.
-#
+
+
 SetPackageInfo( rec(
 
 PackageName := "SL2Reps",
 Subtitle := "Constructing symmetric representations of SL(2,Z).",
 Version := "1.0",
-Date := "20/12/2021", # dd/mm/yyyy format
-License := "GPL-2.0",
+Date := "28/12/2021", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -50,27 +47,22 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
+Status := "dev",
+
+SourceRepository := rec( Type := "git", URL := "https://github.com/ontoclasm/sl2-reps" ),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome := "https://github.com/ontoclasm/sl2-reps",
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
-
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                  "/releases/download/v", ~.Version,
+                                  "/", ~.PackageName, "-", ~.Version ),
 ArchiveFormats := ".tar.gz",
 
-##  Status information. Currently the following cases are recognized:
-##    "accepted"      for successfully refereed packages
-##    "submitted"     for packages submitted for the refereeing
-##    "deposited"     for packages for which the GAP developers agreed
-##                    to distribute them with the core GAP system
-##    "dev"           for development versions of packages
-##    "other"         for all other packages
-##
-Status := "dev",
-
-AbstractHTML   :=  "",
+AbstractHTML :=
+  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix \
+  presentations of the representations of SL(2,Z) whose kernels are congruence subgroups \
+  of SL(2,Z).",
 
 PackageDoc := rec(
   BookName  := "SL2Reps",
@@ -92,7 +84,7 @@ AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
 
-#Keywords := [ "TODO" ],
+Keywords := [ "representations" ],
 
 AutoDoc := rec(
   TitlePage := rec(
@@ -112,5 +104,3 @@ AutoDoc := rec(
 ),
 
 ));
-
-

@@ -1,0 +1,3 @@
+# generated doc files
+/doc/*
+!/doc/SL2Reps.bib

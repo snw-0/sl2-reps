@@ -1,10 +1,11 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
 #
-# Testing functions
+# Testing functions.
 #
 # Implementations
 #
+
 
 InstallGlobalFunction( SL2WithConjClasses,
 function(p, ld)

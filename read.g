@@ -1,8 +1,9 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
 #
 # Reading the implementation part of the package.
 #
+
 
 ReadPackage( "SL2Reps", "gap/Misc.gi");
 ReadPackage( "SL2Reps", "gap/TypeD.gi");

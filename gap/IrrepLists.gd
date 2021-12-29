@@ -1,14 +1,13 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
+#
+# Lists of Representations.
 #
 
-# Lists of Representations.
 
 DeclareGlobalFunction( "_SL2IrrepsPPLOfDegree" );
 DeclareGlobalFunction( "_SL2IrrepsPPLOfMaxDegree" );
 DeclareGlobalFunction( "_SL2IrrepsPPLOfLevel" );
-
-
 
 #! @Chapter Lists
 #! @ChapterTitle Lists of representations

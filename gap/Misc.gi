@@ -1,10 +1,11 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
 #
-# Misc and helper functions
+# Miscellaneous and helper functions.
 #
 # Implementations
 #
+
 
 #----------------------------------------
 # Returns a square root of the given root of unity.

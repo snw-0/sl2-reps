@@ -1,10 +1,11 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
 #
 # Representations of type R.
 #
 # Implementations
 #
+
 
 InstallGlobalFunction( SL2ModuleR,
 function(p, ld, si, r, t)

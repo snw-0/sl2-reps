@@ -1,7 +1,11 @@
 #
-# SL2Reps: Constructs representations of SL2(Z).
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
+#
+# Miscellaneous and helper functions.
 #
 
+
+# InfoClass
 DeclareInfoClass( "InfoSL2Reps" );
 SetInfoLevel(InfoSL2Reps, 1);
 
@@ -14,8 +18,3 @@ DeclareGlobalFunction( "_SL2ConcatNames");
 DeclareGlobalFunction( "_SL2ConjClassesOdd" );
 DeclareGlobalFunction( "_SL2ConjClassesEven" );
 DeclareGlobalFunction( "_SL2ConjClasses" );
-
-# DeclareGlobalFunction( "_SL2Reps_CharNorm" );
-# DeclareGlobalFunction( "_SL2Reps_RepChi" );
-# DeclareGlobalFunction( "_SL2Reps_ClassMap" );
-# DeclareGlobalFunction( "_SL2Reps_ChiTest" );
