@@ -20,8 +20,8 @@ maintainers:
 GAP: ">= 4.11"
 
 www: https://snw-0.github.io/sl2-reps
-readme: sl2-repsREADME.md
-packageinfo: https://snw-0.github.io/sl2-repsPackageInfo.g
+readme: README.md
+packageinfo: https://snw-0.github.io/sl2-reps/PackageInfo.g
 
 downloads:
     - name: .tar.gz
