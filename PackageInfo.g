@@ -60,9 +60,7 @@ ArchiveURL      := Concatenation( ~.SourceRepository.URL,
 ArchiveFormats := ".tar.gz",
 
 AbstractHTML :=
-  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix \
-  presentations of the representations of SL(2,Z) whose kernels are congruence subgroups \
-  of SL(2,Z).",
+  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix presentations of the representations of SL(2,Z) whose kernels are congruence subgroups of SL(2,Z).",
 
 PackageDoc := rec(
   BookName  := "SL2Reps",
