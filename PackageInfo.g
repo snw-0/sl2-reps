@@ -37,7 +37,7 @@ Persons := [
   rec(
     FirstNames := "Samuel",
     LastName := "Wilson",
-    #WWWHome := TODO,
+    WWWHome := "https://snw-0.github.io",
     Email := "swil311@lsu.edu",
     IsAuthor := true,
     IsMaintainer := true,
@@ -49,9 +49,9 @@ Persons := [
 
 Status := "dev",
 
-SourceRepository := rec( Type := "git", URL := "https://github.com/ontoclasm/sl2-reps" ),
+SourceRepository := rec( Type := "git", URL := "https://github.com/snw-0/sl2-reps" ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome := "https://github.com/ontoclasm/sl2-reps",
+PackageWWWHome := "https://snw-0.github.io/sl2-reps",
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
