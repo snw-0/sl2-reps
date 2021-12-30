@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 PackageName := "SL2Reps",
 Subtitle := "Constructing symmetric representations of SL(2,Z).",
 Version := "1.0",
-Date := "28/12/2021", # dd/mm/yyyy format
+Date := "30/12/2021", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -56,13 +56,11 @@ PackageInfoURL := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "/README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                   "/releases/download/v", ~.Version,
-                                  "/", ~.PackageName, "-", ~.Version ),
+                                  "/sl2-reps-", ~.Version ),
 ArchiveFormats := ".tar.gz",
 
 AbstractHTML :=
-  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix \
-  presentations of the representations of SL(2,Z) whose kernels are congruence subgroups \
-  of SL(2,Z).",
+  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix presentations of the representations of SL(2,Z) whose kernels are congruence subgroups of SL(2,Z).",
 
 PackageDoc := rec(
   BookName  := "SL2Reps",

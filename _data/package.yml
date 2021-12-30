@@ -1,7 +1,7 @@
 name: SL2Reps
 version: "1.0"
 license: "GPL-2.0-or-later"
-date: 2021-12-28
+date: 2021-12-30
 description: |
     Constructing symmetric representations of SL(2,Z).
 
@@ -25,10 +25,10 @@ packageinfo: https://snw-0.github.io/sl2-reps/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/snw-0/sl2-reps/releases/download/v1.0/SL2Reps-1.0.tar.gz
+      url: https://github.com/snw-0/sl2-reps/releases/download/v1.0/sl2-reps-1.0.tar.gz
 
 abstract: |
-    The <span class="pkgname">SL2Reps</span> package provides provides methods for constructing and testing matrix   presentations of the representations of SL(2,Z) whose kernels are congruence subgroups   of SL(2,Z).
+    The <span class="pkgname">SL2Reps</span> package provides provides methods for constructing and testing matrix presentations of the representations of SL(2,Z) whose kernels are congruence subgroups of SL(2,Z).
 
 status: dev
 doc-html: doc/chap0.html
