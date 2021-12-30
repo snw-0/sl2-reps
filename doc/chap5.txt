@@ -1,0 +1,46 @@
+  
+  [1X5 [33X[0;0YMethods for testing[133X[101X
+  
+  [33X[0;0YBy  the Chinese Remainder Theorem, it suffices to test irreps of prime power
+  level, so those are the irreps handled by the functions in this section.[133X
+  
+  
+  [1X5.1 [33X[0;0YTesting[133X[101X
+  
+  [1X5.1-1 SL2WithConjClasses[101X
+  
+  [33X[1;0Y[29X[2XSL2WithConjClasses[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ythe   group   [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X   with
+            conjugacy classes set to the format we use.[133X
+  
+  [1X5.1-2 SL2ChiST[101X
+  
+  [33X[1;0Y[29X[2XSL2ChiST[102X( [3XS[103X, [3XT[103X, [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya        list        representing       a       character       of
+            [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X.[133X
+  
+  [33X[0;0YConverts  the  modular data [23X(S,T)[123X, which must have level dividing [23Xp^\lambda[123X,
+  into a character of [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X, presented
+  in a form matching the conjugacy classes used in [10XSL2WithConjClasses[110X.[133X
+  
+  [1X5.1-3 SL2TestPositions[101X
+  
+  [33X[1;0Y[29X[2XSL2TestPositions[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean.[133X
+  
+  [33X[0;0YConstructs  and  tests all non-trivial irreps of level dividing [23Xp^\lambda[123X by
+  checking  their  positions  in  [10XIrr(G)[110X (see Section 71.8-2 of the GAP Manual
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap71.html#X873B3CC57E9A5492[107X)).
+  Note  that  this  function  will print information on the irreps involved if
+  [10XInfoSL2Reps[110X is set to level 1 or higher; see Section [14X1.2[114X.[133X
+  
+  [1X5.1-4 SL2TestSymmetry[101X
+  
+  [33X[1;0Y[29X[2XSL2TestSymmetry[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean.[133X
+  
+  [33X[0;0YConstructs  and  tests  all  irreps  of level [23Xp^\lambda[123X, confirming that the
+  [23XS[123X-matrix  is  symmetric  and unitary and the [23XT[123X matrix is diagonal. Note that
+  this  function  will print information on the irreps involved if [10XInfoSL2Reps[110X
+  is set to level 1 or higher; see Section [14X1.2[114X.[133X
+  

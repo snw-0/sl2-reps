@@ -1,0 +1,50 @@
+  
+  [1X4 [33X[0;0YLists of representations[133X[101X
+  
+  [33X[0;0YThe  [13Xdegree[113X of a representation is also known as the [13Xdimension[113X. The [13Xlevel[113X of
+  the  congruent  representation  determined by the pair [23X(S,T)[123X is equal to the
+  order of [23XT[123X.[133X
+  
+  [33X[0;0YWe  assign  to  each  representation  a [13Xname[113X according to the conventions of
+  [NW76].[133X
+  
+  
+  [1X4.1 [33X[0;0YLists by degree[133X[101X
+  
+  [1X4.1-1 SL2IrrepsOfDegree[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepsOfDegree[102X( [3Xdegree[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
+  
+  [33X[0;0YConstructs  a  list of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have the
+  given degree.[133X
+  
+  [1X4.1-2 SL2IrrepsOfMaxDegree[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepsOfMaxDegree[102X( [3Xmaximum_degree[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
+  
+  [33X[0;0YConstructs  a  list  of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X that have at
+  most the given maximum degree.[133X
+  
+  
+  [1X4.2 [33X[0;0YLists by level[133X[101X
+  
+  [1X4.2-1 SL2IrrepsOfLevel[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepsOfLevel[102X( [3Xlevel[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
+  
+  [33X[0;0YConstructs  a list of all irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X with the given
+  level.[133X
+  
+  
+  [1X4.3 [33X[0;0YLists of exceptional representations[133X[101X
+  
+  [1X4.3-1 SL2IrrepsExceptional[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepsExceptional[102X( [3Xarg[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of records of the form [10Xrec(S, T, degree, level, name)[110X.[133X
+  
+  [33X[0;0YConstructs a list of the 18 exceptional irreps of [23X\mathrm{SL}_2(\mathbb{Z})[123X.[133X
+  

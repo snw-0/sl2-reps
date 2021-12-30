@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Testing">
+<Heading>Methods for testing</Heading>
+
+ By the Chinese Remainder Theorem, it suffices to test irreps of prime power level,
+ so those are the irreps handled by the functions in this section.
+<Section Label="Chapter_Testing_Section_Testing">
+<Heading>Testing</Heading>
+
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2WithConjClasses" />
+ <Returns>the group <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> with conjugacy classes set to the format we use.
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="S,T,p,lambda" Name="SL2ChiST" />
+ <Returns>a list representing a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>.
+</Returns>
+ <Description>
+Converts the modular data <Math>(S,T)</Math>, which must have level dividing <Math>p^\lambda</Math>,
+ into a character of <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>, presented in a
+ form matching the conjugacy classes used in <Code>SL2WithConjClasses</Code>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2TestPositions" />
+ <Returns>a boolean.
+</Returns>
+ <Description>
+Constructs and tests all non-trivial irreps of level dividing <Math>p^\lambda</Math> by checking their
+ positions in <Code>Irr(G)</Code> (see <URL> <Link>https://www.gap-system.org/Manuals/doc/ref/chap71.html#X873B3CC57E9A5492</Link><LinkText>Section 71.8-2 of the GAP Manual</LinkText></URL>).
+ Note that this function will print information on the irreps involved if <Code>InfoSL2Reps</Code> is set to level 1 or higher; see Section <Ref Sect="Chapter_Introduction_Section_Usage"/>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2TestSymmetry" />
+ <Returns>a boolean.
+</Returns>
+ <Description>
+Constructs and tests all irreps of level <Math>p^\lambda</Math>, confirming that the
+ <Math>S</Math>-matrix is symmetric and unitary and the <Math>T</Math> matrix is diagonal.
+ Note that this function will print information on the irreps involved if <Code>InfoSL2Reps</Code> is set to level 1 or higher; see Section <Ref Sect="Chapter_Introduction_Section_Usage"/>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

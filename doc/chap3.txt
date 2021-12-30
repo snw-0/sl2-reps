@@ -1,0 +1,211 @@
+  
+  [1X3 [33X[0;0YIrreducible representations of prime-power level[133X[101X
+  
+  [33X[0;0YMethods   for   generating   individual   irreducible   representations   of
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X for a given level [23Xp^\lambda[123X.[133X
+  
+  [33X[0;0YAfter  generating  a representation [23X\rho[123X by means of the bases in [NW76], we
+  perform  a  change  of  basis  that  results  in  a symmetric representation
+  equivalent to [23X\rho[123X.[133X
+  
+  [33X[0;0YIn  each  case  (except  the  unary  type  [23XR[123X,  for  which see [2XSL2IrrepRUnary[102X
+  ([14X3.3-3[114X)),  the  underlying  module  [23XM[123X is of rank [23X2[123X, so its elements have the
+  form [23X(x,y)[123X and are thus represented by lists [10X[x,y][110X.[133X
+  
+  [33X[0;0YCharacters  of  the abelian group [23X\mathfrak{A} = \langle\alpha\rangle \times
+  \langle\beta\rangle[123X have the form [23X\chi_{i,j}[123X, given by[133X
+  
+  
+  [24X[33X[0;6Y\chi_{i,j}(\alpha^{v}\beta^{w})                                      \mapsto
+  \mathbf{e}\left(\frac{vi}{|\alpha|}\right)
+  \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,[133X
+  
+  [124X
+  
+  [33X[0;0Ywhere  [23Xi[123X and [23Xj[123X are integers. We therefore represent each character by a list
+  [10X[i,j][110X.  Note  that  in  some  cases  [23X\alpha[123X  or  [23X\beta[123X  is  trivial, and the
+  corresponding index [23Xi[123X or [23Xj[123X is therefore irrelevant.[133X
+  
+  [33X[0;0YWe write [10Xp=[110X[23Xp[123X, [10Xlambda=[110X[23X\lambda[123X, [10Xsigma=[110X[23X\sigma[123X, and [10Xchi=[110X[23X\chi[123X.[133X
+  
+  
+  [1X3.1 [33X[0;0YRepresentations of type D[133X[101X
+  
+  [33X[0;0YSee Section [14X2.2-1[114X.[133X
+  
+  [1X3.1-1 SL2ModuleD[101X
+  
+  [33X[1;0Y[29X[2XSL2ModuleD[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim)[110X describing [23X(M,Q)[123X.[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XD[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X.[133X
+  
+  [33X[0;0Y[10XAgrp[110X  is  a list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa \in
+  \mathfrak{A}[123X  is  represented  in [10XAgrp[110X by a list [10X[v, a, a_inv][110X, where [10Xv[110X is a
+  list  defined by [23Xa = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}[123X. Note that
+  [23X\beta[123X is trivial, and hence [10Xv[2][110X is irrelevant, when [23X\mathfrak{A}[123X is cyclic.[133X
+  
+  [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
+  which        correspond        to        a        basis        for       the
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
+  to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
+  
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
+  
+  [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
+  character.[133X
+  
+  [1X3.1-2 SL2IrrepD[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepD[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
+  
+  [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XD[123X
+  with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
+  character [23X\chi[123X indexed by [10Xchi_index = [i,j][110X (see the discussion of [10XChar(i,j)[110X
+  in [2XSL2ModuleD[102X ([14X3.1-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
+  
+  [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
+  
+  
+  [1X3.2 [33X[0;0YRepresentations of type N[133X[101X
+  
+  [33X[0;0YSee Section [14X2.2-2[114X.[133X
+  
+  [1X3.2-1 SL2ModuleN[101X
+  
+  [33X[1;0Y[29X[2XSL2ModuleN[102X( [3Xp[103X, [3Xlambda[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record [10Xrec(Agrp, Bp, Char, IsPrim, Nm, Prod)[110X describing [23X(M,Q)[123X.[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XN[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X.[133X
+  
+  [33X[0;0Y[10XAgrp[110X  is  a list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa \in
+  \mathfrak{A}[123X  is  represented  in  [10XAgrp[110X  by a list [10X[v, a][110X, where [10Xv[110X is a list
+  defined  by  [23Xa  =  \alpha^{\mathtt{v[1]}}  \beta^{\mathtt{v[2]}}[123X.  Note that
+  [23X\alpha[123X  is  trivial,  and  hence  [10Xv[1][110X  is  irrelevant, when [23X\mathfrak{A}[123X is
+  cyclic.[133X
+  
+  [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
+  which        correspond        to        a        basis        for       the
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
+  to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
+  
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
+  
+  [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
+  character.[133X
+  
+  [33X[0;0Y[10XNm(a)[110X and [10XProd(a,b)[110X are the norm and product functions on [23XM[123X, respectively.[133X
+  
+  [1X3.2-2 SL2IrrepN[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepN[102X( [3Xp[103X, [3Xlambda[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
+  
+  [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XN[123X
+  with level [23Xp^\lambda[123X, for [23Xp[123X a prime and [23X\lambda \geq 1[123X, corresponding to the
+  character [23X\chi[123X indexed by [10Xchi_index = [i,j][110X (see the discussion of [10XChar(i,j)[110X
+  in [2XSL2ModuleN[102X ([14X3.2-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
+  
+  [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
+  
+  
+  [1X3.3 [33X[0;0YRepresentations of type R[133X[101X
+  
+  [33X[0;0YSee Section [14X2.2-3[114X.[133X
+  
+  [1X3.3-1 SL2ModuleR[101X
+  
+  [33X[1;0Y[29X[2XSL2ModuleR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya  record  [10Xrec(Agrp,  Bp,  Char,  IsPrim,  Nm,  Ord,  Prod, c, tM)[110X
+            describing [23X(M,Q)[123X.[133X
+  
+  [33X[0;0YConstructs  information  about the underlying quadratic module [23X(M,Q)[123X of type
+  [23XR[123X, for [23Xp[123X a prime. The additional parameters [23X\lambda[123X, [23X\sigma[123X, [23Xr[123X, and [23Xt[123X should
+  be integers chosen as follows.[133X
+  
+  [33X[0;0YIf  [23Xp[123X  is an odd prime, let [23X\lambda \geq 2[123X, [23X\sigma \in \{1, \dots, \lambda -
+  1\}[123X,  and  [23Xr,t  \in  \{1,u\}[123X with [23Xu[123X a quadratic non-residue mod [23Xp[123X. Note that
+  [23X\sigma = \lambda[123X is a valid choice for type [23XR[123X, however, this gives the unary
+  case,  and  so  is  not  handled  by this function, as it is decomposed in a
+  different way; for this case, use [2XSL2IrrepRUnary[102X ([14X3.3-3[114X) instead.[133X
+  
+  [33X[0;0YIf  [23Xp=2[123X,  let [23X\lambda \geq 2[123X, [23X\sigma \in \{0, \dots, \lambda-2\}[123X and [23Xr,t \in
+  \{1,3,5,7\}[123X.[133X
+  
+  [33X[0;0Y[10XAgrp[110X  is  a  list describing the elements of [23X\mathfrak{A}[123X. Each element [23Xa[123X of
+  [23X\mathfrak{A}[123X  is  represented  in  [10XAgrp[110X  by a list [10X[v, a][110X, where [10Xv[110X is a list
+  defined by [23Xa = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}[123X.[133X
+  
+  [33X[0;0Y[10XBp[110X  is  a  list  of representatives for the [23X\mathfrak{A}[123X-orbits on [23XM^\times[123X,
+  which        correspond        to        a        basis        for       the
+  [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant  subspace associated
+  to  any  primitive  character  [23X\chi  \in  \widehat{\mathfrak{A}}[123X with [23X\chi^2
+  \not\equiv  1[123X.  This  is  the  basis  given by [NW76], which may result in a
+  non-symmetric  representation;  if this occurs, we perform a change of basis
+  in [2XSL2IrrepD[102X ([14X3.1-2[114X) to obtain a symmetric representation. For non-primitive
+  characters, we must use different bases which are particular to each case.[133X
+  
+  [33X[0;0Y[10XChar(i,j)[110X  converts  two  integers  [23Xi[123X,  [23Xj[123X  to  a  function  representing the
+  character [23X\chi_{i,j} \in \widehat{\mathfrak{A}}[123X.[133X
+  
+  [33X[0;0Y[10XIsPrim(chi)[110X  tests  whether  the  output of [10XChar(i,j)[110X represents a primitive
+  character.[133X
+  
+  [33X[0;0Y[10XNm(a)[110X,  [10XOrd(a)[110X,  and [10XProd(a,b)[110X are the norm, order, and product functions on
+  [23XM[123X, respectively.[133X
+  
+  [33X[0;0Y[10Xc[110X  is  a  scalar  used in calculating the [23XS[123X-matrix; namely [23Xc = \frac{1}{|M|}
+  \sum_{x  \in  M}  \mathbf{e}(Q(x))[123X.  Note  that  this  is equal to [23XS_Q(-1) /
+  \sqrt{|M|}[123X, where [23XS_Q(-1)[123X is the central charge (see Section [14X2.1-1[114X).[133X
+  
+  [33X[0;0Y[10XtM[110X is a list describing the elements of the group [23XM - pM[123X.[133X
+  
+  [1X3.3-2 SL2IrrepR[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepR[102X( [3Xp[103X, [3Xlambda[103X, [3Xsigma[103X, [3Xr[103X, [3Xt[103X, [3Xchi_index[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
+  
+  [33X[0;0YConstructs  the modular data for the irreducible representation(s) of type [23XR[123X
+  with parameters [23Xp[123X, [23X\lambda[123X, [23X\sigma[123X, [23Xr[123X, and [23Xt[123X, corresponding to the character
+  [23X\chi[123X  indexed by [10Xchi_index = [i,j][110X (see the discussions of [23X\sigma[123X, [23Xr[123X, [23Xt[123X, and
+  [10XChar(i,j)[110X in [2XSL2ModuleR[102X ([14X3.3-1[114X)).[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
+  
+  [33X[0;0YDepending on the parameters, [23XW(M,Q)[123X will contain either 1 or 2 such irreps.[133X
+  
+  [33X[0;0YIf  [23X\sigma  =  \lambda[123X  for [23Xp \neq 2[123X, then the second factor of [23XM[123X is trivial
+  (and  hence  [23Xt[123X  is  irrelevant),  so  this  falls  through to [2XSL2IrrepRUnary[102X
+  ([14X3.3-3[114X).[133X
+  
+  [1X3.3-3 SL2IrrepRUnary[101X
+  
+  [33X[1;0Y[29X[2XSL2IrrepRUnary[102X( [3Xp[103X, [3Xlambda[103X, [3Xr[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of the form [23X[S,T][123X.[133X
+  
+  [33X[0;0YConstructs  the  modular data for the irreducible representation(s) of unary
+  type  [23XR[123X  (that  is,  the  special case where [23X\sigma = \lambda[123X) with [23Xp[123X an odd
+  prime,  [23X\lambda[123X  a  positive  integer,  and [23Xr \in \{1,u\}[123X with [23Xu[123X a quadratic
+  non-residue mod [23Xp[123X.[133X
+  
+  [33X[0;0YHere [23XS[123X is symmetric and unitary and [23XT[123X is diagonal.[133X
+  
+  [33X[0;0YIn this case, [23XW(M,Q)[123X always contains exactly 2 such irreps.[133X
+  

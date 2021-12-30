@@ -1,0 +1,23 @@
+  
+  
+  [1XIndex[101X
+  
+  License .-1 
+  [2XSL2ChiST[102X 5.1-2 
+  [2XSL2IrrepD[102X 3.1-2 
+  [2XSL2IrrepN[102X 3.2-2 
+  [2XSL2IrrepR[102X 3.3-2 
+  [2XSL2IrrepRUnary[102X 3.3-3 
+  [2XSL2IrrepsExceptional[102X 4.3-1 
+  [2XSL2IrrepsOfDegree[102X 4.1-1 
+  [2XSL2IrrepsOfLevel[102X 4.2-1 
+  [2XSL2IrrepsOfMaxDegree[102X 4.1-2 
+  [2XSL2ModuleD[102X 3.1-1 
+  [2XSL2ModuleN[102X 3.2-1 
+  [2XSL2ModuleR[102X 3.3-1 
+  [2XSL2TestPositions[102X 5.1-3 
+  [2XSL2TestSymmetry[102X 5.1-4 
+  [2XSL2WithConjClasses[102X 5.1-1 
+  
+  
+  -------------------------------------------------------

@@ -1,102 +1,106 @@
-#############################################################################
-##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
-##
+#
+# SL2Reps: Constructing symmetric representations of SL(2,Z).
+#
+
 
 SetPackageInfo( rec(
 
-PackageName := "GitHubPagesForGAP",
-
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.3",
-Date := "10/11/2019", # dd/mm/yyyy format
-License := "0BSD",
+PackageName := "SL2Reps",
+Subtitle := "Constructing symmetric representations of SL(2,Z).",
+Version := "1.0",
+Date := "28/12/2021", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "max.horn@uni-siegen.de",
-    WWWHome       := "https://www.quendi.de/math",
-    PostalAddress := Concatenation(
-                       "Department Mathematik\n",
-                       "Universität Siegen\n",
-                       "Walter-Flex-Straße 3\n",
-                       "57072 Siegen\n",
-                       "Germany" ),
-    Place         := "Siegen",
-    Institution   := "Universität Siegen"
+    FirstNames := "Siu-Hung",
+    LastName := "Ng",
+    WWWHome := "https://www.math.lsu.edu/~rng/",
+    Email := "rng@math.lsu.edu",
+    IsAuthor := true,
+    IsMaintainer := false,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA",
+    Place := "Baton Rouge, LA, USA",
+    Institution := "Louisiana State University",
   ),
-
   rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
-    IsAuthor      := true,
-    IsMaintainer  := false,
-    #Email         := "author@example.com",
+    FirstNames := "Yilong",
+    LastName := "Wang",
+    WWWHome := "https://yilongwang11.github.io",
+    Email := "wyl@bimsa.cn",
+    IsAuthor := true,
+    IsMaintainer := false,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA <Br/> Current: Beijing Institute of Mathematical Sciences and Applications (BIMSA), Huairou, Beijing, China",
+    #Place := TODO,
+    Institution := "Louisiana State University; currently Beijing Institute of Mathematical Sciences and Applications (BIMSA)",
   ),
-
   rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
-    IsMaintainer  := true,
-    #Email         := "janitor@example.com",
+    FirstNames := "Samuel",
+    LastName := "Wilson",
+    WWWHome := "https://snw-0.github.io",
+    Email := "swil311@lsu.edu",
+    IsAuthor := true,
+    IsMaintainer := true,
+    PostalAddress := "Louisiana State University, Baton Rouge, LA, 70803, USA",
+    Place := "Baton Rouge, LA, USA",
+    Institution := "Louisiana State University",
   ),
 ],
 
-Status := "other",
+Status := "dev",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
-
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
+SourceRepository := rec( Type := "git", URL := "https://github.com/snw-0/sl2-reps" ),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome := "https://snw-0.github.io/sl2-reps",
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
+README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                  "/releases/download/v", ~.Version,
+                                  "/", ~.PackageName, "-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
-ArchiveFormats := ".tar.gz .tar.bz2",
-
-AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
+AbstractHTML :=
+  "The <span class=\"pkgname\">SL2Reps</span> package provides provides methods for constructing and testing matrix \
+  presentations of the representations of SL(2,Z) whose kernels are congruence subgroups \
+  of SL(2,Z).",
 
 PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
+  BookName  := "SL2Reps",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
+  LongTitle := "Constructing symmetric representations of SL(2,Z).",
 ),
 
-# The following dependencies are fake and for testing / demo purposes
 Dependencies := rec(
-  GAP := ">=4.8.1",
-  NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
-  ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
-  ExternalConditions := []
+  GAP := ">= 4.11",
+  NeededOtherPackages := [ ],
+  SuggestedOtherPackages := [ ],
+  ExternalConditions := [ ],
 ),
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := ["GitHub Pages", "GAP"]
+TestFile := "tst/testall.g",
+
+Keywords := [ "representations" ],
+
+AutoDoc := rec(
+  TitlePage := rec(
+    Copyright := """
+      <Index>License</Index>
+      &copyright; 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
+      This package is free software;
+      you can redistribute it and/or modify it under the terms of the
+      <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+      as published by the Free Software Foundation; either version 2 of the License,
+      or (at your option) any later version.
+      """,
+    Acknowledgements := """
+      This project is partially supported by NSF grant DMS 1664418.
+      """,
+  ),
+),
 
 ));
-
-

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Lists">
+<Heading>Lists of representations</Heading>
+
+<P/>
+ The <Emph>degree</Emph> of a representation is also known as the <Emph>dimension</Emph>.
+ The <Emph>level</Emph> of the congruent representation determined by the pair <Math>(S,T)</Math> is equal to the order of <Math>T</Math>.
+<P/>
+ We assign to each representation a <Emph>name</Emph> according to the conventions of <Cite Key="NW76"/>.
+<Section Label="Chapter_Lists_Section_Degree">
+<Heading>Lists by degree</Heading>
+
+<ManSection>
+  <Func Arg="degree" Name="SL2IrrepsOfDegree" />
+ <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>.
+</Returns>
+ <Description>
+  Constructs a list of all irreps of <Math>\mathrm{SL}_2(\mathbb{Z})</Math>
+  that have the given degree.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="maximum_degree" Name="SL2IrrepsOfMaxDegree" />
+ <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>.
+</Returns>
+ <Description>
+  Constructs a list of all irreps of <Math>\mathrm{SL}_2(\mathbb{Z})</Math>
+  that have at most the given maximum degree.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Lists_Section_Level">
+<Heading>Lists by level</Heading>
+
+<ManSection>
+  <Func Arg="level" Name="SL2IrrepsOfLevel" />
+ <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>.
+</Returns>
+ <Description>
+  Constructs a list of all irreps of <Math>\mathrm{SL}_2(\mathbb{Z})</Math>
+  with the given level.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Lists_Section_Exceptions">
+<Heading>Lists of exceptional representations</Heading>
+
+<ManSection>
+  <Func Arg="arg" Name="SL2IrrepsExceptional" />
+ <Returns>a list of records of the form <Code>rec(S, T, degree, level, name)</Code>.
+</Returns>
+ <Description>
+  Constructs a list of the 18 exceptional irreps of <Math>\mathrm{SL}_2(\mathbb{Z})</Math>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

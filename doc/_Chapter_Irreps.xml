@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Irreps">
+<Heading>Irreducible representations of prime-power level</Heading>
+
+<P/>
+  Methods for generating individual irreducible representations of
+  <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math> for a given level <Math>p^\lambda</Math>.
+<P/>
+  After generating a representation <Math>\rho</Math> by means of the bases in <Cite Key="NW76"/>, we perform
+  a change of basis that results in a symmetric representation equivalent to <Math>\rho</Math>.
+<P/>
+  In each case (except the unary type <Math>R</Math>, for which see <Ref Func="SL2IrrepRUnary"/>),
+  the underlying module <Math>M</Math> is of rank <Math>2</Math>, so its elements have the form <Math>(x,y)</Math>
+  and are thus represented by lists <Code>[x,y]</Code>.
+<P/>
+  Characters of the abelian group <Math>\mathfrak{A} = \langle\alpha\rangle \times \langle\beta\rangle</Math>
+  have the form <Math>\chi_{i,j}</Math>, given by
+  <Display>\chi_{i,j}(\alpha^{v}\beta^{w}) \mapsto \mathbf{e}\left(\frac{vi}{|\alpha|}\right) \mathbf{e}\left(\frac{wj}{|\beta|}\right)~,</Display>
+  where <Math>i</Math> and <Math>j</Math> are integers.  We therefore represent each character by a list <Code>[i,j]</Code>.
+  Note that in some cases <Math>\alpha</Math> or <Math>\beta</Math> is trivial, and the corresponding index
+  <Math>i</Math> or <Math>j</Math> is therefore irrelevant.
+<P/>
+  We write <Code>p=</Code><Math>p</Math>, <Code>lambda=</Code><Math>\lambda</Math>, <Code>sigma=</Code><Math>\sigma</Math>, and <Code>chi=</Code><Math>\chi</Math>.
+<Section Label="Chapter_Irreps_Section_Representations_of_type_D">
+<Heading>Representations of type D</Heading>
+
+<P/>
+ See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_D"/>.
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2ModuleD" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim)</Code> describing <Math>(M,Q)</Math>.
+</Returns>
+ <Description>
+  Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>D</Math>, for
+  <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>.
+<P/>
+  <Code>Agrp</Code> is a list describing the elements of <Math>\mathfrak{A}</Math>.
+  Each element <Math>a \in \mathfrak{A}</Math> is represented in <Code>Agrp</Code> by a list <Code>[v, a, a_inv]</Code>,
+  where <Code>v</Code> is a list defined by <Math>a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}</Math>.
+  Note that <Math>\beta</Math> is trivial, and hence <Code>v[2]</Code> is irrelevant, when <Math>\mathfrak{A}</Math> is cyclic.
+<P/>
+  <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
+  correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
+  associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
+<P/>
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
+<P/>
+  <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda,chi_index" Name="SL2IrrepD" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
+</Returns>
+ <Description>
+  Constructs the modular data for the irreducible representation(s) of type <Math>D</Math> with
+  level <Math>p^\lambda</Math>, for <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>, corresponding to the
+  character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
+  (see the discussion of <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleD"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
+<P/>
+  Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Irreps_Section_Representations_of_type_N">
+<Heading>Representations of type N</Heading>
+
+<P/>
+ See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_N"/>.
+<ManSection>
+  <Func Arg="p,lambda" Name="SL2ModuleN" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Prod)</Code> describing <Math>(M,Q)</Math>.
+</Returns>
+ <Description>
+  Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>N</Math>, for
+  <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>.
+<P/>
+  <Code>Agrp</Code> is a list describing the elements of <Math>\mathfrak{A}</Math>.
+  Each element <Math>a \in \mathfrak{A}</Math> is represented in <Code>Agrp</Code> by a list <Code>[v, a]</Code>,
+  where <Code>v</Code> is a list defined by <Math>a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}</Math>.
+  Note that <Math>\alpha</Math> is trivial, and hence <Code>v[1]</Code> is irrelevant, when <Math>\mathfrak{A}</Math> is cyclic.
+<P/>
+  <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
+  correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
+  associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
+<P/>
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
+<P/>
+  <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
+<P/>
+  <Code>Nm(a)</Code> and <Code>Prod(a,b)</Code> are the norm and product functions on <Math>M</Math>, respectively.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda,chi_index" Name="SL2IrrepN" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
+</Returns>
+ <Description>
+  Constructs the modular data for the irreducible representation(s) of type <Math>N</Math> with
+  level <Math>p^\lambda</Math>, for <Math>p</Math> a prime and <Math>\lambda \geq 1</Math>, corresponding to the
+  character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
+  (see the discussion of <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleN"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
+<P/>
+  Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Irreps_Section_Representations_of_type_R">
+<Heading>Representations of type R</Heading>
+
+<P/>
+ See Section <Ref Sect="Chapter_Description_Section_Weil_Subsection_Type_R"/>.
+<ManSection>
+  <Func Arg="p,lambda,sigma,r,t" Name="SL2ModuleR" />
+ <Returns>a record <Code>rec(Agrp, Bp, Char, IsPrim, Nm, Ord, Prod, c, tM)</Code> describing <Math>(M,Q)</Math>.
+</Returns>
+ <Description>
+  Constructs information about the underlying quadratic module <Math>(M,Q)</Math> of type <Math>R</Math>, for
+  <Math>p</Math> a prime. The additional parameters <Math>\lambda</Math>, <Math>\sigma</Math>, <Math>r</Math>, and <Math>t</Math> should
+  be integers chosen as follows.
+<P/>
+  If <Math>p</Math> is an odd prime, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{1, \dots, \lambda - 1\}</Math>,
+  and <Math>r,t \in \{1,u\}</Math> with <Math>u</Math> a quadratic non-residue mod <Math>p</Math>.  Note that <Math>\sigma = \lambda</Math>
+  is a valid choice for type <Math>R</Math>, however, this gives the unary case, and so is not handled by this
+  function, as it is decomposed in a different way; for this case, use <Ref Func="SL2IrrepRUnary"/> instead.
+<P/>
+  If <Math>p=2</Math>, let <Math>\lambda \geq 2</Math>, <Math>\sigma \in \{0, \dots, \lambda-2\}</Math> and <Math>r,t \in \{1,3,5,7\}</Math>.
+<P/>
+  <Code>Agrp</Code> is a list describing the elements of <Math>\mathfrak{A}</Math>. Each element <Math>a</Math> of
+  <Math>\mathfrak{A}</Math> is represented in <Code>Agrp</Code> by a list <Code>[v, a]</Code>,
+  where <Code>v</Code> is a list defined by <Math>a = \alpha^{\mathtt{v[1]}} \beta^{\mathtt{v[2]}}</Math>.
+<P/>
+  <Code>Bp</Code> is a list of representatives for the <Math>\mathfrak{A}</Math>-orbits on <Math>M^\times</Math>, which
+  correspond to a basis for the <Math>\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})</Math>-invariant subspace
+  associated to any primitive character <Math>\chi \in \widehat{\mathfrak{A}}</Math> with <Math>\chi^2 \not\equiv 1</Math>.
+  This is the basis given by <Cite Key="NW76"/>, which may result in a non-symmetric representation;
+  if this occurs, we perform a change of basis in <Ref Func="SL2IrrepD"/> to obtain a symmetric
+  representation.
+  For non-primitive characters, we must use different bases which are particular to each case.
+<P/>
+  <Code>Char(i,j)</Code> converts two integers <Math>i</Math>, <Math>j</Math> to a function representing the character <Math>\chi_{i,j} \in \widehat{\mathfrak{A}}</Math>.
+<P/>
+  <Code>IsPrim(chi)</Code> tests whether the output of <Code>Char(i,j)</Code> represents a primitive character.
+<P/>
+  <Code>Nm(a)</Code>, <Code>Ord(a)</Code>, and <Code>Prod(a,b)</Code> are the norm, order, and product functions on <Math>M</Math>, respectively.
+<P/>
+  <Code>c</Code> is a scalar used in calculating the <Math>S</Math>-matrix; namely
+  <Math>c = \frac{1}{|M|} \sum_{x \in M} \mathbf{e}(Q(x))</Math>.
+  Note that this is equal to <Math>S_Q(-1) / \sqrt{|M|}</Math>, where
+  <Math>S_Q(-1)</Math> is the central charge (see Section <Ref Sect="Chapter_Description_Section_Construction_Subsection_Weil_representations"/>).
+<P/>
+  <Code>tM</Code> is a list describing the elements of the group <Math>M - pM</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda,sigma,r,t,chi_index" Name="SL2IrrepR" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
+</Returns>
+ <Description>
+  Constructs the modular data for the irreducible representation(s) of type <Math>R</Math> with
+  parameters <Math>p</Math>, <Math>\lambda</Math>, <Math>\sigma</Math>, <Math>r</Math>, and <Math>t</Math>,
+  corresponding to the character <Math>\chi</Math> indexed by <Code>chi_index = [i,j]</Code>
+  (see the discussions of <Math>\sigma</Math>, <Math>r</Math>, <Math>t</Math>, and <Code>Char(i,j)</Code> in <Ref Func="SL2ModuleR"/>).
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
+<P/>
+  Depending on the parameters, <Math>W(M,Q)</Math> will contain either 1 or 2 such irreps.
+<P/>
+  If <Math>\sigma = \lambda</Math> for <Math>p \neq 2</Math>, then the second factor of <Math>M</Math> is trivial
+  (and hence <Math>t</Math> is irrelevant), so this falls through to <Ref Func="SL2IrrepRUnary"/>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="p,lambda,r" Name="SL2IrrepRUnary" />
+ <Returns>a list of lists of the form <Math>[S,T]</Math>.
+</Returns>
+ <Description>
+  Constructs the modular data for the irreducible representation(s) of unary type <Math>R</Math>
+  (that is, the special case where <Math>\sigma = \lambda</Math>) with <Math>p</Math> an odd prime,
+  <Math>\lambda</Math> a positive integer, and <Math>r \in \{1,u\}</Math> with <Math>u</Math> a quadratic non-residue mod <Math>p</Math>.
+<P/>
+  Here <Math>S</Math> is symmetric and unitary and <Math>T</Math> is diagonal.
+<P/>
+  In this case, <Math>W(M,Q)</Math> always contains exactly 2 such irreps.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

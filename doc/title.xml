@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<TitlePage>
+  <Title>
+    SL2Reps
+  </Title>
+  <Subtitle>
+    Constructing symmetric representations of SL(2,Z).
+  </Subtitle>
+  <Version>
+    1.0
+  </Version>
+  <Author>
+    Siu-Hung Ng<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA<Br/>
+</Address>
+<Email>rng@math.lsu.edu</Email>
+<Homepage>https://www.math.lsu.edu/~rng/</Homepage>
+
+  </Author>
+  <Author>
+    Yilong Wang<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA <Br/> Current: Beijing Institute of Mathematical Sciences and Applications (BIMSA), Huairou, Beijing, China<Br/>
+</Address>
+<Email>wyl@bimsa.cn</Email>
+<Homepage>https://yilongwang11.github.io</Homepage>
+
+  </Author>
+  <Author>
+    Samuel Wilson<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Louisiana State University, Baton Rouge, LA, 70803, USA<Br/>
+</Address>
+<Email>swil311@lsu.edu</Email>
+<Homepage>https://snw-0.github.io</Homepage>
+
+  </Author>
+  <Date>
+    28 December 2021
+  </Date>
+  <Copyright>
+    
+      <Index>License</Index>
+      &copyright; 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
+      This package is free software;
+      you can redistribute it and/or modify it under the terms of the
+      <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+      as published by the Free Software Foundation; either version 2 of the License,
+      or (at your option) any later version.
+      
+  </Copyright>
+  <Acknowledgements>
+    
+      This project is partially supported by NSF grant DMS 1664418.
+      
+  </Acknowledgements>
+  </TitlePage>

@@ -1,0 +1,48 @@
+\GAPDocLabFile{sl2reps}
+\makelabel{sl2reps:Title page}{}{X7D2C85EC87DD46E5}
+\makelabel{sl2reps:Copyright}{}{X81488B807F2A1CF1}
+\makelabel{sl2reps:Acknowledgements}{}{X82A988D47DFAFCFA}
+\makelabel{sl2reps:Table of Contents}{}{X8537FEB07AF2BEC8}
+\makelabel{sl2reps:Introduction}{1}{X7DFB63A97E67C0A1}
+\makelabel{sl2reps:Installation}{1.1}{X8360C04082558A12}
+\makelabel{sl2reps:Usage}{1.2}{X86A9B6F87E619FFF}
+\makelabel{sl2reps:Description}{2}{X7BBCB13F82ACC213}
+\makelabel{sl2reps:Construction}{2.1}{X7F6278CD87400D49}
+\makelabel{sl2reps:Weil representations}{2.1.1}{X86466B2786DD47C4}
+\makelabel{sl2reps:Character subspaces and primitive characters}{2.1.2}{X7A8505DA8318656E}
+\makelabel{sl2reps:Irrep Types}{2.1.3}{X85605F1983AA938D}
+\makelabel{sl2reps:S and T matrices}{2.1.4}{X785B74657C952121}
+\makelabel{sl2reps:Weil representation types}{2.2}{X861BA4A8800E1A08}
+\makelabel{sl2reps:Type D}{2.2.1}{X7AEC048F793F1D79}
+\makelabel{sl2reps:Type N}{2.2.2}{X84E15A1E8326AF4F}
+\makelabel{sl2reps:Type R, generic cases}{2.2.3}{X7B788E2F87AF51CA}
+\makelabel{sl2reps:Type R, unary and extremal cases}{2.2.4}{X7B1E74AC85CBD40B}
+\makelabel{sl2reps:Irreducible representations of prime-power level}{3}{X7C4165447B8AB223}
+\makelabel{sl2reps:Representations of type D}{3.1}{X82DA126D7F755B1C}
+\makelabel{sl2reps:Representations of type N}{3.2}{X7CD74CFC84B38042}
+\makelabel{sl2reps:Representations of type R}{3.3}{X7D9759387C499FA0}
+\makelabel{sl2reps:Lists of representations}{4}{X8168FF017B2C0BB2}
+\makelabel{sl2reps:Lists by degree}{4.1}{X80406B597E11D7C6}
+\makelabel{sl2reps:Lists by level}{4.2}{X78C583957D3FF6ED}
+\makelabel{sl2reps:Lists of exceptional representations}{4.3}{X80400C6D79D4D0D6}
+\makelabel{sl2reps:Methods for testing}{5}{X794C1A137F8FA14D}
+\makelabel{sl2reps:Testing}{5.1}{X7DE7E7187BE24368}
+\makelabel{sl2reps:Bibliography}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{sl2reps:References}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{sl2reps:Index}{Ind}{X83A0356F839C696F}
+\makelabel{sl2reps:License}{}{X81488B807F2A1CF1}
+\makelabel{sl2reps:SL2ModuleD}{3.1.1}{X845D92CB7841CB0B}
+\makelabel{sl2reps:SL2IrrepD}{3.1.2}{X7FDB517981A2C091}
+\makelabel{sl2reps:SL2ModuleN}{3.2.1}{X7A50CC5A7933E207}
+\makelabel{sl2reps:SL2IrrepN}{3.2.2}{X81D60FE878F02838}
+\makelabel{sl2reps:SL2ModuleR}{3.3.1}{X7B10D99E7AEAC411}
+\makelabel{sl2reps:SL2IrrepR}{3.3.2}{X80961A2C7C5F632E}
+\makelabel{sl2reps:SL2IrrepRUnary}{3.3.3}{X7C94E3007A1BEE85}
+\makelabel{sl2reps:SL2IrrepsOfDegree}{4.1.1}{X7CC7D26D7E37A1B9}
+\makelabel{sl2reps:SL2IrrepsOfMaxDegree}{4.1.2}{X7D5FF1AE85318A70}
+\makelabel{sl2reps:SL2IrrepsOfLevel}{4.2.1}{X8209AFA6825C44DC}
+\makelabel{sl2reps:SL2IrrepsExceptional}{4.3.1}{X87A4E88F784B5B9A}
+\makelabel{sl2reps:SL2WithConjClasses}{5.1.1}{X801680187A8CA462}
+\makelabel{sl2reps:SL2ChiST}{5.1.2}{X7A97C7C77C7608D0}
+\makelabel{sl2reps:SL2TestPositions}{5.1.3}{X7BFA24298556FF78}
+\makelabel{sl2reps:SL2TestSymmetry}{5.1.4}{X7B41A0178465F138}

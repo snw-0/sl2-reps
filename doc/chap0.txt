@@ -1,1 +1,106 @@
-Placeholder
+  
+  
+                                   [1X SL2Reps [101X
+  
+  
+              [1X Constructing symmetric representations of SL(2,Z). [101X
+  
+  
+                                      1.0
+  
+  
+                                28 December 2021
+  
+  
+                                  Siu-Hung Ng
+  
+                                  Yilong Wang
+  
+                                 Samuel Wilson
+  
+  
+  
+  Siu-Hung Ng
+      Email:    [7Xmailto:rng@math.lsu.edu[107X
+      Homepage: [7Xhttps://www.math.lsu.edu/~rng/[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+  
+  
+  Yilong Wang
+      Email:    [7Xmailto:wyl@bimsa.cn[107X
+      Homepage: [7Xhttps://yilongwang11.github.io[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+                [33X[0;14YCurrent:   Beijing  Institute  of  Mathematical  Sciences  and
+                Applications (BIMSA), Huairou, Beijing, China[133X
+  
+  
+  Samuel Wilson
+      Email:    [7Xmailto:swil311@lsu.edu[107X
+      Homepage: [7Xhttps://snw-0.github.io[107X
+      Address:  [33X[0;14YLouisiana State University, Baton Rouge, LA, 70803, USA[133X
+  
+  
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson[133X
+  
+  [33X[0;0YThis  package  is  free  software;  you can redistribute it and/or modify it
+  under     the     terms     of    the    GNU    General    Public    License
+  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
+  Foundation;  either  version 2 of the License, or (at your option) any later
+  version.[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YThis project is partially supported by NSF grant DMS 1664418.[133X
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (SL2Reps)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+    1.1 [33X[0;0YInstallation[133X
+    1.2 [33X[0;0YUsage[133X
+  2 [33X[0;0YDescription[133X
+    2.1 [33X[0;0YConstruction[133X
+      2.1-1 [33X[0;0YWeil representations[133X
+      2.1-2 [33X[0;0YCharacter subspaces and primitive characters[133X
+      2.1-3 [33X[0;0YIrrep Types[133X
+      2.1-4 [33X[0;0YS and T matrices[133X
+    2.2 [33X[0;0YWeil representation types[133X
+      2.2-1 [33X[0;0YType D[133X
+      2.2-2 [33X[0;0YType N[133X
+      2.2-3 [33X[0;0YType R, generic cases[133X
+      2.2-4 [33X[0;0YType R, unary and extremal cases[133X
+  3 [33X[0;0YIrreducible representations of prime-power level[133X
+    3.1 [33X[0;0YRepresentations of type D[133X
+      3.1-1 SL2ModuleD
+      3.1-2 SL2IrrepD
+    3.2 [33X[0;0YRepresentations of type N[133X
+      3.2-1 SL2ModuleN
+      3.2-2 SL2IrrepN
+    3.3 [33X[0;0YRepresentations of type R[133X
+      3.3-1 SL2ModuleR
+      3.3-2 SL2IrrepR
+      3.3-3 SL2IrrepRUnary
+  4 [33X[0;0YLists of representations[133X
+    4.1 [33X[0;0YLists by degree[133X
+      4.1-1 SL2IrrepsOfDegree
+      4.1-2 SL2IrrepsOfMaxDegree
+    4.2 [33X[0;0YLists by level[133X
+      4.2-1 SL2IrrepsOfLevel
+    4.3 [33X[0;0YLists of exceptional representations[133X
+      4.3-1 SL2IrrepsExceptional
+  5 [33X[0;0YMethods for testing[133X
+    5.1 [33X[0;0YTesting[133X
+      5.1-1 SL2WithConjClasses
+      5.1-2 SL2ChiST
+      5.1-3 SL2TestPositions
+      5.1-4 SL2TestSymmetry
+  
+  
+  [32X
