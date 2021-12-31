@@ -16,7 +16,7 @@ unitary matrix and <Math>T</Math> is a diagonal matrix of finite order; this for
 <Heading>Installation</Heading>
 
 <P/>
-To install <Code>SL2Reps</Code>, first download it from <Code>https://github.com/ontoclasm/sl2-reps</Code>, then place it in the <Code>pkg</Code>
+To install <Code>SL2Reps</Code>, first download it from <Code>https://github.com/snw-0/sl2-reps</Code>, then place it in the <Code>pkg</Code>
 subdirectory of your GAP installation (or in the <Code>pkg</Code> subdirectory of any other GAP
 root directory, for example one added with the <Code>-l</Code> argument).
 <P/>
