@@ -1272,48 +1272,11 @@ function(p, ld)
             # R_4^2(r,3,nu)_1, for r in {1,3}.
             # Basis is given on NW p. 524.
             # See above.
-            w := Sqrt(2);
-            rho := [
-                (1 / (2*w)) * [
-                    [ 1, -1,  1, -1,  w,  w],
-                    [-1,  1, -1,  1,  w,  w],
-                    [ 1, -1, -1,  1,  w, -w],
-                    [-1,  1,  1, -1,  w, -w],
-                    [ w,  w,  w,  w,  0,  0],
-                    [ w,  w, -w, -w,  0,  0],
-                ],
-                DiagonalMat([
-                    E(16),
-                    E(16)^9,
-                    E(16)^13,
-                    E(16)^5,
-                    1,
-                    E(16)^12
-                ])
-            ];
-            name := "R_4^2(1,3,nu)_1";
-            _SL2RecordIrrep(irrep_list, name, rho, l);
-
-            rho := [
-                (1 / (2*w)) * [
-                    [-1,  1, -1,  1,  w,  w],
-                    [ 1, -1,  1, -1,  w,  w],
-                    [-1,  1,  1, -1,  w, -w],
-                    [ 1, -1, -1,  1,  w, -w],
-                    [ w,  w,  w,  w,  0,  0],
-                    [ w,  w, -w, -w,  0,  0],
-                ],
-                DiagonalMat([
-                    E(16)^3,
-                    E(16)^11,
-                    E(16)^7,
-                    E(16)^15,
-                    1,
-                    E(16)^4
-                ])
-            ];
-            name := "R_4^2(3,3,nu)_1";
-            _SL2RecordIrrep(irrep_list, name, rho, l);
+            for r in [1,3] do
+                rho := SL2IrrepR(2,4,2,r,3,[0,0])[1];
+                name := Concatenation("R_4^2(", String(r), ",3,nu)_1");
+                _SL2RecordIrrep(irrep_list, name, rho, l);
+            od;
 
             # R_4^0(r,t,chi)+-, for chi primitive, chi^2 = 1, r in {1,3}, t in {1,5}.
             # See previous. For t = 1, the relevant chars. are [1,0] and [1,2].
