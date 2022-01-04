@@ -110,7 +110,6 @@ function(p, ld, si, r, t)
                 alpha := [1,0];
                 beta := [7,0];
                 Agrp := [[0,0, [1, 0]], [0,1, [7,0]]];
-                omicron := [[1,0], alpha];
 
                 Char := function(i, j)
                         local Chi;
@@ -121,8 +120,9 @@ function(p, ld, si, r, t)
                 end;
 
                 # XXXXX refactor away this separate return point
+                # there are NO primitive characters
                 IsPrim := function(chi)
-                    return Ord(omicron[2]) = Order(chi(omicron[1]));
+                    return false;
                 end;
                 return rec(
                     Agrp := Agrp,
@@ -508,49 +508,6 @@ function(p, ld, si, r, t, chi_index)
                 T := DiagonalMat(List(Bp, x -> E(l)^(r * Nm(x))));
 
                 return [[S, T]];
-            elif ld = 4 and si = 2 then
-                N := Cartesian([0 .. 7], [0 .. 1]);
-                B := [];
-                O := [];
-                while Length(N) > 0 do
-                    Add(B, N[1]);
-                    tO := Set(Agrp, a -> Prod(a[3], N[1]));
-                    Add(O, tO);
-                    SubtractSet(N, tO);
-                od;
-
-                VInd := [];
-                for k in [1 .. Length(B)] do
-                    for a in Agrp do
-                        if a <> [0, 0, [1, 0]] and Chi(a) <> 1 and Prod(a[3], B[k]) = B[k] then
-                            Add(VInd, k);
-                            break;
-                        fi;
-                    od;
-                od;
-
-                SubtractSet(B, List(VInd, k -> B[k]));
-                SubtractSet(O, List(VInd, k -> O[k]));
-
-                deg := Length(B);
-
-                B_Q := function(a,b)
-                    # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
-                    return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
-                end;
-
-                sxy := function(x, y)
-                    return c * Sum(Agrp, a ->
-                            Sum(Agrp, b ->
-                            Chi(a) * ComplexConjugate(Chi(b)) * E(l)^(B_Q(Prod(a[3], x), Prod(b[3], y)))));
-                end;
-
-                S := List([1..deg], x ->
-                        List([1..deg], y ->
-                        Sqrt(Length(O[x]) * Length(O[y])) * sxy(B[x], B[y]) / (Length(Agrp))^2));
-
-                T := DiagonalMat(List(B, x -> E(l)^(r*Nm(x))));
-                return [[S, T]];
             elif ld = 3 and si = 1 then
                 # TODO: what to do here?
                 Error("This type is the same as TypeN, use TypeN code.");
@@ -905,7 +862,107 @@ function(p, ld, si, r, t, chi_index)
     else
         Info(InfoSL2Reps, 2, "SL2Reps : chi is not primitive.");
 
-        if p = 2 and ((ld >= 5 and si = ld - 2)
+        if p = 2 and ld = 4 and si = 2 then
+            # there are two characters, neither primitive.
+            # TODO: it seems like r and t are only determined up to mod 4, confirm this
+            r := r mod 4;
+            t := t mod 4;
+            if chi_index[2] mod 2 = 0 then
+                # trivial character
+                if t = 1 then
+                    # NW p.524: R_4^2(r,1,nu)_1 ~= R_4^2(r,3,[0,1]).
+                    Info(InfoSL2Reps, 2, "SL2Reps : There is one irreducible subrepresentation; it is equivalent to R_4^2(", r, ",3,[0,1]).");
+                    return SL2IrrepR(2,4,2,r,3,[0,1]);
+                else
+                    # Explicit bases given on NW p.524. Calculated by hand.
+                    w := Sqrt(2);
+                    if r = 1 then
+                        return [[
+                            (1 / (2*w)) * [
+                                [ 1, -1,  1, -1,  w,  w],
+                                [-1,  1, -1,  1,  w,  w],
+                                [ 1, -1, -1,  1,  w, -w],
+                                [-1,  1,  1, -1,  w, -w],
+                                [ w,  w,  w,  w,  0,  0],
+                                [ w,  w, -w, -w,  0,  0],
+                            ],
+                            DiagonalMat([
+                                E(16),
+                                E(16)^9,
+                                E(16)^13,
+                                E(16)^5,
+                                1,
+                                E(16)^12
+                            ])
+                        ]];
+                    else
+                        return [[
+                            (1 / (2*w)) * [
+                                [-1,  1, -1,  1,  w,  w],
+                                [ 1, -1,  1, -1,  w,  w],
+                                [-1,  1,  1, -1,  w, -w],
+                                [ 1, -1, -1,  1,  w, -w],
+                                [ w,  w,  w,  w,  0,  0],
+                                [ w,  w, -w, -w,  0,  0],
+                            ],
+                            DiagonalMat([
+                                E(16)^3,
+                                E(16)^11,
+                                E(16)^7,
+                                E(16)^15,
+                                1,
+                                E(16)^4
+                            ])
+                        ]];
+                    fi;
+                fi;
+            else
+                # the unique non-trivial character, [0,1]
+
+                N := Cartesian([0 .. 7], [0 .. 1]);
+                B := [];
+                O := [];
+                while Length(N) > 0 do
+                    Add(B, N[1]);
+                    tO := Set(Agrp, a -> Prod(a[3], N[1]));
+                    Add(O, tO);
+                    SubtractSet(N, tO);
+                od;
+
+                VInd := [];
+                for k in [1 .. Length(B)] do
+                    for a in Agrp do
+                        if a <> [0, 0, [1, 0]] and Chi(a) <> 1 and Prod(a[3], B[k]) = B[k] then
+                            Add(VInd, k);
+                            break;
+                        fi;
+                    od;
+                od;
+
+                SubtractSet(B, List(VInd, k -> B[k]));
+                SubtractSet(O, List(VInd, k -> O[k]));
+
+                deg := Length(B);
+
+                B_Q := function(a,b)
+                    # B((x,y),(w,z)) = (2r/p^ld) * (xw + (p^si)tyz)
+                    return 2 * r * (a[1] * b[1] + (2^si) * t * a[2] * b[2]);
+                end;
+
+                sxy := function(x, y)
+                    return c * Sum(Agrp, a ->
+                            Sum(Agrp, b ->
+                            Chi(a) * ComplexConjugate(Chi(b)) * E(l)^(B_Q(Prod(a[3], x), Prod(b[3], y)))));
+                end;
+
+                S := List([1..deg], x ->
+                        List([1..deg], y ->
+                        Sqrt(Length(O[x]) * Length(O[y])) * sxy(B[x], B[y]) / (Length(Agrp))^2));
+
+                T := DiagonalMat(List(B, x -> E(l)^(r*Nm(x))));
+                return [[S, T]];
+            fi;
+        elif p = 2 and ((ld >= 5 and si = ld - 2)
                 or (ld = 5 and si = 2 and r in [1,3] and t = 1)
                 or (ld >= 6 and si = ld - 3)) then
             # Handle cases of non-primitive characters chi such that V(chi) still has some
