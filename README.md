@@ -6,7 +6,7 @@ symmetric matrix presentations of each representation.
 
 ## Installation
 
-To install `SL2Reps`, first download it from `https://github.com/snw-0/sl2-reps`, then place it in the `pkg`
+To install `SL2Reps`, first download it from `https://snw-0.github.io/sl2-reps/`, then place it in the `pkg`
 subdirectory of your GAP installation (or in the `pkg` subdirectory of any other GAP
 root directory, for example one added with the `-l` argument).
 
