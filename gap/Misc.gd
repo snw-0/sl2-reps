@@ -7,7 +7,7 @@
 
 # InfoClass
 DeclareInfoClass( "InfoSL2Reps" );
-SetInfoLevel(InfoSL2Reps, 1);
+SetInfoLevel(InfoSL2Reps, 0);
 
 # Private helper functions
 DeclareGlobalFunction( "_SL2SqrtOfRootOfUnity" );
