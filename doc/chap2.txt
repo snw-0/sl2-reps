@@ -97,9 +97,9 @@
   
   [124X
   
-  [33X[0;0Ywhich  is a [23XSL_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant subspace of [23XV[123X. We
-  then  denote  by [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on [23XV_\chi[123X. Note
-  that [23XW(M,Q,\chi) \cong W(M,Q,\overline{\chi})[123X.[133X
+  [33X[0;0Ywhich  is a [23X\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})[123X-invariant subspace
+  of  [23XV[123X.  We  then  denote  by  [23XW(M,Q,\chi)[123X the subrepresentation of [23XW(M,Q)[123X on
+  [23XV_\chi[123X. Note that [23XW(M,Q,\chi) \cong W(M,Q,\overline{\chi})[123X.[133X
   
   [33X[0;0YFor  the  abelian  groups [23X\mathfrak{A} \leq \operatorname{Aut}(M,Q)[123X, we will
   frequently  refer  to  a  character [23X\chi \in \widehat{\mathfrak{A}}[123X as being

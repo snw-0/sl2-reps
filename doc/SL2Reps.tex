@@ -98,8 +98,8 @@
 {\Huge \textbf{ Constructing symmetric representations of SL(2,Z). \mbox{}}}\\
 \vfill
 
-{\Huge  1.0 \mbox{}}\\[1cm]
-{ 30 December 2021 \mbox{}}\\[1cm]
+{\Huge  1.1 \mbox{}}\\[1cm]
+{ 26 November 2022 \mbox{}}\\[1cm]
 \mbox{}\\[2cm]
 {\Large \textbf{ Siu-Hung Ng\\
     \mbox{}}}\\
@@ -149,7 +149,7 @@ Huairou, Beijing, China\\
  \index{License} {\copyright} 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson
 
  This package is free software; you can redistribute it and/or modify it under
-the terms of the \href{http://www.fsf.org/licenses/gpl.html} {GNU General Public License} as published by the Free Software Foundation; either version 2 of the License,
+the terms of the \href{https://www.fsf.org/licenses/gpl.html} {GNU General Public License} as published by the Free Software Foundation; either version 2 of the License,
 or (at your option) any later version. \mbox{}}\\[1cm]
 {\small 
 \section*{Acknowledgements}
@@ -185,7 +185,7 @@ modular tensor categories in particular.
 {
   
 
- To install \texttt{SL2Reps}, first download it from \texttt{https://github.com/snw-0/sl2-reps}, then place it in the \texttt{pkg} subdirectory of your GAP installation (or in the \texttt{pkg} subdirectory of any other GAP root directory, for example one added with the \texttt{-l} argument).
+ To install \texttt{SL2Reps}, first download it from \href{https://snw-0.github.io/sl2-reps/} {\texttt{https://snw-0.github.io/sl2-reps/}}, then place it in the \texttt{pkg} subdirectory of your GAP installation (or in the \texttt{pkg} subdirectory of any other GAP root directory, for example one added with the \texttt{-l} argument). 
 
  \texttt{SL2Reps} is then loaded with the GAP command 
 
@@ -277,7 +277,7 @@ Q(\varepsilon x) = Q(x) \text{ for all } x \in M\}~.\]
  We then associate to $(M,Q)$ an abelian subgroup $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$; the structure of this group depends on $(M,Q)$ and is described in Section \ref{Chapter_Description_Section_Weil}. Note that $\mathfrak{A}$ has at most two cyclic factors, whose generators we denote by $\alpha$ and $\beta$. Now, let $\chi \in \widehat{\mathfrak{A}}$ be a 1-dimensional representation (\emph{character}) of $\mathfrak{A}$, and define 
 \[V_\chi = \{f \in V \mid f(\varepsilon x) = \chi(\varepsilon) f(x) \text{ for
 all } x \in M \text{ and } \varepsilon \in \mathfrak{A}\}~,\]
- which is a $SL_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$. We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. Note that $W(M,Q,\chi) \cong W(M,Q,\overline{\chi})$. 
+ which is a $\mathrm{SL}_2(\mathbb{Z}/p^\lambda\mathbb{Z})$-invariant subspace of $V$. We then denote by $W(M,Q,\chi)$ the subrepresentation of $W(M,Q)$ on $V_\chi$. Note that $W(M,Q,\chi) \cong W(M,Q,\overline{\chi})$. 
 
  For the abelian groups $\mathfrak{A} \leq \operatorname{Aut}(M,Q)$, we will frequently refer to a character $\chi \in \widehat{\mathfrak{A}}$ as being \emph{primitive}. With the exception of a single family of modules of type $R$ (the \emph{extremal} case, for which see Section \ref{Chapter_Description_Section_Weil_Subsection_Type_R_Special}), primitivity amounts to the following: there exists some $\varepsilon \in \mathfrak{A}$ such that $\chi(\varepsilon) \neq 1$ and $\varepsilon$ fixes the submodule $pM \subset M$ pointwise. There exists a subgroup $\mathfrak{A}_0 \leq \mathfrak{A}$ such that a non-trivial $\chi \in \widehat{\mathfrak{A}}$ is primitive if and only if $\chi$ is injective on $\mathfrak{A}_0$ (or, equivalently, if $\mathfrak{A}_0 \cap \operatorname{ker} \chi$ is trivial). 
 
@@ -1036,6 +1036,8 @@ irreps involved if \texttt{InfoSL2Reps} is set to level 1 or higher; see Section
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
 \immediate\write\pagenrlog{["End"], \arabic{page}];}

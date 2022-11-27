@@ -31,7 +31,7 @@ abstract: |
     The <span class="pkgname">SL2Reps</span> package provides provides methods for constructing and testing matrix presentations of the representations of SL(2,Z) whose kernels are congruence subgroups of SL(2,Z).
 
 status: deposited
-doc-html: doc/chap0.html
+doc-html: doc/chap0_mj.html
 doc-pdf: doc/manual.pdf
 keywords: |
     representations.

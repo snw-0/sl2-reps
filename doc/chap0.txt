@@ -6,10 +6,10 @@
               [1X Constructing symmetric representations of SL(2,Z). [101X
   
   
-                                      1.0
+                                      1.1
   
   
-                                30 December 2021
+                                26 November 2022
   
   
                                   Siu-Hung Ng
@@ -47,7 +47,7 @@
   
   [33X[0;0YThis  package  is  free  software;  you can redistribute it and/or modify it
   under     the     terms     of    the    GNU    General    Public    License
-  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
+  ([7Xhttps://www.fsf.org/licenses/gpl.html[107X)  as  published  by the Free Software
   Foundation;  either  version 2 of the License, or (at your option) any later
   version.[133X
   

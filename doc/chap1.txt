@@ -16,8 +16,8 @@
   [1X1.1 [33X[0;0YInstallation[133X[101X
   
   [33X[0;0YTo       install       [10XSL2Reps[110X,       first       download      it      from
-  [10Xhttps://github.com/snw-0/sl2-reps[110X, then place it in the [10Xpkg[110X subdirectory
-  of  your  GAP installation (or in the [10Xpkg[110X subdirectory of any other GAP root
+  [7Xhttps://snw-0.github.io/sl2-reps/[107X,  then place it in the [10Xpkg[110X subdirectory of
+  your  GAP  installation  (or  in  the [10Xpkg[110X subdirectory of any other GAP root
   directory, for example one added with the [10X-l[110X argument).[133X
   
   [33X[0;0Y[10XSL2Reps[110X is then loaded with the GAP command[133X
