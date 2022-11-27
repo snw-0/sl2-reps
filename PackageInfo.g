@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "SL2Reps",
 Subtitle := "Constructing symmetric representations of SL(2,Z).",
-Version := "1.0",
-Date := "30/12/2021", # dd/mm/yyyy format
+Version := "1.1",
+Date := "26/11/2022", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -47,7 +47,7 @@ Persons := [
   ),
 ],
 
-Status := "dev",
+Status := "deposited",
 
 SourceRepository := rec( Type := "git", URL := "https://github.com/snw-0/sl2-reps" ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
