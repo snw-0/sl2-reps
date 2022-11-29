@@ -4,3 +4,6 @@
 
 # gh-pages
 /gh-pages/**
+
+# tmp
+/tmp/**
