@@ -72,7 +72,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11",
+  GAP := ">= 4.10",
   NeededOtherPackages := [ ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
@@ -88,7 +88,7 @@ AutoDoc := rec(
   TitlePage := rec(
     Copyright := """
       <Index>License</Index>
-      &copyright; 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
+      &copyright; 2022 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
       This package is free software;
       you can redistribute it and/or modify it under the terms of the
       <URL Text="GNU General Public License">https://www.fsf.org/licenses/gpl.html</URL>
