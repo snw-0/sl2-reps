@@ -53,7 +53,7 @@ SourceRepository := rec( Type := "git", URL := "https://github.com/snw-0/sl2-rep
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome := "https://snw-0.github.io/sl2-reps",
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "/README.html" ),
+README_URL     := Concatenation( ~.PackageWWWHome, "/README" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                   "/releases/download/v", ~.Version,
                                   "/sl2-reps-", ~.Version ),
