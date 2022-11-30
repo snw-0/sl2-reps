@@ -43,7 +43,7 @@
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson[133X
+  [33X[0;0Y© 2022 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson[133X
   
   [33X[0;0YThis  package  is  free  software;  you can redistribute it and/or modify it
   under     the     terms     of    the    GNU    General    Public    License

@@ -17,10 +17,10 @@ maintainers:
     - name: Samuel Wilson
       url: https://snw-0.github.io
 
-GAP: ">= 4.11"
+GAP: ">= 4.10"
 
 www: https://snw-0.github.io/sl2-reps
-readme: README.md
+readme: README
 packageinfo: https://snw-0.github.io/sl2-reps/PackageInfo.g
 
 downloads:
@@ -49,11 +49,13 @@ citeas: |
 bibtex: |
     @misc{ SL2Reps1.1,
       author =           {Ng, S.-H. and Wang, Y. and Wilson, S.},
-      title =            {{SL2Reps}, Constructing symmetric representations of SL(2,Z)., {V}ersion 1.1},
+      title =            {{SL2Reps},  Constructing  symmetric representations of
+                          SL(2,Z)., {V}ersion 1.1},
       month =            {Nov},
       year =             {2022},
       note =             {GAP package},
-      howpublished =     {\href    {https://snw-0.github.io/sl2-reps}   {\texttt{https://snw-0.github.io/}\discretionary
+      howpublished =     {\href               {https://snw-0.github.io/sl2-reps}
+                          {\texttt{https://snw-0.github.io/}\discretionary
                           {}{}{}\texttt{sl2-reps}}},
       keywords =         {representations},
       printedkey =       {NWW22}

@@ -53,7 +53,7 @@ SourceRepository := rec( Type := "git", URL := "https://github.com/snw-0/sl2-rep
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 PackageWWWHome := "https://snw-0.github.io/sl2-reps",
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "/README.md" ),
+README_URL     := Concatenation( ~.PackageWWWHome, "/README" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
                                   "/releases/download/v", ~.Version,
                                   "/sl2-reps-", ~.Version ),
@@ -72,7 +72,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.11",
+  GAP := ">= 4.10",
   NeededOtherPackages := [ ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
@@ -88,7 +88,7 @@ AutoDoc := rec(
   TitlePage := rec(
     Copyright := """
       <Index>License</Index>
-      &copyright; 2021 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
+      &copyright; 2022 by Siu-Hung Ng, Yilong Wang, and Samuel Wilson<P/>
       This package is free software;
       you can redistribute it and/or modify it under the terms of the
       <URL Text="GNU General Public License">https://www.fsf.org/licenses/gpl.html</URL>
