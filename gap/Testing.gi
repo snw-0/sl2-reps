@@ -151,13 +151,18 @@ end );
 
 InstallGlobalFunction( SL2TestPositions,
 function(p, ld)
-    local NW_irreps, i, G, GAP_irreps, PositionTest, pos_list, rho;
-
     if not IsPrime(p) then
         Error("p must be a prime.");
     elif not ld in PositiveIntegers then
         Error("ld must be a positive integer.");
     fi;
+
+    return _SL2TestPositionsInGroup(SL2WithConjClasses(p, ld), p, ld);
+end );
+
+InstallGlobalFunction( _SL2TestPositionsInGroup,
+function(G, p, ld)
+    local NW_irreps, i, GAP_irreps, class_ident, PositionTest, pos_list, rho;
 
     Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of SL(2,Z/", p^ld, "Z) via Nobs-Wolfart.");
     NW_irreps := [];
@@ -168,15 +173,18 @@ function(p, ld)
     Info(InfoSL2Reps, 1, "SL2Reps : In total, ", Length(NW_irreps), " non-trivial irreps of level dividing ", p^ld, " found.");
 
     Info(InfoSL2Reps, 1, "SL2Reps : Constructing irreps of G=SL2WithConjClasses(", p, ",", ld, ") by using Irr(G).");
-    G := SL2WithConjClasses(p, ld);
     GAP_irreps := Irr(G);
     # This always includes the trivial irrep, so we ignore it.
     Info(InfoSL2Reps, 1, "SL2Reps : ", Length(GAP_irreps)-1, " non-trivial irreps of level dividing ", p^ld, " found.");
 
+    # SL2ChiST lists values along ConjugacyClasses(G), the characters in
+    # Irr(G) along the classes of the table, which may be ordered differently.
+    class_ident := IdentificationOfConjugacyClasses(CharacterTable(G));
+
     PositionTest := function(rho, pos_list)
         local pos;
 
-        pos := Position(GAP_irreps, SL2ChiST(rho.S, rho.T, p, ld));
+        pos := Position(GAP_irreps, SL2ChiST(rho.S, rho.T, p, ld){class_ident});
         if pos = fail then
             Info(InfoSL2Reps, 1, "SL2Reps : ", rho.name, " not found!");
         else

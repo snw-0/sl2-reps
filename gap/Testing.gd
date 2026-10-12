@@ -30,6 +30,9 @@ DeclareGlobalFunction( "SL2ChiST" );
 #! Note that this function will print information on the irreps involved if `InfoSL2Reps` is set to level 1 or higher; see Section <Ref Sect="Chapter_Introduction_Section_Usage"/>.
 DeclareGlobalFunction( "SL2TestPositions" );
 
+# SL2TestPositions for a given G = SL2WithConjClasses(p, lambda)
+DeclareGlobalFunction( "_SL2TestPositionsInGroup" );
+
 #! @Arguments p,lambda
 #! @Returns a boolean.
 #! @Description Constructs and tests all irreps of level $p^\lambda$, confirming that the
